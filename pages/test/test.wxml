@@ -1,0 +1,3 @@
+<!--pages/test/test.wxml-->
+<text class='num'>{{num}}</text>
+<keyboard bindnumclick='changeNum' binddel='deleteNum' num='{{num}}' delnum='{{delnum}}'></keyboard>

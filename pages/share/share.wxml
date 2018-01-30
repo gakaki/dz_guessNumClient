@@ -16,7 +16,7 @@
   </view>  
   <view class='btns'>
       <view class='transmit tofriend'>
-          <text>转发到好友或群聊</text>  
+         <text>转发到好友或群聊</text>  
          <button class='btn' open-type='share'>转发到好友或群聊</button>
       </view>
       <view class='transmit toshare' bindtap='transmit'>
@@ -27,3 +27,4 @@
       </view>
   </view>
 </view>
+<canvas canvas-id="myCanvas" style="border: 1px solid;"/>

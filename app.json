@@ -1,8 +1,11 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/guess/guess",
+    "pages/QRtest/index",
     "pages/share/share",
+    "pages/index/index",
+    "pages/test/test",
+    "components/keyboard/keyboard",
+    "pages/guess/guess",
     "pages/record/record",
     "pages/rank/rank",
     "components/pop/pop",

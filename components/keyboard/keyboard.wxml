@@ -1,0 +1,23 @@
+<!--components/keyboard/keyboard.wxml-->
+<view>
+  <view class='row'>
+    <text class='{{active[1]?"active text":"text"}}' data-num='1' bindtap='changeSelecte'>1</text>
+    <text class='{{active[2]?"active text":"text"}}' data-num='2'  bindtap='changeSelecte'>2</text>
+    <text class='{{active[3]?"active text":"text"}}' data-num='3'  bindtap='changeSelecte'>3</text>
+  </view>
+  <view class='row'>
+    <text class='{{active[4]?"active text":"text"}}' data-num='4'  bindtap='changeSelecte'>4</text>
+    <text class='{{active[5]?"active text":"text"}}' data-num='5'  bindtap='changeSelecte'>5</text>
+    <text class='{{active[6]?"active text":"text"}}' data-num='6'  bindtap='changeSelecte'>6</text>
+  </view>
+  <view class='row'>
+    <text class='{{active[7]?"active text":"text"}}' data-num='7'  bindtap='changeSelecte'>7</text>
+    <text class='{{active[8]?"active text":"text"}}' data-num='8'  bindtap='changeSelecte'>8</text>
+    <text class='{{active[9]?"active text":"text"}}' data-num='9'  bindtap='changeSelecte'>9</text>
+  </view>
+  <view class='row'>
+    <text class='text'></text>
+    <text class='text {{active[0]?"active text":"text"}}' data-num='0'  bindtap='changeSelecte'>0</text>
+    <text class='text' bindtap='back'>撤销</text>
+  </view>
+</view>

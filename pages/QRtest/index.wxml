@@ -1,0 +1,2 @@
+<!--pages/QRtest/index.wxml-->
+<canvas canvas-id="myCanvas" style="border: 1px solid;"/>

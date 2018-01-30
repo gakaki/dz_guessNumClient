@@ -1,0 +1,41 @@
+/**app.wxss**/
+.wrap {
+  font-family: 'Microsoft YaHei';
+  width: 100vw;
+  height: 100vh;
+  color: #fff;
+  line-height: 1;
+  background: #e64f4f url("https://gengxin.odao.com/update/h5/guessNum/index/bg.png") 0 52rpx no-repeat; 
+  background-size: 720rpx 970rpx;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+.flex-space {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+.flex-column  {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.line {
+  width: 100%;
+  height: 3rpx;
+  background: #d63742;
+  box-shadow: 2rpx 2rpx 2rpx #f07378;
+}
+.clearfix {
+  display: block;
+  content: "";
+  clear: both;
+}
+.fl {
+  float: left;
+}

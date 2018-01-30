@@ -1,0 +1,10 @@
+<!--component/pop/pop.wxml-->
+<view class='wrap' bindtap='toHidden' wx:if='{{apper}}'>
+  <view class='main-pop'>
+    <text>{{content}}</text>
+    <view class='btn-wrap' wx:if='{{isShow}}'>
+      <button class='btn' bindtap='seeRecord'>{{isShow}}{{firstBtn}}</button>
+      <button class='btn' bindtap='sendRedPacket'>{{secondBtn}}</button>
+    </view>
+  </view>
+</view>

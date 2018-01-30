@@ -1,0 +1,97 @@
+/* pages/share/share.wxss */
+.avatar-wrap {
+  margin: 40rpx auto 50rpx;
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+  width: 133rpx;
+  height: 133rpx;
+}
+.avatar {
+  border-radius: 50%;
+  width: 133rpx;
+  height: 133rpx;
+}
+.title {
+  font: bold 42rpx 'Microsoft YaHei';
+  color: #fcdd71;
+  text-align: center;
+}
+.explain {
+  margin: 30rpx 0 80rpx;
+  text-align: center;
+  color: #fcdd71;
+}
+.expalin-title {
+  font: bold 36rpx/1 "Microsoft YaHei";
+  vertical-align: middle;
+  text-decoration: underline;
+}
+.arrow {
+  margin-left: 12rpx;
+  width: 22rpx;
+  height: 34rpx;
+  vertical-align: middle;
+}
+
+.record-wrap {
+  position: relative;
+}
+.record-bg {
+  margin-top: 50rpx;
+  width: 375rpx;
+  height: 100rpx;
+  vertical-align: bottom;
+}
+.bg-r {
+  transform: rotateY(180deg);
+}
+.circle {
+  position: absolute;
+  left: 262rpx;
+  top: 0;
+  width: 228rpx;
+  height: 228rpx;
+  background: #fcc171;
+  border-radius: 50%;
+}
+.btns {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 630rpx;
+  background:  rgba(143, 45, 46, 0.6);
+}
+.btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;  
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.transmit {
+  position: relative;
+  width: 375rpx;
+  height: 105rpx;
+  text-align: center;
+  font: bold 32rpx/76rpx 'Microsoft YaHei';
+  -webkit-text-stroke: 2rpx #004351;
+  -webkit-text-fill-color: #fff;
+}
+.tofriend {
+   margin: 145rpx 0 50rpx; 
+   background: url('https://gengxin.odao.com/update/h5/guessNum/share/btn-green.png') no-repeat;
+   background-size: 375rpx 105rpx;
+}
+.toshare {
+   background: url('https://gengxin.odao.com/update/h5/guessNum/share/btn-yellow.png') no-repeat;
+   background-size: 375rpx 105rpx;
+}
+.try {
+  margin-top: 50rpx;
+  font-size: 34rpx;
+  line-height: 1;
+  color: #fcdd71;
+  text-decoration: underline;
+}

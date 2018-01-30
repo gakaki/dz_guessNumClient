@@ -1,0 +1,205 @@
+/* pages/statistics/statistics.wxss */
+
+.header {
+  display: flex;
+  height: 182rpx;
+}
+.avatar-wrap {
+  margin: 15rpx 34rpx 0 23rpx; 
+  width: 115rpx;
+  height: 115rpx;
+}
+.avatar {
+  width: 115rpx;
+  height: 115rpx;
+  border: 4rpx solid #fff;
+  border-radius: 50%;
+}
+.main-title {
+  flex: 1;
+}
+.nickname {
+  display: inline-block;
+  margin: 19rpx 0 15rpx;
+  font-size: 30rpx;
+  color: #fff;
+}
+.package-num {
+  position: relative;
+  color: #fff;
+  width: 200rpx;
+  height: 52rpx;
+  background: rgba(81, 0, 11, 0.2);
+  border-radius: 26rpx;
+  box-shadow:  0 2rpx 2rpx #eb7272, inset 0 3rpx 3rpx #a03234;
+}
+.package {
+  margin-top: -10rpx;
+  width: 58rpx;
+  height: 71rpx;
+  vertical-align: top;
+}
+.num {
+  display: inline-block;
+  width: 130rpx;
+  text-align: center;
+  font-size: 32rpx;
+  vertical-align: top;
+  line-height: 52rpx; 
+}
+.rest {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 81rpx;
+  height: 100rpx;
+  width: 230rpx;
+  font: 26rpx/34rpx 'Microsoft YaHei';
+  color: #fcdd71;
+}
+.rest-content {
+  text-decoration: underline;
+}
+.gold {
+  margin: 0 6rpx;
+  width: 38rpx;
+  height: 38rpx; 
+}
+
+.input-tip-wrap {
+  display: flex;
+  margin: 0 auto;
+  width: 469rpx;
+  border: 3rpx solid #b12828;  
+  border-radius: 10rpx; 
+  box-shadow: inset 0 4rpx 4rpx #e2b388;
+}
+.input-tip {
+  flex: 1;
+  text-align: center;
+  width: 384rpx; 
+  height: 74rpx;
+  color: #4e4e4e; 
+  font: bold 30rpx/80rpx "Microsoft YaHei";
+  background: #fff7e9;  
+}
+.send-btn {
+  width: 85rpx;
+  height: 74rpx;
+  text-align: center;
+  font: bold 30rpx/74rpx "Microsoft YaHei";
+  -webkit-text-stroke: 2rpx #cf3d00;
+  background: url('https://gengxin.odao.com/update/h5/guessNum/guess/send.png');
+  background-size: 85rpx 74rpx;
+}
+
+.time {
+  height: 67rpx;
+}
+.time-content {
+  font-size: 22rpx;
+  line-height: 54rpx;
+  color: #fcdd71;
+}
+.clearCd {
+  margin: 6rpx 0 0 11rpx;
+  width: 103rpx;
+  height: 46rpx;
+  font-size: 22rpx;
+  text-align: center; 
+  line-height: 46rpx; 
+  background: url('https://gengxin.odao.com/update/h5/guessNum/guess/btn-green.png') no-repeat;
+  background-size: 103rpx 46rpx;
+}
+
+.game-explain {
+  display: flex;
+  flex-direction: column;
+  height: 210rpx;
+  background: url('https://gengxin.odao.com/update/h5/guessNum/guess/intro-bg.png');
+  background-size: 750rpx 210rpx;
+}
+.explain-title {
+  margin-top: 9rpx;
+  font: bold 30rpx/42rpx "Microsoft YaHei";
+  text-align: center;
+  color: #000;
+}
+.detail {
+  margin: 16rpx 0 12rpx 90rpx;
+  color: #ff3567;
+  font-size: 26rpx;
+  line-height: 1;
+}
+
+.guess-record-title {
+  position: relative;
+  z-index: 2;
+}
+.record-bg {
+  margin-top: 5rpx;
+  width: 375rpx;
+  height: 61rpx;
+  vertical-align: bottom;
+}
+.bg-l {
+  transform: rotateY(180deg)
+}
+.guess-record-content {
+  position: absolute;
+  left: 288rpx;
+  top: 23rpx;
+  padding-top: 12rpx;
+  width: 178rpx;
+  height: 52rpx;
+  color: #65400b;
+  text-align: center;
+  font: bold 30rpx/1 "Microsoft YaHei";
+  background: url('https://gengxin.odao.com/update/h5/guessNum/guess/record.png') no-repeat;
+  background-size: 178rpx 64rpx;
+}
+
+.record-list {
+  height: 622rpx;
+  background: rgba(143, 45, 46, 0.6);
+}
+.one-record {
+  position: relative;
+  display: flex;
+  margin: 0 6rpx;
+  border-bottom: 3rpx solid #d34c4b;
+  height: 134rpx;
+  font: 28rpx/41rpx "Microsoft YaHei";
+  
+}
+.get-avatar {
+  margin: 20rpx 16rpx 20rpx 20rpx;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
+  width: 91rpx;
+  height: 91rpx;
+}
+.get-user-name {
+  display: inline-block;
+  padding-top: 27rpx;
+}
+.get-user-num {
+  display: inline-block;
+  margin-right: 26rpx;
+}
+
+.get-gold {
+  position: absolute;
+  right: 22rpx;
+  top: 25rpx;
+}
+.gold-small {
+  width: 38rpx;
+  height: 38rpx;
+  vertical-align: top;
+}
+.show-chengji {
+  display: inline-block;
+  text-align: right;
+  width: 100%;
+}

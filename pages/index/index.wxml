@@ -1,0 +1,63 @@
+<!--index.wxml-->
+  <view class="wrap">
+  <view class='line'></view> 
+  <view class='daoju-wrap'>
+    <view class='daoju'>
+      <image class='gold' src='https://gengxin.odao.com/update/h5/guessNum/index/gold.png'></image>
+      <text class='num'>{{gold}}</text>
+      <image class='add' src='https://gengxin.odao.com/update/h5/guessNum/index/add.png'></image>
+    </view>
+    <view class='daoju'>
+      <image class='crystal' src='https://gengxin.odao.com/update/h5/guessNum/index/crystal.png'></image>
+      <text class='num'>{{crystal}}</text>
+      <image class='add' src='https://gengxin.odao.com/update/h5/guessNum/index/add.png'></image>
+    </view>
+  </view>
+  <view class='flex'>
+    <text class='title'>一起来拼智力领红包</text>
+    <image class='arrow' src='https://gengxin.odao.com/update/h5/guessNum/index/arrow.png'></image>
+  </view>
+  <view class='money-select'>
+    <view class='flex'>
+      <text class='tab {{goldClassName}}' data-type='g' bindtap='switchTab'>金币</text>
+      <text class='tab {{crystalClassName}}' data-type='c' bindtap='switchTab'>现金</text>
+    </view>
+    <view class='content'>
+      <view class='gold-select flex-space'>
+        <view class="one-select {% raw %}{{index == activeIndex ? 'one-select-active' : ''}}{% endraw %}" wx:for='{{content}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
+          <image class='gold-small' wx:if='{{show}}' src='https://gengxin.odao.com/update/h5/guessNum/index/gold-small.png'></image>
+          <text class='{{goldNum}}'>{{item}}</text>
+        </view>
+      </view>
+      <view class='select' bindtap='inputNum'>
+        <image wx:if='{{defineNum}}' class='type-select' src='https://gengxin.odao.com/update/h5/guessNum/index/selected.png'></image>
+        <text  wx:else='' class='type-select'></text>
+        <text class='type-content'>{{selectType}}</text>
+        <input class='input-money' type='number' placeholder="输入金额" placeholder-style="color:#fbc887"></input>
+      </view>
+    </view>
+  </view>
+  <view class='flex-column'>
+    <text class='play' bindtap='toGuess'>发起猜题PK</text>
+    <view class='how-play'>
+      <text class='play-intro'>玩法介绍</text>
+      <text class='contact-service'>联系客服</text>
+      <button open-type='contact' class='contact contact-service'>联系客服</button>  
+    </view>
+  </view>
+
+   <view class='footer'>
+    <view class='flex'>
+      <view class='btn flex-column' plain='true' bindtap="myRecord">
+        <image class='img record' src='https://gengxin.odao.com/update/h5/guessNum/index/record-selected.png'></image>
+        <text class='tab-content'>我的记录</text>
+      </view>
+      <view class='btn flex-column' plain='true' bindtap="question">
+        <image class='img service' src='https://gengxin.odao.com/update/h5/guessNum/index/question.png'></image>
+        <text class='tab-content'>常见问题</text>
+      </view>
+    </view>
+  </view>
+</view>  
+   
+ <!-- <tip content="红包已领取完毕" isShow=""></tip>   -->

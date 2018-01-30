@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/guess/guess",
+    "pages/share/share",
+    "pages/record/record",
+    "pages/rank/rank",
+    "components/pop/pop",
+    "pages/questions/question"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarTitleText": "猜红包",
+    "navigationBarTextStyle": "light",
+    "backgroundColor": "#e64f4f",
+    "navigationBarBackgroundColor": "#e64f4f"
+  }
+}

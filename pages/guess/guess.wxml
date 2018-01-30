@@ -1,0 +1,70 @@
+<!--index.wxml-->
+<view class="wrap">
+  <view class='line'></view>
+  <view class='header'>
+    <view class='avatar-wrap'>
+      <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+    </view>
+    <view class="userInfo">
+      <text class='nickname'>{{userInfo.nickName}}</text>
+      <view class='package-num'>
+        <image class='package' src='https://gengxin.odao.com/update/h5/guessNum/guess/package.png'></image>
+        <text class='num'>99元</text>
+      </view>  
+    </view>
+    <view class='rest'>
+      <text class='rest-content'>剩余金额</text>
+      <image class='gold' src='https://gengxin.odao.com/update/h5/guessNum/guess/gold-small.png'></image>
+      <text class='rest-num'>100</text>
+    </view> 
+  </view>
+  <view class='input-tip-wrap'>
+    <input class='input-tip' bindinput='recordtInput' type="number" maxlength='4' placeholder='输入0-9不重复4位数' placeholder-style='color: #4e4e4e'>
+    </input>
+    <text class='send-btn' bindtap='verifyGuessNum'>发送</text>
+  </view>
+  <view class='time'>
+    <!-- <view class='time-wrap flex'>
+      <text class='time-content'>冷却cd180秒</text>
+      <text class='clearCd'>清除cd</text>
+    </view>  -->
+     <view class='time-wrap flex'>
+      <text  class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text>
+      <text class='time-content' wx:else=''>参与精彩扣除100金币</text>
+    </view> 
+  </view>
+  <view class='game-explain'>
+    <text class='explain-title'>游戏规则说明</text>
+    <text class='detail'>1.A表示位置正确的数字个数</text>
+    <text class='detail'>2.B表示数字正确而位置不对的数字个数</text>
+    <text class='detail'>3.待定</text>
+  </view>
+  <view class='guess-record-title'>
+    <image class='record-bg bg-l' src='https://gengxin.odao.com/update/h5/guessNum/guess/bg.png'></image>
+    <image class='record-bg' src='https://gengxin.odao.com/update/h5/guessNum/guess/bg.png'></image>
+    <text class='guess-record-content'>猜题记录</text>
+  </view>
+  <scroll-view  class='record-list' scroll-y='true' scroll-with-animation='{{false}}'>
+    <view class='one-record' wx:for='{{getInfo}}' wx:key='{{index}}'>
+      <image class='get-avatar' src='{{userInfo.avatarUrl}}'></image>
+      <view >
+        <text class='get-user-name'>{{item.nickname}}</text>
+        <view class='get-user-info'>
+          <text class='get-user-num'>{{item.num}}</text>
+          <text>{{item.content}}</text>
+        </view>
+      </view>
+      <view class='get-gold'>
+        <view>
+          <text>领取</text>
+          <image class='gold-small' src='https://gengxin.odao.com/update/h5/guessNum/guess/gold-small.png'></image>
+          <text>×</text>
+          <text>{{item.gold}}</text>
+        </view>
+        <view>
+          <text class='show-chengji'>1A1B</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

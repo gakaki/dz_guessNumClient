@@ -1,51 +1,48 @@
 <!--pages/record/record.wxml-->
-  <view class="wrap">
-    <view class='line'></view> 
+  <view class="container">
     <view class='el-select'>
-      <view class='flex'>
-        <text class='tab {{goldClassName}}' data-type='s' bindtap='switchTab'>我发出的</text>
-        <text class='tab {{crystalClassName}}' data-type='r' bindtap='switchTab'>我收到的</text>
+      <view class='flex select'>
+        <text class='tab {{send}}' data-type='s' bindtap='switchTab'>我发出的</text>
+        <text class='tab {{receive}}' data-type='r' bindtap='switchTab'>我收到的</text>
       </view>
       <view class='content'>
          <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
          <text class='nickname'>{{userInfo.nickName}}</text>
-         <view class='flex-space'>
-            <view class='money-num flex-column'>
-              <text class='money-content'>金额</text>
-              <text class='money-content num'>15454元</text>
+         <view class='money-wrap'>
+            <view class='num-left flex-column'>
+              <image class='money-img' src='https://gengxin.odao.com/update/h5/wangcai/record/money.png'></image>
+              <text class='money-content num'>1454元</text>
             </view>
-            <view class='money-num flex-column'> 
-              <text class='money-content'>数量</text>
-              <text class='money-content num'>1000</text>
+            <view class='num-right flex-column'> 
+              <image class='money-img' src='https://gengxin.odao.com/update/h5/wangcai/record/num.png'></image>
+              <text class='money-content money-content-right num'>1000</text>
             </view>
          </view>
       </view> 
-      <view class='flex-space'>
-        <view>
-          <image class='toMoney' src='https://gengxin.odao.com/update/h5/guessNum/record/toMoney.png'></image>
-          <text class='tab-content'>去提现</text>
+      <view class='list'>
+        <view class='flex-space btn-wrap'>
+          <image class='btn-img' bindtap='toWithDraw' src='https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png'></image>
+          <image class='btn-img' bindtap='toSendPackage'
+          src='https://gengxin.odao.com/update/h5/wangcai/common/send-another.png'></image>
+          <image class='btn-img'
+          src='https://gengxin.odao.com/update/h5/wangcai/common/service.png'></image>
         </view>
-        <view bindtap='toSendPackage'>
-          <image class='package'
-          src='https://gengxin.odao.com/update/h5/guessNum/record/package.png'></image>
-          <text class='tab-content'>再发一个</text>
-        </view>
-        <view class='btn-wrap'>
-          <image class='service'
-          src='https://gengxin.odao.com/update/h5/guessNum/record/service.png'></image>
-          <text class='tab-content'>联系客服</text>
-           <button class='btn' open-type='contact'>联系客服</button> 
-        </view>
+         <view class='btn'>
+          <text class='btn-img' open-type='contact'>联系客服</text>
+        </view> 
       </view> 
     </view>
-    <view class='guess-record-title'>
-      <image class='record-bg bg-l' src='https://gengxin.odao.com/update/h5/guessNum/guess/bg.png'></image>
-      <image class='record-bg' src='https://gengxin.odao.com/update/h5/guessNum/guess/bg.png'></image>
-    </view>
     <scroll-view  class='record-list' scroll-y='true'>
-      <view class='list' wx:for='{{list}}' wx:key='{{index}}'>
-        <text>{{item.title}}</text>
-        <text>{{item.sum}}</text>
+      <view class='one-list' wx:if='{{send}}' wx:for='{{list}}' wx:key='{{index}}'>
+        <text class='one-title'>{{item.title}}</text>
+        <text class='one-sum'>{{item.sum}}</text>
+      </view> 
+      <view class='one-list' wx:if='{{receive}}' wx:for='{{list}}' wx:key='{{index}}'>
+        <view>
+          <image class='user-avatar' src='{{userInfo.avatarUrl}}'></image>
+          <text class='user-nickname'>{{userInfo.nickName}}</text>
+        </view>
+        <text class='one-sum'>{{item.sum}}</text>
       </view> 
     </scroll-view>
   </view>

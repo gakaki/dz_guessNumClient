@@ -4,6 +4,7 @@
     "pages/index/index",
     "pages/QRtest/index",
     "pages/share/share",
+    "pages/guess/guess",
     "pages/test/test",
     "pages/guess/guess",
     "components/keyboard/keyboard",

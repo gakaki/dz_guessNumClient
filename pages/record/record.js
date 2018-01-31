@@ -11,9 +11,9 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    num: [1, 3, 4, 6],
-    goldClassName: "active",
-    crystalClassName: "",
+    num: [1, 3, 4, 6], 
+    send: "active",
+    receive: "",
     list:[{
       title:'一起来拼智力领红包',
       sum:13
@@ -28,13 +28,13 @@ Page({
   switchTab(e) {
     if (e.currentTarget.dataset.type == 's') {
       this.setData({
-        goldClassName: "active",
-        crystalClassName: "",
+        send: "active",
+        receive: "",
       })
     } else {
       this.setData({
-        goldClassName: "",
-        crystalClassName: "active",
+        send: "",
+        receive: "active",
       })
     }
   },
@@ -75,6 +75,11 @@ Page({
     }
   },
   toSendPackage() {
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
+  toWithDraw(){
     wx.navigateTo({
       url: '../index/index',
     })

@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/record/record",
     "pages/index/index",
     "pages/QRtest/index",
     "pages/share/share",
     "pages/test/test",
     "pages/guess/guess",
     "components/keyboard/keyboard",
-    "pages/record/record",
     "pages/rank/rank",
     "components/pop/pop",
     "pages/questions/question"

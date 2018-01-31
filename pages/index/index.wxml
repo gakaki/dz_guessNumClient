@@ -1,22 +1,22 @@
 <!--index.wxml-->
   <view class="container"> 
    <view class='flex title-wrap'>
-    <text class='title' bindtap='changeTitle'>一起来拼智力领红包</text>
+    <text class='title' bindtap='changeTitle'>{{title}}</text>
      <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
   </view>
   <view class='money-select {{hasTicket ? "gold-ticket" : ""}}'>
-      <view class='gold-select flex-space'>
-        <view class="one-select {% raw %}{{index == activeIndex ? 'one-select-active' : ''}}{% endraw %}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
-          <view class='money-content'>
-             <text class='content'>{{item}}</text>
-             <text class='yuan'>元</text>
-          </view>
+    <view class='gold-select flex-space'>
+      <view class="one-select {% raw %}{{index == activeIndex ? 'one-select-active' : ''}}{% endraw %}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
+        <view class='money-content'>
+            <text class='content'>{{item}}</text>
+            <text class='yuan'>元</text>
         </view>
       </view>
-      <view class='select {{hasTicket ? "select-ticket" : ""}}' bindtap='inputNum'>
-        <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
-        <text class='type-content'>赏金 ( 元 )</text>
-        <input class='input-money' type='number' placeholder="填写金额" placeholder-style="color:#986143"></input>
+    </view>
+    <view class='select {{hasTicket ? "select-ticket" : ""}}' bindtap='inputNum'>
+      <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
+      <text class='type-content'>赏金 ( 元 )</text>
+      <input class='input-money' type='number' placeholder="填写金额" placeholder-style="color:#986143"></input>
     </view>
     <view class='ticket' wx:if='{{hasTicket}}'>
       <view>
@@ -25,11 +25,12 @@
       </view>  
       <view class='ticket-explain'>发起后无人领取，此赏金券作废</view>
     </view>
+    <view class='noticket' wx:else=''></view>
     <view class='flex-column'>
       <view class='rest-explain'>优先使用余额￥<text>{{restMoney}}</text></view>
       <view class='play' bindtap='toGuess'></view>
       <view class='how-play'>
-        <text class='play-intro'>玩法介绍</text>
+        <text class='play-intro' bindtap='introPlay'>玩法介绍</text>
         <text class='line'>|</text>
         <text class='contact-service'>联系客服</text>
         <button open-type='contact'  session-from="weapp" class='contact contact-service'>联系客服</button>  
@@ -41,6 +42,13 @@
     <image class='img' bindtap='withDraw' src='https://gengxin.odao.com/update/h5/wangcai/index/rest-money.png'></image>
     <image class='img' bindtap='question' src='https://gengxin.odao.com/update/h5/wangcai/index/question.png'></image>
   </view>   
+  <view class='intro-how-play flex-column' wx:if='{{toIntro}}'>
+    <view class='intro-list'>
+      <image class='exit' bindtap='hideIntro' src='https://gengxin.odao.com/update/h5/wangcai/index/exit.png'></image>
+      <text class='intro-content'>1.2222</text>
+    </view>
+  </view>
 </view>  
+
    
  <!-- <tip content="红包已领取完毕" isShow=""></tip>   -->

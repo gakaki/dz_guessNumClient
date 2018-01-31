@@ -6,25 +6,26 @@ let u = require('../../utils/util.js')
 
 Page({
   data: {
+      title:'一起来拼智力领红包',
       moneySelect:['1.68','6.6','8.8'],
       hasTicket: true,
       activeIndex:0,
-      defineNum:true,
-      restMoney:1.38
-  },
-  onLoad(){
-    wx.getFileInfo({
-      filePath:'./guessnum.xlsx',
-      success(res){
-        console.log(res)
-      },
-      fail(res){
-        console.log(res)
-      }
-    })
+      defineNum:false,
+      restMoney:1.38,
+      toIntro:false
   },
   getActive(src,dest){
     return src == dest ? 'active' : '';
+  },
+  introPlay() {
+    this.setData({
+      toIntro: true
+    })
+  },
+  hideIntro(){
+    this.setData({
+      toIntro: false
+    })
   },
   myRecord(e) {
     wx.navigateTo({
@@ -75,7 +76,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: this.data.text,
+      title: this.data.title,
       path: '/page/user?id=123',
       success: function (res) {
         // 转发成功

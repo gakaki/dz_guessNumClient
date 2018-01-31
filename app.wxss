@@ -1,21 +1,19 @@
 /**app.wxss**/
-.wrap {
+.container {
   font-family: 'Microsoft YaHei';
   width: 100vw;
   height: 100vh;
   color: #fff;
   line-height: 1;
-  background: #e64f4f url("https://gengxin.odao.com/update/h5/guessNum/index/bg.png") 0 52rpx no-repeat; 
-  background-size: 720rpx 970rpx;
+  background: #b21f2e url("https://gengxin.odao.com/update/h5/wangcai/common/bg.png") left bottom no-repeat; 
+  background-size: 750rpx 470rpx;
 }
 .flex {
   display: flex;
-  align-items: center;
   justify-content: center;
 } 
 .flex-space {
     display: flex;
-    align-items: center;
     justify-content: space-around;
     width: 100%;
 }

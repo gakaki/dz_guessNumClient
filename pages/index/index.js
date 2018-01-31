@@ -6,17 +6,18 @@ let u = require('../../utils/util.js')
 
 Page({
   data: {
-      gold:9999,
-      crystal:9999,
-      content: ['×100', '×200','×300'],
-      goldClassName: "active",
-      crystalClassName: "",
-      show:true,
-      goldNum:'gold-num',
-      selectType: '金币',
-      activeIndex:0,
-      defineNum:false,
-      text:'caicaicai'
+      moneySelect:['1.68','6.6','8.8']
+  },
+  onLoad(){
+    wx.getFileInfo({
+      filePath:'./guessnum.xlsx',
+      success(res){
+        console.log(res)
+      },
+      fail(res){
+        console.log(res)
+      }
+    })
   },
   switchTab(e){
     if(e.currentTarget.dataset.type == 'g') {
@@ -99,10 +100,5 @@ Page({
         // 转发失败
       }
     }
-  },
-  toGuess(){
-    wx.requestPayment({
-    })
   }
-
 })

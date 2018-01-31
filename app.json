@@ -12,10 +12,11 @@
     "pages/questions/question"
   ],
   "window": {
+    
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "猜红包",
+    "navigationBarTitleText": "旺年猜红包",
     "navigationBarTextStyle": "light",
-    "backgroundColor": "#e64f4f",
-    "navigationBarBackgroundColor": "#e64f4f"
+    "backgroundColor": "#b21f2e",
+    "navigationBarBackgroundColor": "#b21f2e"
   }
 }

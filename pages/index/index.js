@@ -6,7 +6,11 @@ let u = require('../../utils/util.js')
 
 Page({
   data: {
-      moneySelect:['1.68','6.6','8.8']
+      moneySelect:['1.68','6.6','8.8'],
+      hasTicket: true,
+      activeIndex:0,
+      defineNum:true,
+      restMoney:1.38
   },
   onLoad(){
     wx.getFileInfo({
@@ -19,31 +23,6 @@ Page({
       }
     })
   },
-  switchTab(e){
-    if(e.currentTarget.dataset.type == 'g') {
-      this.setData({
-        goldClassName: "active",
-        crystalClassName: "",
-        content: ['×100', '×200', '×300'],
-        show:true,
-        goldNum:'gold-num',
-        selectType:'金币',
-        activeIndex: 0,
-        defineNum: false
-      })
-    } else {
-      this.setData({
-        goldClassName: "",
-        crystalClassName: "active",
-        content: ['100元', '200元', '500元'],
-        show:false,
-        goldNum:'gold-num no-margin',
-        selectType: '现金(元)',
-        activeIndex: 0,
-        defineNum: false
-      }) 
-    }
-  },
   getActive(src,dest){
     return src == dest ? 'active' : '';
   },
@@ -53,6 +32,11 @@ Page({
     })
   },
   question(e) {
+    wx.navigateTo({
+      url: '../../pages/questions/question',
+    })
+  },
+  withDraw(e) {
     wx.navigateTo({
       url: '../../pages/questions/question',
     })

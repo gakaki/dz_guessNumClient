@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/QRtest/index",
     "pages/share/share",
-    "pages/index/index",
     "pages/test/test",
     "components/keyboard/keyboard",
     "pages/guess/guess",

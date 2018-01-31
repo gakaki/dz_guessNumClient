@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/rank/rank",
     "pages/index/index",
     "pages/QRtest/index",
     "pages/share/share",
@@ -7,7 +8,7 @@
     "components/keyboard/keyboard",
     "pages/guess/guess",
     "pages/record/record",
-    "pages/rank/rank",
+    
     "components/pop/pop",
     "pages/questions/question"
   ],

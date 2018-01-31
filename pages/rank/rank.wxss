@@ -1,10 +1,11 @@
 /* pages/rank/rank.wxss */
 .header {
   display: flex;
-  height: 182rpx;
+  height: 230rpx;
+  background-color: #b21f2e;
 }
 .avatar-wrap {
-  margin: 15rpx 34rpx 0 23rpx; 
+  margin: 11rpx 25rpx 0 21rpx; 
   width: 115rpx;
   height: 115rpx;
 }
@@ -13,9 +14,6 @@
   height: 115rpx;
   border: 4rpx solid #fff;
   border-radius: 50%;
-}
-.main-title {
-  flex: 1;
 }
 .nickname {
   display: inline-block;
@@ -30,7 +28,6 @@
   height: 52rpx;
   background: rgba(81, 0, 11, 0.2);
   border-radius: 26rpx;
-  box-shadow:  0 2rpx 2rpx #eb7272, inset 0 3rpx 3rpx #a03234;
 }
 .package {
   margin-top: -10rpx;
@@ -47,155 +44,3 @@
   line-height: 52rpx; 
 }
 
-.num-wrap {
-  margin: 0 auto;
-  width: 704rpx;
-  height: 229rpx;
-  background: url('https://gengxin.odao.com/update/h5/guessNum/rank/num-bg.png');
-  background-size: 704rpx 229rpx;
-}
-.num-img {
-  width: 100rpx;
-  height: 134rpx;
-}
-.sendPackage {
-  margin: 50rpx 0 43rpx;
-  font-size: 32rpx;
-  color: #fcdd71;
-  text-decoration: underline;
-  text-align: center;
-}
-
-
-.guess-record-title {
-  position: relative;
-  z-index: 2;
-}
-.record-bg {
-  margin-top: 5rpx;
-  width: 375rpx;
-  height: 61rpx;
-  vertical-align: bottom;
-}
-.bg-l {
-  transform: rotateY(180deg)
-}
-.guess-record-content {
-  position: absolute;
-  left: 288rpx;
-  top: 23rpx;
-  padding-top: 12rpx;
-  width: 178rpx;
-  height: 52rpx;
-  color: #65400b;
-  text-align: center;
-  font: bold 34rpx/1 "Microsoft YaHei";
-  background: url('https://gengxin.odao.com/update/h5/guessNum/guess/record.png') no-repeat;
-  background-size: 178rpx 64rpx;
-}
-
-.record-list {
-  height: 622rpx;
-  background: rgba(143, 45, 46, 0.6);
-}
-.one-record {
-  position: relative;
-  display: flex;
-  margin: 0 6rpx;
-  border-bottom: 3rpx solid #d34c4b;
-  height: 197rpx;
-  font: 28rpx/41rpx "Microsoft YaHei";
-  
-}
-
-.normal {
-  height: 180rpx;
-}
-.rank-index {
-  display: inline-block;
-  margin: 0 10rpx 0 14rpx;
-  font: bold 40rpx/150rpx "Microsoft YaHei";
-}
-.color-yellow {
-  color: #ffc107;
-}
-.color-silver {
-  color: #d4d4d4;
-}
-.color-copper {
-  color: #f07c00;
-}
-
-.get-avatar {
-  position: relative;
-  margin: 25rpx 15rpx 0 10rpx;
-  border-radius: 50%;
-  width: 99rpx;
-  height: 99rpx;
-}
-.get-avatar-normal {
-  margin-top: 10rpx;
-}
-.rank-img {
-  position: absolute;
-  left: -7rpx;
-  top: -15rpx;
-  width: 49rpx;
-  height: 44rpx;
-}
-.img-yellow {
-   background: url('https://gengxin.odao.com/update/h5/guessNum/rank/gold.png') no-repeat;
-   background-size: 49rpx 44rpx;
-}
-.img-silver {
-   background: url('https://gengxin.odao.com/update/h5/guessNum/rank/silver.png') no-repeat;
-   background-size: 49rpx 44rpx;
-}
-.img-copper {
-   background: url('https://gengxin.odao.com/update/h5/guessNum/rank/copper.png') no-repeat;
-   background-size: 49rpx 44rpx; 
-}
-
-.avatar-img {
-  border: 4rpx solid #fff;
-  width: 91rpx;
-  height: 91rpx;
-  border-radius: 50%;
-}
-.border-yellow {
-  border-color: #ffc107;
-}
-.border-silver {
-  border-color: #d4d4d4;
-}
-.border-copper {
-  border-color: #f07c00;
-}
-
-.get-user-name {
-  display: inline-block;
-  padding-top: 27rpx;
-}
-.get-user-name-normal {
-  padding-top: 10rpx;
-}
-.get-user-num {
-  display: inline-block;
-  margin-right: 26rpx;
-}
-
-.get-gold {
-  position: absolute;
-  right: 22rpx;
-  top: 25rpx;
-}
-.gold-small {
-  width: 38rpx;
-  height: 38rpx;
-  vertical-align: top;
-}
-.show-chengji {
-  display: inline-block;
-  text-align: right;
-  width: 100%;
-}

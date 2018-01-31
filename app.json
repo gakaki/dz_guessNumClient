@@ -4,8 +4,8 @@
     "pages/QRtest/index",
     "pages/share/share",
     "pages/test/test",
-    "components/keyboard/keyboard",
     "pages/guess/guess",
+    "components/keyboard/keyboard",
     "pages/record/record",
     "pages/rank/rank",
     "components/pop/pop",
@@ -14,7 +14,7 @@
   "window": {
     
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "旺年猜红包",
+    "navigationBarTitleText": "旺猜",
     "navigationBarTextStyle": "light",
     "backgroundColor": "#b21f2e",
     "navigationBarBackgroundColor": "#b21f2e"

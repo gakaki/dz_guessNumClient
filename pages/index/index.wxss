@@ -1,29 +1,184 @@
 /**index.wxss**/
-.title {
+.title-wrap {
   height: 134rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/title-bg.png') center center no-repeat; 
+  background-size: 534rpx 134rpx;
+}
+.title {
+  display: inline-block;
+  margin-top: 35rpx;
+  font: bold 40rpx/1 'Microsoft YaHei';
+  color: #986143;
+}
+.arrow {
+  margin: 38rpx 0 0 10rpx;
+  width: 24rpx;
+  height: 38rpx;
 }
 .money-select {
+  box-sizing: border-box; 
   padding: 121rpx 25rpx 0;
   height: 928rpx;
   background: url('https://gengxin.odao.com/update/h5/wangcai/index/bg.png') no-repeat; 
   background-size: 750rpx 928rpx; 
 }
-.one-select {
-  width: 181rpx;
-  height: 270rpx;
-  background: url('https://gengxin.odao.com/update/h5/wangcai/index/package.png') no-repeat;
-  background-size: 181rpx 270rpx;
+.gold-ticket {
+   padding-top: 86rpx; 
 }
+ .one-select {
+  width: 193rpx;
+  height: 277rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/package.png') center center no-repeat;
+  background-size: 193rpx 277rpx;
+}
+.one-select-active {
+  background-image: url('https://gengxin.odao.com/update/h5/wangcai/index/package-active.png');
+} 
+
 .money-content {
-  display: inline-block;
   margin-top: 200rpx;
-  width: 100%;
   text-align: center;
-  font: bold 46rpx/46rpx 'Microsoft YaHei';
+  height: 46rpx;
   color: #fefcd2;
-  vertical-align: middle;
+}
+.content {
+  display: inline-block;
+  font: bold 46rpx/1 'Microsoft YaHei';
+  vertical-align: top;
 }
 .yuan {
-   font: bold 40rpx/46rpx 'Microsoft YaHei';
-   vertical-align: middle;
+  display: inline-block;
+   font: bold 40rpx/1 'Microsoft YaHei';
+   vertical-align: top;
+}
+.select {
+  margin-top: 80rpx;
+}
+.select-ticket {
+  margin-top: 39rpx;
+}
+.type-select {
+  display: inline-block;
+  margin: 12rpx 17rpx 0 25rpx;
+  width: 48rpx;
+  height: 47rpx;
+  background: #fd3636;
+  border-radius: 50%;
+  vertical-align: top;
+}
+.type-selected {
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/sure.png');
+  background-size: 48rpx 47rpx;
+} 
+.type-content {
+  display: inline-block;
+  vertical-align: top;
+  font: bold 36rpx/74rpx 'Microsoft YaHei';
+  color: #000;
+}
+.input-money {
+  display: inline-block;
+  margin-left: 30rpx;
+  width: 380rpx;
+  height: 72rpx;
+  border-radius: 10rpx;
+  background: #ffeabb;
+  text-align: center;
+  color: #986143;
+  font: bold 36rpx 'Microsoft YaHei';
+}
+.ticket {
+  margin-top: 25rpx;
+}
+.noticket {
+  height: 63rpx;
+  width: 100%;
+}
+.ticket-content {
+  line-height: 1;
+  padding-top: 5rpx;
+}
+.num-color {
+  display: inline-block;
+  margin: 0 17rpx;
+  font: bold 42rpx 'Microsoft YaHei';
+  color: #f4125d;
+}
+.ticket-explain {
+  margin: 15rpx 0 22rpx 88rpx;
+  font: bold 20rpx/1 'Microsoft YaHei';
+  color: #e48d48;
+}
+
+.rest-explain {
+  margin: 17rpx 0 0;
+  font: 24rpx/1 'Microsoft YaHei';
+  color: #e48d48; 
+}
+.play {
+  width: 530rpx;
+  height: 152rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/common/pk-btn.png') no-repeat;
+  background-size: 530rpx 152rpx;
+}
+.how-play {
+  position: relative;
+  font: bold 26rpx/1 'Microsoft YaHei';
+  color: #a25329;
+}
+.line {
+  margin: 0 14rpx;
+}
+.contact {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font: bold 26rpx/1 'Microsoft YaHei';
+  padding: 0;
+  opacity: 0;
+  z-index: 2;
+}
+ 
+.footer {
+  position: fixed;
+  bottom: 26rpx;
+  left: 0;
+  width: 100vw;
+} 
+.img {
+  width: 100rpx;
+  height: 90rpx;
+}
+
+.intro-how-play {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+}
+.intro-list {
+  position: relative;
+  box-sizing: border-box;
+  padding: 213rpx 42rpx 40rpx;
+  width: 700rpx;
+  height: 753rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/intro-bg.png') center center no-repeat;
+  background-size: 700rpx 753rpx;
+}
+.intro-content {
+  font: bold 32rpx/49rpx 'Microsoft YaHei';
+  color: #b21f2e;
+}
+.exit {
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.select-wrap {
+  height: 216rpx;
 }

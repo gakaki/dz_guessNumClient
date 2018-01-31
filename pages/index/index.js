@@ -6,46 +6,26 @@ let u = require('../../utils/util.js')
 
 Page({
   data: {
-      moneySelect:['1.68','6.6','8.8']
-  },
-  onLoad(){
-    wx.getFileInfo({
-      filePath:'./guessnum.xlsx',
-      success(res){
-        console.log(res)
-      },
-      fail(res){
-        console.log(res)
-      }
-    })
-  },
-  switchTab(e){
-    if(e.currentTarget.dataset.type == 'g') {
-      this.setData({
-        goldClassName: "active",
-        crystalClassName: "",
-        content: ['×100', '×200', '×300'],
-        show:true,
-        goldNum:'gold-num',
-        selectType:'金币',
-        activeIndex: 0,
-        defineNum: false
-      })
-    } else {
-      this.setData({
-        goldClassName: "",
-        crystalClassName: "active",
-        content: ['100元', '200元', '500元'],
-        show:false,
-        goldNum:'gold-num no-margin',
-        selectType: '现金(元)',
-        activeIndex: 0,
-        defineNum: false
-      }) 
-    }
+      title:'一起来拼智力领红包',
+      moneySelect:['1.68','6.6','8.8'],
+      hasTicket: true,
+      activeIndex:0,
+      defineNum:false,
+      restMoney:1.38,
+      toIntro:false
   },
   getActive(src,dest){
     return src == dest ? 'active' : '';
+  },
+  introPlay() {
+    this.setData({
+      toIntro: true
+    })
+  },
+  hideIntro(){
+    this.setData({
+      toIntro: false
+    })
   },
   myRecord(e) {
     wx.navigateTo({
@@ -53,6 +33,11 @@ Page({
     })
   },
   question(e) {
+    wx.navigateTo({
+      url: '../../pages/questions/question',
+    })
+  },
+  withDraw(e) {
     wx.navigateTo({
       url: '../../pages/questions/question',
     })
@@ -91,7 +76,7 @@ Page({
       console.log(res.target)
     }
     return {
-      title: this.data.text,
+      title: this.data.title,
       path: '/page/user?id=123',
       success: function (res) {
         // 转发成功

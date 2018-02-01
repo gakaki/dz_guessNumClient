@@ -85,15 +85,22 @@
   height: 96rpx;
   border: 4rpx solid #9f101e;  
   border-radius: 50rpx; 
+  z-index: 99;
+  background: #fff;
   /* box-shadow: inset 0 4rpx 4rpx #e2b388; */
 }
 .input-tip {
+  
   text-align: center;
   width: 100%; 
   height: 100%;
-  color: #4e4e4e; 
-  font: bold 30rpx/80rpx "Microsoft YaHei";
-  background: #fff7e9;  
+  color: #cacaca; 
+  font: bold 36rpx "Microsoft YaHei";
+  display: flex;
+  align-items: flex-start;
+  margin-left: 40rpx;
+  justify-content: center;
+  flex-direction: column; 
 }
 .send-btn {
   position: absolute;

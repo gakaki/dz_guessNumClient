@@ -17,8 +17,7 @@
     </view> 
   </view>
   <view class='input-tip-wrap'>
-    <input class='input-tip' bindinput='recordtInput' type="number" maxlength='4' placeholder='输入0-9不重复4位数' placeholder-style='color: #4e4e4e'>
-    </input>
+    <text class='input-tip'>输入0-9不重复4位数</text>
      <image class='send-btn' src='https://gengxin.odao.com/update/h5/wangcai/guess/send.png'></image>
   </view>
   <view class='time'>

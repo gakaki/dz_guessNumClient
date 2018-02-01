@@ -101,7 +101,7 @@
   margin-top: 20rpx;
 }
 .person-list{
-  position: fixed;
+  position: absolute;
   top: 576rpx;
   bottom: 0;
   width: 100%;

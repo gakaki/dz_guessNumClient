@@ -121,6 +121,10 @@
   background: url('https://gengxin.odao.com/update/h5/wangcai/common/pk-btn.png') no-repeat;
   background-size: 530rpx 152rpx;
 }
+.play-active {
+  background: url('https://gengxin.odao.com/update/h5/wangcai/common/guess-active.png') no-repeat;
+  background-size: 530rpx 152rpx;
+}
 .how-play {
   position: relative;
   font: bold 26rpx/1 'Microsoft YaHei';

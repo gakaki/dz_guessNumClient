@@ -12,8 +12,11 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canvasIndex:false,
+    friendUrl:'https://gengxin.odao.com/update/h5/wangcai/share/transmit.png',
+    friendCUrl:'https://gengxin.odao.com/update/h5/wangcai/share/friendC-share.png',
     shareImg:"",
   },
+  
 
   /**
    * 生命周期函数--监听页面加载
@@ -77,6 +80,26 @@ Page({
   totry(){
     wx.navigateTo({
       url: '../guess/guess',
+    })
+  },
+  showFriendActive() {
+    this.setData({
+      friendUrl: 'https://gengxin.odao.com/update/h5/wangcai/share/transmit-active.png'
+    })
+  },
+  hideFriendActive(){
+    this.setData({
+      friendUrl: 'https://gengxin.odao.com/update/h5/wangcai/share/transmit.png'
+    })
+  },
+  shareFriendCActive(){
+    this.setData({
+      friendUrl: 'https://gengxin.odao.com/update/h5/wangcai/share/transmit-active.png'
+    })
+  },
+  hideFriendCActive() {
+    this.setData({
+      friendUrl: 'https://gengxin.odao.com/update/h5/wangcai/share/transmit.png'
     })
   },
   shareFriendC() {

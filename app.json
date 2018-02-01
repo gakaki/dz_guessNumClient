@@ -1,19 +1,17 @@
 {
   "pages": [
+    "pages/share/share",
+    "pages/rank/rank",
+    "pages/guess/guess",
     "pages/record/record",
     "pages/index/index",
     "pages/QRtest/index",
-    "pages/share/share",
-    "pages/guess/guess",
     "pages/test/test",
-    "pages/guess/guess",
     "components/keyboard/keyboard",
-    "pages/rank/rank",
     "components/pop/pop",
     "pages/questions/question"
   ],
   "window": {
-    
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "旺猜",
     "navigationBarTextStyle": "light",

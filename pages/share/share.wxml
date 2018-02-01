@@ -1,30 +1,19 @@
 <!--pages/share/share.wxml-->
-<view class="wrap">
-  <view class='line'></view>
+<view class='wrap flex-column'>
   <view class='avatar-wrap'>
     <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
   </view>
-  <view class='title'>发了一个狗年猜红包</view>
+  <image class='wc' src='https://gengxin.odao.com/update/h5/wangcai/share/wc.png'></image>
   <view class='explain'>
     <text class='expalin-title'>一起来拼智力领红包</text>
-    <image class='arrow' src='https://gengxin.odao.com/update/h5/guessNum/index/arrow.png'></image>
+    <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/share/arrow.png'></image>
   </view>
-  <view class='record-wrap'>
-    <image class='record-bg' src='https://gengxin.odao.com/update/h5/guessNum/share/bg.png'></image>
-    <image class='record-bg bg-r' src='https://gengxin.odao.com/update/h5/guessNum/share/bg.png'></image>
-    <text class='circle'></text>
-  </view>  
-  <view class='btns'>
-      <view class='transmit tofriend'>
-         <text>转发到好友或群聊</text>  
-         <button class='btn' open-type='share'>转发到好友或群聊</button>
-      </view>
-      <view class='transmit toshare' bindtap='transmit'>
-        <text>生成朋友圈分享圈</text> 
-      </view>
-      <view class='try' bindtap='totry'>
-         <text>我也试一试</text>
-      </view>
+  <image class='qr' src='https://gengxin.odao.com/update/h5/wangcai/share/QR.jpg'></image>
+  <view class='to-friend'>
+    <image class='to-friend-img' src='https://gengxin.odao.com/update/h5/wangcai/share/transmit.png'></image>
+    <button class='to-friend-btn' open-type='share'></button>
   </view>
+  <image class='to-friendC' src='https://gengxin.odao.com/update/h5/wangcai/share/friendC-share.png'></image>
+  <text class='try'>我也试一试</text>
 </view>
-<canvas canvas-id="myCanvas" style="border: 1px solid;"/>
+<!-- <canvas canvas-id="myCanvas" style="border: 1px solid;"/> -->

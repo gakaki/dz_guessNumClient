@@ -183,3 +183,10 @@
 .ranking-third{
   color: #f07c00;
 }
+.share{
+  width: 212rpx;
+  height: 59rpx;
+  position: absolute;
+  right: 20rpx;
+  opacity: 0;
+}

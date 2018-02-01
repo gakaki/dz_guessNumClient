@@ -64,13 +64,7 @@ Page({
       url: '../index/index',
     })
   },
-
-  toShow: function() {
-    wx.navigateTo({
-      url: '../share/share',
-    })
-  },
-
+  
   /**
    * 按钮动作效果
    */

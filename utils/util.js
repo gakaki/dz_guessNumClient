@@ -13,7 +13,7 @@ var app = getApp();
 function request(postData, doSuccess, doFail, doComplete) {
   wx.request({
     url: "https://h5.douzi.com",
-    data: data,
+    data: postData,
     method: 'POST',
     success: function (res) {
       if (typeof doSuccess == "function") {

@@ -1,11 +1,9 @@
 {
   "pages": [
-<<<<<<< HEAD
-=======
+    "pages/rank/rank",
     "pages/share/share",
     "pages/index/index",
->>>>>>> d988fc8d40ae43dc2196d43e7e7d38d3f71c42aa
-    "pages/rank/rank",
+    
     "pages/guess/guess",
     "pages/record/record",
     "pages/QRtest/index",

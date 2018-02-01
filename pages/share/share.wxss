@@ -62,7 +62,7 @@
   z-index: 2;
   width: 530rpx;
   height: 152rpx;
-  opacity: 0;
+  opacity: 0; 
 }
 .to-friendC {
   margin: 10rpx 0 97rpx 0;

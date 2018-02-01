@@ -4,15 +4,9 @@
     "pages/tixian/tixian",
     "pages/index/index",
     "pages/help/help",
-    "pages/guess/guess", 
    
     "pages/rank/rank",
     "pages/share/share",
-<<<<<<< HEAD
-    "pages/index/index",
-    
-=======
->>>>>>> eb05483443b7e0f91da22db969a2d65bf318e48b
     "pages/record/record",
     "pages/QRtest/index",
     "pages/test/test",

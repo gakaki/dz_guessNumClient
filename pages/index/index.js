@@ -28,19 +28,62 @@ Page({
     })
   },
   myRecord(e) {
-    wx.navigateTo({
-      url: "../../pages/record/record"
-    })
+    if (app.globalData.hasUserInfo) {
+      wx.navigateTo({
+        url: "../../pages/record/record"
+      })
+    } else {
+      wx.openSetting({
+        success: (res) => {
+          app.globalData.hasUserInfo = true
+          /*
+           * res.authSetting = {
+           *   "scope.userInfo": true,
+           *   "scope.userLocation": true
+           * }
+           */
+        }
+      })
+    }
   },
   question(e) {
-    wx.navigateTo({
-      url: '../../pages/questions/question',
-    })
+    if (app.globalData.hasUserInfo) {
+      wx.navigateTo({
+        url: "../../pages/questions/question"
+      })
+    } else {
+      wx.openSetting({
+        success: (res) => {
+          app.globalData.hasUserInfo = true
+          /*
+           * res.authSetting = {
+           *   "scope.userInfo": true,
+           *   "scope.userLocation": true
+           * }
+           */
+        }
+      })
+    }
   },
   withDraw(e) {
-    wx.navigateTo({
-      url: '../../pages/questions/question',
-    })
+    if (app.globalData.hasUserInfo) {
+      wx.navigateTo({
+        url: "../../pages/questions/question"
+      })
+    } else {
+      wx.openSetting({
+        success: (res) => {
+          app.globalData.hasUserInfo = true
+          /*
+           * res.authSetting = {
+           *   "scope.userInfo": true,
+           *   "scope.userLocation": true
+           * }
+           */
+
+        }
+      })
+    }
   },
   selectMoney(e){
     switch (e.currentTarget.dataset.index) {

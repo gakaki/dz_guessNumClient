@@ -1,14 +1,14 @@
 {
   "pages": [
-<<<<<<< HEAD
     "pages/guess/guess",
-=======
+    "pages/test/test",
+    
+    "pages/share/share",
+    "pages/help/help",
+    
     "pages/record/record",
->>>>>>> a5966944aecdfb794f6539684df0d03a2e6e2956
     "pages/index/index",
     "pages/QRtest/index",
-    "pages/share/share",
-    "pages/test/test",
     
     "components/keyboard/keyboard",
     "pages/rank/rank",

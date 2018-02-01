@@ -8,24 +8,29 @@ Page({
    * 页面的初始数据
    */
   data: {
+    // num: '输入0-9不重复4位数',
+    isHide: true,
+    clicked: [false, false, false, false, false, false, false, false, false, false],
+    num: '',
+    delnum: '',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     inputNum: '',
-    warning:false,
-    getInfo:[{
+    warning: false,
+    getInfo: [{
       avatar: 11,
       nickname: "昵称一共八个文字",
       num: 5793,
       content: "智商的文字",
-      gold:13
+      gold: 13
     }, {
       avatar: 11,
       nickname: "昵称一共八个文字",
       num: 5793,
       content: "智商的文字",
       gold: 13
-    },{
+    }, {
       avatar: 11,
       nickname: "昵称一共八个文字",
       num: 5793,
@@ -79,7 +84,50 @@ Page({
       })
     }
   },
-  recordtInput(e){
+  showKb: function () {
+    this.setData({
+      isHide: !this.data.isHide
+    })
+  },
+  hideKb: function() {
+    this.setData({
+      isHide: true
+    })
+  },
+  clickNum(e) {
+    console.log(e)
+    if (this.data.num.length < 4) {
+      let newNum = this.data.num + e.currentTarget.dataset.num;
+      this.setData({
+        num: newNum
+      })
+      let idx = e.currentTarget.dataset.num
+      let newArr = [];
+      this.data.clicked[idx - 1] = true
+      newArr = this.data.clicked
+      this.setData({
+        clicked: newArr
+      })
+    }
+
+  },
+  deleteNum(e) {
+    let idx = this.data.num.split('')
+    idx = parseInt(idx[idx.length - 1])
+    console.log(idx)
+    this.setData({
+      num: this.data.num.slice(0, this.data.num.length - 1),
+      // delnum: this.data.num.slice(this.data.num.length - 1, this.data.num.length)
+    })
+
+    let newArr = [];
+    this.data.clicked[idx - 1] = false
+    newArr = this.data.clicked
+    this.setData({
+      clicked: newArr
+    })
+  },
+  recordtInput(e) {
     this.setData({
       warning: false
     })
@@ -94,21 +142,21 @@ Page({
         warning: true
       })
     }
-   },
-   arrUniq(arr){
+  },
+  arrUniq(arr) {
     let newArr = [];
-    for(let i=0;i<arr.length;i++) {
-      if(newArr.indexOf(arr[i]) == -1) {
+    for (let i = 0; i < arr.length; i++) {
+      if (newArr.indexOf(arr[i]) == -1) {
         newArr.push(arr[i]);
       }
     }
-    console.log(arr.length > newArr.length )
-    return arr.length > newArr.length ? false: true
-   },
+    console.log(arr.length > newArr.length)
+    return arr.length > newArr.length ? false : true
+  },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+
   }
 })

@@ -21,14 +21,13 @@
       </view> 
       <view class='list'>
         <view class='flex-space btn-wrap'>
-          <image class='btn-img' bindtap='toWithDraw' src='https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png'></image>
-          <image class='btn-img' bindtap='toSendPackage'
-          src='https://gengxin.odao.com/update/h5/wangcai/common/send-another.png'></image>
-          <image class='btn-img'
-          src='https://gengxin.odao.com/update/h5/wangcai/common/service.png'></image>
+          <image class='btn-img' bindtap='toWithDraw' bindtouchstart='showWithActive' bindtouchend='hideWithActive' src='{{withUrl}}'></image>
+          <image class='btn-img' bindtap='toSendPackage' bindtouchstart='showAnotherActive' bindtouchend='hideAnotherActive'
+          src='{{anotherUrl}}'></image>
+          <image class='btn-img' src='{{serverUrl}}'></image>
         </view>
          <view class='btn'>
-          <text class='btn-img' open-type='contact'>联系客服</text>
+          <button class='btn-img' bindtouchstart='showServerActive' bindtouchend='hideServerActive' open-type='contact'>联系客服</button>
         </view> 
       </view> 
     </view>

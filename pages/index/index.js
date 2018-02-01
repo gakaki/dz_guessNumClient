@@ -12,7 +12,11 @@ Page({
       activeIndex:0,
       defineNum:false,
       restMoney:1.38,
-      toIntro:false
+      toIntro:false,
+      pkBtnActive:false,
+      recordUrl:'https://gengxin.odao.com/update/h5/wangcai/index/record.png',
+      withUrl:'https://gengxin.odao.com/update/h5/wangcai/index/rest-money.png',
+      helpUrl:'https://gengxin.odao.com/update/h5/wangcai/index/question.png'
   },
   getActive(src,dest){
     return src == dest ? 'active' : '';
@@ -112,6 +116,49 @@ Page({
       defineNum:true,
       activeIndex: -1,
     })
+  },
+  showGuessActive(){
+    this.setData({
+      pkBtnActive:true
+    })
+  },
+  hideGuessActive() {
+    this.setData({
+      pkBtnActive: false
+    })
+  },
+  showRecordActive(){
+    this.setData({
+      recordUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/record-active.png'
+    })
+  },
+  hideRecordActive() {
+    this.setData({
+      recordUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/record.png'
+    })
+  },
+  showWithActive() {
+    this.setData({
+      withUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/rest-money-active.png'
+    })
+  },
+  hideWithActive() {
+    this.setData({
+      withUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/rest-money.png'
+    })
+  },
+  showHelpActive() {
+    this.setData({
+      helpUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/question-active.png'
+    })
+  },
+  hideHelpActive() {
+    this.setData({
+      helpUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/question.png'
+    })
+  },
+  toGuess(){
+    console.log(1)
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {

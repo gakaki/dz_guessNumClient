@@ -1,19 +1,17 @@
 {
   "pages": [
-    
-    "pages/guess/guess",
     "pages/help/help",
+    "pages/guess/guess",
+    "pages/index/index",
+    "pages/record/record",
+    "pages/share/share",
+    
+    "pages/rank/rank",
     
     "pages/tixian/tixian",
-    "pages/index/index",
-    
-   
-    "pages/rank/rank",
-    "pages/share/share",
-    "pages/record/record",
-    "pages/QRtest/index",
     "pages/test/test",
     "components/keyboard/keyboard",
+    "pages/QRtest/index",
     "components/pop/pop"
   ],
   "window": {

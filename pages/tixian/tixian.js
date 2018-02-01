@@ -34,7 +34,7 @@ Page({
   },
 
   /**
-   * 点击提现按钮动作效果
+   * 点击按钮动作效果
    */
   active: function() {
     this.setData({

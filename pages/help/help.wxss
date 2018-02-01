@@ -45,7 +45,11 @@ border-radius: 20rpx;
   width: 750rpx;
   height: 188rpx;
 }
-.server,.server-click {
+
+.server {
+
+  position: relative;
+
   width: 530rpx;
   height: 152rpx;
   align-self: flex-end;
@@ -60,6 +64,19 @@ border-radius: 20rpx;
   align-self: flex-end;
   background-size: 530rpx 152rpx;
   background-position: center center; 
+}
+.server {
+  width: 530rpx;
+  height: 152rpx;
+}
+.server-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 530rpx;
+  height: 152rpx;
+  opacity: 0;
 }
 .dress-rgt,.dress-left {
   width: 126rpx;

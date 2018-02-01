@@ -93,7 +93,7 @@
   opacity: 0;
 }
 .record-list {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 690rpx;
   bottom: 0;

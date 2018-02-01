@@ -1,0 +1,103 @@
+/* pages/tixian/tixian.wxss */
+.wrap{
+  background-color: #fff9e3;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.service{
+  width: 155rpx;
+  height: 36rpx;
+  position: absolute;
+  right:26rpx;
+  top: 27rpx;
+  z-index: 1;
+}
+.opcity{
+  opacity: 0;   
+  position: absolute;
+  right: 35rpx;
+  top: 10rpx;
+  z-index: 10;
+}
+.withdraw-info{
+  width: 746rpx;
+  height: 772rpx;
+  background-image: url("https://gengxin.odao.com/update/h5/wangcai/withdraw/rest-money.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 80rpx;
+}
+.remainder{
+  margin-top: 98rpx;
+  margin-left: 270rpx;
+  color: #959595;
+  font-family: "微软雅黑";
+  font-size: 42rpx;
+  font-weight: bold;
+}
+.remain-num{
+  font-size: 46rpx;
+  color: #f4125d;
+  margin-right: 10rpx;
+}
+.withdraw-money{
+  margin-top: 190rpx;
+  margin-left: 126rpx;
+  color: #f4125d;
+  font-family: "微软雅黑";
+  font-weight: bold;
+  max-width: 400rpx;
+  height:80rpx;
+}
+.num{
+  font-size: 76rpx;
+  height: 80rpx;
+}
+.withdraw-all{
+  width: 150rpx;
+  height: 50rpx;
+  position: absolute;
+  top: 444rpx;
+  right: 66rpx;
+}
+.confirm{
+  width: 530rpx;
+  height: 152rpx;
+  position: absolute;
+  top: 647rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.left-bg{
+  width: 126rpx;
+  height: 63rpx;
+  position: absolute;
+  bottom: 16rpx;
+  left: -25rpx;
+}
+.right-bg{
+  width: 126rpx;
+  height: 63rpx;
+  position: absolute;
+  bottom: 147rpx;
+  right: -23rpx;
+}
+.btn-bottom{
+  position: absolute;
+  bottom: 61rpx;
+  left: 50%;
+  transform: translate(-50%,0);
+}
+.text{
+  font:bold 26rpx "微软雅黑";
+  color: #e48d48;
+}
+.xixian{
+  display: inline-block;
+  height: 26rpx;
+  width: 2rpx;
+  background-color: #e48d48;
+  margin: 0 13rpx;
+  vertical-align: middle;
+}

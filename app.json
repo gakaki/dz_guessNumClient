@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/rank/rank",
     "pages/guess/guess",
     "pages/record/record",
     "pages/index/index",
@@ -7,12 +8,11 @@
     "pages/share/share",
     "pages/test/test",
     "components/keyboard/keyboard",
-    "pages/rank/rank",
     "components/pop/pop",
+    "pages/tixian/tixian",
     "pages/questions/question"
   ],
   "window": {
-    
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "旺猜",
     "navigationBarTextStyle": "light",

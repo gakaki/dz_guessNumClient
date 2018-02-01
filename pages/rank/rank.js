@@ -11,40 +11,103 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
+    sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/me-send.png',
+    showSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/show-rank.png',
     num:[1,3,4,6],
-    numSrc: [],
+    myMoney:9999,
     getInfo: [{
       avatar: 11,
       nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
+      guessNum: [1111,1524,3454],
+      guessResult: ['1A1B','2A0B','3A0B'],
+      gold: 9999
     }, {
       avatar: 11,
       nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
+      guessNum: [1210],
+      guessResult: ['1A1B'],
+      gold: 201
     }, {
       avatar: 11,
       nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
+      guessNum: [1359, 1324, 6451,2698],
+      guessResult: ['1A1B', '2A0B', '3A0B','2A2B'],
+      gold: 3265
     },
     {
       avatar: 11,
       nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
+      guessNum: [1111, 1524, 3454],
+      guessResult: ['1A1B', '2A0B', '3A0B'],
+      gold: 1514
     }, {
       avatar: 11,
       nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
+      guessNum: [1111, 1524, 3454],
+      guessResult: ['1A1B', '2A0B', '3A0B'],
+      gold: 11
     }]
+  },
+
+  /**
+   * 页面跳转
+   */
+  toTixian: function () {
+    wx.navigateTo({
+      url: '../tixian/tixian',
+    })
+  },
+
+  toSend: function() {
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
+
+  toShow: function() {
+    wx.navigateTo({
+      url: '../share/share',
+    })
+  },
+
+  /**
+   * 按钮动作效果
+   */
+  withDrawAct: function() {
+    this.setData({
+      withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw-active.png'
+    })
+  },
+
+  withDrawCel: function() {
+    this.setData({
+      withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png'
+    })
+  },
+
+  sendAct: function() {
+    this.setData({
+      sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/me-send-active.png'
+    })
+  },
+
+  sendCel: function () {
+    this.setData({
+      sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/me-send.png'
+    })
+  },  
+
+  showAct: function() {
+    this.setData({
+      showSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/shou-rank-active.png'
+    })
+  },
+
+  showCel: function () {
+    this.setData({
+      showSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/show-rank.png'
+    })
   },
 
   /**
@@ -77,16 +140,6 @@ Page({
         }
       })
     }
-    this.setData({
-      numSrc : this.changeSrc()
-    })
-  },
-  changeSrc() {
-    let src = []
-    src = this.data.num.map(v => {
-      return 'https://gengxin.odao.com/update/h5/guessNum/rank/img' + v + '.png'
-    })
-    return src;
   },
 
   /**
@@ -136,4 +189,5 @@ Page({
   onShareAppMessage: function () {
   
   }
+  
 })

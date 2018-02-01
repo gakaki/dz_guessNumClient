@@ -9,7 +9,7 @@
         <text class='nickname'>{{userInfo.nickName}}</text>
         <view class='package-num'>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image> 
-          <text class='num'>9999元</text>
+          <text class='num'>{{myMoney}}元</text>
         </view>  
       </view>
     </view>
@@ -18,23 +18,23 @@
   <view class="result flex">
     <view class="result-bg">
       <view class="result-num flex">
-        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/0.png"></image>
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/{{num[0]}}.png"></image>
       </view>
       <view class="result-num flex">
-        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/1.png"></image>
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/{{num[1]}}.png"></image>
       </view>
       <view class="result-num flex">
-        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/2.png"></image>
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/{{num[2]}}.png"></image>
       </view>
       <view class="result-num flex">
-        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/3.png"></image>
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/{{num[3]}}.png"></image>
       </view>
     </view>
   </view>
   <view class="select-item">
-    <image class="select-icon" src="https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png"></image>
-    <image class="select-icon" src="https://gengxin.odao.com/update/h5/wangcai/common/me-send.png"></image>
-    <image class="select-icon" src="https://gengxin.odao.com/update/h5/wangcai/common/show-rank.png"></image>
+    <image class="select-icon" src="{{withdrawSrc}}" bindtouchstart='withDrawAct' bindtap='toTixian' bindtouchend='withDrawCel'></image>
+    <image class="select-icon" src="{{sendSrc}}" bindtouchstart='sendAct' bindtap='toSend' bindtouchend='sendCel'></image>
+    <image class="select-icon" src="{{showSrc}}" bindtouchstart='showAct' bindtap='toShow' bindtouchend='showCel'></image>
   </view>
   <view class="slide-cut"></view>
   <view class="rank-info">
@@ -42,35 +42,19 @@
       <image class="rank-title" src="https://gengxin.odao.com/update/h5/wangcai/rank/rank.png"></image>
     </view>
     <scroll-view scroll-y class="person-list flex">
-      <view class="person-info">
-        <text class="ranking ranking-first">1</text>
-        <view class="person-touxiang first flex">
-            <image class='person-avatar' src='{{userInfo.avatarUrl}}'></image> 
+      <view class="person-info" wx:for="{{getInfo}}" wx:key="{{index}}">
+        <text class="ranking {{index==0 ? 'ranking-first' : '' || index==1 ? 'ranking-second' : '' || index==2 ? 'ranking-third' : ''}}">{{index+1}}</text>
+        <view class="person-touxiang flex {{index==0 ? 'first' : '' || index==1 ? 'second' : '' || index==2 ? 'third' : ''}}">
+             <image class="person-avatar {{index==0 ? 'first-avatar' : '' || index==1 ? 'second-avatar' : '' || index==2 ? 'third-avatar' : ''}}" src='{{userInfo.avatarUrl}}'></image>  
         </view>
         <view class="record">
-          <text class='record-info'>{{userInfo.nickName}}</text>
-          <text class='record-info'>1111</text>
-          <!-- <text class='record-info'>1111</text> -->
+          <text class='record-info'>{{item.nickname}}</text>
+          <text class='record-info' wx:for="{{item.guessNum}}" wx:key="{{index}}" wx:for-item="guessNum">{{guessNum}}</text>
         </view>
         <view class="record rank-result">
-          <text class='record-info'>领取9999元</text>
-          <text class='record-info'>1A1B</text>
+          <text class='record-info'>领取{{item.gold}}元</text>
+          <text class='record-info' wx:for="{{item.guessResult}}" wx:key="{{index}}" wx:for-item="guessResult">{{guessResult}}</text>
         </view>
-      </view>
-      <view class="person-info">
-        <text class="ranking">1</text>
-      </view>
-      <view class="person-info">
-        <text class="ranking">1</text>
-      </view>
-      <view class="person-info">
-        <text class="ranking">1</text>
-      </view>
-      <view class="person-info">
-        <text class="ranking">1</text>
-      </view>
-      <view class="person-info">
-        <text class="ranking">1</text>
       </view>
     </scroll-view>
   </view>

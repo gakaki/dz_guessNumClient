@@ -1,22 +1,19 @@
 {
   "pages": [
-    "pages/guess/guess",
-    "pages/test/test",
-    
-    "pages/share/share",
     "pages/help/help",
-    
-    "pages/record/record",
-    "pages/index/index",
-    "pages/QRtest/index",
-    
-    "components/keyboard/keyboard",
     "pages/rank/rank",
+    "pages/share/share",
+    "pages/index/index",
+    "pages/guess/guess",
+    "pages/record/record",
+    "pages/QRtest/index",
+    "pages/test/test",
+    "components/keyboard/keyboard",
     "components/pop/pop",
+    "pages/tixian/tixian",
     "pages/questions/question"
   ],
   "window": {
-    
     "backgroundTextStyle": "light",
     "navigationBarTitleText": "旺猜",
     "navigationBarTextStyle": "light",

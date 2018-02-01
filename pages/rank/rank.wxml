@@ -1,55 +1,63 @@
 <!--pages/rank/rank.wxml-->
 <view class="wrap">
-  <view class='line'></view>
   <view class='header'>
-    <view class='avatar-wrap'>
-      <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
-    </view>
-    <view class="userInfo">
-      <text class='nickname'>{{userInfo.nickName}}</text>
-      <view class='package-num'>
-        <image class='package' src='https://gengxin.odao.com/update/h5/guessNum/guess/package.png'></image>
-        <text class='num'>99元</text>
-      </view>  
-    </view>
-  </view>
-  <view class='num-wrap flex-space'>
-    <image class='num-img' wx:for='{{numSrc}}' wx:key='{{index}}' src='{{item}}'></image>
-  </view>
-  <view class='sendPackage'>
-    <text>发起红包</text>
-  </view>
-  <view class='guess-record-title'>
-    <image class='record-bg bg-l' src='https://gengxin.odao.com/update/h5/guessNum/guess/bg.png'></image>
-    <image class='record-bg' src='https://gengxin.odao.com/update/h5/guessNum/guess/bg.png'></image>
-    <text class='guess-record-content'>排行榜</text>
-  </view>
-  <scroll-view class='record-list' scroll-y='true' scroll-with-animation='{{false}}'>
-    <view wx:for='{{getInfo}}' wx:key='{{index}}' class="one-record {{index > 2?'normal':''}}">
-      <text class="rank-index {{index == 0?'color-yellow':''}} {{index == 1?'color-silver':''}}  {{index == 2?'color-copper':''}}">{{index+1}}</text>
-      <view class="get-avatar {{index > 2?'get-avatar-normal':''}}">
-        <text class="rank-img {{index == 0?'img-yellow':''}} {{index == 1?'img-silver':''}}  {{index == 2?'img-copper':''}}"></text>
-        <image class="avatar-img {{index == 0?'border-yellow':''}} {{index == 1?'border-silver':''}}  {{index == 2?'border-copper':''}}" src='{{userInfo.avatarUrl}}'></image>
+    <view class="info">
+      <view class='avatar-wrap'>
+        <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
       </view>
-      <view >
-        <text class="get-user-name {{index > 2?'get-user-name-normal':''}}">{{item.nickname}}</text>
-        <view class='get-user-info'>
-          <text>{{item.content}}</text>
-          <text class='get-user-num'>{{item.num}}</text>
-        </view>
-      </view>
-      <view class='get-gold'>
-        <view>
-          <text>领取</text>
-          <image class='gold-small' src='https://gengxin.odao.com/update/h5/guessNum/guess/gold-small.png'></image>
-          <text>×</text>
-          <text>{{item.gold}}</text>
-        </view>
-        <view>
-          <text class='show-chengji'>1A1B</text>
-        </view>
+      <view class="userInfo">
+        <text class='nickname'>{{userInfo.nickName}}</text>
+        <view class='package-num'>
+          <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image> 
+          <text class='num'>{{myMoney}}元</text>
+        </view>  
       </view>
     </view>
-  </scroll-view>
+    <image class="bg-cir" src="https://gengxin.odao.com/update/h5/wangcai/guess/bg.png"></image>
+  </view>
+  <view class="result flex">
+    <view class="result-bg">
+      <view class="result-num flex">
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/{{num[0]}}.png"></image>
+      </view>
+      <view class="result-num flex">
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/{{num[1]}}.png"></image>
+      </view>
+      <view class="result-num flex">
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/{{num[2]}}.png"></image>
+      </view>
+      <view class="result-num flex">
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/{{num[3]}}.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="select-item">
+    <image class="select-icon" src="{{withdrawSrc}}" bindtouchstart='withDrawAct' bindtap='toTixian' bindtouchend='withDrawCel'></image>
+    <image class="select-icon" src="{{sendSrc}}" bindtouchstart='sendAct' bindtap='toSend' bindtouchend='sendCel'></image>
+    <button class="share" open-type='share' bindtouchstart='showAct' bindtouchend='showCel'></button>
+    <image class="select-icon" src="{{showSrc}}"></image>
+  </view>
+  <view class="slide-cut"></view>
+  <view class="rank-info">
+    <view class="flex">
+      <image class="rank-title" src="https://gengxin.odao.com/update/h5/wangcai/rank/rank.png"></image>
+    </view>
+    <scroll-view scroll-y class="person-list flex">
+      <view class="person-info" wx:for="{{getInfo}}" wx:key="{{index}}">
+        <text class="ranking {{index==0 ? 'ranking-first' : '' || index==1 ? 'ranking-second' : '' || index==2 ? 'ranking-third' : ''}}">{{index+1}}</text>
+        <view class="person-touxiang flex {{index==0 ? 'first' : '' || index==1 ? 'second' : '' || index==2 ? 'third' : ''}}">
+             <image class="person-avatar {{index==0 ? 'first-avatar' : '' || index==1 ? 'second-avatar' : '' || index==2 ? 'third-avatar' : ''}}" src='{{userInfo.avatarUrl}}'></image>  
+        </view>
+        <view class="record">
+          <text class='record-info'>{{item.nickname}}</text>
+          <text class='record-info' wx:for="{{item.guessNum}}" wx:key="{{index}}" wx:for-item="guessNum">{{guessNum}}</text>
+        </view>
+        <view class="record rank-result">
+          <text class='record-info'>领取{{item.gold}}元</text>
+          <text class='record-info' wx:for="{{item.guessResult}}" wx:key="{{index}}" wx:for-item="guessResult">{{guessResult}}</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
 </view>
 

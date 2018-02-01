@@ -11,6 +11,8 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    canvasIndex:false,
+    shareImg:"",
   },
 
   /**
@@ -77,30 +79,45 @@ Page({
       url: '../guess/guess',
     })
   },
-  transmit(){
-    let src = '../../images/index/pice.png'
+  shareFriendC() {
+    let page = getCurrentPages();
+    let src = '../../assets/share/share-img.png'
+    this.setData({
+      canvasIndex:true
+    })
+    wx.downloadFile({
+      url: page[0].data.userInfo.avatarUrl, //仅为示例，并非真实的资源
+      success: function (res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        console.log(res)
+      }
+    })
     const ctx = wx.createCanvasContext('myCanvas')
-    ctx.drawImage(src, 0, 0, 100, 100)
-    ctx.draw(false, function () {
+    ctx.drawImage(src, 0, 0, 375, 603)
+    ctx.drawImage(this.data.userInfo.avatarUrl, 297, 0,154,154)
+    ctx.draw(false, ()=> {
       wx.canvasToTempFilePath({
         x: 0,
         y: 0,
-        width: 100,
-        height: 100,
-        destWidth: 100,
-        destHeight: 100,
+        width: 750,
+        height: 1206,
+        destWidth: 750,
+        destHeight: 1206,
         canvasId: 'myCanvas',
-        success: function (res) {
-          wx.saveImageToPhotosAlbum({
-            filePath: res.tempFilePath,
-            success(res) {
-              console.log(res)
-            },
-            fail(res) {
-              console.log(res)
-            }
+        success(res) {
+          wx.previewImage({
+            current: '', // 当前显示图片的http链接
+            urls: [res.tempFilePath] // 需要预览的图片http链接列表
           })
-
+          // wx.saveImageToPhotosAlbum({
+          //   filePath: res.tempFilePath,
+          //   success(res) {
+          //     console.log(res)
+          //   },
+          //   fail(res) {
+          //     console.log(res)
+          //   }
+          // })
         }
       })
     })

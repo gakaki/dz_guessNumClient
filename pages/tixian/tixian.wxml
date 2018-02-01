@@ -1,0 +1,22 @@
+<!--pages/tixian/tixian.wxml-->
+<view class="wrap">
+  <button class="opcity" open-type='contact' size='mini'>客服</button>
+  <image class="service" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/service.png'></image>
+  <view class="withdraw-info">
+    <view class="remainder">
+      <text class="remain-num">{{remainder}}</text>元
+    </view>
+    <view class="withdraw-money">
+      <input id='num' class="num" type='number' focus="{{true}}" value='{{withdraw}}' bindinput='getMoney'></input>
+    </view>
+    <image class="withdraw-all" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/all-withdraw.png' bindtap='allRemain'></image>
+    <image class="confirm" src='{{withdrawSrc}}' bindtouchstart='active' bindtouchend='cancel' bindtap='confirmWithdraw'></image>
+  </view>
+  <image class="left-bg" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/left.png'></image>
+  <image class="right-bg" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/right.png'></image>
+  <view class="btn-bottom">
+    <text class="text" bindtap='toIndex'>返回首页</text>
+    <text class="xixian"></text>
+    <text class="text" bindtap='toQuestion'>常见问题</text>
+  </view>
+</view>

@@ -1,6 +1,4 @@
 
-
-
 <scroll-view id="scroll-box" class="flex" scroll-y>
 <view class="flex" wx:for="{{questions}}" wx:key='{{index}}'>
 <view class="item">
@@ -20,6 +18,10 @@
 
 </view>
 </scroll-view>
+
+
+
+
 
 
 

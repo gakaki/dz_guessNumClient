@@ -3,7 +3,22 @@ Page({
   data: {
     curIdx: -1,
     questions: [
-
+      {
+        title: 'aaaaa',
+        solve: 'aaaaa'
+      },
+      {
+        title: 'aaaaa',
+        solve: 'aaaaa'
+      },
+      {
+        title: 'aaaaa',
+        solve: 'aaaaa'
+      },
+      {
+        title: 'aaaaa',
+        solve: 'aaaaa'
+      },
       {
         title: 'aaaaa',
         solve: 'aaaaa'

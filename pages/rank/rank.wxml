@@ -1,16 +1,78 @@
 <!--pages/rank/rank.wxml-->
 <view class="wrap">
   <view class='header'>
-    <view class='avatar-wrap'>
-      <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+    <view class="info">
+      <view class='avatar-wrap'>
+        <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+      </view>
+      <view class="userInfo">
+        <text class='nickname'>{{userInfo.nickName}}</text>
+        <view class='package-num'>
+          <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image> 
+          <text class='num'>9999元</text>
+        </view>  
+      </view>
     </view>
-    <view class="userInfo">
-      <text class='nickname'>{{userInfo.nickName}}</text>
-      <view class='package-num'>
-        <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package.png'></image> 
-        <text class='num'>99元</text>
-      </view>  
+    <image class="bg-cir" src="https://gengxin.odao.com/update/h5/wangcai/guess/bg.png"></image>
+  </view>
+  <view class="result flex">
+    <view class="result-bg">
+      <view class="result-num flex">
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/0.png"></image>
+      </view>
+      <view class="result-num flex">
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/1.png"></image>
+      </view>
+      <view class="result-num flex">
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/2.png"></image>
+      </view>
+      <view class="result-num flex">
+        <image class="num-icon" src="https://gengxin.odao.com/update/h5/wangcai/rank/3.png"></image>
+      </view>
     </view>
+  </view>
+  <view class="select-item">
+    <image class="select-icon" src="https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png"></image>
+    <image class="select-icon" src="https://gengxin.odao.com/update/h5/wangcai/common/me-send.png"></image>
+    <image class="select-icon" src="https://gengxin.odao.com/update/h5/wangcai/common/show-rank.png"></image>
+  </view>
+  <view class="slide-cut"></view>
+  <view class="rank-info">
+    <view class="flex">
+      <image class="rank-title" src="https://gengxin.odao.com/update/h5/wangcai/rank/rank.png"></image>
+    </view>
+    <scroll-view scroll-y class="person-list flex">
+      <view class="person-info">
+        <text class="ranking ranking-first">1</text>
+        <view class="person-touxiang first flex">
+            <image class='person-avatar' src='{{userInfo.avatarUrl}}'></image> 
+        </view>
+        <view class="record">
+          <text class='record-info'>{{userInfo.nickName}}</text>
+          <text class='record-info'>1111</text>
+          <!-- <text class='record-info'>1111</text> -->
+        </view>
+        <view class="record rank-result">
+          <text class='record-info'>领取9999元</text>
+          <text class='record-info'>1A1B</text>
+        </view>
+      </view>
+      <view class="person-info">
+        <text class="ranking">1</text>
+      </view>
+      <view class="person-info">
+        <text class="ranking">1</text>
+      </view>
+      <view class="person-info">
+        <text class="ranking">1</text>
+      </view>
+      <view class="person-info">
+        <text class="ranking">1</text>
+      </view>
+      <view class="person-info">
+        <text class="ranking">1</text>
+      </view>
+    </scroll-view>
   </view>
 </view>
 

@@ -1,6 +1,4 @@
 
-
-
 <scroll-view id="scroll-box" class="flex" scroll-y>
 <view class="flex" wx:for="{{questions}}" wx:key='{{index}}'>
 <view class="item">
@@ -22,6 +20,10 @@
 <image class="dress-left" src='https://gengxin.odao.com/update/h5/wangcai/help/dress-left.png'></image>
 </view>
 </scroll-view>
+
+
+
+
 
 
 

@@ -14,10 +14,12 @@
   z-index: 1;
 }
 .opcity{
-  opacity: 0;   
+  opacity: 0;    
+  width: 155rpx;
+  height:36rpx;
   position: absolute;
-  right: 35rpx;
-  top: 10rpx;
+  right: 25rpx;
+  top: 20rpx;
   z-index: 10;
 }
 .withdraw-info{

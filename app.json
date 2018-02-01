@@ -1,11 +1,14 @@
 {
   "pages": [
+<<<<<<< HEAD
+=======
+    "pages/share/share",
+    "pages/index/index",
+>>>>>>> d988fc8d40ae43dc2196d43e7e7d38d3f71c42aa
     "pages/rank/rank",
     "pages/guess/guess",
     "pages/record/record",
-    "pages/index/index",
     "pages/QRtest/index",
-    "pages/share/share",
     "pages/test/test",
     "components/keyboard/keyboard",
     "components/pop/pop",

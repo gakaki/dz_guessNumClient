@@ -109,7 +109,7 @@
 }
 .person-info{
   width: 705rpx;
-  min-height: 136rpx;
+  min-height: 156rpx;
   display: flex;
   border-bottom: 1rpx solid #b21f2e;
 }
@@ -120,30 +120,49 @@
   display: block;
   margin-top: 65rpx;
   margin-right: 29rpx;
+  color: #ceafb2;
 }
 .person-touxiang{
   width: 104rpx;
   height: 112rpx;
   margin-top: 21rpx;
   margin-right: 18rpx;
+  background-size: 49rpx 44rpx;
+  background-repeat: no-repeat;
+  align-items: center;
 }
 .person-avatar{
   width: 91rpx;
   height:91rpx;
   border-radius: 50rpx;
-  margin: 18rpx 3rpx 3rpx 9rpx;
+  margin-top: 15rpx;
+  margin-left: 6rpx;
+  border: 4rpx solid #fff; 
+}
+.first-avatar{
+  border: 4rpx solid #ffc107;
+}
+.second-avatar{
+  border: 4rpx solid #008ef2;
+}
+.third-avatar{
+  border: 4rpx solid #f07c00;
 }
 .first{
-  background-image: url("https://gengxin.odao.com/update/h5/wangcai/rank/1.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  align-items: center;
+  background-image: url("https://gengxin.odao.com/update/h5/wangcai/rank/gold.png");
+}
+.second{
+  background-image: url("https://gengxin.odao.com/update/h5/wangcai/rank/silver.png");
+}
+.third{
+  background-image: url("https://gengxin.odao.com/update/h5/wangcai/rank/cuprum.png");
 }
 .record{
   min-height: 61rpx;
   margin-top: 34rpx;
   display: flex;
   flex-direction: column;
+  margin-bottom: 21rpx;
 }
 .record-info{
   font-family: "微软雅黑";
@@ -152,8 +171,15 @@
 }
 .rank-result{
   position: absolute;
-  right: 0;
+  right: 15rpx;
+  text-align: right;
 }
 .ranking-first{
   color: #ffc107;
+}
+.ranking-second{
+  color:#008ef2;
+}
+.ranking-third{
+  color: #f07c00;
 }

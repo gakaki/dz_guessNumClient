@@ -108,7 +108,17 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  }
+   onShareAppMessage: function (res) {
+     return {
+       title: '大家一起来拼智力领福利',
+       path: '/pages/guess/guess',
+       imageUrl: '../../assets/common/share.png',
+       success: function (res) {
+         // 转发成功
+       },
+       fail: function (res) {
+         // 转发失败
+       }
+     }
+   }
 })

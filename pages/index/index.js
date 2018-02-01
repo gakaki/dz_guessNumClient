@@ -68,7 +68,7 @@ Page({
   withDraw(e) {
     if (app.globalData.hasUserInfo) {
       wx.navigateTo({
-        url: "../../pages/questions/question"
+        url: "../../pages/tixian/tixian"
       })
     } else {
       wx.openSetting({
@@ -119,8 +119,9 @@ Page({
       console.log(res.target)
     }
     return {
-      title: this.data.title,
-      path: '/page/user?id=123',
+      title: '大家一起来拼智力领福利',
+      path: '/pages/index/index',
+      imageUrl:'../../assets/common/share.png',
       success: function (res) {
         // 转发成功
       },

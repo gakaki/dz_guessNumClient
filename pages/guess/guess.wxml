@@ -1,49 +1,53 @@
 <!--index.wxml-->
 <view class="wrap">
-  <view class='line'></view>
-  <view class='header'>
+<view class="red-box">
+ <view class='header'>
     <view class='avatar-wrap'>
       <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
     </view>
     <view class="userInfo">
       <text class='nickname'>{{userInfo.nickName}}</text>
       <view class='package-num'>
-        <image class='package' src='https://gengxin.odao.com/update/h5/guessNum/guess/package.png'></image>
+        <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
         <text class='num'>99元</text>
       </view>  
     </view>
     <view class='rest'>
-      <text class='rest-content'>剩余金额</text>
-      <image class='gold' src='https://gengxin.odao.com/update/h5/guessNum/guess/gold-small.png'></image>
-      <text class='rest-num'>100</text>
+      <text>红包剩余金额100元</text>
     </view> 
   </view>
   <view class='input-tip-wrap'>
-    <input class='input-tip' bindinput='recordtInput' type="number" maxlength='4' placeholder='输入0-9不重复4位数' placeholder-style='color: #4e4e4e'>
-    </input>
-    <text class='send-btn' bindtap='verifyGuessNum'>发送</text>
+    <text class='input-tip'>输入0-9不重复4位数</text>
+     <image class='send-btn' src='https://gengxin.odao.com/update/h5/wangcai/guess/send.png'></image>
   </view>
   <view class='time'>
-    <!-- <view class='time-wrap flex'>
-      <text class='time-content'>冷却cd180秒</text>
-      <text class='clearCd'>清除cd</text>
-    </view>  -->
+   
      <view class='time-wrap flex'>
       <text  class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text>
-      <text class='time-content' wx:else=''>参与精彩扣除100金币</text>
+      <text class='time-content' wx:else=''>参与竞猜扣除100金币</text>
+      <text class="use-jiasu">使用加速卡</text>
     </view> 
   </view>
-  <view class='game-explain'>
-    <text class='explain-title'>游戏规则说明</text>
-    <text class='detail'>1.A表示位置正确的数字个数</text>
-    <text class='detail'>2.B表示数字正确而位置不对的数字个数</text>
-    <text class='detail'>3.待定</text>
+
+  <view class="yuanhu">
+   <image class='yuanhu-icon' src='https://gengxin.odao.com/update/h5/wangcai/guess/bg.png'></image>
   </view>
-  <view class='guess-record-title'>
-    <image class='record-bg bg-l' src='https://gengxin.odao.com/update/h5/guessNum/guess/bg.png'></image>
-    <image class='record-bg' src='https://gengxin.odao.com/update/h5/guessNum/guess/bg.png'></image>
-    <text class='guess-record-content'>猜题记录</text>
+</view>
+ <view class="bg-box">
+ <view class='game-explain flex'>
+    <text class='detail'>猜中口令获取现金红包，口令为0-9不重复4位数</text>
+    <text class='detail'>A表示位置正确的数字个数</text>
+    <text class='detail'>B表示数字正确而位置不对数字个数</text>
   </view>
+  <view class="tab flex-space">
+  <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/tixian.png'></image>
+  <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/fa.png'></image>
+  <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png'></image>
+  </view>
+  <view class="cut-line"></view>
+<view class="flex">
+<image class="record-icon" src='https://gengxin.odao.com/update/h5/wangcai/guess/record.png'></image>
+</view>
   <scroll-view  class='record-list' scroll-y='true' scroll-with-animation='{{false}}'>
     <view class='one-record' wx:for='{{getInfo}}' wx:key='{{index}}'>
       <image class='get-avatar' src='{{userInfo.avatarUrl}}'></image>
@@ -57,7 +61,6 @@
       <view class='get-gold'>
         <view>
           <text>领取</text>
-          <image class='gold-small' src='https://gengxin.odao.com/update/h5/guessNum/guess/gold-small.png'></image>
           <text>×</text>
           <text>{{item.gold}}</text>
         </view>
@@ -67,4 +70,6 @@
       </view>
     </view>
   </scroll-view>
+ </view>
+  
 </view>

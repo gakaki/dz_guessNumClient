@@ -90,6 +90,10 @@
 .ticket {
   margin-top: 25rpx;
 }
+.noticket {
+  height: 63rpx;
+  width: 100%;
+}
 .ticket-content {
   line-height: 1;
   padding-top: 5rpx;
@@ -146,3 +150,35 @@
   height: 90rpx;
 }
 
+.intro-how-play {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+}
+.intro-list {
+  position: relative;
+  box-sizing: border-box;
+  padding: 213rpx 42rpx 40rpx;
+  width: 700rpx;
+  height: 753rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/intro-bg.png') center center no-repeat;
+  background-size: 700rpx 753rpx;
+}
+.intro-content {
+  font: bold 32rpx/49rpx 'Microsoft YaHei';
+  color: #b21f2e;
+}
+.exit {
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.select-wrap {
+  height: 216rpx;
+}

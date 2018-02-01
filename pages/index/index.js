@@ -28,19 +28,62 @@ Page({
     })
   },
   myRecord(e) {
-    wx.navigateTo({
-      url: "../../pages/record/record"
-    })
+    if (app.globalData.hasUserInfo) {
+      wx.navigateTo({
+        url: "../../pages/record/record"
+      })
+    } else {
+      wx.openSetting({
+        success: (res) => {
+          app.globalData.hasUserInfo = true
+          /*
+           * res.authSetting = {
+           *   "scope.userInfo": true,
+           *   "scope.userLocation": true
+           * }
+           */
+        }
+      })
+    }
   },
   question(e) {
-    wx.navigateTo({
-      url: '../../pages/questions/question',
-    })
+    if (app.globalData.hasUserInfo) {
+      wx.navigateTo({
+        url: "../../pages/help/help"
+      })
+    } else {
+      wx.openSetting({
+        success: (res) => {
+          app.globalData.hasUserInfo = true
+          /*
+           * res.authSetting = {
+           *   "scope.userInfo": true,
+           *   "scope.userLocation": true
+           * }
+           */
+        }
+      })
+    }
   },
   withDraw(e) {
-    wx.navigateTo({
-      url: '../../pages/questions/question',
-    })
+    if (app.globalData.hasUserInfo) {
+      wx.navigateTo({
+        url: "../../pages/tixian/tixian"
+      })
+    } else {
+      wx.openSetting({
+        success: (res) => {
+          app.globalData.hasUserInfo = true
+          /*
+           * res.authSetting = {
+           *   "scope.userInfo": true,
+           *   "scope.userLocation": true
+           * }
+           */
+
+        }
+      })
+    }
   },
   selectMoney(e){
     switch (e.currentTarget.dataset.index) {
@@ -76,8 +119,9 @@ Page({
       console.log(res.target)
     }
     return {
-      title: this.data.title,
-      path: '/page/user?id=123',
+      title: '大家一起来拼智力领福利',
+      path: '/pages/index/index',
+      imageUrl:'../../assets/common/share.png',
       success: function (res) {
         // 转发成功
       },

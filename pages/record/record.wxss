@@ -93,10 +93,13 @@
   opacity: 0;
 }
 .record-list {
+  position: fixed;
+  left: 0;
+  top: 690rpx;
+  bottom: 0;
   font: 28rpx/104rpx "Microsoft YaHei";
   padding: 0 25rpx;
   box-sizing: border-box;
-  min-height: 505rpx;
   color: #b21f2e;
   background: #fff9e3;
 }

@@ -47,7 +47,8 @@ Page({
       guessNum: [1111, 1524, 3454],
       guessResult: ['1A1B', '2A0B', '3A0B'],
       gold: 11
-    }]
+    }],
+    shareTitle:"我领取到了s%元福利，快来看看我的战绩"
   },
 
   /**
@@ -180,8 +181,22 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: this.data.shareTitle,
+      path: '/pages/rank/rank',
+      imageUrl: '../../assets/common/share.png',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
   
 })

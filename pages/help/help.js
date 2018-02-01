@@ -55,5 +55,18 @@ Page({
     this.setData({
       curIdx: e.currentTarget.dataset.index
     })
+  },
+  onShareAppMessage: function (res) {
+    return {
+      title: '大家一起来拼智力领福利',
+      path: '/pages/index/index',
+      imageUrl: '../../assets/common/share.png',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })

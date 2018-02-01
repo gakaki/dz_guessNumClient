@@ -1,4 +1,8 @@
 /* pages/statistics/statistics.wxss */
+.wrap {
+  height: 1206rpx;
+  overflow: hidden
+}
 .red-box {
   width: 100%;
   height: 370rpx;
@@ -19,7 +23,7 @@
 }
 .header {
   display: flex;
-  height: 182rpx;
+  height: 172rpx;
 }
 .avatar-wrap {
   margin: 15rpx 34rpx 0 23rpx; 
@@ -66,16 +70,18 @@
 }
 .rest {
   display: flex;
+  font-size: 32rpx;
   position: absolute;
   right: 25rpx;
-  top: 81rpx;
-  height: 100rpx;
-  width: 230rpx;
+  top: 72rpx;
   font: 26rpx/34rpx 'Microsoft YaHei';
   color: #fcdd71;
-
 }
-
+.rest-text {
+  margin-left: 3rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+}
 
 .input-tip-wrap {
   position: relative;
@@ -94,7 +100,8 @@
   text-align: center;
   width: 100%; 
   height: 100%;
-  color: #cacaca; 
+  /* color: #cacaca; */
+  color: #b21f2e; 
   font: bold 36rpx "Microsoft YaHei";
   display: flex;
   align-items: flex-start;
@@ -141,7 +148,7 @@ font-size: 24rpx;
 background-color: #FFF9E3;
 }
 .game-explain {
-  padding-top: 26rpx;
+  padding-top: 40rpx;
   flex-direction: column;
   height: 213rpx;
    background: url('https://gengxin.odao.com/update/h5/wangcai/guess/regular.png') no-repeat;
@@ -170,7 +177,7 @@ background-color: #FFF9E3;
 .record-icon {
   width: 215rpx;
   height: 32rpx;
-  margin: 20rpx 0 30rpx 0;
+  margin: 18rpx 0 18rpx 0;
 }
 .record-bg {
   margin-top: 5rpx;
@@ -189,7 +196,6 @@ background-color: #FFF9E3;
 .one-record {
   position: relative;
   display: flex;
-  margin: 0 6rpx;
   border-bottom: 3rpx solid #d34c4b;
   height: 104rpx;
   font: 28rpx/41rpx "Microsoft YaHei";
@@ -198,7 +204,7 @@ background-color: #FFF9E3;
 }
 .get-avatar {
   box-sizing: border-box;
-  margin: 12rpx 16rpx 0 20rpx;
+  margin: 12rpx 16rpx 0 25rpx;
   border-radius: 50%;
   border: 4rpx solid #fff;
   width: 80rpx;
@@ -215,16 +221,54 @@ background-color: #FFF9E3;
 
 .get-gold {
   position: absolute;
-  right: 22rpx;
+  right: 25rpx;
   top: 10rpx;
 }
-.gold-small {
-  width: 38rpx;
-  height: 38rpx;
-  vertical-align: top;
-}
-.show-chengji {
-  display: inline-block;
-  text-align: right;
+.kb {
   width: 100%;
+  height: 844rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/keyboard.png') no-repeat;
+  background-size: 100% 844rpx;
+  background-position: center bottom;
+  font-size: 72rpx;
+  font-weight: bold;
+  color: #b21f2e;
+}
+.kb-row {
+  width: 100%;
+  height: 199rpx;
+}
+.row1 {
+  margin-top: 42rpx;
+}
+.bian,.mid {
+  width: 249rpx;
+  height: 199rpx;
+  text-align: center;
+  line-height: 199rpx;
+  overflow: hidden;
+}
+.mid {
+  width: 248rpx;
+  height: 199rpx;
+}
+.del {
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/kb-del.png') no-repeat;
+  background-size: 82rpx 50rpx;
+  background-position: center center;
+}
+.active {
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/kb-active.png') no-repeat;
+  background-size: 249rpx 199rpx;
+  background-position: center center;
+  color: #fff;
+}
+.hu-left {
+  border-top-left-radius: 30rpx;
+}
+.hu-rgt {
+  border-top-right-radius: 30rpx;
 }

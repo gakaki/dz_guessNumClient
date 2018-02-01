@@ -1,0 +1,64 @@
+
+#scroll-box {
+  background-color: #fff9e3;
+  width: 100%;
+  height: 100vh;
+   font-size: 28rpx;
+  font-weight: bold;
+}
+.item {
+box-shadow: 0 6rpx 12rpx #f9e8c9;
+border-radius: 20rpx;
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  width: 700rpx;
+}
+.item-top {
+  
+  display: flex;
+  justify-content: space-between;
+  height: 90rpx;
+  width: 700rpx;
+  
+  /* background: url('https://gengxin.odao.com/update/h5/wangcai/help/bg.png') no-repeat;
+  background-size: 746rpx 127rpx;
+  background-position: center center; */
+}
+.item-foot {
+  border-top: 2rpx solid #f0f0f0;
+  padding: 16rpx 40rpx;
+  color: #7f7f7f;
+}
+.item-text {
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-left: 40rpx;
+  color: #b93945;
+}
+
+.more {
+  width: 44rpx;
+  height: 40rpx;
+  margin-right: 40rpx;
+}
+.server-box {
+  width: 750rpx;
+  height: 188rpx;
+}
+.server {
+  width: 530rpx;
+  height: 152rpx;
+  align-self: flex-end
+}
+.dress-rgt,.dress-left {
+  width: 126rpx;
+  height: 63rpx;
+  bottom: 50rpx;
+}
+.dress-left {
+  align-self: flex-start
+
+}
+.dress-rgt {
+  align-self: flex-end
+}

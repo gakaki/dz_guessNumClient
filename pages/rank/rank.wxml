@@ -34,7 +34,8 @@
   <view class="select-item">
     <image class="select-icon" src="{{withdrawSrc}}" bindtouchstart='withDrawAct' bindtap='toTixian' bindtouchend='withDrawCel'></image>
     <image class="select-icon" src="{{sendSrc}}" bindtouchstart='sendAct' bindtap='toSend' bindtouchend='sendCel'></image>
-    <image class="select-icon" src="{{showSrc}}" bindtouchstart='showAct' bindtap='toShow' bindtouchend='showCel'></image>
+    <button class="share" open-type='share' bindtouchstart='showAct' bindtouchend='showCel'></button>
+    <image class="select-icon" src="{{showSrc}}"></image>
   </view>
   <view class="slide-cut"></view>
   <view class="rank-info">

@@ -1,6 +1,6 @@
 <!--index.wxml-->
-<view class="wrap">
-<view class="red-box">
+<view class="wrap" >
+<view class="red-box" catchtap='hideKb'>
  <view class='header'>
     <view class='avatar-wrap'>
       <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
@@ -13,11 +13,12 @@
       </view>  
     </view>
     <view class='rest'>
-      <text>红包剩余金额100元</text>
+    <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
+      <text class="rest-text">红包剩余金额100元</text>
     </view> 
   </view>
   <view class='input-tip-wrap'>
-    <text class='input-tip'>输入0-9不重复4位数</text>
+    <text class='input-tip' catchtap='showKb'>{{num}}</text>
      <image class='send-btn' src='https://gengxin.odao.com/update/h5/wangcai/guess/send.png'></image>
   </view>
   <view class='time'>
@@ -60,9 +61,8 @@
       </view>
       <view class='get-gold'>
         <view>
-          <text>领取</text>
-          <text>×</text>
-          <text>{{item.gold}}</text>
+          <text>获得</text>
+          <text>{{item.gold}}元</text>
         </view>
         <view>
           <text class='show-chengji'>1A1B</text>
@@ -71,5 +71,26 @@
     </view>
   </scroll-view>
  </view>
-  
+  <view class="kb fcsb" hidden="{{isHide}}">
+<view class="flex kb-row row1">
+<text class="bian {{clicked[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum'>1</text>
+<text class="mid {{clicked[1]?'active': ''}}" data-num="2" bindtap='clickNum'>2</text>
+<text class="bian {{clicked[2]?'active hu-rgt': ''}}" data-num="3" bindtap='clickNum'>3</text>
+</view>
+<view class="flex kb-row">
+<text class="bian {{clicked[3]?'active': ''}}" data-num="4" bindtap='clickNum'>4</text>
+<text class="mid {{clicked[4]?'active': ''}}" data-num="5" bindtap='clickNum'>5</text>
+<text class="bian {{clicked[5]?'active': ''}}" data-num="6" bindtap='clickNum'>6</text>
+</view>
+<view class="flex kb-row">
+<text class="bian {{clicked[6]?'active': ''}}" data-num="7" bindtap='clickNum'>7</text>
+<text class="mid {{clicked[7]?'active': ''}}" data-num="8" bindtap='clickNum'>8</text>
+<text class="bian {{clicked[8]?'active': ''}}" data-num="9" bindtap='clickNum'>9</text>
+</view>
+<view class="flex kb-row">
+<text class="bian"></text>
+<text class="mid {{clicked[9]?'active': ''}}" data-num="0" bindtap='clickNum'>0</text>
+<text class="bian del" bindtap='deleteNum'></text>
+</view>
+</view>
 </view>

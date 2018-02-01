@@ -49,7 +49,7 @@ Page({
   question(e) {
     if (app.globalData.hasUserInfo) {
       wx.navigateTo({
-        url: "../../pages/questions/question"
+        url: "../../pages/help/help"
       })
     } else {
       wx.openSetting({

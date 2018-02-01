@@ -18,10 +18,27 @@
     justify-content: space-around;
     width: 100%;
 }
+.fsb {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.fcsb {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
 .flex-column  {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-direction: column;
+}
+.fcc  {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 

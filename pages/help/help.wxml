@@ -1,0 +1,25 @@
+
+
+
+<scroll-view id="scroll-box" class="flex" scroll-y>
+<view class="flex" wx:for="{{questions}}" wx:key='{{index}}'>
+<view class="item">
+<view class="item-top">
+<text class="item-text">{{item.title}}</text>
+<view class="fcc">
+<image class="more" data-index="{{index}}" bindtap='showSolve'src='https://gengxin.odao.com/update/h5/wangcai/help/show.png'></image>
+</view>
+</view>
+<view class="item-foot" wx:if="{{index == curIdx}}">{{item.solve}}</view>
+</view>
+</view>
+<view class="fsb server-box" >
+<image class="dress-rgt" src='https://gengxin.odao.com/update/h5/wangcai/help/dress-rgt.png'></image>
+<image class="server" src='https://gengxin.odao.com/update/h5/wangcai/help/server.png'></image>
+<image class="dress-left" src='https://gengxin.odao.com/update/h5/wangcai/help/dress-left.png'></image>
+
+</view>
+</scroll-view>
+
+
+

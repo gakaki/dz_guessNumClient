@@ -1,9 +1,9 @@
 /* pages/share/share.wxss */
 .wrap {
-  width: 750rpx;
-  height: 1206rpx;
+  width: 100vw;
+  height: 100vh;
   color: #fff;
-  background: url('https://gengxin.odao.com/update/h5/wangcai/share/share.png') 0 -128rpx no-repeat;
+  background: #b21e4a url('https://gengxin.odao.com/update/h5/wangcai/share/share.png') 0 -128rpx no-repeat;
   background-size: 750rpx 1334rpx;
 }
 .avatar-wrap {
@@ -73,4 +73,17 @@
   font: bold 26rpx/146rpx 'Microsoft YaHei';
 }
 
+.canvas {
+  position: fixed;
+  left: 0;
+  top: 0; 
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; 
+  background: #b21e4a url('https://gengxin.odao.com/update/h5/wangcai/share/share-img.png') no-repeat;
+  background-size: 750rpx 1206rpx;
+}
+.canvas-index {
+   z-index: 2; 
+}
 

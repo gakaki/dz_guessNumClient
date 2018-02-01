@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/help/help",
     "pages/guess/guess",
     "pages/tixian/tixian",
     "pages/index/index",
-    "pages/help/help",
+    
    
     "pages/rank/rank",
     "pages/share/share",

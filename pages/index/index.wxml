@@ -27,8 +27,8 @@
     </view>
     <view class='noticket' wx:else=''></view>
     <view class='flex-column'>
-      <view class='rest-explain'>优先使用余额￥<text>{{restMoney}}</text></view>
-      <view class='play' bindtap='toGuess'></view>
+      <view class='rest-explain'></view>
+      <view class='play {{pkBtnActive? "play-active" : ""}}' bindtap='toGuess' bindtouchstart='showGuessActive' bindtouchend='hideGuessActive'></view>
       <view class='how-play'>
         <text class='play-intro' bindtap='introPlay'>玩法介绍</text>
         <text class='line'>|</text>
@@ -38,9 +38,9 @@
     </view>
   </view>
   <view class='footer flex-space'>
-    <image class='img' bindtap='myRecord' src='https://gengxin.odao.com/update/h5/wangcai/index/record.png'></image>
-    <image class='img' bindtap='withDraw' src='https://gengxin.odao.com/update/h5/wangcai/index/rest-money.png'></image>
-    <image class='img' bindtap='question' src='https://gengxin.odao.com/update/h5/wangcai/index/question.png'></image>
+    <image class='img' bindtap='myRecord' bindtouchstart='showRecordActive' bindtouchend='hideRecordActive' src='{{recordUrl}}'></image>
+    <image class='img' bindtap='withDraw' bindtouchstart='showWithActive' bindtouchend='hideWithActive' src='{{withUrl}}'></image>
+    <image class='img' bindtap='question' bindtouchstart='showHelpActive' bindtouchend='hideHelpActive' src='{{helpUrl}}'></image>
   </view>   
   <view class='intro-how-play flex-column' wx:if='{{toIntro}}'>
     <view class='intro-list'>

@@ -10,10 +10,10 @@
   </view>
   <image class='qr' src='https://gengxin.odao.com/update/h5/wangcai/share/QR.jpg'></image>
   <view class='to-friend'>
-    <image class='to-friend-img' src='https://gengxin.odao.com/update/h5/wangcai/share/transmit.png'></image>
-    <button class='to-friend-btn' open-type='share'></button>
+    <image class='to-friend-img' src='{{friendUrl}}'></image>
+    <button class='to-friend-btn' bindtouchstart='showFriendActive' bindtouchend='hideFriendActive'  open-type='share'></button>
   </view>
-  <image class='to-friendC' bindtap='shareFriendC' src='https://gengxin.odao.com/update/h5/wangcai/share/friendC-share.png'></image>
+  <image class='to-friendC' bindtap='shareFriendC' bindtouchstart='shareFriendCActive'  bindtouchend='hideFriendCActive' src='{{friendCUrl}}'></image>
   <text class='try' bindtap='totry'>我也试一试</text>
 </view>
  <canvas class='{{canvasIndex?"canvas canvas-index" : "canvas"}}' canvas-id="myCanvas"/> 

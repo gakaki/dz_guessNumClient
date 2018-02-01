@@ -1,15 +1,15 @@
 {
   "pages": [
-    "pages/guess/guess",
-    "pages/tixian/tixian",
     "pages/index/index",
-    "pages/help/help",
-    "pages/rank/rank",
-    "pages/share/share",
     "pages/record/record",
-    "pages/QRtest/index",
+    "pages/share/share",
+    "pages/guess/guess",
+    "pages/rank/rank",
+    "pages/help/help",
+    "pages/tixian/tixian",
     "pages/test/test",
     "components/keyboard/keyboard",
+    "pages/QRtest/index",
     "components/pop/pop"
   ],
   "window": {

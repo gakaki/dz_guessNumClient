@@ -14,6 +14,9 @@ Page({
     num: [1, 3, 4, 6], 
     send: "active",
     receive: "",
+    withUrl:'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
+    anotherUrl:'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
+    serverUrl:'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
     list:[{
       title:'一起来拼智力领红包',
       sum:13
@@ -47,7 +50,36 @@ Page({
       })
     }
   },
-
+  showWithActive(){
+    this.setData({
+      withUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw-active.png',
+    })
+  },
+  hideWithActive(){
+    this.setData({
+      withUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
+    })
+  },
+  showAnotherActive() {
+    this.setData({
+      anotherUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another-active.png',
+    })
+  },
+  hideAnotherActive() {
+    this.setData({
+      anotherUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
+    })
+  },
+  showServerActive() {
+    this.setData({
+      serverUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/service-active.png',
+    })
+  },
+  hideServerActive() {
+    this.setData({
+      serverUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
+    })
+  },
 
   /**
    * 生命周期函数--监听页面加载

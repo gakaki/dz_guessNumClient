@@ -15,9 +15,11 @@
 </view>
 <view class="fsb server-box" >
 <image class="dress-rgt" src='https://gengxin.odao.com/update/h5/wangcai/help/dress-rgt.png'></image>
-<image class="server" src='https://gengxin.odao.com/update/h5/wangcai/help/server.png'></image>
+<view class='server-wrap'>
+  <image class="server" src='https://gengxin.odao.com/update/h5/wangcai/help/server.png'></image>
+  <button class="server-btn" open-type='contact'>客服</button>
+</view>
 <image class="dress-left" src='https://gengxin.odao.com/update/h5/wangcai/help/dress-left.png'></image>
-
 </view>
 </scroll-view>
 

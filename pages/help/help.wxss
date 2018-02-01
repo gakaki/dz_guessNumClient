@@ -45,10 +45,24 @@ border-radius: 20rpx;
   width: 750rpx;
   height: 188rpx;
 }
-.server {
+.server-wrap {
+  position: relative;
   width: 530rpx;
   height: 152rpx;
   align-self: flex-end
+}
+.server {
+  width: 530rpx;
+  height: 152rpx;
+}
+.server-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 530rpx;
+  height: 152rpx;
+  opacity: 0;
 }
 .dress-rgt,.dress-left {
   width: 126rpx;

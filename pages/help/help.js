@@ -1,6 +1,7 @@
 let app = getApp();
 Page({
   data: {
+    isactive: 'server',
     curIdx: -1,
     questions: [
       {
@@ -58,6 +59,19 @@ Page({
   onLoad: function () {
     wx.setNavigationBarTitle({
       title: '旺猜—常见问题'
+    })
+  },
+  lianxi: function(e) {
+
+  },
+  clickStart: function() {
+    this.setData({
+      isactive: 'server-click'
+    })
+  },
+  clickEnd: function () {
+    this.setData({
+      isactive: 'server'
     })
   },
   showSolve: function (e) {

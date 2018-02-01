@@ -45,10 +45,21 @@ border-radius: 20rpx;
   width: 750rpx;
   height: 188rpx;
 }
-.server {
+.server,.server-click {
   width: 530rpx;
   height: 152rpx;
-  align-self: flex-end
+  align-self: flex-end;
+   background: url('https://gengxin.odao.com/update/h5/wangcai/help/server.png') no-repeat;
+  background-size: 530rpx 152rpx;
+  background-position: center center; 
+}
+.server-click {
+   background: url('https://gengxin.odao.com/update/h5/wangcai/help/server-click.png') no-repeat;
+    width: 530rpx;
+  height: 152rpx;
+  align-self: flex-end;
+  background-size: 530rpx 152rpx;
+  background-position: center center; 
 }
 .dress-rgt,.dress-left {
   width: 126rpx;

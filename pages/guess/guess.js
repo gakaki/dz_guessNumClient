@@ -9,6 +9,10 @@ Page({
    */
   data: {
     // num: '输入0-9不重复4位数',
+    doTixian: 'tixian',
+    doFa: 'fa',
+    doZhuan: 'zhuan',
+    isSend: 'send',
     isHide: true,
     clicked: [false, false, false, false, false, false, false, false, false, false],
     num: '',
@@ -83,6 +87,63 @@ Page({
         }
       })
     }
+  },
+  send: function (e) {
+
+  },
+  sendStart: function () {
+    this.setData({
+      isSend: 'send-click'
+    })
+  },
+  sendEnd: function () {
+    this.setData({
+      isSend: 'send'
+    })
+  },
+ 
+  tixian: function (e) {
+    wx.navigateTo({
+      url: '../tixian/tixian',
+    })
+  },
+  tixianStart: function () {
+    this.setData({
+      doTixian: 'tixian-click'
+    })
+  },
+  tixianEnd: function () {
+    this.setData({
+      doTixian: 'tixian'
+    })
+  },
+  fa: function (e) {
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
+  faStart: function () {
+    this.setData({
+      doFa: 'fa-click'
+    })
+  },
+  faEnd: function () {
+    this.setData({
+      doFa: 'fa'
+    })
+  },
+  zhuan: function (e) {
+
+  },
+  zhuanStart: function () {
+    this.setData({
+      doZhuan: 'zhuan-click'
+    })
+  },
+  zhuanEnd: function () {
+    this.setData({
+      doZhuan: 'zhuan'
+    })
   },
   showKb: function () {
     this.setData({

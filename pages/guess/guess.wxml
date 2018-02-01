@@ -19,7 +19,7 @@
   </view>
   <view class='input-tip-wrap'>
     <text class='input-tip' catchtap='showKb'>{{num}}</text>
-     <image class='send-btn' src='https://gengxin.odao.com/update/h5/wangcai/guess/send.png'></image>
+     <text class="{{isSend}}" bindtouchstart='sendStart' bindtouchend='sendEnd' bindtap='send'></text>
   </view>
   <view class='time'>
    
@@ -41,9 +41,12 @@
     <text class='detail'>B表示数字正确而位置不对数字个数</text>
   </view>
   <view class="tab flex-space">
-  <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/tixian.png'></image>
+  <!-- <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/tixian.png'></image>
   <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/fa.png'></image>
-  <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png'></image>
+  <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png'></image> -->
+   <text class="{{doTixian}}" bindtouchstart='tixianStart' bindtouchend='tixianEnd' bindtap='tixian'></text>
+    <text class="{{doFa}}" bindtouchstart='faStart' bindtouchend='faEnd' bindtap='fa'></text>
+     <text class="{{doZhuan}}" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></text>
   </view>
   <view class="cut-line"></view>
 <view class="flex">

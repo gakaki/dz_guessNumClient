@@ -1,7 +1,9 @@
 {
   "pages": [
-    "pages/help/help",
+    
     "pages/guess/guess",
+    "pages/help/help",
+    
     "pages/tixian/tixian",
     "pages/index/index",
     

@@ -281,7 +281,7 @@
 .one-record {
   position: relative;
   display: flex;
-  border-bottom: 3rpx solid #d34c4b;
+  border-bottom: 3rpx solid rgba(178,31,46,.5);
   height: 104rpx;
   font: 28rpx/41rpx "Microsoft YaHei";
   color: #b21f2e;
@@ -325,7 +325,8 @@
   background-position: center bottom;
   font-size: 72rpx;
   font-weight: bold;
-  color: #b21f2e;
+  color: rgba(178,31,46,.8);
+
 }
 
 .kb-row {

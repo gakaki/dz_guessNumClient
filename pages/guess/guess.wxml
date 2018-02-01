@@ -74,7 +74,7 @@
     </view>
   </scroll-view>
  </view>
-  <view class="kb fcsb" hidden="{{isHide}}">
+  <view class="kb fcsb" hidden="{{isHide}}" >
 <view class="flex kb-row row1">
 <text class="bian {{clicked[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum'>1</text>
 <text class="mid {{clicked[1]?'active': ''}}" data-num="2" bindtap='clickNum'>2</text>

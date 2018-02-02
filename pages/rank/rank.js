@@ -61,7 +61,6 @@ Page({
       url: '../tixian/tixian',
     })
   },
-
   toSend: function(e) {
     if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({

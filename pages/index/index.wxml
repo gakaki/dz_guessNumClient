@@ -6,7 +6,7 @@
   </view>
   <view class='money-select {{hasTicket ? "gold-ticket" : ""}}'>
     <view class='gold-select flex-space'>
-      <view class="one-select {% raw %}{{index == activeIndex ? 'one-select-active' : ''}}{% endraw %}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
+      <view class="one-select {{index == activeIndex ? 'one-select-active' : ''}}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
         <view class='money-content'>
             <text class='content'>{{item}}</text>
             <text class='yuan'>元</text>

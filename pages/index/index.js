@@ -79,19 +79,22 @@ Page({
       case 0:
         this.setData({
           activeIndex: 0,
-          defineNum: false
+          defineNum: false,
+          inputValue: '1.68'
         })
         break;
       case 1:
         this.setData({
           activeIndex: 1,
-          defineNum: false
+          defineNum: false,
+          inputValue: '6.6'
         })
         break;
       case 2:
         this.setData({
           activeIndex: 2,
-          defineNum: false
+          defineNum: false,
+          inputValue: '8.8'
         })
         break;
     }
@@ -170,7 +173,7 @@ Page({
     }
     return {
       title: '大家一起来拼智力领福利',
-      path: '/pages/index/index',
+      path: '/pages/index/index?aaa="456"',
       imageUrl:'../../assets/common/share.png',
       success: function (res) {
         // 转发成功

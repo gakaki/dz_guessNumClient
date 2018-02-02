@@ -25,7 +25,6 @@ function doFetch(action, data, suc, err) {
   })
 }
 
-
 function sdkAuth(code, suc) {
   doFetch("user.auth", {
     payload: {code}
@@ -45,9 +44,9 @@ function userLogin (suc, err) {
       if (app.userInfoReadyCallback) {
         app.userInfoReadyCallback(info)
       }
-
-      doFetch('user.login', { info }, res => {
-        console.log(res)
+      console.log(info,'info')
+      doFetch('user.login',  {info:info.userInfo} , res => {
+        console.log(res.data.data,'data')
         if (res.data.code != CODE_SUC) {
           err(res.code);
         }
@@ -57,7 +56,6 @@ function userLogin (suc, err) {
           sid = res.sid;
           suc(res)
 
-          //websocket
           if (ws) {
             ws.close();
           }

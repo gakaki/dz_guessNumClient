@@ -3,6 +3,7 @@ import {start} from 'utils/rest.js';
 
 App({
   onLaunch: function (ops) {
+    // this.globalData
     // 登录
     wx.login({
       success: res => {

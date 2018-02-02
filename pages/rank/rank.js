@@ -60,7 +60,6 @@ Page({
       url: '../tixian/tixian',
     })
   },
-
   toSend: function() {
     wx.navigateTo({
       url: '../index/index',

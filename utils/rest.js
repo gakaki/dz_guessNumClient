@@ -1,7 +1,7 @@
 const srv = "https://h5.ddz2018.com/";
 const wss = "wss://h5.ddz2018.com/json";
 const CODE_SUC = 0;
-let sid,uid, app,ws;
+let sid,uid,app,ws;
 
 function doFetch(action, data, suc, err) {
   data = data || {};
@@ -45,9 +45,9 @@ function userLogin (suc, err) {
       if (app.userInfoReadyCallback) {
         app.userInfoReadyCallback(info)
       }
-      console.log(app.globalData);
 
       doFetch('user.login', { info }, res => {
+        console.log(res)
         if (res.data.code != CODE_SUC) {
           err(res.code);
         }
@@ -122,7 +122,6 @@ const start = suc => {
     success: () => {
       wx.login({
         success: res=> {
-          console.log(res)
           console.log('call auth')
           sdkAuth(res.code, suc)
         },
@@ -133,13 +132,14 @@ const start = suc => {
 }
 
 //业务类请求
-const guessnum = (data, suc, err) => {
-  doFetch('guessnum.guess', data, suc, err);
-}
+// const guessnum = (data, suc, err) => {
+//   doFetch('guessnum.guess', data, suc, err);
+// }
+
 
 
 module.exports = {
   start,
   showErr,
-  guessnum
+  doFetch
 }

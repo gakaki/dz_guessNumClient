@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import { doFetch } from '../../utils/rest.js';
 
 Page({
   data: {
@@ -160,6 +161,7 @@ Page({
         hasPackageTip: true,
       })
     }
+    // doFetch('guessnum.sendpack',{})
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {

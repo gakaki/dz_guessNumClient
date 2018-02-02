@@ -32,6 +32,7 @@
   width: 100%;
   height: 288rpx;
   color: #b21f2e;
+  font: bold 52rpx 'Microsoft YaHei';
   background: #fff;
 }
 .text {

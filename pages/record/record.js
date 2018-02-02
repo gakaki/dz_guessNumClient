@@ -88,6 +88,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '我的记录'
     })
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

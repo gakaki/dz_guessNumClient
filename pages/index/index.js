@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import { doFetch } from '../../utils/rest.js';
 
 Page({
   data: {
@@ -15,7 +16,11 @@ Page({
     pkBtnActive:false,
     recordUrl:'https://gengxin.odao.com/update/h5/wangcai/index/record.png',
     withUrl:'https://gengxin.odao.com/update/h5/wangcai/index/rest-money.png',
-    helpUrl:'https://gengxin.odao.com/update/h5/wangcai/index/question.png'
+    helpUrl:'https://gengxin.odao.com/update/h5/wangcai/index/question.png',
+    content:"你未授权获取个人信息，无法发起红包",
+    packageTip:"赏金至少1元",
+    hasPackageTip:false,
+    inputValue:''
   },
   getActive(src,dest){
     return src == dest ? 'active' : '';
@@ -31,63 +36,41 @@ Page({
     })
   },
   myRecord(e) {
+    if (app.preventMoreTap(e)) { return; }
     if (app.globalData.hasUserInfo) {
       wx.navigateTo({
         url: "../../pages/record/record"
       })
     } else {
       this.setData({
-        showAuthTip: true
+        showAuthTip: true,
+        content: "你未授权获取个人信息，无法进入页面"
       })
-      // wx.openSetting({
-      //   success: (res) => {
-      //     app.globalData.hasUserInfo = true
-      //     /*
-      //      * res.authSetting = {
-      //      *   "scope.userInfo": true,
-      //      *   "scope.userLocation": true
-      //      * }
-      //      */
-      //   }
-      // })
     }
   },
   question(e) {
+    if (app.preventMoreTap(e)) { return; }
     if (app.globalData.hasUserInfo) {
       wx.navigateTo({
         url: "../../pages/help/help"
       })
     } else {
-      wx.openSetting({
-        success: (res) => {
-          app.globalData.hasUserInfo = true
-          /*
-           * res.authSetting = {
-           *   "scope.userInfo": true,
-           *   "scope.userLocation": true
-           * }
-           */
-        }
+      this.setData({
+        showAuthTip: true,
+        content: "你未授权获取个人信息，无法进入页面"
       })
     }
   },
   withDraw(e) {
+    if (app.preventMoreTap(e)) { return; }
     if (app.globalData.hasUserInfo) {
       wx.navigateTo({
         url: "../../pages/tixian/tixian"
       })
     } else {
-      wx.openSetting({
-        success: (res) => {
-          app.globalData.hasUserInfo = true
-          /*
-           * res.authSetting = {
-           *   "scope.userInfo": true,
-           *   "scope.userLocation": true
-           * }
-           */
-
-        }
+      this.setData({
+        showAuthTip: true,
+        content: "你未授权获取个人信息，无法进入页面"
       })
     }
   },
@@ -159,8 +142,26 @@ Page({
       helpUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/question.png'
     })
   },
-  toGuess(){
-    console.log(1)
+  changeValue(e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+  },
+  toGuess(e){
+    if (app.preventMoreTap(e)) { return; }
+    if (!app.globalData.hasUserInfo) {
+      this.setData({
+        showAuthTip: true,
+        content: "你未授权获取个人信息，无法发起红包"
+      })
+    }
+    if(this.data.inputValue < 1) {
+      this.setData({
+        packageTip: "赏金至少1元",
+        hasPackageTip: true,
+      })
+    }
+    // doFetch('guessnum.sendpack',{})
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {

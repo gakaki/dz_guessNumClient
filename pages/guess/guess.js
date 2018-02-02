@@ -9,7 +9,7 @@ Page({
    */
   data: {
     // num: '输入0-9不重复4位数',
-    actIdx: -1,
+    actItem: [false, false, false, false, false, false, false, false, false, false],
     kbHeight: '',
     doTixian: 'tixian',
     doFa: 'fa',
@@ -181,18 +181,18 @@ Page({
       this.setData({
         num: newNum
       })
+
+      let arr = []
+      if(idx == 0) idx = 9
+      this.data.actItem[idx-1] = true
+      arr = this.data.actItem
+      this.setData({
+        actItem: arr
+      })
+      console.log(this.data.actItem)
     }
-  },
-  showBg: function(e) {
-    let idx = e.currentTarget.dataset.num
-    this.setData({
-      actIdx: idx
-    })
-  },
-  clearBg: function() {
-    this.setData({
-      actIdx: -1
-    })
+
+
   },
   deleteNum(e) {
     if (!this.data.num) return
@@ -202,6 +202,14 @@ Page({
     this.setData({
       num: this.data.num.slice(0, this.data.num.length - 1),
       // delnum: this.data.num.slice(this.data.num.length - 1, this.data.num.length)
+    })
+
+    let arr = []
+    if (idx == 0) idx = 9
+    this.data.actItem[idx-1] = false
+    arr = this.data.actItem
+    this.setData({
+      actItem: arr
     })
   },
   recordtInput(e) {

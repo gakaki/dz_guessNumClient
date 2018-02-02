@@ -56,12 +56,14 @@ Page({
    * 页面跳转
    */
   toTixian: function () {
+    if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
       url: '../tixian/tixian',
     })
   },
 
   toSend: function() {
+    if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
       url: '../index/index',
     })

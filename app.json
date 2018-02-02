@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/guess/guess",
     "pages/index/index",
+    "pages/guess/guess",
     "pages/record/record",
     "components/pop/pop",
     "components/keyboard/keyboard",

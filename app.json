@@ -1,17 +1,16 @@
 {
   "pages": [
-    
+    "components/pop/pop",
+    "components/keyboard/keyboard",
+    "pages/rank/rank",
     "pages/guess/guess",
     "pages/help/help",
     "pages/index/index",
-    "pages/rank/rank",
     "pages/record/record",
     "pages/share/share",
     "pages/tixian/tixian",
     "pages/test/test",
-    "components/keyboard/keyboard",
-    "pages/QRtest/index",
-    "components/pop/pop"
+    "pages/QRtest/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

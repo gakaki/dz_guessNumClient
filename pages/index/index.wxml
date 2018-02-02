@@ -49,6 +49,5 @@
     </view>
   </view>
 </view>  
-
-   
- <!-- <tip content="红包已领取完毕" isShow=""></tip>   -->
+<tip content="你未授权获取个人信息，无法发起红包" appear='{{showAuthTip}}' isAuth="true">
+</tip>   

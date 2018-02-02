@@ -1,4 +1,6 @@
 // pages/tixian/tixian.js
+let app = getApp();
+
 Page({
 
   /**
@@ -29,8 +31,8 @@ Page({
   /**
    * 确认提现
    */
-  confirmWithdraw: function() {
-    
+  confirmWithdraw: function(e) {
+    if (app.preventMoreTap(e)) { return; }
   },
 
   /**
@@ -52,6 +54,7 @@ Page({
    * 页面跳转
    */
   toQuestion: function() {
+    if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
       url: '../help/help',
     })

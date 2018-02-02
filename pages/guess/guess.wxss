@@ -27,13 +27,13 @@
 
 .header {
   display: flex;
-  height: 172rpx;
+  height: 110rpx;
 }
 
 .avatar-wrap {
-  margin: 15rpx 34rpx 0 23rpx;
-  width: 115rpx;
-  height: 115rpx;
+  margin: 0 25rpx 10rpx 25rpx;
+  width: 100rpx;
+  height: 100rpx;
 }
 
 .avatar {
@@ -46,10 +46,13 @@
 .main-title {
   flex: 1;
 }
-
+.userInfo {
+  height: 100%;
+  flex-grow: 2
+}
 .nickname {
   display: inline-block;
-  margin: 19rpx 0 15rpx;
+  /* margin: 19rpx 0 15rpx; */
   font-size: 30rpx;
   color: #fff;
 }
@@ -80,11 +83,10 @@
 }
 
 .rest {
+  align-self: flex-end;
   display: flex;
   font-size: 32rpx;
-  position: absolute;
-  right: 25rpx;
-  top: 72rpx;
+  margin-right: 25rpx;
   font: 26rpx/34rpx 'Microsoft YaHei';
   color: #fcdd71;
 }
@@ -99,6 +101,7 @@
   position: relative;
   overflow: hidden;
   margin: 0 auto;
+  margin-top: 40rpx;
   width: 610rpx;
   height: 96rpx;
   border: 4rpx solid #9f101e;
@@ -154,6 +157,7 @@
 }
 
 .time-content {
+  margin-top: 20rpx;
   font-size: 24rpx;
   line-height: 54rpx;
   color: #fff9e3;
@@ -161,6 +165,7 @@
 }
 
 .use-jiasu {
+  margin-top: 20rpx;
   font-size: 24rpx;
   line-height: 54rpx;
   color: #ff0;
@@ -410,7 +415,6 @@ from {bottom: 0;}
 
 .mid {
   width: 248rpx;
-  height: 199rpx;
 }
 
 .del {

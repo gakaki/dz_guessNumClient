@@ -56,27 +56,29 @@ function userLogin (suc, err) {
           sid = res.sid;
           suc(res)
 
-          //websocket
-          // if (ws) {
-          //   ws.close();
-          // }
-          // ws = wx.connectSocket({
-          //   url: wss
-          // });
-          // wx.onSocketOpen(r => {
-          //   console.log('websocket 已连接')
-          // });
-          // wx.onSocketError(r => {
-          //   console.log('websocket出错>>', r)
-          //   try {
-          //     ws.close();
-          //   }
-          //   catch (e) { }
-          // });
-          // wx.onSocketClose(r => {
-          //   console.log('websocket已关闭')
-          //   ws = null;
-          // })
+          if (ws) {
+            ws.close();
+          }
+          ws = wx.connectSocket({
+            url: wss,
+            fail: () => {
+              console.log('err')
+            }
+          });
+          wx.onSocketOpen(r => {
+            console.log('websocket 已连接')
+          });
+          wx.onSocketError(r => {
+            console.log('websocket出错>>', r)
+            try {
+              ws.close();
+            }
+            catch (e) { }
+          });
+          wx.onSocketClose(r => {
+            console.log('websocket已关闭')
+            ws = null;
+          })
         }
       }, err);
     },

@@ -1,12 +1,13 @@
 <!--index.wxml-->
 <view class="wrap">
   <view class="red-box" catchtap='hideKb'>
-    <view class='header'>
+    <view class='header fsb'>
+
       <view class='avatar-wrap'>
         <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
       </view>
-      <view class="userInfo">
-        <text class='nickname'>{{userInfo.nickName}}</text>
+      <view class="userInfo fcsb">
+         <text class='nickname'>{{userInfo.nickName}}</text> 
         <view class='package-num'>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
           <text class='num'>99元</text>

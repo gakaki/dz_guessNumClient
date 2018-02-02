@@ -45,6 +45,7 @@ function userLogin (suc, err) {
         app.userInfoReadyCallback(info)
       }
       console.log(info,'info')
+      
       doFetch('user.login',  {info:info.userInfo} , res => {
         console.log(res.data.data,'data')
         if (res.data.code != CODE_SUC) {

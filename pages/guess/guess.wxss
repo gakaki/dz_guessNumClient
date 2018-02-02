@@ -112,7 +112,6 @@
   text-align: center;
   width: 100%;
   height: 100%;
-  /* color: #cacaca; */
   color: #b21f2e;
   font: bold 36rpx "Microsoft YaHei";
   display: flex;
@@ -121,7 +120,9 @@
   justify-content: center;
   flex-direction: column;
 }
-
+.gray {
+  color: #cacaca;
+}
 .send,.send-click {
   position: absolute;
   right: 12rpx;

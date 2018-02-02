@@ -51,12 +51,6 @@ Page({
   /**
    * 页面跳转
    */
-  toIndex: function() {
-    wx.navigateTo({
-      url: '../index/index',
-    })
-  },
-
   toQuestion: function() {
     wx.navigateTo({
       url: '../help/help',

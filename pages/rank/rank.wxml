@@ -50,10 +50,12 @@
         </view>
         <view class="record">
           <text class='record-info'>{{item.nickname}}</text>
+          <text class='record-info'>{{comment}}</text>
           <text class='record-info' wx:for="{{item.guessNum}}" wx:key="{{index}}" wx:for-item="guessNum">{{guessNum}}</text>
         </view>
         <view class="record rank-result">
           <text class='record-info'>领取{{item.gold}}元</text>
+          <text class='record-info opacity'>占位</text>
           <text class='record-info' wx:for="{{item.guessResult}}" wx:key="{{index}}" wx:for-item="guessResult">{{guessResult}}</text>
         </view>
       </view>

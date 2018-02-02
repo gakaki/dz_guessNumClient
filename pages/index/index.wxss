@@ -74,7 +74,7 @@
   display: inline-block;
   vertical-align: top;
   font: bold 36rpx/74rpx 'Microsoft YaHei';
-  color: #000;
+  color: #000; 
 }
 .input-money {
   display: inline-block;

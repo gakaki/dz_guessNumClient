@@ -1,4 +1,6 @@
 //app.js
+import {start} from 'utils/rest.js';
+
 App({
   onLaunch: function (ops) {
     // 登录
@@ -8,8 +10,8 @@ App({
         
       }
     })
-   this.getUserInfo();
-   
+  //  this.getUserInfo();
+   start()
   },
   getUserInfo(){
     // 获取用户信息
@@ -56,6 +58,18 @@ App({
   globalData: {
     userInfo: null,
     hasUserInfo:false
-  }
+  },
 
+  globalLastTapTime: 0,
+  preventMoreTap: function (e) {
+    var globaTime = this.globalLastTapTime;
+    var time = e.timeStamp;
+    if (Math.abs(time - globaTime) < 500 && globaTime != 0) {
+      this.globalLastTapTime = time;
+      return true;
+    } else {
+      this.globalLastTapTime = time;
+      return false;
+    }
+  }
 })

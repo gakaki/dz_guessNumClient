@@ -9,6 +9,7 @@ Page({
    */
   data: {
     // num: '输入0-9不重复4位数',
+    kbHeight: '',
     doTixian: 'tixian',
     doFa: 'fa',
     doZhuan: 'zhuan',
@@ -56,6 +57,9 @@ Page({
     }]
   },
 
+  onReady: function() {
+    this.guess = this.selectComponent('#guess');
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -89,7 +93,9 @@ Page({
     }
   },
   send: function (e) {
-
+    this.guess.setData({
+      isShow:true,
+    })
   },
   sendStart: function () {
     this.setData({
@@ -148,13 +154,23 @@ Page({
     })
   },
   showKb: function () {
-    this.setData({
-      isHide: !this.data.isHide
-    })
+    if (this.data.isHide) {
+      this.setData({
+        isHide: !this.data.isHide,
+        kbHeight: 'kb-hgt'
+      })
+    }else {
+      this.setData({
+        isHide: !this.data.isHide,
+        kbHeight: 'kb-hide'
+      })
+    }
+   
   },
   hideKb: function() {
     this.setData({
-      isHide: true
+      isHide: true,
+      kbHeight: 'kb-hide'
     })
   },
   clickNum(e) {
@@ -166,6 +182,7 @@ Page({
       })
       let idx = e.currentTarget.dataset.num
       let newArr = [];
+      if(idx == 0) idx = 10
       this.data.clicked[idx - 1] = true
       newArr = this.data.clicked
       this.setData({
@@ -184,6 +201,7 @@ Page({
     })
 
     let newArr = [];
+    if (idx == 0) idx = 10
     this.data.clicked[idx - 1] = false
     newArr = this.data.clicked
     this.setData({
@@ -231,5 +249,23 @@ Page({
          // 转发失败
        }
      }
-   }
+   },
+   /**
+    * 组件内触发的事件
+    */
+    _hide: function() {
+      this.guess.setData({
+        isShow:false
+      })
+    },
+    _active: function() {
+      this.guess.setData({
+        confirmSrc: 'https://gengxin.odao.com/update/h5/wangcai/guess/confirm-active.png'
+      })
+    },
+    _cancel: function () {
+      this.guess.setData({
+        confirmSrc: 'https://gengxin.odao.com/update/h5/wangcai/guess/confirm.png'
+      })
+    }
 })

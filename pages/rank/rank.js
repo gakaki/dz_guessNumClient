@@ -16,6 +16,7 @@ Page({
     showSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/show-rank.png',
     num:[1,3,4,6],
     myMoney:9999,
+    comment:'你哥说七步成诗不然揍你，你赢了',
     getInfo: [{
       avatar: 11,
       nickname: "昵称一共八个文字",

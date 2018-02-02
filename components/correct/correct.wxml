@@ -1,2 +1,13 @@
 <!--components/correct/correct.wxml-->
-<text>components/correct/correct.wxml</text>
+<view class="wrap"  wx:if="{{isShow}}">
+  <view class="mask" bindtap='_hide'></view>
+  <view class="container animation">
+    <view class="guessResult">
+      <text>{{result}}</text>
+    </view>
+    <view class="congratulate">恭喜获得</view>
+    <view class="num-money"><text class="num">{{money}}</text>元</view>
+    <view class="comment">({{comment}})</view>
+    <image class="confirm" src="{{confirmSrc}}" bindtouchstart='_active' bindtap='_hide' bindtouchend='_cancel'></image>
+  </view>
+</view>

@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "correct":"/components/correct/correct"
+  }
+}

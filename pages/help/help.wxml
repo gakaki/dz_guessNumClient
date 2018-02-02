@@ -1,4 +1,4 @@
-
+<view class="box">
 <scroll-view id="scroll-box" class="flex" scroll-y>
 <view class="flex" wx:for="{{questions}}" wx:key='{{index}}'>
 <view class="item">
@@ -11,22 +11,15 @@
 <view class="item-foot" wx:if="{{index == curIdx}}">{{item.solve}}</view>
 </view>
 </view>
+</scroll-view>
+
 <view class="fsb server-box" >
 <image class="dress-rgt" src='https://gengxin.odao.com/update/h5/wangcai/help/dress-rgt.png'></image>
 <view class="contact-box">
  <text class="{{isactive}}" ></text>
   <button class="server-btn" open-type='contact' bindtouchstart='clickStart' bindtouchend='clickEnd' bindtap='lianxi'>客服</button>
 </view>
- 
-
-
 <image class="dress-left" src='https://gengxin.odao.com/update/h5/wangcai/help/dress-left.png'></image>
 </view>
-</scroll-view>
 
-
-
-
-
-
-
+</view>

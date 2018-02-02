@@ -95,11 +95,3 @@
   font:bold 26rpx "微软雅黑";
   color: #e48d48;
 }
-.xixian{
-  display: inline-block;
-  height: 26rpx;
-  width: 2rpx;
-  background-color: #e48d48;
-  margin: 0 13rpx;
-  vertical-align: middle;
-}

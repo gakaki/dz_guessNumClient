@@ -1,1 +1,76 @@
 /* components/correct/correct.wxss */
+.mask{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: rgba(0,0,0,.7);
+}
+.container{
+  width: 700rpx;
+  height:866rpx;
+  background-image: url("https://gengxin.odao.com/update/h5/wangcai/guess/guess-mianban.png");
+  background-size: cover;
+  position: absolute;
+  top: 120rpx;
+  left: 50%;
+  margin-left: -350rpx; 
+  z-index: 1000;
+}
+.animation{
+  animation: mymove 0.5s;
+}
+
+@keyframes mymove{
+  from {transform: scale(0);}
+  to {transform: scale(1);}
+}
+
+.guessResult{
+  font-size: 92rpx;
+  font-family: "微软雅黑";
+  color: #fff;
+  margin-top: 295rpx;
+  text-align: center;
+  letter-spacing: 35rpx;
+  padding-left: 35rpx;
+  font-weight: bold;
+}
+.congratulate{
+  margin-top: 58rpx;
+  text-align: center;
+  font-weight: bold;
+  font-size: 42rpx;
+  font-family: "微软雅黑",Regular;
+  color: #f96650;
+}
+.num-money{
+  text-align: center;
+  font-weight: bold;
+  font-size: 70rpx;
+  font-family: "微软雅黑",Regular;
+  color: #f96650;
+  letter-spacing: 15rpx;
+  padding-left: 15rpx;
+}
+.num{
+  display: inline-block;
+  font-size: 80rpx;
+  vertical-align: text-top;
+}
+.confirm{
+  width: 530rpx;
+  height: 152rpx;
+  position: absolute;
+  left: 50%;
+  bottom: 25rpx;
+  margin-left: -265rpx;
+}
+.comment{
+  font-family: "微软雅黑";
+  font-weight: bold;
+  font-size: 24rpx;
+  color: #9e9595;
+  text-align: center;
+}

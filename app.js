@@ -1,8 +1,10 @@
 //app.js
 import {start} from 'utils/rest.js';
+import {configs} from 'utils/configs.js'//test
 
 App({
   onLaunch: function (ops) {
+    console.log(configs.Item.Get(configs.Item.MONEY))
     // 登录
     wx.login({
       success: res => {
@@ -13,6 +15,7 @@ App({
   //  this.getUserInfo();
    start((res)=>{
       console.log(res)
+      console.log(configs.Item.Get(configs.Item.MONEY))
    })
   },
   getUserInfo(){

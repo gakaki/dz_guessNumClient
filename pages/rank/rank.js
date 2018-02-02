@@ -55,13 +55,15 @@ Page({
   /**
    * 页面跳转
    */
-  toTixian: function () {
+  toTixian: function (e) {
+    if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
       url: '../tixian/tixian',
     })
   },
 
-  toSend: function() {
+  toSend: function(e) {
+    if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
       url: '../index/index',
     })

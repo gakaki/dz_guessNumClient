@@ -44,7 +44,7 @@
   margin-right: 10rpx;
 }
 .withdraw-money{
-  margin-top: 195rpx;
+  margin-top: 193rpx;
   margin-left: 126rpx;
   color: #f4125d;
   font-family: "微软雅黑";

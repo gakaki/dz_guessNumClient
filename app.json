@@ -2,9 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/rank/rank",
-    "pages/record/record",
-    "pages/share/share",
     "pages/guess/guess",
+    "pages/share/share",
+    "pages/record/record",
     "pages/help/help",
     "pages/tixian/tixian",
     "pages/test/test",

@@ -33,6 +33,7 @@ function sdkAuth(code, suc) {
     res = res.data;
     
     uid = res.uid;
+    console.log(uid,111)
     userLogin(suc, showErr);
 
   })
@@ -115,6 +116,7 @@ const start = suc => {
     success: () => {
       wx.login({
         success: res=> {
+          console.log(res)
           console.log('call auth')
           sdkAuth(res.code, suc)
         },

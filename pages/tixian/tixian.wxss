@@ -44,7 +44,7 @@
   margin-right: 10rpx;
 }
 .withdraw-money{
-  margin-top: 190rpx;
+  margin-top: 195rpx;
   margin-left: 126rpx;
   color: #f4125d;
   font-family: "微软雅黑";
@@ -55,6 +55,7 @@
 .num{
   font-size: 76rpx;
   height: 80rpx;
+  line-height: 80rpx;
 }
 .withdraw-all{
   width: 150rpx;
@@ -94,4 +95,19 @@
 .text{
   font:bold 26rpx "微软雅黑";
   color: #e48d48;
+}
+.tips{
+  width: 490rpx;
+  height: 66rpx;
+  font-family: "微软雅黑";
+  font-weight: bold;
+  font-size: 32rpx;
+  color: #fff;
+  background-color: #8b6efd;
+  text-align: center;
+  line-height: 66rpx;
+  position: absolute;
+  top: 376rpx;
+  left: 50%;
+  transform: translate(-50%,0);
 }

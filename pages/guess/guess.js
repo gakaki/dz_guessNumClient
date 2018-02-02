@@ -9,6 +9,7 @@ Page({
    */
   data: {
     // num: '输入0-9不重复4位数',
+    kbHeight: '',
     doTixian: 'tixian',
     doFa: 'fa',
     doZhuan: 'zhuan',
@@ -153,13 +154,23 @@ Page({
     })
   },
   showKb: function () {
-    this.setData({
-      isHide: !this.data.isHide
-    })
+    if (this.data.isHide) {
+      this.setData({
+        isHide: !this.data.isHide,
+        kbHeight: 'kb-hgt'
+      })
+    }else {
+      this.setData({
+        isHide: !this.data.isHide,
+        kbHeight: 'kb-hide'
+      })
+    }
+   
   },
   hideKb: function() {
     this.setData({
-      isHide: true
+      isHide: true,
+      kbHeight: 'kb-hide'
     })
   },
   clickNum(e) {
@@ -171,6 +182,7 @@ Page({
       })
       let idx = e.currentTarget.dataset.num
       let newArr = [];
+      if(idx == 0) idx = 10
       this.data.clicked[idx - 1] = true
       newArr = this.data.clicked
       this.setData({
@@ -189,6 +201,7 @@ Page({
     })
 
     let newArr = [];
+    if (idx == 0) idx = 10
     this.data.clicked[idx - 1] = false
     newArr = this.data.clicked
     this.setData({

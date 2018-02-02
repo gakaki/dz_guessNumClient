@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/guess/guess",
     "pages/help/help",
     "pages/index/index",

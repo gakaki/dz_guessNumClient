@@ -1,110 +1,110 @@
 <!--index.wxml-->
-<view class="wrap" >
-<view class="red-box" catchtap='hideKb'>
- <view class='header'>
-    <view class='avatar-wrap'>
-      <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
-    </view>
-    <view class="userInfo">
-      <text class='nickname'>{{userInfo.nickName}}</text>
-      <view class='package-num'>
+<view class="wrap">
+  <view class="red-box" catchtap='hideKb'>
+    <view class='header'>
+      <view class='avatar-wrap'>
+        <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
+      </view>
+      <view class="userInfo">
+        <text class='nickname'>{{userInfo.nickName}}</text>
+        <view class='package-num'>
+          <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
+          <text class='num'>99元</text>
+        </view>
+      </view>
+      <view class='rest'>
         <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-        <text class='num'>99元</text>
-      </view>  
+        <text class="rest-text">红包剩余金额100元</text>
+      </view>
     </view>
-    <view class='rest'>
-    <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-      <text class="rest-text">红包剩余金额100元</text>
-    </view> 
-  </view>
-  <view class='input-tip-wrap'>
-    <text class='input-tip' wx:if="{{num}}" catchtap='showKb'>{{num}}</text>
-    <text class='input-tip gray'wx:else="{{!num}}" catchtap='showKb'>输入0-9不重复4位数</text>
-     <text class="{{isSend}}" bindtouchstart='sendStart' bindtouchend='sendEnd' bindtap='send'></text>
-  </view>
-  <view class='time'>
-   
-     <view class='time-wrap flex'>
-      <text  class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text>
-      <text class='time-content' wx:else=''>下轮竞猜等待180秒</text>
-      <text class="use-jiasu">使用加速卡</text>
-    </view> 
-  </view>
+    <view class='input-tip-wrap'>
+      <text class='input-tip' wx:if="{{num}}" catchtap='showKb'>{{num}}</text>
+      <text class='input-tip gray' wx:else="{{!num}}" catchtap='showKb'>输入0-9不重复4位数</text>
+      <text class="{{isSend}}" bindtouchstart='sendStart' bindtouchend='sendEnd' bindtap='send'></text>
+    </view>
+    <view class='time'>
 
-  <view class="yuanhu">
-   <image class='yuanhu-icon' src='https://gengxin.odao.com/update/h5/wangcai/guess/bg.png'></image>
+      <view class='time-wrap flex'>
+        <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text>
+        <text class='time-content' wx:else=''>下轮竞猜等待180秒</text>
+        <text class="use-jiasu">使用加速卡</text>
+      </view>
+    </view>
+
+    <view class="yuanhu">
+      <image class='yuanhu-icon' src='https://gengxin.odao.com/update/h5/wangcai/guess/bg.png'></image>
+    </view>
   </view>
-</view>
- <view class="bg-box">
- <view class='game-explain flex'>
-    <text class='detail'>猜中口令获取现金红包，口令为0-9不重复4位数</text>
-    <text class='detail'>A表示位置正确的数字个数</text>
-    <text class='detail'>B表示数字正确而位置不对数字个数</text>
-  </view>
-  <view class="tab flex-space">
-  <!-- <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/tixian.png'></image>
+  <view class="bg-box">
+    <view class='game-explain flex'>
+      <text class='detail'>猜中口令获取现金红包，口令为0-9不重复4位数</text>
+      <text class='detail'>A表示位置正确的数字个数</text>
+      <text class='detail'>B表示数字正确而位置不对数字个数</text>
+    </view>
+    <view class="tab flex-space">
+      <!-- <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/tixian.png'></image>
   <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/fa.png'></image>
   <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png'></image> -->
-   <text class="{{doTixian}}" bindtouchstart='tixianStart' bindtouchend='tixianEnd' bindtap='tixian'></text>
-    <text class="{{doFa}}" bindtouchstart='faStart' bindtouchend='faEnd' bindtap='fa'></text>
+      <text class="{{doTixian}}" bindtouchstart='tixianStart' bindtouchend='tixianEnd' bindtap='tixian'></text>
+      <text class="{{doFa}}" bindtouchstart='faStart' bindtouchend='faEnd' bindtap='fa'></text>
 
-<view class="zhuan-box">
-<text class="{{doZhuan}}">
+      <view class="zhuan-box">
+        <text class="{{doZhuan}}">
  </text>
-<button class="opa-btn" open-type="share" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></button>
-</view>
-
-
-
-     
-  </view>
-  <view class="cut-line"></view>
-<view class="flex">
-<image class="record-icon" src='https://gengxin.odao.com/update/h5/wangcai/guess/record.png'></image>
-</view>
-  <scroll-view  class='record-list' scroll-y='true' scroll-with-animation='{{false}}'>
-    <view class='one-record' wx:for='{{getInfo}}' wx:key='{{index}}'>
-      <image class='get-avatar' src='{{userInfo.avatarUrl}}'></image>
-      <view >
-        <text class='get-user-name'>{{item.nickname}}</text>
-        <view class='get-user-info'>
-          <text class='get-user-num'>{{item.num}}</text>
-          <text>{{item.content}}</text>
-        </view>
+        <button class="opa-btn" open-type="share" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></button>
       </view>
-      <view class='get-gold'>
-        <view>
-          <text>获得</text>
-          <text>{{item.gold}}元</text>
-        </view>
-        <view>
-          <text class='show-chengji'>1A1B</text>
-        </view>
-      </view>
+
+
+
+
     </view>
-  </scroll-view>
-</view>
-<view class="kb fcsb" hidden="{{isHide}}" >
-  <view class="flex kb-row row1">
-    <text class="bian {{clicked[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum'>1</text>
-    <text class="mid {{clicked[1]?'active': ''}}" data-num="2" bindtap='clickNum'>2</text>
-    <text class="bian {{clicked[2]?'active hu-rgt': ''}}" data-num="3" bindtap='clickNum'>3</text>
+    <view class="cut-line"></view>
+    <view class="flex">
+      <image class="record-icon" src='https://gengxin.odao.com/update/h5/wangcai/guess/record.png'></image>
+    </view>
+    <scroll-view class='record-list' scroll-y='true' scroll-with-animation='{{false}}'>
+      <view class='one-record' wx:for='{{getInfo}}' wx:key='{{index}}'>
+        <image class='get-avatar' src='{{userInfo.avatarUrl}}'></image>
+        <view>
+          <text class='get-user-name'>{{item.nickname}}</text>
+          <view class='get-user-info'>
+            <text class='get-user-num'>{{item.num}}</text>
+            <text>{{item.content}}</text>
+          </view>
+        </view>
+        <view class='get-gold'>
+          <view>
+            <text>获得</text>
+            <text>{{item.gold}}元</text>
+          </view>
+          <view>
+            <text class='show-chengji'>1A1B</text>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
   </view>
-  <view class="flex kb-row">
-    <text class="bian {{clicked[3]?'active': ''}}" data-num="4" bindtap='clickNum'>4</text>
-    <text class="mid {{clicked[4]?'active': ''}}" data-num="5" bindtap='clickNum'>5</text>
-    <text class="bian {{clicked[5]?'active': ''}}" data-num="6" bindtap='clickNum'>6</text>
+  <view class="kb fcsb {{kbHeight}}">
+    <view class="flex kb-row row1">
+      <text class="bian {{clicked[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum'>1</text>
+      <text class="mid {{clicked[1]?'active': ''}}" data-num="2" bindtap='clickNum'>2</text>
+      <text class="bian {{clicked[2]?'active hu-rgt': ''}}" data-num="3" bindtap='clickNum'>3</text>
+    </view>
+    <view class="flex kb-row">
+      <text class="bian {{clicked[3]?'active': ''}}" data-num="4" bindtap='clickNum'>4</text>
+      <text class="mid {{clicked[4]?'active': ''}}" data-num="5" bindtap='clickNum'>5</text>
+      <text class="bian {{clicked[5]?'active': ''}}" data-num="6" bindtap='clickNum'>6</text>
+    </view>
+    <view class="flex kb-row">
+      <text class="bian {{clicked[6]?'active': ''}}" data-num="7" bindtap='clickNum'>7</text>
+      <text class="mid {{clicked[7]?'active': ''}}" data-num="8" bindtap='clickNum'>8</text>
+      <text class="bian {{clicked[8]?'active': ''}}" data-num="9" bindtap='clickNum'>9</text>
+    </view>
+    <view class="flex kb-row">
+      <text class="bian"></text>
+      <text class="mid {{clicked[9]?'active': ''}}" data-num="0" bindtap='clickNum'>0</text>
+      <text class="bian del" bindtap='deleteNum'></text>
+    </view>
   </view>
-  <view class="flex kb-row">
-    <text class="bian {{clicked[6]?'active': ''}}" data-num="7" bindtap='clickNum'>7</text>
-    <text class="mid {{clicked[7]?'active': ''}}" data-num="8" bindtap='clickNum'>8</text>
-    <text class="bian {{clicked[8]?'active': ''}}" data-num="9" bindtap='clickNum'>9</text>
-  </view>
-  <view class="flex kb-row">
-    <text class="bian"></text>
-    <text class="mid {{clicked[9]?'active': ''}}" data-num="0" bindtap='clickNum'>0</text>
-    <text class="bian del" bindtap='deleteNum'></text>
-  </view>
-</view>
-<correct id="guess" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
+  <correct id="guess" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
 </view>

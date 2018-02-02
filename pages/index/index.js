@@ -2,8 +2,6 @@
 //获取应用实例
 const app = getApp()
 
-let u = require('../../utils/util.js')
-
 Page({
   data: {
       title:'一起来拼智力领红包',

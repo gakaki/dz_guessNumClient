@@ -10,8 +10,8 @@
 .container{
   width: 700rpx;
   height:866rpx;
-  background-image: url("https://gengxin.odao.com/update/h5/wangcai/guess/guess-mianban.png");
-  background-size: cover;
+  background-image: url("https://gengxin.odao.com/update/h5/wangcai/guess/guess-mianban.png"); 
+  background-size: cover; 
   position: absolute;
   top: 120rpx;
   left: 50%;
@@ -19,12 +19,21 @@
   z-index: 1000;
 }
 .animation{
-  animation: mymove 0.5s;
+  animation: mymove 1s;
 }
 
-@keyframes mymove{
-  from {transform: scale(0);}
-  to {transform: scale(1);}
+ @keyframes mymove{
+  0% {transform: scale(0)}
+  
+  100% {transform: scale(1)}
+} 
+
+.xuliezhen{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 999;
 }
 
 .guessResult{

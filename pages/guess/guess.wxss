@@ -296,7 +296,7 @@
 
 .record-list {
   /* height: 406rpx; */
-  position: fixed;
+  position: absolute;
   top: 796rpx;
   left: 0;
   bottom: 0;

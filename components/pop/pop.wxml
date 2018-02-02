@@ -1,5 +1,5 @@
 <!--component/pop/pop.wxml-->
-<view class='wrap flex-column' wx:if='{{appear}}'>
+<view class='wrap flex-column' wx:if='{{show}}'>
   <view class='main-pop'>
     <view class='content flex-column'>
       <text class='{{content.length < 10 ? "long-text":"text"}}'>{{content}}</text>

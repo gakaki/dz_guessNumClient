@@ -42,7 +42,9 @@ function userLogin (suc, err) {
       app = getApp();
       app.globalData.userInfo = info;
       app.globalData.hasUserInfo = true;
-
+      if (app.userInfoReadyCallback) {
+        app.userInfoReadyCallback(info)
+      }
       console.log(app.globalData);
 
       doFetch('user.login', { info }, res => {

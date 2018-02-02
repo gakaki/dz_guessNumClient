@@ -18,9 +18,9 @@ Component({
       type: Boolean,
       value: false
     },
-    appear:{
+    show:{
       type: Boolean,
-      value:true
+      value:false
     }
   },
   data: {
@@ -43,20 +43,22 @@ Component({
     // 这里是一个自定义方法    
     cancle(e) {
       this.setData({
-        appear: false
+        show: false
       })
-      app.globalData.hasUserInfo = false
     },
     sure() {
       this.setData({
-        appear: false
+        show: false
       })
       if (this.properties.isAuth) {
         wx.openSetting({
           success: (res) => {
-            console.log(res)
-            
-            app.globalData.hasUserInfo = true
+            wx.getUserInfo({
+              success: info => {
+                app.globalData.userInfo = info.userInfo;
+                app.globalData.hasUserInfo = true
+              }
+           })
           }
         })
       }

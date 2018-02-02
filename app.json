@@ -1,8 +1,10 @@
 {
   "pages": [
-    "pages/rank/rank",
     "pages/guess/guess",
     "pages/help/help",
+    "pages/rank/rank",
+    
+    
     "pages/index/index",
     "pages/record/record",
     "components/pop/pop",

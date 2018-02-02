@@ -1,50 +1,59 @@
 /* pages/statistics/statistics.wxss */
+
 .wrap {
   height: 100%;
-  overflow: hidden
+  overflow: hidden;
 }
+
 .red-box {
   width: 100%;
   height: 370rpx;
-  background-color: #B21F2E;
+  background-color: #b21f2e;
   position: relative;
 }
- .yuanhu {
-   width: 100%;
+
+.yuanhu {
+  width: 100%;
   height: 140rpx;
   position: absolute;
   bottom: 0;
   left: 0;
-  
-} 
+}
+
 .yuanhu-icon {
   width: 100%;
   height: 140rpx;
 }
+
 .header {
   display: flex;
   height: 172rpx;
 }
+
 .avatar-wrap {
-  margin: 15rpx 34rpx 0 23rpx; 
+  margin: 15rpx 34rpx 0 23rpx;
   width: 115rpx;
   height: 115rpx;
 }
+
 .avatar {
   width: 100rpx;
   height: 100rpx;
   border: 4rpx solid #fff;
   border-radius: 50%;
 }
+
 .main-title {
   flex: 1;
 }
+
 .nickname {
   display: inline-block;
   margin: 19rpx 0 15rpx;
   font-size: 30rpx;
   color: #fff;
 }
+
 .package-num {
   position: relative;
   color: #fff;
@@ -52,22 +61,24 @@
   height: 50rpx;
   background-color: #8b1320;
   border-radius: 30rpx;
- 
 }
+
 .package {
   margin-top: 5rpx;
   width: 27rpx;
   height: 41rpx;
   margin-left: 18rpx;
 }
+
 .num {
   display: inline-block;
   width: 130rpx;
   text-align: center;
   font-size: 32rpx;
   vertical-align: top;
-  line-height: 52rpx; 
+  line-height: 52rpx;
 }
+
 .rest {
   display: flex;
   font-size: 32rpx;
@@ -77,6 +88,7 @@
   font: 26rpx/34rpx 'Microsoft YaHei';
   color: #fcdd71;
 }
+
 .rest-text {
   margin-left: 3rpx;
   height: 48rpx;
@@ -89,127 +101,194 @@
   margin: 0 auto;
   width: 610rpx;
   height: 96rpx;
-  border: 4rpx solid #9f101e;  
-  border-radius: 50rpx; 
+  border: 4rpx solid #9f101e;
+  border-radius: 50rpx;
   z-index: 99;
   background: #fff;
   /* box-shadow: inset 0 4rpx 4rpx #e2b388; */
 }
+
 .input-tip {
-  
   text-align: center;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   /* color: #cacaca; */
-  color: #b21f2e; 
+  color: #b21f2e;
   font: bold 36rpx "Microsoft YaHei";
   display: flex;
   align-items: flex-start;
   margin-left: 40rpx;
   justify-content: center;
-  flex-direction: column; 
+  flex-direction: column;
 }
-.send-btn {
+
+.send,.send-click {
   position: absolute;
   right: 12rpx;
   top: 12rpx;
   width: 122rpx;
   height: 75rpx;
-  z-index: 2
+  z-index: 2;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/send.png') no-repeat;
+  background-size: 122rpx 75rpx;
+  background-position: center center;
+}
+
+.send-click {
+   position: absolute;
+  right: 12rpx;
+  top: 12rpx;
+  width: 122rpx;
+  height: 75rpx;
+  z-index: 2;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/send-active.png') no-repeat;
+  background-size: 122rpx 75rpx;
+  background-position: center center; 
 }
 
 .time {
   height: 67rpx;
 }
+
 .time-content {
   font-size: 24rpx;
   line-height: 54rpx;
   color: #fff9e3;
-  z-index: 2
-}
-.use-jiasu {
-font-size: 24rpx;
-  line-height: 54rpx;
-  color: #ffff00;
   z-index: 2;
-  text-decoration:underline
 }
+
+.use-jiasu {
+  font-size: 24rpx;
+  line-height: 54rpx;
+  color: #ff0;
+  z-index: 2;
+  text-decoration: underline;
+}
+
 .clearCd {
   margin: 6rpx 0 0 11rpx;
   width: 103rpx;
   height: 46rpx;
   font-size: 22rpx;
-  text-align: center; 
-  line-height: 46rpx; 
+  text-align: center;
+  line-height: 46rpx;
   /* background: url('https://gengxin.odao.com/update/h5/guessNum/guess/btn-green.png') no-repeat; */
   background-size: 103rpx 46rpx;
 }
+
 .bg-box {
-background-color: #FFF9E3;
+  background-color: #fff9e3;
 }
+
 .game-explain {
   padding-top: 40rpx;
   flex-direction: column;
   height: 213rpx;
-   background: url('https://gengxin.odao.com/update/h5/wangcai/guess/regular.png') no-repeat;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/regular.png') no-repeat;
   background-size: 700rpx 213rpx;
   background-position: center center;
 }
+
 .detail {
-    margin: 0 0 22rpx 46rpx;  
+  margin: 0 0 22rpx 46rpx;
   color: #e48d48;
   font-size: 26rpx;
   line-height: 1;
 }
+
 .tab {
   box-sizing: border-box;
   padding: 10rpx 0 25rpx 0;
 }
-.tab-item {
- width: 212rpx;
+
+.tixian {
+  width: 212rpx;
   height: 59rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/tixian.png') no-repeat;
+  background-size: 212rpx 59rpx;
+  background-position: center center;
 }
+.tixian-click {
+  width: 212rpx;
+  height: 59rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/tixian-click.png') no-repeat;
+  background-size: 212rpx 59rpx;
+  background-position: center center;
+}
+.fa {
+  width: 212rpx;
+  height: 59rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/fa.png') no-repeat;
+  background-size: 212rpx 59rpx;
+  background-position: center center;
+}
+.fa-click {
+  width: 212rpx;
+  height: 59rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/fa-click.png') no-repeat;
+  background-size: 212rpx 59rpx;
+  background-position: center center;
+}
+.zhuan {
+  width: 212rpx;
+  height: 59rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png') no-repeat;
+  background-size: 212rpx 59rpx;
+  background-position: center center;
+}
+.zhuan-click {
+  width: 212rpx;
+  height: 59rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/guess/zhuan-click.png') no-repeat;
+  background-size: 212rpx 59rpx;
+  background-position: center center;
+}
+
 .cut-line {
   width: 100%;
   height: 20rpx;
   background-color: #e48d48;
-  opacity: .2;
+  opacity: 0.2;
 }
+
 .record-icon {
   width: 215rpx;
   height: 32rpx;
   margin: 18rpx 0 18rpx 0;
 }
+
 .record-bg {
   margin-top: 5rpx;
   width: 375rpx;
   height: 61rpx;
   vertical-align: bottom;
 }
-.bg-l {
-  transform: rotateY(180deg)
-}
 
+.bg-l {
+  transform: rotateY(180deg);
+}
 
 .record-list {
   /* height: 406rpx; */
-   position: fixed;
+  position: fixed;
   top: 796rpx;
-  left: 0; 
+  left: 0;
   bottom: 0;
   right: 0;
-  background-color: #FFF9E3;
+  background-color: #fff9e3;
 }
+
 .one-record {
   position: relative;
   display: flex;
-  border-bottom: 3rpx solid #d34c4b;
+  border-bottom: 3rpx solid rgba(178,31,46,.5);
   height: 104rpx;
   font: 28rpx/41rpx "Microsoft YaHei";
   color: #b21f2e;
   font-size: 26rpx;
   margin: 0 25rpx;
 }
+
 .get-avatar {
   box-sizing: border-box;
   margin: 12rpx 16rpx 0 0;
@@ -218,10 +297,12 @@ background-color: #FFF9E3;
   width: 80rpx;
   height: 80rpx;
 }
+
 .get-user-name {
   display: inline-block;
   padding-top: 12rpx;
 }
+
 .get-user-num {
   display: inline-block;
   margin-right: 26rpx;
@@ -232,6 +313,7 @@ background-color: #FFF9E3;
   right: 0;
   top: 10rpx;
 }
+
 .kb {
   width: 100%;
   height: 844rpx;
@@ -243,40 +325,49 @@ background-color: #FFF9E3;
   background-position: center bottom;
   font-size: 72rpx;
   font-weight: bold;
-  color: #b21f2e;
+  color: rgba(178,31,46,.8);
+
 }
+
 .kb-row {
   width: 100%;
   height: 199rpx;
 }
+
 .row1 {
   margin-top: 42rpx;
 }
-.bian,.mid {
+
+.bian, .mid {
   width: 249rpx;
   height: 199rpx;
   text-align: center;
   line-height: 199rpx;
   overflow: hidden;
 }
+
 .mid {
   width: 248rpx;
   height: 199rpx;
 }
+
 .del {
   background: url('https://gengxin.odao.com/update/h5/wangcai/guess/kb-del.png') no-repeat;
   background-size: 82rpx 50rpx;
   background-position: center center;
 }
+
 .active {
   background: url('https://gengxin.odao.com/update/h5/wangcai/guess/kb-active.png') no-repeat;
   background-size: 249rpx 199rpx;
   background-position: center center;
   color: #fff;
 }
+
 .hu-left {
   border-top-left-radius: 30rpx;
 }
+
 .hu-rgt {
   border-top-right-radius: 30rpx;
 }

@@ -1,4 +1,6 @@
 //app.js
+import {start} from 'utils/rest.js';
+
 App({
   onLaunch: function (ops) {
     // 登录
@@ -8,8 +10,8 @@ App({
         
       }
     })
-   this.getUserInfo();
-   
+  //  this.getUserInfo();
+   start()
   },
   getUserInfo(){
     // 获取用户信息

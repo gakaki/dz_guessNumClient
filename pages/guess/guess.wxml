@@ -47,7 +47,16 @@
   <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png'></image> -->
    <text class="{{doTixian}}" bindtouchstart='tixianStart' bindtouchend='tixianEnd' bindtap='tixian'></text>
     <text class="{{doFa}}" bindtouchstart='faStart' bindtouchend='faEnd' bindtap='fa'></text>
-     <text class="{{doZhuan}}" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></text>
+
+<view class="zhuan-box">
+<text class="{{doZhuan}}">
+ </text>
+<button class="opa-btn" open-type="share" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></button>
+</view>
+
+
+
+     
   </view>
   <view class="cut-line"></view>
 <view class="flex">

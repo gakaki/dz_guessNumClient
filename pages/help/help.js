@@ -62,7 +62,7 @@ Page({
     })
   },
   lianxi: function(e) {
-
+    if (app.preventMoreTap(e)) { return; }
   },
   clickStart: function() {
     this.setData({

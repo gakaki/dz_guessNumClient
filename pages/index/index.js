@@ -4,17 +4,18 @@ const app = getApp()
 
 Page({
   data: {
-      title:'一起来拼智力领红包',
-      moneySelect:['1.68','6.6','8.8'],
-      hasTicket: true,
-      activeIndex:0,
-      defineNum:false,
-      restMoney:1.38,
-      toIntro:false,
-      pkBtnActive:false,
-      recordUrl:'https://gengxin.odao.com/update/h5/wangcai/index/record.png',
-      withUrl:'https://gengxin.odao.com/update/h5/wangcai/index/rest-money.png',
-      helpUrl:'https://gengxin.odao.com/update/h5/wangcai/index/question.png'
+    showAuthTip:false,
+    title:'一起来拼智力领红包',
+    moneySelect:['1.68','6.6','8.8'],
+    hasTicket: true,
+    activeIndex:0,
+    defineNum:false,
+    restMoney:1.38,
+    toIntro:false,
+    pkBtnActive:false,
+    recordUrl:'https://gengxin.odao.com/update/h5/wangcai/index/record.png',
+    withUrl:'https://gengxin.odao.com/update/h5/wangcai/index/rest-money.png',
+    helpUrl:'https://gengxin.odao.com/update/h5/wangcai/index/question.png'
   },
   getActive(src,dest){
     return src == dest ? 'active' : '';
@@ -35,17 +36,20 @@ Page({
         url: "../../pages/record/record"
       })
     } else {
-      wx.openSetting({
-        success: (res) => {
-          app.globalData.hasUserInfo = true
-          /*
-           * res.authSetting = {
-           *   "scope.userInfo": true,
-           *   "scope.userLocation": true
-           * }
-           */
-        }
+      this.setData({
+        showAuthTip: true
       })
+      // wx.openSetting({
+      //   success: (res) => {
+      //     app.globalData.hasUserInfo = true
+      //     /*
+      //      * res.authSetting = {
+      //      *   "scope.userInfo": true,
+      //      *   "scope.userLocation": true
+      //      * }
+      //      */
+      //   }
+      // })
     }
   },
   question(e) {

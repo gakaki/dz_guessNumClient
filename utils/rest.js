@@ -1,7 +1,7 @@
 const srv = "https://h5.ddz2018.com/";
 const wss = "wss://h5.ddz2018.com/json";
 const CODE_SUC = 0;
-let sid,uid, app;
+let sid,uid, app,ws;
 
 function doFetch(action, data, suc, err) {
   data = data || {};
@@ -31,11 +31,8 @@ function sdkAuth(code, suc) {
     payload: {code}
   }, res => {
     res = res.data;
-    
-    uid = res.uid;
-    console.log(uid,111)
+    uid = res.data.uid;    
     userLogin(suc, showErr);
-
   })
 }
 
@@ -48,8 +45,8 @@ function userLogin (suc, err) {
 
       console.log(app.globalData);
 
-      doFetch('user.login', {info}, res => {
-        if (res.code != CODE_SUC) {
+      doFetch('user.login', { info }, res => {
+        if (res.data.code != CODE_SUC) {
           err(res.code);
         }
         else {
@@ -69,11 +66,11 @@ function userLogin (suc, err) {
             console.log('websocket 已连接')
           });
           wx.onSocketError(r => {
-            console.log('websocket出错>>',r)
-            try{
+            console.log('websocket出错>>', r)
+            try {
               ws.close();
             }
-            catch(e){}
+            catch (e) { }
           });
           wx.onSocketClose(r => {
             console.log('websocket已关闭')
@@ -82,8 +79,12 @@ function userLogin (suc, err) {
         }
       }, err);
     },
-    fail: err
+    fail(){
+      app = getApp();
+      app.globalData.hasUserInfo = false;
+    } 
   })
+  
 }
 
 const showErr = msg => {

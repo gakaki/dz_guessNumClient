@@ -11,7 +11,9 @@ App({
       }
     })
   //  this.getUserInfo();
-   start()
+   start((res)=>{
+      console.log(res)
+   })
   },
   getUserInfo(){
     // 获取用户信息

@@ -56,6 +56,9 @@ Page({
     }]
   },
 
+  onReady: function() {
+    this.guess = this.selectComponent('#guess');
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -89,7 +92,9 @@ Page({
     }
   },
   send: function (e) {
-
+    this.guess.setData({
+      isShow:true,
+    })
   },
   sendStart: function () {
     this.setData({
@@ -231,5 +236,23 @@ Page({
          // 转发失败
        }
      }
-   }
+   },
+   /**
+    * 组件内触发的事件
+    */
+    _hide: function() {
+      this.guess.setData({
+        isShow:false
+      })
+    },
+    _active: function() {
+      this.guess.setData({
+        confirmSrc: 'https://gengxin.odao.com/update/h5/wangcai/guess/confirm-active.png'
+      })
+    },
+    _cancel: function () {
+      this.guess.setData({
+        confirmSrc: 'https://gengxin.odao.com/update/h5/wangcai/guess/confirm.png'
+      })
+    }
 })

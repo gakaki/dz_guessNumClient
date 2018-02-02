@@ -83,27 +83,28 @@
       </view>
     </view>
   </scroll-view>
- </view>
-  <view class="kb fcsb" hidden="{{isHide}}" >
-<view class="flex kb-row row1">
-<text class="bian {{clicked[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum'>1</text>
-<text class="mid {{clicked[1]?'active': ''}}" data-num="2" bindtap='clickNum'>2</text>
-<text class="bian {{clicked[2]?'active hu-rgt': ''}}" data-num="3" bindtap='clickNum'>3</text>
 </view>
-<view class="flex kb-row">
-<text class="bian {{clicked[3]?'active': ''}}" data-num="4" bindtap='clickNum'>4</text>
-<text class="mid {{clicked[4]?'active': ''}}" data-num="5" bindtap='clickNum'>5</text>
-<text class="bian {{clicked[5]?'active': ''}}" data-num="6" bindtap='clickNum'>6</text>
+<view class="kb fcsb" hidden="{{isHide}}" >
+  <view class="flex kb-row row1">
+    <text class="bian {{clicked[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum'>1</text>
+    <text class="mid {{clicked[1]?'active': ''}}" data-num="2" bindtap='clickNum'>2</text>
+    <text class="bian {{clicked[2]?'active hu-rgt': ''}}" data-num="3" bindtap='clickNum'>3</text>
+  </view>
+  <view class="flex kb-row">
+    <text class="bian {{clicked[3]?'active': ''}}" data-num="4" bindtap='clickNum'>4</text>
+    <text class="mid {{clicked[4]?'active': ''}}" data-num="5" bindtap='clickNum'>5</text>
+    <text class="bian {{clicked[5]?'active': ''}}" data-num="6" bindtap='clickNum'>6</text>
+  </view>
+  <view class="flex kb-row">
+    <text class="bian {{clicked[6]?'active': ''}}" data-num="7" bindtap='clickNum'>7</text>
+    <text class="mid {{clicked[7]?'active': ''}}" data-num="8" bindtap='clickNum'>8</text>
+    <text class="bian {{clicked[8]?'active': ''}}" data-num="9" bindtap='clickNum'>9</text>
+  </view>
+  <view class="flex kb-row">
+    <text class="bian"></text>
+    <text class="mid {{clicked[9]?'active': ''}}" data-num="0" bindtap='clickNum'>0</text>
+    <text class="bian del" bindtap='deleteNum'></text>
+  </view>
 </view>
-<view class="flex kb-row">
-<text class="bian {{clicked[6]?'active': ''}}" data-num="7" bindtap='clickNum'>7</text>
-<text class="mid {{clicked[7]?'active': ''}}" data-num="8" bindtap='clickNum'>8</text>
-<text class="bian {{clicked[8]?'active': ''}}" data-num="9" bindtap='clickNum'>9</text>
-</view>
-<view class="flex kb-row">
-<text class="bian"></text>
-<text class="mid {{clicked[9]?'active': ''}}" data-num="0" bindtap='clickNum'>0</text>
-<text class="bian del" bindtap='deleteNum'></text>
-</view>
-</view>
+<correct id="guess" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
 </view>

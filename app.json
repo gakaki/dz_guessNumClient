@@ -1,21 +1,12 @@
 {
   "pages": [
-<<<<<<< HEAD
-=======
-    "pages/help/help",
->>>>>>> b83c62680b801d210a8ab0cc3c5e5c1af9a9399b
+    
     "pages/guess/guess",
+    "pages/help/help",
     "pages/index/index",
     "pages/rank/rank",
     "pages/record/record",
     "pages/share/share",
-    
-<<<<<<< HEAD
-    "pages/rank/rank",
-    "pages/help/help",
-=======
-    
->>>>>>> b83c62680b801d210a8ab0cc3c5e5c1af9a9399b
     "pages/tixian/tixian",
     "pages/test/test",
     "components/keyboard/keyboard",

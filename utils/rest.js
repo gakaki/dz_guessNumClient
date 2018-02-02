@@ -62,7 +62,10 @@ function userLogin (suc, err) {
             ws.close();
           }
           ws = wx.connectSocket({
-            url: wss
+            url: wss,
+            fail: () => {
+              console.log('err')
+            }
           });
           wx.onSocketOpen(r => {
             console.log('websocket 已连接')

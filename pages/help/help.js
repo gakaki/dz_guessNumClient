@@ -1,4 +1,5 @@
 let app = getApp();
+import { configs } from '../../utils/configs.js'
 Page({
   data: {
     isactive: 'server',
@@ -60,6 +61,15 @@ Page({
     wx.setNavigationBarTitle({
       title: '旺猜—常见问题'
     })
+    let tempArr = []
+    configs.questions.map(o => {
+      let temp = new configs.Question(o)
+        tempArr.push(temp)
+    })
+    console.log(tempArr)
+     this.setData({
+       questions: tempArr
+     })
   },
   lianxi: function(e) {
     if (app.preventMoreTap(e)) { return; }

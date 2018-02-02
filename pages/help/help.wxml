@@ -3,12 +3,12 @@
 <view class="flex" wx:for="{{questions}}" wx:key='{{index}}'>
 <view class="item">
 <view class="item-top">
-<text class="item-text">{{item.title}}</text>
+<text class="item-text">{{item.cfg[1]}}</text>
 <view class="fcc">
 <image class="more" data-index="{{index}}" bindtap='showSolve'  src='https://gengxin.odao.com/update/h5/wangcai/help/show.png'></image>
 </view>
 </view>
-<view class="item-foot" wx:if="{{index == curIdx}}">{{item.solve}}</view>
+<view class="item-foot" wx:if="{{index == curIdx}}">{{item.cfg[2]}}</view>
 </view>
 </view>
 </scroll-view>

@@ -103,6 +103,7 @@ Page({
   },
  
   tixian: function (e) {
+    if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
       url: '../tixian/tixian',
     })

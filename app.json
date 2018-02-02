@@ -1,14 +1,11 @@
 {
   "pages": [
-    "pages/guess/guess",
-    "pages/help/help",
-    
     "pages/index/index",
-    "pages/rank/rank",
-    "pages/record/record",
+    "pages/guess/guess",
     "pages/share/share",
-    
-    
+    "pages/record/record",
+    "pages/rank/rank",
+    "pages/help/help",
     "pages/tixian/tixian",
     "pages/test/test",
     "components/keyboard/keyboard",

@@ -122,7 +122,7 @@ Page({
   },
   toWithDraw(){
     wx.navigateTo({
-      url: '../index/index',
+      url: '../tixian/tixian',
     })
   },
   /**

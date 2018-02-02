@@ -251,7 +251,8 @@ Page({
     */
     _hide: function() {
       this.guess.setData({
-        isShow:false
+        isShow:false,
+        finish:false
       })
     },
     _active: function() {

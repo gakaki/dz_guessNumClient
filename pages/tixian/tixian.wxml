@@ -15,8 +15,6 @@
   <image class="left-bg" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/left.png'></image>
   <image class="right-bg" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/right.png'></image>
   <view class="btn-bottom">
-    <text class="text" bindtap='toIndex'>返回首页</text>
-    <text class="xixian"></text>
     <text class="text" bindtap='toQuestion'>常见问题</text>
   </view>
 </view>

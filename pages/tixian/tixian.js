@@ -31,7 +31,7 @@ Page({
   /**
    * 确认提现
    */
-  confirmWithdraw: function() {
+  confirmWithdraw: function(e) {
     if (app.preventMoreTap(e)) { return; }
   },
 

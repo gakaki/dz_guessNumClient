@@ -16,7 +16,7 @@
     <view class='select {{hasTicket ? "select-ticket" : ""}}' bindtap='inputNum'>
       <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
       <text class='type-content'>赏金 ( 元 )</text>
-      <input class='input-money' type='number' placeholder="填写金额" placeholder-style="color:#986143"></input>
+      <input class='input-money' type='number' placeholder="填写金额" placeholder-style="color:#986143" bindblur='changeValue'></input>
     </view>
     <view class='ticket' wx:if='{{hasTicket}}'>
       <view>
@@ -49,5 +49,5 @@
     </view>
   </view>
 </view>  
-<tip content="你未授权获取个人信息，无法发起红包" appear='{{showAuthTip}}' isAuth="true">
-</tip>   
+<tip content="{{content}}" show='{{showAuthTip}}' isAuth="true" cancleBtn="取消" sureBtn="授权"></tip>   
+<tip content="{{packageTip}}" show='{{hasPackageTip}}'></tip>

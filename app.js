@@ -59,7 +59,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    hasUserInfo:false
+    hasUserInfo:true
   },
 
   globalLastTapTime: 0,

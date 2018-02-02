@@ -23,16 +23,21 @@
   background-size: 750rpx 928rpx; 
 }
 .gold-ticket {
-   padding-top: 86rpx; 
+   padding-top: 76rpx; 
 }
  .one-select {
+  margin-top: 22rpx;
   width: 193rpx;
   height: 277rpx;
   background: url('https://gengxin.odao.com/update/h5/wangcai/index/package.png') center center no-repeat;
   background-size: 193rpx 277rpx;
 }
 .one-select-active {
+  margin: 0;
+  width: 207rpx;
+  height: 299rpx;
   background-image: url('https://gengxin.odao.com/update/h5/wangcai/index/package-active.png');
+  background-size: 207rpx 299rpx;
 } 
 
 .money-content {

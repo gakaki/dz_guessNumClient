@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/help/help",
-    "pages/guess/guess",
     
+    "pages/guess/guess",
+    "pages/help/help",
     "pages/index/index",
     
     "pages/share/share",

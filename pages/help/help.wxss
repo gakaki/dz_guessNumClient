@@ -9,7 +9,6 @@ background-color: #fff9e3;
   left: 0;
   right: 0;
   width: 100%;
-  /* height: 100vh; */
    font-size: 28rpx;
   font-weight: bold;
   padding-top: 30rpx;

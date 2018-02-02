@@ -1,5 +1,5 @@
 // pages/rank/rank.js
-
+import {configs} from '../../utils/configs.js';
 let app = getApp();
 
 Page({
@@ -61,7 +61,6 @@ Page({
       url: '../tixian/tixian',
     })
   },
-
   toSend: function(e) {
     if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({

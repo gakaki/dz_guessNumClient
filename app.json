@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/rank/rank",
     "pages/guess/guess",
     "pages/share/share",
     "pages/record/record",
+    "pages/rank/rank",
     "pages/help/help",
     "pages/tixian/tixian",
     "pages/test/test",

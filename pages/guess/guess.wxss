@@ -112,7 +112,6 @@
   text-align: center;
   width: 100%;
   height: 100%;
-  /* color: #cacaca; */
   color: #b21f2e;
   font: bold 36rpx "Microsoft YaHei";
   display: flex;
@@ -121,7 +120,9 @@
   justify-content: center;
   flex-direction: column;
 }
-
+.gray {
+  color: #cacaca;
+}
 .send,.send-click {
   position: absolute;
   right: 12rpx;
@@ -229,7 +230,13 @@
   background-size: 212rpx 59rpx;
   background-position: center center;
 }
+.zhuan-box {
+  position: relative;
+  width: 212rpx;
+  height: 59rpx;
+}
 .zhuan {
+  position: absolute;
   width: 212rpx;
   height: 59rpx;
   background: url('https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png') no-repeat;
@@ -237,13 +244,22 @@
   background-position: center center;
 }
 .zhuan-click {
+  position: absolute;
   width: 212rpx;
   height: 59rpx;
   background: url('https://gengxin.odao.com/update/h5/wangcai/guess/zhuan-click.png') no-repeat;
   background-size: 212rpx 59rpx;
   background-position: center center;
 }
-
+.opa-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 212rpx;
+  height: 59rpx;
+  opacity: 0;
+}
 .cut-line {
   width: 100%;
   height: 20rpx;

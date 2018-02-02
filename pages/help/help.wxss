@@ -45,11 +45,14 @@ border-radius: 20rpx;
   width: 750rpx;
   height: 188rpx;
 }
-
-.server {
-
+.contact-box {
+   width: 530rpx;
+  height: 152rpx;
   position: relative;
+}
+.server,.server-click {
 
+   position: absolute;
   width: 530rpx;
   height: 152rpx;
   align-self: flex-end;
@@ -57,7 +60,9 @@ border-radius: 20rpx;
   background-size: 530rpx 152rpx;
   background-position: center center; 
 }
+
 .server-click {
+  position: absolute;
    background: url('https://gengxin.odao.com/update/h5/wangcai/help/server-click.png') no-repeat;
     width: 530rpx;
   height: 152rpx;
@@ -65,10 +70,7 @@ border-radius: 20rpx;
   background-size: 530rpx 152rpx;
   background-position: center center; 
 }
-.server {
-  width: 530rpx;
-  height: 152rpx;
-}
+
 .server-btn {
   position: absolute;
   left: 0;

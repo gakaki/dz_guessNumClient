@@ -18,14 +18,15 @@
     </view> 
   </view>
   <view class='input-tip-wrap'>
-    <text class='input-tip' catchtap='showKb'>{{num}}</text>
+    <text class='input-tip' wx:if="{{num}}" catchtap='showKb'>{{num}}</text>
+    <text class='input-tip gray'wx:else="{{!num}}" catchtap='showKb'>输入0-9不重复4位数</text>
      <text class="{{isSend}}" bindtouchstart='sendStart' bindtouchend='sendEnd' bindtap='send'></text>
   </view>
   <view class='time'>
    
      <view class='time-wrap flex'>
       <text  class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text>
-      <text class='time-content' wx:else=''>参与竞猜扣除100金币</text>
+      <text class='time-content' wx:else=''>下轮竞猜等待180秒</text>
       <text class="use-jiasu">使用加速卡</text>
     </view> 
   </view>
@@ -46,7 +47,16 @@
   <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png'></image> -->
    <text class="{{doTixian}}" bindtouchstart='tixianStart' bindtouchend='tixianEnd' bindtap='tixian'></text>
     <text class="{{doFa}}" bindtouchstart='faStart' bindtouchend='faEnd' bindtap='fa'></text>
-     <text class="{{doZhuan}}" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></text>
+
+<view class="zhuan-box">
+<text class="{{doZhuan}}">
+ </text>
+<button class="opa-btn" open-type="share" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></button>
+</view>
+
+
+
+     
   </view>
   <view class="cut-line"></view>
 <view class="flex">

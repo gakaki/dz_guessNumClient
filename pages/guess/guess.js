@@ -9,13 +9,13 @@ Page({
    */
   data: {
     // num: '输入0-9不重复4位数',
+    actIdx: -1,
     kbHeight: '',
     doTixian: 'tixian',
     doFa: 'fa',
     doZhuan: 'zhuan',
     isSend: 'send',
     isHide: true,
-    clicked: [false, false, false, false, false, false, false, false, false, false],
     num: '',
     delnum: '',
     userInfo: {},
@@ -27,7 +27,7 @@ Page({
       avatar: 11,
       nickname: "昵称一共八个文字",
       num: 5793,
-      content: "智商的文字",
+      content: "你哥说七步成诗不然揍你，你赢了",
       gold: 13
     }, {
       avatar: 11,
@@ -174,38 +174,34 @@ Page({
     })
   },
   clickNum(e) {
-    console.log(e)
+    let idx = e.currentTarget.dataset.num
+    if(this.data.num.indexOf(idx) != -1) return
     if (this.data.num.length < 4) {
-      let newNum = this.data.num + e.currentTarget.dataset.num;
+      let newNum = this.data.num + idx
       this.setData({
         num: newNum
       })
-      let idx = e.currentTarget.dataset.num
-      let newArr = [];
-      if(idx == 0) idx = 10
-      this.data.clicked[idx - 1] = true
-      newArr = this.data.clicked
-      this.setData({
-        clicked: newArr
-      })
     }
-
+  },
+  showBg: function(e) {
+    let idx = e.currentTarget.dataset.num
+    this.setData({
+      actIdx: idx
+    })
+  },
+  clearBg: function() {
+    this.setData({
+      actIdx: -1
+    })
   },
   deleteNum(e) {
+    if (!this.data.num) return
     let idx = this.data.num.split('')
     idx = parseInt(idx[idx.length - 1])
     console.log(idx)
     this.setData({
       num: this.data.num.slice(0, this.data.num.length - 1),
       // delnum: this.data.num.slice(this.data.num.length - 1, this.data.num.length)
-    })
-
-    let newArr = [];
-    if (idx == 0) idx = 10
-    this.data.clicked[idx - 1] = false
-    newArr = this.data.clicked
-    this.setData({
-      clicked: newArr
     })
   },
   recordtInput(e) {
@@ -255,7 +251,8 @@ Page({
     */
     _hide: function() {
       this.guess.setData({
-        isShow:false
+        isShow:false,
+        finish:false
       })
     },
     _active: function() {

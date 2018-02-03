@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/tixian/tixian",
     "pages/guess/guess",
+    "pages/tixian/tixian",
+    
     "pages/index/index",
 
     "pages/share/share",

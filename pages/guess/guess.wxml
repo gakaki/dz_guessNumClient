@@ -10,12 +10,12 @@
          <text class='nickname'>{{userInfo.nickName}}</text> 
         <view class='package-num'>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-          <text class='num'>{{baoInfo?baoInfo.packInfo.totalMoney:''}}元</text>
+          <text class='num'>{{baoInfo?baoInfo.packInfo.totalMoney:0}}元</text>
         </view>
       </view>
       <view class='rest'>
         <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-        <text class="rest-text">红包剩余金额{{baoInfo?baoInfo.packInfo.restMoney:''}}元</text>
+        <text class="rest-text">红包剩余金额{{baoInfo?baoInfo.packInfo.restMoney:0}}元</text>
       </view>
     </view>
     <view class='input-tip-wrap'>
@@ -101,5 +101,5 @@
     </view>
   </view>
   <correct id="guess" result="{{popInfo.result}}" comment="{{popInfo.comment}}" money="{{popInfo.money}}" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
-  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' doJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡"></pop> 
+  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{hasJiasuka}}" doJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡"></pop> 
 </view>

@@ -6,7 +6,7 @@
     <view class="remainder">
       <text class="remain-num">{{remainder}}</text>元
     </view>
-    <view class="tips">
+    <view class="tips" wx:if="{{showTip}}">
       <text>提现金额上限为50000</text>
     </view>
     <view class="withdraw-money">

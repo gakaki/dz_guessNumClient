@@ -47,14 +47,15 @@ function userLogin (suc, err) {
       if (app.userInfoReadyCallback) {
         app.userInfoReadyCallback(info)
       }
+
       doFetch('user.login',  {info:info.userInfo} , res => {
         if (res.data.code != CODE_SUC) {
           err(res.code);
         }
         else {
-          res = res.data;
-          wx.setStorageSync('_sid', res.data.sid);
-          sid = res.data.sid;
+          res = res.data.data;
+          wx.setStorageSync('_sid', res.sid);
+          sid = res.sid;
           suc(res)
 
           if (ws) {

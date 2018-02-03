@@ -1,5 +1,5 @@
 // pages/rank/rank.js
-
+import {configs} from '../../utils/configs.js';
 let app = getApp();
 
 Page({

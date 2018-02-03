@@ -9,7 +9,8 @@ Page({
   data: {
     remainder: 520,
     withdraw: '',
-    withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png'
+    withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png',
+    showTip:false,
   },
 
   /**
@@ -20,12 +21,29 @@ Page({
     this.setData({
       withdraw: e.detail.value
     })
+    if(e.detail.value>50000){
+      this.setData({
+        showTip:true,
+      })
+    }
+    else{
+      this.setData({
+        showTip: false
+      })
+    }
   },
 
   allRemain: function() {
-    this.setData({
-      withdraw: this.data.remainder
-    })
+    if (this.data.remainder>50000){
+      this.setData({
+        withdraw: 50000
+      })
+    }
+    else{
+      this.setData({
+        withdraw: this.data.remainder
+      })
+    }
   },
 
   /**

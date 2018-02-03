@@ -70,6 +70,11 @@ function getUid() {
   return uid
 }
 
+//向下取整并保留两位小数；
+function fixedNum(num) {
+  return Math.floor(num * 100) / 100
+}
+
 const showErr = msg => {
   wx.showToast({
     title: '哎呀,' + msg,
@@ -212,6 +217,7 @@ module.exports = {
   showErr,
   doFetch,
   getUid,
+  fixedNum,
   listen,
   unlisten
 }

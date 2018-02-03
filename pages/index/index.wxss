@@ -189,7 +189,7 @@
 }
 .intro-head {
   width: 700rpx;
-  height: 380rpx;
+  height: 229rpx;
   vertical-align: middle;
 }
 .intro-foot {
@@ -198,10 +198,18 @@
   vertical-align: middle;
 }
 .intro-content {
+  padding: 0 34rpx;
   font: bold 32rpx/49rpx 'Microsoft YaHei';
   color: #b21f2e;
-  background: url('https://gengxin.odao.com/update/h5/wangcai/index/intro-foot.png') repeat;
-  background-size: 700rpx auto;
+  /* background: url('https://gengxin.odao.com/update/h5/wangcai/index/intro-bg.png') repeat;
+  background-size: 700rpx auto;  */
+}
+.list {
+  width: 20rpx;
+  height: 100%;
+}
+.list-content {
+  width: 680rpx;
 }
 .exit {
   position: absolute;

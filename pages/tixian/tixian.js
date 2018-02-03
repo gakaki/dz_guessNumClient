@@ -1,6 +1,6 @@
 // pages/tixian/tixian.js
 let app = getApp();
-import { doFetch } from '../../utils/rest.js';
+import { doFetch,fixedNum } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js';
 
 Page({
@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    remainder: 520,
+    remainder: '',
     withdraw: '',
     withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png',
     showTip:false,
@@ -53,8 +53,7 @@ Page({
    */
   confirmWithdraw: function(e) {
     if (app.preventMoreTap(e)) { return; }
-    doFetch('sdk.withdraw',{
-      channel:'wxminiapp',
+    doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
       this.setData({
@@ -97,8 +96,10 @@ Page({
     doFetch('user.getiteminfo',{
       itemId: configs.Item.MONEY
     },(res)=>{
+      let money = fixedNum(res.data.data.stock)
+      
       this.setData({
-        remainder: res.data.data.stock
+        remainder: money
       })
     })
   },

@@ -1,5 +1,6 @@
 // pages/rank/rank.js
 import {configs} from '../../utils/configs.js';
+import { doFetch } from '../../utils/rest.js';
 let app = getApp();
 
 Page({
@@ -9,47 +10,15 @@ Page({
    */
   data: {
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
     sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/me-send.png',
     showSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/show-rank.png',
-    num:[1,3,4,6],
-    myMoney:9999,
-    comment:'你哥说七步成诗不然揍你，你赢了',
-    getInfo: [{
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      guessNum: [1111,1524,3454],
-      guessResult: ['1A1B','2A0B','3A0B'],
-      gold: 9999
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      guessNum: [1210],
-      guessResult: ['1A1B'],
-      gold: 201
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      guessNum: [1359, 1324, 6451,2698],
-      guessResult: ['1A1B', '2A0B', '3A0B','2A2B'],
-      gold: 3265
-    },
-    {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      guessNum: [1111, 1524, 3454],
-      guessResult: ['1A1B', '2A0B', '3A0B'],
-      gold: 1514
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      guessNum: [1111, 1524, 3454],
-      guessResult: ['1A1B', '2A0B', '3A0B'],
-      gold: 11
-    }],
-    shareTitle:"我领取到了s%元福利，快来看看我的战绩"
+    password:[],
+    pidMoney:0,
+    comment:[],
+    getInfo: [],
+    shareTitle:"我领取到了s%元福利，快来看看我的战绩",
+    pid:''
   },
 
   /**
@@ -111,32 +80,42 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
+    if(options.pid){
+      console.log(options.pid)
+      this.data.pid = options.pid;
     }
+    
+    //获取红包信息
+    doFetch('guessnum.getpackrankinglist',{
+      pid: 1517638385
+    },(res)=>{
+      let data = res.data.data;
+      let comments = [];
+      for(let i=0;i<data.rank.length;i++){
+        let commentNum = Math.floor(Math.random()*3)+1
+        console.log(commentNum)
+        switch(commentNum) {
+          case 1:
+            comments.push(configs.Evaluate.Get(data.rank[i].maxMarkId).iqwored1);
+            break;
+          case 2:
+            comments.push(configs.Evaluate.Get(data.rank[i].maxMarkId).iqwored2);
+            break;
+          case 3:
+            comments.push(configs.Evaluate.Get(data.rank[i].maxMarkId).iqwored3);
+            break;
+        }
+      }
+      this.setData({
+        userInfo: data.packInfo.userInfo,
+        password: data.packInfo.password,
+        pidMoney: data.packInfo.money,
+        getInfo: data.rank,
+        comment: comments
+      })
+      console.log(res.data.data.rank);
+    })
+    this.data.pid = 1517627250;
   },
 
   /**
@@ -190,7 +169,7 @@ Page({
     }
     return {
       title: this.data.shareTitle,
-      path: '/pages/rank/rank',
+      path: '/pages/rank/rank?pid='+this.data.pid,
       imageUrl: '../../assets/common/share.png',
       success: function (res) {
         // 转发成功

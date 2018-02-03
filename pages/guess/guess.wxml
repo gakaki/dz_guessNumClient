@@ -10,12 +10,12 @@
          <text class='nickname'>{{userInfo.nickName}}</text> 
         <view class='package-num'>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-          <text class='num'>99元</text>
+          <text class='num'>{{baoInfo?baoInfo.packInfo.totalMoney:''}}元</text>
         </view>
       </view>
       <view class='rest'>
         <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-        <text class="rest-text">红包剩余金额100元</text>
+        <text class="rest-text">红包剩余金额{{baoInfo?baoInfo.packInfo.restMoney:''}}元</text>
       </view>
     </view>
     <view class='input-tip-wrap'>
@@ -26,9 +26,9 @@
     <view class='time'>
 
       <view class='time-wrap flex'>
-        <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text>
-        <text class='time-content' wx:else=''>下轮竞猜等待180秒</text>
-        <text class="use-jiasu">使用加速卡</text>
+        <!-- <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text> -->
+        <text class='time-content' wx:if='{{timeCd}}'>下轮竞猜等待180秒</text>
+        <text class="use-jiasu" wx:if='{{timeCd}}' bindtap='doClear'>使用加速卡</text>
       </view>
     </view>
 
@@ -43,43 +43,36 @@
       <text class='detail'>B表示数字正确而位置不对数字个数</text>
     </view>
     <view class="tab flex-space">
-      <!-- <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/tixian.png'></image>
-  <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/fa.png'></image>
-  <image class='tab-item' src='https://gengxin.odao.com/update/h5/wangcai/guess/zhuan.png'></image> -->
       <text class="{{doTixian}}" bindtouchstart='tixianStart' bindtouchend='tixianEnd' bindtap='tixian'></text>
-      <text class="{{doFa}}" bindtouchstart='faStart' bindtouchend='faEnd' bindtap='fa'></text>
+      <text class="{{doFa}}" hidden="{{!isOwner}}" bindtouchstart='faStart' bindtouchend='faEnd' bindtap='fa'></text>
 
       <view class="zhuan-box">
         <text class="{{doZhuan}}">
  </text>
         <button class="opa-btn" open-type="share" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></button>
       </view>
-
-
-
-
     </view>
     <view class="cut-line"></view>
     <view class="flex">
       <image class="record-icon" src='https://gengxin.odao.com/update/h5/wangcai/guess/record.png'></image>
     </view>
     <scroll-view class='record-list' scroll-y='true' scroll-with-animation='{{false}}'>
-      <view class='one-record' wx:for='{{getInfo}}' wx:key='{{index}}'>
-        <image class='get-avatar' src='{{userInfo.avatarUrl}}'></image>
+      <view class='one-record' wx:for='{{baoInfo.records}}' wx:key='{{index}}'>
+        <image class='get-avatar' src='{{item.userInfo.avatarUrl}}'></image>
         <view>
-          <text class='get-user-name'>{{item.nickname}}</text>
+          <text class='get-user-name'>{{item.userInfo.nickName}}</text>
           <view class='get-user-info'>
-            <text class='get-user-num'>{{item.num}}</text>
+            <text class='get-user-num'>{{item.userAnswerWord}}</text>
             <text>{{item.content}}</text>
           </view>
         </view>
         <view class='get-gold'>
           <view>
             <text>获得</text>
-            <text>{{item.gold}}元</text>
+            <text>{{item.userGetMoney}}元</text>
           </view>
           <view>
-            <text class='show-chengji'>1A1B</text>
+            <text class='show-chengji'>{{item.userMark}}</text>
           </view>
         </view>
       </view>

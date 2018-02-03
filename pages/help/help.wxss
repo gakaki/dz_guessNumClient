@@ -1,5 +1,6 @@
 .box {
 background-color: #fff9e3;
+font-family: 'Microsoft YaHei';
 }
 #scroll-box {
   background-color: #fff9e3;

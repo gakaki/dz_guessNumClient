@@ -34,7 +34,9 @@ function sdkAuth(code, suc) {
     userLogin(suc, showErr);
   })
 }
-
+function getUid() {
+  return uid
+}
 function userLogin (suc, err) {
   wx.getUserInfo({
     success: info => {
@@ -138,5 +140,6 @@ const start = suc => {
 module.exports = {
   start,
   showErr,
-  doFetch
+  doFetch,
+  getUid
 }

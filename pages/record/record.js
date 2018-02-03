@@ -2,6 +2,7 @@
 
 let app = getApp();
 import { doFetch } from '../../utils/rest.js';
+const GUESSING = 168;
 
 Page({
 
@@ -19,26 +20,7 @@ Page({
     anotherUrl:'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
     serverUrl:'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
     receivePackages:[],
-    sendPackages:[],
-    list:[{
-      title:'一起来拼智力领红包',
-      sum:13
-    },{
-      title: '一起来拼智力领红包',
-      sum: 13
-    },{
-      title:'一起来拼智力领红包',
-      sum:13
-    }, {
-      title: '一起来拼智力领红包',
-      sum: 13
-    }, {
-      title: '一起来拼智力领红包',
-      sum: 13
-    }, {
-      title: '一起来拼智力领红包',
-      sum: 13
-    }]
+    sendPackages:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -79,6 +61,18 @@ Page({
             hasUserInfo: true
           })
         }
+      })
+    }
+  },
+  packageDetail(e){
+    let p = e.currentTarget.dataset.item;
+    if (p.status == GUESSING) {
+      wx.navigateTo({
+        url: '../../pages/guess/guess?pid=' + p.pid,
+      })
+    } else {
+      wx.navigateTo({
+        url: '../../pages/rank/rank?pid=' + p.pid,
       })
     }
   },

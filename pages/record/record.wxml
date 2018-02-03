@@ -34,16 +34,16 @@
       </view> 
     </view>
     <scroll-view  class='record-list' scroll-y='true'>
-      <view class='one-list' wx:if='{{send}}' wx:for='{{sendPackages.record}}' wx:key='{{index}}'>
+      <view class='one-list' bindtap='packageDetail' data-item='{{item}}'  wx:if='{{send}}' wx:for='{{sendPackages.record}}' wx:key='{{index}}'>
         <text class='one-title'>{{item.title}}</text>
         <text class='one-sum'>{{item.money}}</text>
       </view> 
       <view class='one-list' wx:if='{{receive}}' wx:for='{{receivePackages.record}}' wx:key='{{index}}'>
         <view>
-          <image class='user-avatar' src='{{userInfo.avatarUrl}}'></image>
-          <text class='user-nickname'>{{userInfo.nickName}}</text>
+          <image class='user-avatar' src='{{item.userInfo.avatarUrl}}'></image>
+          <text class='user-nickname'>{{item.userInfo.nickName}}</text>
         </view>
-        <text class='one-sum'>{{item.sum}}</text>
+        <text class='one-sum'>{{item.moneyGot}}</text>
       </view> 
     </scroll-view>
   </view>

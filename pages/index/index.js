@@ -27,12 +27,16 @@ Page({
     showTitleList:false
   },
   onLoad(){
-    if (app.globalData.cashcoupon) {
-      this.setData({
-        hasTicket: true
-      })
-    }
-    
+    doFetch('user.getiteminfo', {
+      itemId: configs.Item.CASHCOUPON
+    }, (res) => {
+      if (res.data.data.stock) {
+        this.setData({
+          hasTicket: true
+        })
+      }
+    });
+   
     let list = configs.topics.map(item=>{
         return item[1]
     })
@@ -204,12 +208,14 @@ Page({
         showAuthTip: true,
         content: "你未授权获取个人信息，无法发起红包"
       })
+      return ;
     }
     if(this.data.inputValue < 1) {
       this.setData({
         packageTip: "赏金至少1元",
         hasPackageTip: true,
       })
+      return;
     }
     let inputV = Number(this.data.inputValue);
     doFetch('guessnum.sendpack', {
@@ -217,9 +223,8 @@ Page({
       useTicket: this.data.useTicket,
       title: this.data.title
     }, (res)=>{
-      wx.navigateTo({
-        url: '../../pages/share/share',
-      })
+      let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
+      wx.navigateTo({url})
     });
   },
   onShareAppMessage: function (res) {
@@ -229,7 +234,7 @@ Page({
     }
     return {
       title: '大家一起来拼智力领福利',
-      path: '/pages/index/index?aaa="456"',
+      path: '/pages/index/index',
       imageUrl:'../../assets/common/share.png',
       success: function (res) {
         // 转发成功

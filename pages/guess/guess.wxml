@@ -101,5 +101,5 @@
     </view>
   </view>
   <correct id="guess" result="{{popInfo.result}}" comment="{{popInfo.comment}}" money="{{popInfo.money}}" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
-  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{hasJiasuka}}" doJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡"></pop> 
+  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{hasJiasuka}}" binddoJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡"></pop> 
 </view>

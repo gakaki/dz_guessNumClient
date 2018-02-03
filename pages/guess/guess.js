@@ -151,6 +151,7 @@ Page({
     
   },
   doClear: function () {
+    console.log(22222222)
     doFetch('guessnum.clearcd', {
       pid: this.data.pid
     })

@@ -1,6 +1,7 @@
 // pages/tixian/tixian.js
 let app = getApp();
 import { doFetch } from '../../utils/rest.js';
+import { configs } from '../../utils/configs.js';
 
 Page({
 
@@ -18,7 +19,6 @@ Page({
    * 获取input输入的信息
    */
   getMoney: function(e) {
-    console.log(e.detail.value)
     this.setData({
       withdraw: e.detail.value
     })
@@ -56,6 +56,9 @@ Page({
       channel:'wxminiapp',
       money: this.data.withdraw
     },(res)=>{
+      this.setData({
+        withdraw:''
+      })
       console.log(res)
     })
   },
@@ -89,7 +92,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    doFetch('user.getiteminfo',{
+      itemId: configs.Item.MONEY
+    },(res)=>{
+      this.setData({
+        remainder: res.data.data.stock
+      })
+    })
   },
 
   /**

@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    singleBtn: false,
     cancleStr: '确定',
     hasJiasuka: true,
     tipCon: '',
@@ -142,11 +143,9 @@ Page({
     if (this.data.hasJiasuka == true) {
       this.setData({
         tipCon: '距下轮竞猜还有180s，是否花费一张加速卡清除等待，每日首次分享小程序可获得一张加速卡',
-        cancleStr: '取消'
-      })
-      this.pop.setData({  
-      singleBtn: false,
-      hasJiasuka: true
+        cancleStr: '取消',
+        singleBtn: false,
+        hasJiasuka: true
       })
     }
     
@@ -174,9 +173,9 @@ Page({
           this.setData({
             timeCd: true
           })
-          // this.guess.setData({
-          //   isShow: true,
-          // })
+          this.guess.setData({
+            isShow: true,
+          })
         }
       })
     }
@@ -253,10 +252,12 @@ Page({
 
   },
   hideKb: function () {
-    this.setData({
-      isHide: true,
-      kbHeight: 'kb-hide'
-    })
+    if(!this.data.isHide) {
+      this.setData({
+        isHide: true,
+        kbHeight: 'kb-hide'
+      })
+    }
   },
   clickNum(e) {
     let idx = e.currentTarget.dataset.num

@@ -25,12 +25,15 @@ Component({
     singleBtn: {
       type: Boolean,
       value:false
+    },
+    hasJiasuka: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
     // 这里是一些组件内部数据
-      contentName:'text',
-      hasJiasuka: false
+      contentName:'text'
   },
   methods: {
     // 这里是一个自定义方法    

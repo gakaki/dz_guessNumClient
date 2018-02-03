@@ -69,6 +69,7 @@
   font-size: 46rpx;
 }
 .select {
+  position: relative;
   margin-top: 80rpx;
 }
 .select-ticket {
@@ -103,6 +104,11 @@
   text-align: center;
   color: #986143;
   font: bold 36rpx 'Microsoft YaHei';
+}
+.oneSimpleTip {
+  position: absolute;
+  left: 130rpx;
+  top: -70rpx;
 }
 .ticket {
   margin-top: 25rpx;
@@ -245,3 +251,11 @@
   color: #b21f2e;
   text-align: center;
 }
+ .mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+} 

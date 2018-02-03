@@ -27,8 +27,8 @@ Component({
       value:false
     },
     hasJiasuka: {
-      type: Boolean,
-      value: false
+      type: Number,
+      value: 0
     }
   },
   data: {
@@ -43,10 +43,10 @@ Component({
       })
     },
     sure() {
+      this.triggerEvent("doJiasu")
       this.setData({
         show: false
       })
-      this.triggerEvent("doJiasu")
       if (this.properties.isAuth) {
         wx.openSetting({
           success: (res) => {

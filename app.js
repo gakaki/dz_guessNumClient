@@ -69,7 +69,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    hasUserInfo:true
+    hasUserInfo:true,
+    guessMoney:0
   },
 
   globalLastTapTime: 0,

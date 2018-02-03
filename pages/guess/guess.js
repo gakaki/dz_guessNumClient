@@ -1,13 +1,17 @@
 // pages/statistics/statistics.js
 
 let app = getApp();
-
+import { doFetch, getUid } from '../../utils/rest.js';
+import { configs } from '../../utils/configs.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    isOwner: false,
+    pid: 1517627250,     //红包pid
+    baoInfo: {},  //红包信息
     // num: '输入0-9不重复4位数',
     actItem: [false, false, false, false, false, false, false, false, false, false],
     kbHeight: '',
@@ -91,10 +95,42 @@ Page({
         }
       })
     }
+    doFetch('guessnum.getpackrecords', {
+      pid: this.data.pid
+    }, (res) => {
+      if (res.data.dataoriginator == getUid()) {
+        this.setData({
+          baoInfo: res.data.data,
+          isOwner: true
+        })
+      }else {
+        this.setData({
+          baoInfo: res.data.data
+        })
+      }
+      
+
+    });
+
   },
-  send: function (e) {
-    this.guess.setData({
-      isShow:true,
+  doClear: function() {
+    doFetch('guessnum.clearcd', {
+      pid: this.data.pid
+})
+  },
+  send: function (e) { 
+    console.log(typeof (this.data.num))
+    doFetch('guessnum.guesspack', { 
+      guessNum: this.data.num,
+      pid: this.data.pid
+      },(res)=>{
+      this.guess.setData({
+        isShow: true,
+      })
+      this.setData({
+        num: '',
+        actItem: [false, false, false, false, false, false, false, false, false, false]
+      })
     })
   },
   sendStart: function () {
@@ -183,7 +219,7 @@ Page({
       })
 
       let arr = []
-      if(idx == 0) idx = 9
+      if(idx == 0) idx = 10
       this.data.actItem[idx-1] = true
       arr = this.data.actItem
       this.setData({
@@ -205,7 +241,7 @@ Page({
     })
 
     let arr = []
-    if (idx == 0) idx = 9
+    if (idx == 0) idx = 10
     this.data.actItem[idx-1] = false
     arr = this.data.actItem
     this.setData({

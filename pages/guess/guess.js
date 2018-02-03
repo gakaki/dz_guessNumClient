@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // pages/statistics/statistics.js
 
 let app = getApp();
@@ -103,6 +101,7 @@ Page({
         }
       })
     }
+    console.log(getUid())
     doFetch('guessnum.getpackrecords', {
       pid: this.data.pid
     }, (res) => {
@@ -325,4 +324,3 @@ Page({
       })
     }
 })
->>>>>>> dc7fafb1ad735a9e91ada9f939f0010389199e96

@@ -1,6 +1,6 @@
 // pages/rank/rank.js
 import {configs} from '../../utils/configs.js';
-import { doFetch } from '../../utils/rest.js';
+import { doFetch, getUid } from '../../utils/rest.js';
 let app = getApp();
 
 Page({
@@ -18,7 +18,8 @@ Page({
     comment:[],
     getInfo: [],
     shareTitle:"我领取到了s%元福利，快来看看我的战绩",
-    pid:''
+    pid:'',
+    isOwner: false
   },
 
   /**
@@ -87,35 +88,26 @@ Page({
     
     //获取红包信息
     doFetch('guessnum.getpackrankinglist',{
-      pid: 1517638385
+      pid: 1517639064
     },(res)=>{
       let data = res.data.data;
-      let comments = [];
-      for(let i=0;i<data.rank.length;i++){
-        let commentNum = Math.floor(Math.random()*3)+1
-        console.log(commentNum)
-        switch(commentNum) {
-          case 1:
-            comments.push(configs.Evaluate.Get(data.rank[i].maxMarkId).iqwored1);
-            break;
-          case 2:
-            comments.push(configs.Evaluate.Get(data.rank[i].maxMarkId).iqwored2);
-            break;
-          case 3:
-            comments.push(configs.Evaluate.Get(data.rank[i].maxMarkId).iqwored3);
-            break;
-        }
+      //判断红包是不是自己的
+      console.log(getUid())
+      if (data.packInfo.userInfo.uid == getUid()){
+        console.log(111)
+        this.setData({
+          sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
+          isOwner: true
+        })
       }
       this.setData({
         userInfo: data.packInfo.userInfo,
         password: data.packInfo.password,
         pidMoney: data.packInfo.money,
         getInfo: data.rank,
-        comment: comments
       })
-      console.log(res.data.data.rank);
+      console.log(res.data.data);
     })
-    this.data.pid = 1517627250;
   },
 
   /**

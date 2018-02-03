@@ -1,19 +1,26 @@
 /**index.wxss**/
 .title-wrap {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
   height: 134rpx;
+  width: 534rpx;
   background: url('https://gengxin.odao.com/update/h5/wangcai/index/title-bg.png') center center no-repeat; 
   background-size: 534rpx 134rpx;
 }
 .title {
   display: inline-block;
   margin-top: 35rpx;
-  font: bold 40rpx/1 'Microsoft YaHei';
+  font: bold 36rpx/1 'Microsoft YaHei';
   color: #986143;
 }
+.lengthLimit {
+  font: bold 30rpx/40rpx 'Microsoft YaHei';
+}
 .arrow {
-  margin: 38rpx 0 0 10rpx;
+  position: absolute;
+  right: 50rpx;
+  top: 38rpx;
   width: 24rpx;
   height: 38rpx;
 }
@@ -176,15 +183,25 @@
 .intro-list {
   position: relative;
   box-sizing: border-box;
-  padding: 213rpx 42rpx 40rpx;
+  /* padding: 213rpx 42rpx 40rpx; */
   width: 700rpx;
   height: 753rpx;
-  background: url('https://gengxin.odao.com/update/h5/wangcai/index/intro-bg.png') center center no-repeat;
-  background-size: 700rpx 753rpx;
+}
+.intro-head {
+  width: 700rpx;
+  height: 380rpx;
+  vertical-align: middle;
+}
+.intro-foot {
+  width: 700rpx;
+  height: 150rpx;
+  vertical-align: middle;
 }
 .intro-content {
   font: bold 32rpx/49rpx 'Microsoft YaHei';
   color: #b21f2e;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/intro-foot.png') repeat;
+  background-size: 700rpx auto;
 }
 .exit {
   position: absolute;

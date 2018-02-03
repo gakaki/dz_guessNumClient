@@ -76,6 +76,19 @@ Page({
       })
     }
   },
+  receivePacDetail(e){
+    console.log(e, 'eeeeeeeeeeeeee')
+    let p = e.currentTarget.dataset.item;
+    if (p.status == GUESSING) {
+      wx.navigateTo({
+        url: '../../pages/guess/guess?pid=' + p.pid,
+      })
+    } else {
+      wx.navigateTo({
+        url: '../../pages/rank/rank?pid=' + p.pid,
+      })
+    }
+  },
   switchTab(e) {
     if (e.currentTarget.dataset.type == 's') {
       this.setData({

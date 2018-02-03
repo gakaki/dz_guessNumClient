@@ -117,7 +117,7 @@
   text-indent: 95rpx;
   height: 100%;
   background: url('https://gengxin.odao.com/update/h5/wangcai/record/package-icon.png') 14rpx 10rpx no-repeat;
-  background-size: 57rpx 88rpx;
+  background-size: 57rpx 85rpx;
 }
 .one-sum {
   padding-right: 10rpx;

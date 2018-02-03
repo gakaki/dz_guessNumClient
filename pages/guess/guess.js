@@ -2,7 +2,7 @@
 // pages/statistics/statistics.js
 
 let app = getApp();
-import { doFetch, getUid } from '../../utils/rest.js';
+import { doFetch, getUid, listen, unlisten } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js'
 Page({
 
@@ -18,7 +18,8 @@ Page({
     popInfo: { result: '', money: '', comment: '' },           //弹窗信息    
     timeCd: true,   //答题cd
     isOwner: false,
-    pid: 0,     //红包pid
+    pid: 10,     //红包pid
+    recordMod:null,//请求红包记录的model
     baoInfo: {},  //红包信息
     // num: '输入0-9不重复4位数',
     actItem: [false, false, false, false, false, false, false, false, false, false],
@@ -79,7 +80,8 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      pid: options.pid
+      pid: options.pid,
+      recordMod: {pid: options.pid || 10}
     })
     console.log(this.data.pid)
     if (app.globalData.userInfo) {
@@ -110,30 +112,39 @@ Page({
       })
     }
     console.log(app.globalData.userInfo)
-    doFetch('guessnum.getpackrecords', {
-      pid: this.data.pid
-    }, (res) => {
-      if (res.data.dataoriginator == getUid()) {
+
+  },
+  onShow() {
+    listen('guessnum.getpackrecords', this.data.recordMod, this.updateRecords, this);
+  },
+  onHide() {
+    unlisten('guessnum.getpackrecords', this.updateRecords, this);
+  },
+  onUnload(){
+    unlisten('guessnum.getpackrecords', this.updateRecords, this);
+  },
+  updateRecords(res) {
+    if (res.data.code != 0) {
+      console.log('错误码', res.data.code);
+      return;
+    }
+    if (res.data.dataoriginator == getUid()) {
+      this.setData({
+        baoInfo: res.data.data,
+        isOwner: true
+      })
+    } else {
+      this.setData({
+        baoInfo: res.data.data
+      })
+      if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
         this.setData({
-          baoInfo: res.data.data,
-          isOwner: true
+          timeCd: true
         })
       } else {
-        this.setData({
-          baoInfo: res.data.data
-        })
-        if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
-          this.setData({
-            timeCd: true
-          })
-        } else {
 
-        }
       }
-
-
-    });
-
+    }
   },
   showPop: function () {
     this.setData({
@@ -341,6 +352,7 @@ Page({
     }
 
   },
+  
   /**
    * 组件内触发的事件
    */

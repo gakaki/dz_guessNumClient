@@ -21,24 +21,16 @@ Component({
     show:{
       type: Boolean,
       value:false
+    },
+    singleBtn: {
+      type: Boolean,
+      value:false
     }
   },
   data: {
     // 这里是一些组件内部数据
       contentName:'text',
-      singleBtn:false,
       hasJiasuka: false
-  },
-  attached(){
-    if (this.data.content.length < 10) {
-      this.setData({
-        singleBtn:true
-      })
-    } else {
-      this.setData({
-        singleBtn:false
-      })
-    }
   },
   methods: {
     // 这里是一个自定义方法    

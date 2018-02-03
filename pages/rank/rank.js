@@ -19,7 +19,7 @@ Page({
     getInfo: [],
     shareTitle:"我领取到了s%元福利，快来看看我的战绩",
     pid:'',
-    isOwner: false
+    isOwner: false,
   },
 
   /**
@@ -126,7 +126,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+    let info = this.data.getInfo.filter(v=>{
+      return v.userInfo.uid == getUid()
+    })
+    this.data.shareTitle = "我领取到了" + info.moneyGot+"元福利，快来看看我的战绩"
   },
 
   /**

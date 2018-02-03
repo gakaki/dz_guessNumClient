@@ -26,7 +26,8 @@ Component({
   data: {
     // 这里是一些组件内部数据
       contentName:'text',
-      singleBtn:false
+      singleBtn:false,
+      hasJiasuka: false
   },
   attached(){
     if (this.data.content.length < 10) {
@@ -50,6 +51,7 @@ Component({
       this.setData({
         show: false
       })
+      this.triggerEvent("doJiasu")
       if (this.properties.isAuth) {
         wx.openSetting({
           success: (res) => {

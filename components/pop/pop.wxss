@@ -26,6 +26,11 @@
   background: #b21f2e;
 }
 .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
   border-radius: 18rpx;
   padding: 0 43rpx;
   box-sizing: border-box;
@@ -56,4 +61,18 @@
 }
 .line {
   border-left: 4rpx solid #7f010e;
+}
+.rocket-box {
+  width: 160rpx;
+height: 40rpx;
+border-radius: 20rpx;
+background-color: #c2c2c2;
+font-size: 22rpx;
+font-weight: bold;
+color: #fff;
+  transform: translate(0, 160%);
+}
+.r-icon {
+width: 29rpx;
+height: 33rpx;
 }

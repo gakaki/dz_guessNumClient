@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "correct":"/components/correct/correct"
+    "correct":"/components/correct/correct",
+    "pop":"/components/pop/pop"
   }
 }

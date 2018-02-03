@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/guess/guess",
     "pages/index/index",
     "pages/help/help",
-    "pages/guess/guess",
+    
     "pages/rank/rank",
     "pages/record/record",
     "components/pop/pop",

@@ -7,8 +7,11 @@ function doFetch(action, data, suc, err) {
   data = data || {};
   if (!sid) {
     sid = wx.getStorageSync('_sid');
+    console.log(sid, '111111111111111')
   }
   if (sid) {
+
+    console.log(sid,'2')
     data._sid = sid;
   }
   if (uid) {
@@ -44,16 +47,14 @@ function userLogin (suc, err) {
       if (app.userInfoReadyCallback) {
         app.userInfoReadyCallback(info)
       }
-      console.log(info,'info')
       doFetch('user.login',  {info:info.userInfo} , res => {
-        console.log(res.data.data,'data')
         if (res.data.code != CODE_SUC) {
           err(res.code);
         }
         else {
           res = res.data;
-          wx.setStorageSync('_sid', res.sid);
-          sid = res.sid;
+          wx.setStorageSync('_sid', res.data.sid);
+          sid = res.data.sid;
           suc(res)
 
           if (ws) {

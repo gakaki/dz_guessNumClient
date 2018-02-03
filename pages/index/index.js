@@ -2,13 +2,15 @@
 //获取应用实例
 const app = getApp()
 import { doFetch } from '../../utils/rest.js';
+import { configs } from '../../utils/configs.js'
 
 Page({
   data: {
     showAuthTip:false,
     title:'一起来拼智力领红包',
     moneySelect:['1.68','6.6','8.8'],
-    hasTicket: true,
+    hasTicket: false,
+    useTicket:false,
     activeIndex:0,
     defineNum:false,
     restMoney:1.38,
@@ -20,7 +22,39 @@ Page({
     content:"你未授权获取个人信息，无法发起红包",
     packageTip:"赏金至少1元",
     hasPackageTip:false,
-    inputValue:''
+    inputValue:'1.68',
+    titleList:[],
+    showTitleList:false
+  },
+  onLoad(){
+    if (app.globalData.cashcoupon) {
+      this.setData({
+        hasTicket: true
+      })
+    }
+    
+    let list = configs.topics.map(item=>{
+        return item[1]
+    })
+    this.setData({
+      titleList:list
+    })
+  },
+  selectTitle(e){
+    this.setData({
+      title: e.currentTarget.dataset.title,
+      showTitleList: false
+    })
+  },
+  changeTitle(){
+    this.setData({
+      showTitleList: true
+    })
+  },
+  cancle(){
+    this.setData({
+      showTitleList: false
+    })
   },
   getActive(src,dest){
     return src == dest ? 'active' : '';
@@ -80,21 +114,25 @@ Page({
         this.setData({
           activeIndex: 0,
           defineNum: false,
-          inputValue: '1.68'
+          inputValue: '1.68',
+          useTicket: false,
+          
         })
         break;
       case 1:
         this.setData({
           activeIndex: 1,
           defineNum: false,
-          inputValue: '6.6'
+          inputValue: '6.6',
+          useTicket: false,
         })
         break;
       case 2:
         this.setData({
           activeIndex: 2,
           defineNum: false,
-          inputValue: '8.8'
+          inputValue: '8.8',
+          useTicket: false,
         })
         break;
     }
@@ -103,6 +141,15 @@ Page({
     this.setData({
       defineNum:true,
       activeIndex: -1,
+      useTicket: false,
+    })
+  },
+  useSelfTicket(){
+    this.setData({
+      defineNum: false,
+      activeIndex: -1,
+      inputValue: '1',
+      useTicket: true,
     })
   },
   showGuessActive(){
@@ -164,7 +211,16 @@ Page({
         hasPackageTip: true,
       })
     }
-    // doFetch('guessnum.sendpack',{})
+    let inputV = Number(this.data.inputValue);
+    doFetch('guessnum.sendpack', {
+      money: inputV,
+      useTicket: this.data.useTicket,
+      title: this.data.title
+    }, (res)=>{
+      wx.navigateTo({
+        url: '../../pages/share/share',
+      })
+    });
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {

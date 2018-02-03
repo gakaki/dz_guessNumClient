@@ -1,26 +1,26 @@
 <!--index.wxml-->
   <view class="container"> 
-   <view class='flex title-wrap'>
+   <view class='title-wrap'>
     <text class='title' bindtap='changeTitle'>{{title}}</text>
      <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
   </view>
   <view class='money-select {{hasTicket ? "gold-ticket" : ""}}'>
     <view class='gold-select flex-space'>
       <view class="one-select {{index == activeIndex ? 'one-select-active' : ''}}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
-        <view class='money-content'>
-            <text class='content'>{{item}}</text>
-            <text class='yuan'>元</text>
+        <view class='money-content {{index == activeIndex ? "money-content-active" : ""}}'>
+          <text class='content'>{{item}}</text>
+          <text class='yuan'>元</text>
         </view>
       </view>
     </view>
     <view class='select {{hasTicket ? "select-ticket" : ""}}' bindtap='inputNum'>
       <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
       <text class='type-content'>赏金 ( 元 )</text>
-      <input class='input-money' type='number' placeholder="填写金额" placeholder-style="color:#986143" bindblur='changeValue'></input>
+      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindblur='changeValue'></input>
     </view>
-    <view class='ticket' wx:if='{{hasTicket}}'>
+    <view class='ticket' wx:if='{{hasTicket}}' bindtap='useSelfTicket'>
       <view>
-        <text class='type-select type-selected'></text>
+        <text class='type-select {{useTicket ? "type-selected" : ""}}'></text>
         <text class='type-content ticket-content'>使用<text class='num-color'>1</text>元赏金券</text>
       </view>  
       <view class='ticket-explain'>发起后无人领取，此赏金券作废</view>
@@ -48,6 +48,10 @@
       <text class='intro-content'>1.2222</text>
     </view>
   </view>
-</view>  
+</view> 
+<view class='titleList' wx:if='{{showTitleList}}'>
+  <view class='oneTitle' wx:for='{{titleList}}' wx:key='{{index}}' bindtap='selectTitle' data-title='{{item}}'>{{item}}</view>
+  <view class='cancle' bindtap='cancle'>取 消</view>
+</view> 
 <tip content="{{content}}" show='{{showAuthTip}}' isAuth="true" cancleBtn="取消" sureBtn="授权"></tip>   
 <tip content="{{packageTip}}" show='{{hasPackageTip}}'></tip>

@@ -14,6 +14,9 @@ App({
     })
   //  this.getUserInfo();
    start((res)=>{
+     if (res.data.info.item && res.data.info.item[configs.Item.CASHCOUPON]) {
+       this.globalData.cashcoupon = 1
+     }
       console.log(res)
       console.log(configs.Item.Get(configs.Item.MONEY))
    })
@@ -62,7 +65,8 @@ App({
   },
   globalData: {
     userInfo: null,
-    hasUserInfo:true
+    hasUserInfo:true,
+    cashcoupon: null
   },
 
   globalLastTapTime: 0,

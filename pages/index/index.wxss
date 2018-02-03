@@ -1,5 +1,7 @@
 /**index.wxss**/
 .title-wrap {
+  display: flex;
+  justify-content: center;
   height: 134rpx;
   background: url('https://gengxin.odao.com/update/h5/wangcai/index/title-bg.png') center center no-repeat; 
   background-size: 534rpx 134rpx;
@@ -28,7 +30,7 @@
  .one-select {
   width: 207rpx;
   height: 299rpx;
-  background: url('https://gengxin.odao.com/update/h5/wangcai/index/package.png') center center no-repeat;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/package.png') center bottom no-repeat;
   background-size: 193rpx 277rpx;
 }
 .one-select-active {
@@ -42,6 +44,9 @@
   text-align: center;
   height: 46rpx;
   color: #fefcd2;
+}
+.money-content-active {
+  margin-top: 210rpx;
 }
 .content {
   display: inline-block;
@@ -187,4 +192,27 @@
 }
 .select-wrap {
   height: 216rpx;
+}
+
+.titleList {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  background: #fff;
+}
+.oneTitle {
+  border-bottom: 2rpx solid rgba(228, 142, 72, 0.2);
+  font: bold 34rpx/100rpx 'Microsoft YaHei';
+  color: #b21f2e;
+  text-align: center;
+}
+.cancle {
+  border-top: 10rpx solid rgba(228, 142, 72, 0.2);
+  font: bold 34rpx/100rpx 'Microsoft YaHei';
+  color: #b21f2e;
+  text-align: center;
 }

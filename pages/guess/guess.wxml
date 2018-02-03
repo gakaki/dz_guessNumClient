@@ -26,9 +26,9 @@
     <view class='time'>
 
       <view class='time-wrap flex'>
-        <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text>
-        <text class='time-content' wx:else=''>下轮竞猜等待180秒</text>
-        <text class="use-jiasu" bindtap='doClear'>使用加速卡</text>
+        <!-- <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text> -->
+        <text class='time-content' wx:if='{{timeCd}}'>下轮竞猜等待180秒</text>
+        <text class="use-jiasu" wx:if='{{timeCd}}' bindtap='doClear'>使用加速卡</text>
       </view>
     </view>
 

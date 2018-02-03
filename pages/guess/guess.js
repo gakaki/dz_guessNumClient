@@ -9,8 +9,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    timeCd: false,   //答题cd
     isOwner: false,
-    pid: 1517627250,     //红包pid
+    pid: 0,     //红包pid
     baoInfo: {},  //红包信息
     // num: '输入0-9不重复4位数',
     actItem: [false, false, false, false, false, false, false, false, false, false],
@@ -67,7 +68,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
+  onLoad: function (options) {
+    console.log(options)
+    this.setData({
+      pid: options.pid
+    })
+    console.log(this.data.pid)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -107,6 +113,13 @@ Page({
         this.setData({
           baoInfo: res.data.data
         })
+        if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
+          this.setData({
+            timeCd: true
+          })
+        }else {
+
+        }
       }
       
 

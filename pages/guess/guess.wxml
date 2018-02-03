@@ -10,12 +10,12 @@
          <text class='nickname'>{{userInfo.nickName}}</text> 
         <view class='package-num'>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-          <text class='num'>{{baoInfo?baoInfo.packInfo.totalMoney:''}}元</text>
+          <text class='num'>{{baoInfo?baoInfo.packInfo.totalMoney:0}}元</text>
         </view>
       </view>
       <view class='rest'>
         <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-        <text class="rest-text">红包剩余金额{{baoInfo?baoInfo.packInfo.restMoney:''}}元</text>
+        <text class="rest-text">红包剩余金额{{baoInfo?baoInfo.packInfo.restMoney:0}}元</text>
       </view>
     </view>
     <view class='input-tip-wrap'>
@@ -28,7 +28,7 @@
       <view class='time-wrap flex'>
         <!-- <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text> -->
         <text class='time-content' wx:if='{{timeCd}}'>下轮竞猜等待180秒</text>
-        <text class="use-jiasu" wx:if='{{timeCd}}' bindtap='doClear'>使用加速卡</text>
+        <text class="use-jiasu" wx:if='{{timeCd}}' bindtap='showPop'>使用加速卡</text>
       </view>
     </view>
 
@@ -63,7 +63,7 @@
           <text class='get-user-name'>{{item.userInfo.nickName}}</text>
           <view class='get-user-info'>
             <text class='get-user-num'>{{item.userAnswerWord}}</text>
-            <text>{{item.content}}</text>
+            <text>{{item.commit}}</text>
           </view>
         </view>
         <view class='get-gold'>
@@ -100,5 +100,6 @@
       <text class="bian del" bindtap='deleteNum'></text>
     </view>
   </view>
-  <correct id="guess" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
+  <correct id="guess" result="{{popInfo.result}}" comment="{{popInfo.comment}}" money="{{popInfo.money}}" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
+  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{hasJiasuka}}" doJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡"></pop> 
 </view>

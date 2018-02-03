@@ -10,7 +10,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    timeCd: false,   //答题cd
+    singleBtn: false,
+    cancleStr: '确定',
+    hasJiasuka: true,
+    tipCon: '',
+    showTip: false,
+    popInfo: { result: '', money: '', comment: '' },           //弹窗信息    
+    timeCd: true,   //答题cd
     isOwner: false,
     pid: 0,     //红包pid
     baoInfo: {},  //红包信息
@@ -63,8 +69,9 @@ Page({
     }]
   },
 
-  onReady: function() {
+  onReady: function () {
     this.guess = this.selectComponent('#guess');
+    this.pop = this.selectComponent('#pop');
   },
   /**
    * 生命周期函数--监听页面加载
@@ -102,6 +109,7 @@ Page({
         }
       })
     }
+    console.log(app.globalData.userInfo)
     doFetch('guessnum.getpackrecords', {
       pid: this.data.pid
     }, (res) => {
@@ -110,7 +118,7 @@ Page({
           baoInfo: res.data.data,
           isOwner: true
         })
-      }else {
+      } else {
         this.setData({
           baoInfo: res.data.data
         })
@@ -118,34 +126,60 @@ Page({
           this.setData({
             timeCd: true
           })
-        }else {
+        } else {
 
         }
       }
-      
+
 
     });
 
   },
-  doClear: function() {
+  showPop: function () {
+    this.setData({
+      tipCon: '您目前没有加速卡，每日首次分享可获得加速卡',
+      showTip: true
+    })
+    if (this.data.hasJiasuka == true) {
+      this.setData({
+        tipCon: '距下轮竞猜还有180s，是否花费一张加速卡清除等待，每日首次分享小程序可获得一张加速卡',
+        cancleStr: '取消',
+        singleBtn: false,
+        hasJiasuka: true
+      })
+    }
+    
+  },
+  doClear: function () {
     doFetch('guessnum.clearcd', {
       pid: this.data.pid
-})
-  },
-  send: function (e) { 
-    console.log(typeof (this.data.num))
-    doFetch('guessnum.guesspack', { 
-      guessNum: this.data.num,
-      pid: this.data.pid
-      },(res)=>{
-      this.guess.setData({
-        isShow: true,
-      })
-      this.setData({
-        num: '',
-        actItem: [false, false, false, false, false, false, false, false, false, false]
-      })
     })
+  },
+  send: function (e) {
+    console.log(typeof (this.data.num))
+    if (this.data.num.length >= 4) {
+      doFetch('guessnum.guesspack', {
+        guessNum: this.data.num,
+        pid: this.data.pid
+      }, (res) => {
+
+        this.setData({
+          num: '',
+          actItem: [false, false, false, false, false, false, false, false, false, false],
+          popInfo: { result: res.data.data.mark, money: res.data.data.moneyGeted, comment: res.data.data.commit }
+        })
+        console.log(res.data.data)
+        if (res.data.data.mark != null) {
+          this.setData({
+            timeCd: true
+          })
+          this.guess.setData({
+            isShow: true,
+          })
+        }
+      })
+    }
+
   },
   sendStart: function () {
     this.setData({
@@ -157,7 +191,7 @@ Page({
       isSend: 'send'
     })
   },
- 
+
   tixian: function (e) {
     if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
@@ -209,23 +243,25 @@ Page({
         isHide: !this.data.isHide,
         kbHeight: 'kb-hgt'
       })
-    }else {
+    } else {
       this.setData({
         isHide: !this.data.isHide,
         kbHeight: 'kb-hide'
       })
     }
-   
+
   },
-  hideKb: function() {
-    this.setData({
-      isHide: true,
-      kbHeight: 'kb-hide'
-    })
+  hideKb: function () {
+    if(!this.data.isHide) {
+      this.setData({
+        isHide: true,
+        kbHeight: 'kb-hide'
+      })
+    }
   },
   clickNum(e) {
     let idx = e.currentTarget.dataset.num
-    if(this.data.num.indexOf(idx) != -1) return
+    if (this.data.num.indexOf(idx) != -1) return
     if (this.data.num.length < 4) {
       let newNum = this.data.num + idx
       this.setData({
@@ -233,8 +269,8 @@ Page({
       })
 
       let arr = []
-      if(idx == 0) idx = 10
-      this.data.actItem[idx-1] = true
+      if (idx == 0) idx = 10
+      this.data.actItem[idx - 1] = true
       arr = this.data.actItem
       this.setData({
         actItem: arr
@@ -256,7 +292,7 @@ Page({
 
     let arr = []
     if (idx == 0) idx = 10
-    this.data.actItem[idx-1] = false
+    this.data.actItem[idx - 1] = false
     arr = this.data.actItem
     this.setData({
       actItem: arr
@@ -291,36 +327,38 @@ Page({
   /**
    * 用户点击右上角分享
    */
-   onShareAppMessage: function (res) {
-     return {
-       title: '大家一起来拼智力领福利',
-       path: '/pages/guess/guess',
-       imageUrl: '../../assets/common/share.png',
-       success: function (res) {
-         // 转发成功
-       },
-       fail: function (res) {
-         // 转发失败
-       }
-     }
-   },
-   /**
-    * 组件内触发的事件
-    */
-    _hide: function() {
-      this.guess.setData({
-        isShow:false,
-        finish:false
-      })
-    },
-    _active: function() {
-      this.guess.setData({
-        confirmSrc: 'https://gengxin.odao.com/update/h5/wangcai/guess/confirm-active.png'
-      })
-    },
-    _cancel: function () {
-      this.guess.setData({
-        confirmSrc: 'https://gengxin.odao.com/update/h5/wangcai/guess/confirm.png'
-      })
+  onShareAppMessage: function (res) {
+    return {
+      title: '大家一起来拼智力领福利',
+      path: '/pages/guess/guess',
+      imageUrl: '../../assets/common/share.png',
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
+      }
     }
+
+  },
+  /**
+   * 组件内触发的事件
+   */
+  _hide: function () {
+    this.guess.setData({
+      isShow: false,
+      finish: false
+    })
+  },
+  _active: function () {
+    this.guess.setData({
+      confirmSrc: 'https://gengxin.odao.com/update/h5/wangcai/guess/confirm-active.png'
+    })
+  },
+  _cancel: function () {
+    this.guess.setData({
+      confirmSrc: 'https://gengxin.odao.com/update/h5/wangcai/guess/confirm.png'
+    })
+  }
 })
+

@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "旺猜—余额提现"
+  "navigationBarTitleText": "旺猜—余额提现",
+  "usingComponents": {
+    "pop": "../../components/pop/pop"
+  }
 }

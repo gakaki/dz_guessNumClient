@@ -21,3 +21,4 @@
     <text class="text" bindtap='toQuestion'>常见问题</text>
   </view>
 </view>
+<pop content="提现成功，1-5个工作日到账。" show="{{showPop}}" singleBtn="{{true}}"></pop>

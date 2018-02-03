@@ -114,11 +114,11 @@ Page({
       }
       this.setData({
         userInfo: data.packInfo.userInfo,
-        password: data.packInfo.password,
+        password: data.answer,
         pidMoney: data.packInfo.money,
         getInfo: data.rank,
       })
-      console.log(res.data.data);
+      console.log(res.data);
     })
   },
 

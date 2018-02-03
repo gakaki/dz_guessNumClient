@@ -21,23 +21,19 @@ Component({
     show:{
       type: Boolean,
       value:false
+    },
+    singleBtn: {
+      type: Boolean,
+      value:false
+    },
+    hasJiasuka: {
+      type: Boolean,
+      value: false
     }
   },
   data: {
     // 这里是一些组件内部数据
-      contentName:'text',
-      singleBtn:false
-  },
-  attached(){
-    if (this.data.content.length < 10) {
-      this.setData({
-        singleBtn:true
-      })
-    } else {
-      this.setData({
-        singleBtn:false
-      })
-    }
+      contentName:'text'
   },
   methods: {
     // 这里是一个自定义方法    
@@ -50,6 +46,7 @@ Component({
       this.setData({
         show: false
       })
+      this.triggerEvent("doJiasu")
       if (this.properties.isAuth) {
         wx.openSetting({
           success: (res) => {

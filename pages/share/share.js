@@ -84,7 +84,7 @@ Page({
     }
   },
   totry(){
-    let url = '../guess/guess?pid' + this.data.pid;
+    let url = '../guess/guess?pid=' + this.data.pid;
     wx.navigateTo({url})
   },
   showFriendActive() {

@@ -41,18 +41,16 @@
   padding: 27rpx 10rpx 0 0;
   font: bold 30rpx/1 'Microsoft YaHei';
 }
-.arrow {
-  width: 18rpx;
-  height: 28rpx;
-}
 .qr {
   display: inline-block;
   margin: 47rpx 0 51rpx;
+  border-radius: 20rpx;
   width: 216rpx;
   height: 216rpx;
 }
 .to-friend {
   position: relative;
+  top: 80rpx;
   width: 530rpx;
   height: 152rpx;
 }

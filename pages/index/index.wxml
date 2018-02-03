@@ -51,7 +51,7 @@
           <text class='list'>1</text>
           <text class='list-content'>.发起竞猜至好友、微信群、朋友圈中，好友进入旺猜进行竞猜。猜中口令领取奖励。</text>
         </view>
-        <view class='content-wrap'>
+         <view class='content-wrap'>
           <text class='list'>2</text>
           <text class='list-content'>.系统生成0-9不重复4位数的口令，系统根据每次竞猜的数字给出几A几B的判定。</text>
         </view>
@@ -66,7 +66,7 @@
         <view class='content-wrap'>
           <text class='list'>5</text>
           <text>.未猜中的好友可获得少量奖励，最后猜中4A的好友可领取到剩余全部奖励。</text>
-        </view>   
+        </view>    
       </view>
       <image class='intro-foot' src='https://gengxin.odao.com/update/h5/wangcai/index/intro-foot.png'></image>
     </view>

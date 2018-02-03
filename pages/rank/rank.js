@@ -87,7 +87,7 @@ Page({
     
     //获取红包信息
     doFetch('guessnum.getpackrankinglist',{
-      pid:this.data.pid
+      pid: 1517638385
     },(res)=>{
       let data = res.data.data;
       let comments = [];

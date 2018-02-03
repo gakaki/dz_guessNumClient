@@ -6,6 +6,7 @@
   </view>
   <view class='money-select {{hasTicket ? "gold-ticket" : ""}}'>
     <view class='gold-select flex-space'>
+      <view class='mask' wx:if='{{inputMask}}'></view>
       <view class="one-select {{index == activeIndex ? 'one-select-active' : ''}}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
         <view class='money-content'>
           <text class='content {{index == activeIndex ? "content-active" : ""}}'>{{item}}</text>
@@ -17,6 +18,7 @@
       <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
       <text class='type-content'>赏金 ( 元 )</text>
       <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindinput='inputNumValue' bindblur='changeValue'></input>
+      <text class='oneSimpleTip' wx:if="{{simpleTip.length}}">{{simpleTip}}</text>
     </view>
     <view class='ticket' wx:if='{{hasTicket}}' bindtap='useSelfTicket'>
       <view>
@@ -28,7 +30,7 @@
     <view class='noticket' wx:else=''></view>
     <view class='flex-column'>
       <view class='rest-explain'></view>
-      <view class='play {{pkBtnActive? "play-active" : ""}}' bindtap='toGuess' bindtouchstart='showGuessActive' bindtouchend='hideGuessActive'></view>
+      <view class='play {{pkBtnActive? "play-active" : ""}}' bindtap='readyGuess' bindtouchstart='showGuessActive' bindtouchend='hideGuessActive'></view>
       <view class='how-play'>
         <text class='play-intro' bindtap='introPlay'>玩法介绍</text>
         <text class='line'>|</text>

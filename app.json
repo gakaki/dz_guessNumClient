@@ -4,7 +4,7 @@
     "pages/rank/rank",
     "pages/help/help",
     "pages/guess/guess",
-
+    
     "pages/record/record",
     "components/pop/pop",
     "components/keyboard/keyboard",

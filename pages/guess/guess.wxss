@@ -106,7 +106,7 @@
   height: 96rpx;
   border: 4rpx solid #9f101e;
   border-radius: 50rpx;
-  z-index: 99;
+  z-index: 9;
   background: #fff;
   /* box-shadow: inset 0 4rpx 4rpx #e2b388; */
 }
@@ -347,9 +347,9 @@
 
 .kb {
   width: 100%;
-  height: 844rpx;
+  height: 0rpx;
   position: fixed;
-  bottom: -884rpx;
+  bottom: 0rpx;
   left: 0;
   z-index: 3;
   background: url('https://gengxin.odao.com/update/h5/wangcai/guess/keyboard.png') no-repeat;
@@ -366,35 +366,35 @@
 
 @keyframes toBot
 {
-	from {bottom: -884rpx;}
-	to {bottom:0;}
+	from {height: 0rpx;}
+	to {height:844rpx;}
 }
 
 @-webkit-keyframes toBot 
 {
-from {bottom: -884rpx;}
-	to {bottom:0;}
+from {height: 0rpx;}
+	to {height:844rpx;}
 }
 @keyframes toHide
 {
-	from {bottom: 0;}
-	to {bottom:-884rpx;}
+	from {height: 844rpx;}
+	to {height:0;}
 }
 
 @-webkit-keyframes toHide 
 {
-from {bottom: 0;}
-	to {bottom:-884rpx;}
+from {height: 844rpx;}
+	to {height:0;}
 }
 .kb-hgt {
   animation:toBot .5s linear;
 	-webkit-animation:toBot .5s linear;
-  bottom: 0;
+  height: 844rpx;
 }
 .kb-hide {
   animation:toHide .5s linear;
 	-webkit-animation:toHide .5s linear;
-  bottom: -884rpx;
+  height: 0;
 }
 .kb-row {
   width: 100%;

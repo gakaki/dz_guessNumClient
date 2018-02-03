@@ -13,6 +13,7 @@ Page({
     withdraw: '',
     withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png',
     showTip:false,
+    showPop:false
   },
 
   /**
@@ -57,7 +58,8 @@ Page({
       money: this.data.withdraw
     },(res)=>{
       this.setData({
-        withdraw:''
+        withdraw:'',
+        showPop:true
       })
       console.log(res)
     })

@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/guess/guess",
+    "pages/tixian/tixian",
+    
     "pages/index/index",
 
     "pages/share/share",
@@ -10,7 +12,7 @@
     "pages/help/help",
     "components/pop/pop",
     "components/keyboard/keyboard",
-    "pages/tixian/tixian",
+    
     "pages/test/test",
     "pages/QRtest/index"
   ],

@@ -1,10 +1,12 @@
 /* component/pop/pop.wxss */
- .flex-column  {
+
+.flex-column {
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-} 
+}
+
 .wrap {
   position: fixed;
   left: 0;
@@ -14,8 +16,9 @@
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.7)
+  background: rgba(0, 0, 0, 0.7);
 }
+
 .main-pop {
   box-sizing: border-box;
   border-bottom: 3rpx solid #7f010e;
@@ -25,54 +28,66 @@
   text-align: center;
   background: #b21f2e;
 }
+
 .content {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   border-radius: 18rpx;
   padding: 0 43rpx;
   box-sizing: border-box;
   width: 100%;
   height: 288rpx;
   color: #b21f2e;
-  font: bold 52rpx 'Microsoft YaHei';
   background: #fff;
 }
+
 .text {
   font: bold 32rpx/48rpx 'Microsoft YaHei';
 }
+
 .long-text {
   font: bold 52rpx 'Microsoft YaHei';
 }
+
 .btn-wrap {
   display: flex;
   box-sizing: border-box;
   padding: 12rpx 0;
   height: 120rpx;
-  
+  font: bold 52rpx 'Microsoft YaHei';
 }
+
 .btn {
   flex: 1;
   font: bold 36rpx/104rpx 'Microsoft YaHei';
   color: #fff;
   text-align: center;
 }
+
 .line {
   border-left: 4rpx solid #7f010e;
 }
+
 .rocket-box {
   width: 160rpx;
-height: 40rpx;
-border-radius: 20rpx;
-background-color: #c2c2c2;
-font-size: 22rpx;
-font-weight: bold;
-color: #fff;
-  transform: translate(0, 160%);
+  height: 40rpx;
+  border-radius: 20rpx;
+  background-color: #c2c2c2;
+  font-size: 22rpx;
+  font-weight: bold;
+  color: #fff;
+  transform: translate(0, 100%);
 }
+
 .r-icon {
-width: 29rpx;
-height: 33rpx;
+  width: 29rpx;
+  height: 33rpx;
+}
+
+.r-str {
+  /* display: inline-block;
+  height: 30rpx;
+  line-height: 30rpx; */
 }

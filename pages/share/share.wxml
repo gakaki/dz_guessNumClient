@@ -6,7 +6,6 @@
   <image class='wc' src='https://gengxin.odao.com/update/h5/wangcai/share/wc.png'></image>
   <view class='explain'>
     <text class='expalin-title'>{{title}}</text>
-    <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/share/arrow.png'></image>
   </view>
   <image class='qr' src='https://gengxin.odao.com/update/h5/wangcai/share/QR.jpg'></image>
   <view class='to-friend'>

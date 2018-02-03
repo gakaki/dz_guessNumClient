@@ -36,6 +36,7 @@
   border-radius: 50%;
 }
 .nickname {
+  height: 40rpx;
   font: 40rpx/1 "Microsoft YaHei";
   color: #fff;
 }

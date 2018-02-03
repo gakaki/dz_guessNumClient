@@ -44,4 +44,11 @@
   justify-content: center;
   flex-direction: column;
 }
+.oneSimpleTip {
+  font: bold 32rpx/66rpx 'Microsoft YaHei';
+  width: 490rpx;
+  height: 66rpx;
+  text-align: center;
+  background: #8b6efd;
+}
 

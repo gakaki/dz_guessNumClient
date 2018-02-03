@@ -14,10 +14,12 @@ App({
     })
   //  this.getUserInfo();
    start((res)=>{
-     let v = res.info.items[configs.Item.CASHCOUPON];
-     if (v) {
-       this.globalData.cashcoupon = v
-     }
+     console.log(res.info.items)
+    //  let v = res.info.items[configs.Item.CASHCOUPON];
+    //  if (v) {
+    //    this.globalData.cashcoupon = v
+    //    console.log(v,'launch')
+    //  }
   
     //   console.log(res)
     //   console.log(configs.Item.Get(configs.Item.MONEY))
@@ -67,8 +69,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    hasUserInfo:true,
-    cashcoupon: null
+    hasUserInfo:true
   },
 
   globalLastTapTime: 0,

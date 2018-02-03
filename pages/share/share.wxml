@@ -5,7 +5,7 @@
   </view>
   <image class='wc' src='https://gengxin.odao.com/update/h5/wangcai/share/wc.png'></image>
   <view class='explain'>
-    <text class='expalin-title'>一起来拼智力领红包</text>
+    <text class='expalin-title'>{{title}}</text>
     <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/share/arrow.png'></image>
   </view>
   <image class='qr' src='https://gengxin.odao.com/update/h5/wangcai/share/QR.jpg'></image>

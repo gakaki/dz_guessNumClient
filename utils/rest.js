@@ -7,11 +7,8 @@ function doFetch(action, data, suc, err) {
   data = data || {};
   if (!sid) {
     sid = wx.getStorageSync('_sid');
-    console.log(sid, '111111111111111')
   }
   if (sid) {
-
-    console.log(sid,'2')
     data._sid = sid;
   }
   if (uid) {
@@ -37,12 +34,14 @@ function sdkAuth(code, suc) {
     userLogin(suc, showErr);
   })
 }
-
+function getUid() {
+  return uid
+}
 function userLogin (suc, err) {
   wx.getUserInfo({
     success: info => {
       app = getApp();
-      app.globalData.userInfo = info;
+      app.globalData.userInfo = info.userInfo;
       app.globalData.hasUserInfo = true;
       if (app.userInfoReadyCallback) {
         app.userInfoReadyCallback(info)
@@ -141,5 +140,6 @@ const start = suc => {
 module.exports = {
   start,
   showErr,
-  doFetch
+  doFetch,
+  getUid
 }

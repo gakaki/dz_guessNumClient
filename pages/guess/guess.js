@@ -102,7 +102,6 @@ Page({
         }
       })
     }
-    console.log(getUid())
     doFetch('guessnum.getpackrecords', {
       pid: this.data.pid
     }, (res) => {

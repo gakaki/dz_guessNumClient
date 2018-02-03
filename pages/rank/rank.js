@@ -54,15 +54,29 @@ Page({
   },
 
   sendAct: function() {
-    this.setData({
-      sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/me-send-active.png'
-    })
+    if(this.data.isOwner){
+      this.setData({
+        sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another-active.png'
+      })
+    }
+    else{
+      this.setData({
+        sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/me-send-active.png'
+      })
+    }
   },
 
   sendCel: function () {
-    this.setData({
-      sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/me-send.png'
-    })
+    if (this.data.isOwner) {
+      this.setData({
+        sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png'
+      })
+    }
+    else {
+      this.setData({
+        sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/me-send.png'
+      })
+    }
   },  
 
   showAct: function() {
@@ -88,13 +102,11 @@ Page({
     
     //获取红包信息
     doFetch('guessnum.getpackrankinglist',{
-      pid: 1517639064
+      pid: this.data.pid
     },(res)=>{
       let data = res.data.data;
       //判断红包是不是自己的
-      console.log(getUid())
       if (data.packInfo.userInfo.uid == getUid()){
-        console.log(111)
         this.setData({
           sendSrc: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
           isOwner: true

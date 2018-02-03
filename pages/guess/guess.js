@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 // pages/statistics/statistics.js
 
 let app = getApp();
@@ -325,4 +324,3 @@ Page({
       })
     }
 })
->>>>>>> dc7fafb1ad735a9e91ada9f939f0010389199e96

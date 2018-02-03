@@ -1,5 +1,6 @@
 // pages/tixian/tixian.js
 let app = getApp();
+import { doFetch } from '../../utils/rest.js';
 
 Page({
 
@@ -51,6 +52,12 @@ Page({
    */
   confirmWithdraw: function(e) {
     if (app.preventMoreTap(e)) { return; }
+    doFetch('sdk.withdraw',{
+      channel:'wxminiapp',
+      money: this.data.withdraw
+    },(res)=>{
+      console.log(res)
+    })
   },
 
   /**

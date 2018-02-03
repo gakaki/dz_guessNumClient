@@ -12,11 +12,11 @@ Page({
   data: {
     singleBtn: false,
     cancleStr: '确定',
-    hasJiasuka: true,
+    hasJiasuka: 0,
     tipCon: '',
     showTip: false,
     popInfo: { result: '', money: '', comment: '' },           //弹窗信息    
-    timeCd: true,   //答题cd
+    timeCd: 0,   //答题cd
     isOwner: false,
     pid: 0,     //红包pid
     baoInfo: {},  //红包信息
@@ -116,21 +116,24 @@ Page({
       if (res.data.dataoriginator == getUid()) {
         this.setData({
           baoInfo: res.data.data,
+          hasJiasuka: res.data.data.originator.items[3],
           isOwner: true
         })
+        console.log(this.data.hasJiasuka)
       } else {
         this.setData({
-          baoInfo: res.data.data
+          baoInfo: res.data.data,
+          hasJiasuka: res.data.data.originator.items[3]
         })
         if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
           this.setData({
-            timeCd: true
+            timeCd: 30
           })
         } else {
 
         }
       }
-
+      
 
     });
 
@@ -138,14 +141,14 @@ Page({
   showPop: function () {
     this.setData({
       tipCon: '您目前没有加速卡，每日首次分享可获得加速卡',
-      showTip: true
+      showTip: true,
+      singleBtn: true
     })
-    if (this.data.hasJiasuka == true) {
+    if (this.data.hasJiasuka > 0) {
       this.setData({
         tipCon: '距下轮竞猜还有180s，是否花费一张加速卡清除等待，每日首次分享小程序可获得一张加速卡',
         cancleStr: '取消',
-        singleBtn: false,
-        hasJiasuka: true
+        singleBtn: false
       })
     }
     
@@ -172,7 +175,7 @@ Page({
         console.log(res.data.data)
         if (res.data.data.mark != null) {
           this.setData({
-            timeCd: true
+            timeCd: 30
           })
           this.guess.setData({
             isShow: true,

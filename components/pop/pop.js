@@ -27,8 +27,8 @@ Component({
       value:false
     },
     hasJiasuka: {
-      type: Boolean,
-      value: false
+      type: Number,
+      value: 0
     }
   },
   data: {

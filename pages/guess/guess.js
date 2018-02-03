@@ -1,3 +1,4 @@
+
 // pages/statistics/statistics.js
 
 let app = getApp();
@@ -337,6 +338,7 @@ Page({
         // 转发失败
       }
     }
+
   },
   /**
    * 组件内触发的事件
@@ -358,3 +360,4 @@ Page({
     })
   }
 })
+

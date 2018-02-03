@@ -10,7 +10,7 @@
       <text>提现金额上限为50000</text>
     </view>
     <view class="withdraw-money">
-      <input id='num' class="num" type='number' maxlength="6" focus="{{true}}" value='{{withdraw}}' bindinput='getMoney'></input>
+      <input id='num' class="num" type='digit' maxlength="8" focus="{{true}}" value='{{withdraw}}' bindinput='getMoney'></input>
     </view>
     <image class="withdraw-all" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/all-withdraw.png' bindtap='allRemain'></image>
     <image class="confirm" src='{{withdrawSrc}}' bindtouchstart='active' bindtouchend='cancel' bindtap='confirmWithdraw'></image>

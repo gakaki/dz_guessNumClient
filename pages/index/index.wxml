@@ -1,22 +1,22 @@
 <!--index.wxml-->
   <view class="container"> 
    <view class='title-wrap'>
-    <text class='title' bindtap='changeTitle'>{{title}}</text>
+    <text class="title {{title.length>11?'lengthLimit':''}}" bindtap='changeTitle'>{{title}}</text>
      <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
   </view>
   <view class='money-select {{hasTicket ? "gold-ticket" : ""}}'>
     <view class='gold-select flex-space'>
       <view class="one-select {{index == activeIndex ? 'one-select-active' : ''}}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
-        <view class='money-content {{index == activeIndex ? "money-content-active" : ""}}'>
-          <text class='content'>{{item}}</text>
-          <text class='yuan'>元</text>
+        <view class='money-content'>
+          <text class='content {{index == activeIndex ? "content-active" : ""}}'>{{item}}</text>
+          <text class='yuan {{index == activeIndex ? "yuan-active" : ""}}'>元</text>
         </view>
       </view>
     </view>
     <view class='select {{hasTicket ? "select-ticket" : ""}}' bindtap='inputNum'>
       <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
       <text class='type-content'>赏金 ( 元 )</text>
-      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindblur='changeValue'></input>
+      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindinput='inputNumValue' bindblur='changeValue'></input>
     </view>
     <view class='ticket' wx:if='{{hasTicket}}' bindtap='useSelfTicket'>
       <view>
@@ -45,7 +45,30 @@
   <view class='intro-how-play flex-column' wx:if='{{toIntro}}'>
     <view class='intro-list'>
       <image class='exit' bindtap='hideIntro' src='https://gengxin.odao.com/update/h5/wangcai/index/exit.png'></image>
-      <text class='intro-content'>1.2222</text>
+      <image class='intro-head' src='https://gengxin.odao.com/update/h5/wangcai/index/intro-head.png'></image>
+      <view class='intro-content'>
+        <view class='content-wrap'>
+          <text class='list'>1</text>
+          <text class='list-content'>.发起竞猜至好友、微信群、朋友圈中，好友进入旺猜进行竞猜。猜中口令领取奖励。</text>
+        </view>
+        <view class='content-wrap'>
+          <text class='list'>2</text>
+          <text class='list-content'>.系统生成0-9不重复4位数的口令，系统根据每次竞猜的数字给出几A几B的判定。</text>
+        </view>
+        <view class='content-wrap'>
+          <text class='list'>3</text>
+          <text class='list-content'>.A前面的数字代表数字对位置对的个数，B前面的数字代表数字对位置不对的个数。</text>
+        </view>
+        <view class='content-wrap'>
+          <text class='list'>4</text>
+          <text class='list-content'>.例如：口令为5234，猜题者输入5341，5的数字对位置对，3和4数字对、位置不对，1位置和数字都不对，所以判定为1A2B。</text>
+        </view>
+        <view class='content-wrap'>
+          <text class='list'>5</text>
+          <text>.未猜中的好友可获得少量奖励，最后猜中4A的好友可领取到剩余全部奖励。</text>
+        </view>   
+      </view>
+      <image class='intro-foot' src='https://gengxin.odao.com/update/h5/wangcai/index/intro-foot.png'></image>
     </view>
   </view>
 </view> 

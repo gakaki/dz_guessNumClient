@@ -1,5 +1,5 @@
 <!--pages/share/share.wxml-->
-<view class='wrap flex-column'>
+<view class='wrap .flex-self-column'>
   <view class='avatar-wrap'>
     <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
   </view>
@@ -13,7 +13,8 @@
     <image class='to-friend-img' src='{{friendUrl}}'></image>
     <button class='to-friend-btn' bindtouchstart='showFriendActive' bindtouchend='hideFriendActive'  open-type='share'></button>
   </view>
-  <image class='to-friendC' bindtap='shareFriendC' bindtouchstart='shareFriendCActive'  bindtouchend='hideFriendCActive' src='{{friendCUrl}}'></image>
+   <view class='to-friendC'></view> 
+   <!-- <image class='to-friendC' bindtap='shareFriendC' bindtouchstart='shareFriendCActive'  bindtouchend='hideFriendCActive' src='{{friendCUrl}}'></image>  -->
   <text class='try' bindtap='totry'>我也试一试</text>
 </view>
  <canvas class='{{canvasIndex?"canvas canvas-index" : "canvas"}}' canvas-id="myCanvas"/> 

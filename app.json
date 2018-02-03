@@ -2,13 +2,14 @@
   "pages": [
     "pages/guess/guess",
     "pages/index/index",
-    "pages/help/help",
-    
+
+    "pages/share/share",
+
     "pages/rank/rank",
     "pages/record/record",
+    "pages/help/help",
     "components/pop/pop",
     "components/keyboard/keyboard",
-    "pages/share/share",
     "pages/tixian/tixian",
     "pages/test/test",
     "pages/QRtest/index"

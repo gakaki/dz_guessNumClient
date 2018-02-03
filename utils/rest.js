@@ -88,7 +88,7 @@ class LsnNode {
 }
 
 const _listeners = new Map();
-const _listenHdl;
+let _listenHdl;
 /**
  * 使用定时请求的方式拉取数据
  * @param action string类型，路由动作，如guessnum.getlist

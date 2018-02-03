@@ -43,7 +43,7 @@
           <image class='user-avatar' src='{{item.userInfo.avatarUrl}}'></image>
           <text class='user-nickname'>{{item.userInfo.nickName}}</text>
         </view>
-        <text class='one-sum'>{{item.moneyGot}}</text>
+        <text class='one-sum'>{{item.guessInfo.userGetMoney}}</text>
       </view> 
     </scroll-view>
   </view>

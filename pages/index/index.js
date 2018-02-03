@@ -2,7 +2,8 @@
 //获取应用实例
 const app = getApp()
 import { doFetch } from '../../utils/rest.js';
-import { configs } from '../../utils/configs.js'
+import { configs } from '../../utils/configs.js';
+const LimitPackageSum = 50000;
 
 Page({
   data: {
@@ -11,9 +12,8 @@ Page({
     moneySelect:['1.68','6.6','8.8'],
     hasTicket: false,
     useTicket:false,
-    activeIndex:0,
+    activeIndex:-1,
     defineNum:false,
-    restMoney:1.38,
     toIntro:false,
     pkBtnActive:false,
     recordUrl:'https://gengxin.odao.com/update/h5/wangcai/index/record.png',
@@ -22,9 +22,11 @@ Page({
     content:"你未授权获取个人信息，无法发起红包",
     packageTip:"赏金至少1元",
     hasPackageTip:false,
-    inputValue:'1.68',
+    inputValue:'0',
     titleList:[],
-    showTitleList:false
+    showTitleList:false,
+    simpleTip:'',
+    inputMask:false
   },
   onLoad(){
     doFetch('user.getiteminfo', {
@@ -36,7 +38,7 @@ Page({
         })
       }
     });
-   
+
     let list = configs.topics.map(item=>{
         return item[1]
     })
@@ -142,6 +144,19 @@ Page({
     }
   },
   inputNumValue(e){
+    this.setData({
+      inputMask: true
+    })  
+    if (e.detail.value > LimitPackageSum) {
+      this.setData({
+        simpleTip:'提现金额上限50000元'
+      })
+    } else {
+      this.setData({
+        simpleTip: ''
+      })
+    }
+    
     let str;
     let v = e.detail.value.split(".")
     if(v[1] != undefined) {
@@ -151,6 +166,7 @@ Page({
       str = v[0]
     }
     return str
+    
   },
   inputNum(){
     this.setData({
@@ -209,10 +225,12 @@ Page({
   },
   changeValue(e) {
     this.setData({
-      inputValue: e.detail.value
+      inputValue: e.detail.value,
+      inputMask: false
     })
   },
-  toGuess(e){
+  readyGuess(e){
+    let v = this.data.inputValue;
     if (app.preventMoreTap(e)) { return; }
     if (!app.globalData.hasUserInfo) {
       this.setData({
@@ -221,16 +239,46 @@ Page({
       })
       return ;
     }
-    if(this.data.inputValue < 1) {
+    if(v < 1) {
       this.setData({
         packageTip: "赏金至少1元",
         hasPackageTip: true,
       })
       return;
     }
-    let inputV = Number(this.data.inputValue);
+    if (this.data.useTicket) {
+      this.startGuess()
+    } else {
+      this.toPay();
+    }
+    
+  },
+  toPay(){
+    let v = Number(this.data.inputValue);
+    doFetch('user.minapppay',{
+      payCount:v
+    },(res)=>{
+      let r = res.data.data.payload;
+      console.log(r)
+      wx.requestPayment({
+        timeStamp: r.timeStamp,
+        nonceStr: r.nonceStr,
+        package: r.package,
+        signType: r.signType,
+        paySign: r.paySign,
+        success(){
+          this.startGuess()
+        },
+        fail(res){
+          console.log(res)
+        }
+      })
+    })
+  },
+  startGuess(){
+    let v = Number(this.data.inputValue);
     doFetch('guessnum.sendpack', {
-      money: inputV,
+      money: v,
       useTicket: this.data.useTicket,
       title: this.data.title
     }, (res)=>{

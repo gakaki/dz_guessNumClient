@@ -78,7 +78,8 @@ Page({
   },
   receivePacDetail(e){
     console.log(e, 'eeeeeeeeeeeeee')
-    let p = e.currentTarget.dataset.item;
+    let p = e.currentTarget.dataset.item.guessInfo.packInfo;
+    console.log(p.pid)
     if (p.status == GUESSING) {
       wx.navigateTo({
         url: '../../pages/guess/guess?pid=' + p.pid,

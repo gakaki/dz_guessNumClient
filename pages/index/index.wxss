@@ -40,23 +40,26 @@
 } 
 
 .money-content {
-  margin-top: 200rpx;
+  margin-top: 220rpx;
   text-align: center;
   height: 46rpx;
   color: #fefcd2;
-}
-.money-content-active {
-  margin-top: 210rpx;
 }
 .content {
   display: inline-block;
   font: bold 46rpx/1 'Microsoft YaHei';
   vertical-align: top;
 }
+.content-active {
+  font-size: 52rpx;
+}
 .yuan {
   display: inline-block;
    font: bold 40rpx/1 'Microsoft YaHei';
    vertical-align: top;
+}
+.yuan-active {
+  font-size: 46rpx;
 }
 .select {
   margin-top: 80rpx;

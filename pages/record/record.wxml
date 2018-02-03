@@ -11,11 +11,13 @@
          <view class='money-wrap'>
             <view class='num-left flex-column'>
               <image class='money-img' src='https://gengxin.odao.com/update/h5/wangcai/record/money.png'></image>
-              <text class='money-content num'>1454元</text>
+              <text class='money-content num' wx:if='{{send}}'>{{sendPackages.sum}}元</text>
+              <text class='money-content num' wx:if='{{receive}}'>{{receivePackages.sum}}元</text>
             </view>
             <view class='num-right flex-column'> 
               <image class='money-img' src='https://gengxin.odao.com/update/h5/wangcai/record/num.png'></image>
-              <text class='money-content money-content-right num'>1000</text>
+              <text class='money-content money-content-right num' wx:if='{{send}}'>{{sendPackages.num}}</text>
+              <text class='money-content money-content-right num' wx:if='{{receive}}'>{{receivePackages.num}}</text>
             </view>
          </view>
       </view> 
@@ -32,11 +34,11 @@
       </view> 
     </view>
     <scroll-view  class='record-list' scroll-y='true'>
-      <view class='one-list' wx:if='{{send}}' wx:for='{{list}}' wx:key='{{index}}'>
+      <view class='one-list' wx:if='{{send}}' wx:for='{{sendPackages.record}}' wx:key='{{index}}'>
         <text class='one-title'>{{item.title}}</text>
-        <text class='one-sum'>{{item.sum}}</text>
+        <text class='one-sum'>{{item.money}}</text>
       </view> 
-      <view class='one-list' wx:if='{{receive}}' wx:for='{{list}}' wx:key='{{index}}'>
+      <view class='one-list' wx:if='{{receive}}' wx:for='{{receivePackages.record}}' wx:key='{{index}}'>
         <view>
           <image class='user-avatar' src='{{userInfo.avatarUrl}}'></image>
           <text class='user-nickname'>{{userInfo.nickName}}</text>

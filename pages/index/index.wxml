@@ -7,16 +7,16 @@
   <view class='money-select {{hasTicket ? "gold-ticket" : ""}}'>
     <view class='gold-select flex-space'>
       <view class="one-select {{index == activeIndex ? 'one-select-active' : ''}}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
-        <view class='money-content {{index == activeIndex ? "money-content-active" : ""}}'>
-          <text class='content'>{{item}}</text>
-          <text class='yuan'>元</text>
+        <view class='money-content'>
+          <text class='content {{index == activeIndex ? "content-active" : ""}}'>{{item}}</text>
+          <text class='yuan {{index == activeIndex ? "yuan-active" : ""}}'>元</text>
         </view>
       </view>
     </view>
     <view class='select {{hasTicket ? "select-ticket" : ""}}' bindtap='inputNum'>
       <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
       <text class='type-content'>赏金 ( 元 )</text>
-      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindblur='changeValue'></input>
+      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindinput='inputNumValue' bindblur='changeValue'></input>
     </view>
     <view class='ticket' wx:if='{{hasTicket}}' bindtap='useSelfTicket'>
       <view>

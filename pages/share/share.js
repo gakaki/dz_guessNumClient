@@ -70,7 +70,7 @@ Page({
   onShareAppMessage(res) {
     return {
       title: '红包',
-      path: '/page/user?pid=1',
+      path: '/page/guess/guess?pid=' + this.data.pid,
       success: function (res) {
         // 转发成功
         wx.showShareMenu({

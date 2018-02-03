@@ -1,3 +1,4 @@
+
 // pages/statistics/statistics.js
 
 let app = getApp();

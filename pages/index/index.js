@@ -141,6 +141,17 @@ Page({
         break;
     }
   },
+  inputNumValue(e){
+    let str;
+    let v = e.detail.value.split(".")
+    if(v[1] != undefined) {
+      v[1] = v[1].substring(0,2)
+      str = v[0] + '.' + v[1]
+    } else {
+      str = v[0]
+    }
+    return str
+  },
   inputNum(){
     this.setData({
       defineNum:true,

@@ -15,7 +15,9 @@ Page({
     withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png',
     showTip:false,
     showPop:false,
-    simpleTip:''
+    simpleTip:'',
+    packageTip: "",
+    hasPackageTip: false,
   },
 
   /**
@@ -25,15 +27,15 @@ Page({
 
     let value = e.detail.value;
     this.setData({
-      withdraw: v
+      withdraw: value
     })
     if (value > LimitPackageSum) {
       this.setData({
         simpleTip: '提现金额上限为50000'
       })
-    } else if (value.length && value < 1) {
+    } else if (value.length && value < 2) {
       this.setData({
-        simpleTip: '提现金额最少1元'
+        simpleTip: '提现金额最少2元'
       })
     } else {
       this.setData({
@@ -69,7 +71,22 @@ Page({
    * 确认提现
    */
   confirmWithdraw: function(e) {
+    console.log(this.data)
     if (app.preventMoreTap(e)) { return; }
+    if (this.data.withdraw > this.data.remainder) {
+      this.setData({
+        packageTip: "提现金额超出余额",
+        hasPackageTip: true,
+      })
+      return
+    } else if (this.data.withdraw < 2 ) {
+      this.setData({
+        packageTip: "提现金额至少为2元",
+        hasPackageTip: true,
+      })
+      return
+    }
+
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{

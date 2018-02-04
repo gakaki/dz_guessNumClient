@@ -22,3 +22,4 @@
   </view>
 </view>
 <pop content="提现成功，1-5个工作日到账。" show="{{showPop}}" singleBtn="{{true}}"></pop>
+<pop content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></pop>

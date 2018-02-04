@@ -1,6 +1,7 @@
 // pages/share/share.js
 
 let app = getApp();
+import { canvas } from '../../utils/util.js';
 
 Page({
 
@@ -16,7 +17,8 @@ Page({
     friendCUrl:'https://gengxin.odao.com/update/h5/wangcai/share/friendC-share.png',
     shareImg:"",
     title:"",
-    pid:""
+    pid:"",
+    shareImg:''
   },
 
   /**
@@ -71,6 +73,7 @@ Page({
     return {
       title: '红包',
       path: '/page/guess/guess?pid=' + this.data.pid,
+      imageUrl: this.data.shareImg,
       success: function (res) {
         // 转发成功
         wx.showShareMenu({
@@ -106,6 +109,12 @@ Page({
   hideFriendCActive() {
     this.setData({
       friendUrl: 'https://gengxin.odao.com/update/h5/wangcai/share/transmit.png'
+    })
+  },
+  shareFriend(){
+    let shareUrl = canvas();
+    this.setData({
+      shareImg: shareUrl
     })
   },
   shareFriendC() {

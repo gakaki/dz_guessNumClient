@@ -246,11 +246,11 @@ Page({
       })
       return;
     }
-    if (this.data.useTicket) {
+    // if (this.data.useTicket) {
       this.startGuess()
-    } else {
-      this.toPay();
-    }
+    // } else {
+    //   this.toPay();
+    // }
     
   },
   toPay(){
@@ -258,6 +258,7 @@ Page({
     doFetch('user.minapppay',{
       payCount:v
     },(res)=>{
+      console.log(res)
       let r = res.data.data.payload;
       console.log(r)
       wx.requestPayment({
@@ -277,14 +278,15 @@ Page({
   },
   startGuess(){
     let v = Number(this.data.inputValue);
-    doFetch('guessnum.sendpack', {
-      money: v,
-      useTicket: this.data.useTicket,
-      title: this.data.title
-    }, (res)=>{
-      let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
+    // doFetch('guessnum.sendpack', {
+    //   money: v,
+    //   useTicket: this.data.useTicket,
+    //   title: this.data.title
+    // }, (res)=>{
+      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
+      let url = '../../pages/share/share?title=' + this.data.title + '&pid=160017'
       wx.navigateTo({url})
-    });
+    // });
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -294,7 +296,7 @@ Page({
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',
-      imageUrl:'../../assets/common/share.png',
+      imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         // 转发成功
       },

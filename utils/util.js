@@ -1,39 +1,23 @@
 var app = getApp();
 
-/* postData, doSuccess, doFail, doComplete，其中postData, 为必填
-  data为对象，
-  示例：
-    u.request({
-      action:"home.info",
-      _sid:""
-    },(res)=>{
-      console.log(“成功”)
+function canvas(){
+  let src = 'https://gengxin.odao.com/update/h5/wangcai/common/share3.png';
+  const ctx = wx.createCanvasContext('myCanvas')
+  ctx.drawImage(src, 0, 0, 420, 336)
+  // ctx.drawImage(this.data.userInfo.avatarUrl, 297, 0, 154, 154)
+  ctx.draw(false, () => {
+    wx.canvasToTempFilePath({
+      x: 0,
+      y: 0,
+      width: 420,
+      height: 336,
+      destWidth: 420,
+      destHeight: 336,
+      canvasId: 'myCanvas',
     })
-*/
-function request(postData, doSuccess, doFail, doComplete) {
-  wx.request({
-    url: "https://h5.douzi.com",
-    data: postData,
-    method: 'POST',
-    success: function (res) {
-      if (typeof doSuccess == "function") {
-        doSuccess(res);
-      }
-    },
-    fail: function () {
-      if (typeof doFail == "function") {
-        doFail();
-      }
-    },
-    complete: function () {
-      if (typeof doComplete == "function") {
-        doComplete();
-      }
-    }
-  });
+  })  
 }
 
-
 module.exports = {
-  request
+  canvas
 };

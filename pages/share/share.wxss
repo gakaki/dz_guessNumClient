@@ -73,6 +73,7 @@
   height: 90rpx;
 }
 .try {
+  margin-top: 197rpx;
   font: bold 26rpx/146rpx 'Microsoft YaHei';
 }
 

@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    remainder: '',
+    remainder: '0',
     withdraw: '',
     withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png',
     showTip:false,
@@ -153,7 +153,7 @@ Page({
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',
-      imageUrl: '../../assets/common/share.png',
+      imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         // 转发成功
       },

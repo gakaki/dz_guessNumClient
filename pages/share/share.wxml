@@ -12,7 +12,7 @@
     <image class='to-friend-img' src='{{friendUrl}}'></image>
     <button class='to-friend-btn' bindtouchstart='showFriendActive' bindtouchend='hideFriendActive'  open-type='share'></button>
   </view>
-   <view class='to-friendC'></view> 
+   <!-- <view class='to-friendC'></view>  -->
    <!-- <image class='to-friendC' bindtap='shareFriendC' bindtouchstart='shareFriendCActive'  bindtouchend='hideFriendCActive' src='{{friendCUrl}}'></image>  -->
   <text class='try' bindtap='totry'>我也试一试</text>
 </view>

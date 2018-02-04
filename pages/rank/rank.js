@@ -178,7 +178,7 @@ Page({
     return {
       title: this.data.shareTitle,
       path: '/pages/rank/rank?pid='+this.data.pid,
-      imageUrl: '../../assets/common/share.png',
+      imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/rank-share.png',
       success: function (res) {
         // 转发成功
       },

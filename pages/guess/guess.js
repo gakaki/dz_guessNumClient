@@ -10,13 +10,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    timer: null,
     singleBtn: false,
     cancleStr: '确定',
     hasJiasuka: true,
     tipCon: '',
     showTip: false,
     popInfo: { result: '', money: '', comment: '' },           //弹窗信息    
-    timeCd: true,   //答题cd
+    timeCd: 0,   //答题cd
     isOwner: false,
     pid: 10,     //红包pid
     recordMod:null,//请求红包记录的model
@@ -36,38 +37,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     inputNum: '',
     warning: false,
-    getInfo: [{
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "你哥说七步成诗不然揍你，你赢了",
-      gold: 13
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
-    },
-    {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
-    }]
+    
   },
 
   onReady: function () {
@@ -118,12 +88,31 @@ Page({
     listen('guessnum.getpackrecords', this.data.recordMod, this.updateRecords, this);
   },
   onHide() {
+    clearInterval(this.data.timer)
+    this.setData({
+      timeCd: 0
+    })
     unlisten('guessnum.getpackrecords', this.updateRecords, this);
   },
   onUnload(){
+    clearInterval(this.data.timer)
+    this.setData({
+      timeCd: 0
+    })
     unlisten('guessnum.getpackrecords', this.updateRecords, this);
   },
   updateRecords(res) {
+    let sts = res.data.data.packInfo.status
+    if (sts == -131 || sts == -132) {
+      clearInterval(this.data.timer)
+      unlisten('guessnum.getpackrecords', this.updateRecords, this);
+      this.setData({
+        timeCd: 0
+      })
+      wx.redirectTo({
+        url: '../rank/rank?pid=' + this.data.pid,
+      })
+    }
     if (res.data.code != 0) {
       console.log('错误码', res.data.code);
       return;
@@ -137,13 +126,13 @@ Page({
       this.setData({
         baoInfo: res.data.data
       })
-      if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
-        this.setData({
-          timeCd: true
-        })
-      } else {
+      // if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
+      //   this.setData({
+      //     timeCd: true
+      //   })
+      // } else {
 
-      }
+      // }
     }
   },
   showPop: function () {
@@ -182,10 +171,30 @@ Page({
         console.log(res.data.data)
         if (res.data.data.mark != null) {
           this.setData({
-            timeCd: true
+            timeCd: 180,
+            timer: setInterval(() => {
+              let time = this.data.timeCd
+              this.setData({
+                timeCd: time - 1
+              })
+            }, 180)
           })
+          
           this.guess.setData({
             isShow: true,
+          })
+        }
+        console.log(res.code)
+        if(res.code == -133) {
+          this.setData({
+           // timeCd: res.data.data.restTime,  //格式未知
+            timeCd: 180,
+            timer: setInterval(() => {
+              let time = this.data.timeCd
+              this.setData({
+                timeCd: time - 1
+              })
+            }, 180)
           })
         }
       })

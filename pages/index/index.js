@@ -246,11 +246,11 @@ Page({
       })
       return;
     }
-    if (this.data.useTicket) {
+    // if (this.data.useTicket) {
       this.startGuess()
-    } else {
-      this.toPay();
-    }
+    // } else {
+    //   this.toPay();
+    // }
     
   },
   toPay(){
@@ -258,6 +258,7 @@ Page({
     doFetch('user.minapppay',{
       payCount:v
     },(res)=>{
+      console.log(res)
       let r = res.data.data.payload;
       console.log(r)
       wx.requestPayment({

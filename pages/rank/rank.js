@@ -118,7 +118,12 @@ Page({
         pidMoney: data.packInfo.money,
         getInfo: data.rank,
       })
-      console.log(res.data);
+
+      //获取分享人的数据更新到分享的title中
+      let info = this.data.getInfo.filter(v => {
+        return v.userInfo.uid == getUid()
+      })
+      this.data.shareTitle = "我领取到了" + info[0].moneyGot + "元福利，快来看看我的战绩";
     })
   },
 
@@ -126,10 +131,6 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    let info = this.data.getInfo.filter(v=>{
-      return v.userInfo.uid == getUid()
-    })
-    this.data.shareTitle = "我领取到了" + info.moneyGot+"元福利，快来看看我的战绩"
   },
 
   /**

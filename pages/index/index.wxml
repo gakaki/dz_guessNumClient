@@ -1,8 +1,8 @@
 <!--index.wxml-->
   <view class="container"> 
-   <view class='title-wrap'>
-    <text class="title {{title.length>11?'lengthLimit':''}}" bindtap='changeTitle'>{{title}}</text>
-     <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
+   <view class='title-wrap' bindtap='changeTitle'>
+    <text class="title {{title.length>11?'lengthLimit':''}}">{{title}}</text>
+    <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
   </view>
   <view class='money-select {{hasTicket ? "gold-ticket" : ""}}'>
     <view class='gold-select flex-space'>

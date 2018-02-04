@@ -71,7 +71,7 @@ Page({
    */
   onShareAppMessage(res) {
     return {
-      title: '红包',
+      title: '大家一起来拼智力领福利',
       path: '/page/guess/guess?pid=' + this.data.pid,
       imageUrl: this.data.shareImg,
       success: function (res) {
@@ -109,12 +109,6 @@ Page({
   hideFriendCActive() {
     this.setData({
       friendUrl: 'https://gengxin.odao.com/update/h5/wangcai/share/transmit.png'
-    })
-  },
-  shareFriend(){
-    let shareUrl = canvas();
-    this.setData({
-      shareImg: shareUrl
     })
   },
   shareFriendC() {

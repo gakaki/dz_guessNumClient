@@ -27,6 +27,7 @@ Page({
       this.setData({
         showTip:true,
       })
+      return 50000
     }
     else{
       this.setData({
@@ -82,10 +83,10 @@ Page({
   /**
    * 页面跳转
    */
-  toQuestion: function() {
+  toQuestion: function(e) {
     if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
-      url: '../help/help',
+      url: '../../pages/help/help',
     })
   },
 

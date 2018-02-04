@@ -1,2 +1,0 @@
-<!--components/canvas/canvas.wxml-->
-<canvas class='{{canvasIndex?"canvas canvas-index" : "canvas"}}' canvas-id="myCanvas"/> 

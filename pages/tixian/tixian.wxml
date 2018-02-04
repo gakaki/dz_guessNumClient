@@ -17,8 +17,8 @@
   </view>
   <image class="left-bg" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/left.png'></image>
   <image class="right-bg" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/right.png'></image>
-  <view class="btn-bottom">
-    <text class="text" bindtap='toQuestion'>常见问题</text>
+  <view class="btn-bottom" bindtap='toQuestion'>
+    <text class="text">常见问题</text>
   </view>
 </view>
 <pop content="提现成功，1-5个工作日到账。" show="{{showPop}}" singleBtn="{{true}}"></pop>

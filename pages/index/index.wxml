@@ -51,7 +51,7 @@
       <view class='intro-content'>
         <view class='content-wrap'>
           <text class='list'>1</text>
-          <text class='list-content'>.发起竞猜至好友、微信群、朋友圈中，好友进入旺猜进行竞猜。猜中口令领取奖励。</text>
+          <text class='list-content'>.发起竞猜至好友、微信群中，好友进入旺猜进行竞猜。猜中口令领取奖励。</text>
         </view>
          <view class='content-wrap'>
           <text class='list'>2</text>
@@ -79,4 +79,4 @@
   <view class='cancle' bindtap='cancle'>取 消</view>
 </view> 
 <tip content="{{content}}" show='{{showAuthTip}}' isAuth="true" cancleBtn="取消" sureBtn="授权"></tip>   
-<tip content="{{packageTip}}" show='{{hasPackageTip}}'></tip>
+<tip content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></tip>

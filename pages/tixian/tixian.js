@@ -2,6 +2,7 @@
 let app = getApp();
 import { doFetch,fixedNum } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js';
+let LimitPackageSum = 50000;
 
 Page({
 
@@ -13,33 +14,48 @@ Page({
     withdraw: '',
     withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png',
     showTip:false,
-    showPop:false
+    showPop:false,
+    simpleTip:''
   },
 
   /**
    * 获取input输入的信息
    */
   getMoney: function(e) {
+
+    let value = e.detail.value;
     this.setData({
-      withdraw: e.detail.value
+      withdraw: v
     })
-    if(e.detail.value>50000){
+    if (value > LimitPackageSum) {
       this.setData({
-        showTip:true,
+        simpleTip: '提现金额上限为50000'
       })
-      return 50000
-    }
-    else{
+    } else if (value.length && value < 1) {
       this.setData({
-        showTip: false
+        simpleTip: '提现金额最少1元'
       })
+    } else {
+      this.setData({
+        simpleTip: ''
+      })
+    } 
+    
+    let str;
+    let v = e.detail.value.split(".")
+    if (v[1] != undefined) {
+      v[1] = v[1].substring(0, 2)
+      str = v[0] + '.' + v[1]
+    } else {
+      str = v[0]
     }
+    return str
   },
 
   allRemain: function() {
-    if (this.data.remainder>50000){
+    if (this.data.remainder > LimitPackageSum){
       this.setData({
-        withdraw: 50000
+        withdraw: LimitPackageSum
       })
     }
     else{

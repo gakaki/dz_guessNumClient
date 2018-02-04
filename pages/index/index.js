@@ -147,9 +147,14 @@ Page({
     this.setData({
       inputMask: true
     })  
-    if (e.detail.value > LimitPackageSum) {
+    let value = e.detail.value;
+    if (value > LimitPackageSum) {
       this.setData({
-        simpleTip:'提现金额上限50000元'
+        simpleTip:'赏金上限50000元'
+      })
+    } else if (value < 1){
+      this.setData({
+        simpleTip: '赏金最少为1元'
       })
     } else {
       this.setData({
@@ -168,7 +173,8 @@ Page({
     return str
     
   },
-  inputNum(){
+  inputNum(e){
+    console.log(e)
     this.setData({
       defineNum:true,
       activeIndex: -1,
@@ -239,13 +245,20 @@ Page({
       })
       return ;
     }
-    if(v < 1) {
+    if (v.length && v < 1) {
       this.setData({
         packageTip: "赏金至少1元",
         hasPackageTip: true,
       })
       return;
+    } else if(v > LimitPackageSum) {
+      this.setData({
+        packageTip: "赏金上限50000元",
+        hasPackageTip: true,
+      })
+      return
     }
+    
     // if (this.data.useTicket) {
       this.startGuess()
     // } else {
@@ -277,14 +290,14 @@ Page({
     })
   },
   startGuess(){
-    let v = Number(this.data.inputValue);
+    // let v = Number(this.data.inputValue);
     // doFetch('guessnum.sendpack', {
     //   money: v,
     //   useTicket: this.data.useTicket,
     //   title: this.data.title
     // }, (res)=>{
       // let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
-      let url = '../../pages/share/share?title=' + this.data.title + '&pid=160017'
+      let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759'
       wx.navigateTo({url})
     // });
   },

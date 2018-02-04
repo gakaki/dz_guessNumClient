@@ -85,7 +85,7 @@ Page({
   },
   totry(){
     // let url = '../guess/guess?pid=' + this.data.pid; 
-    let url = '../guess/guess?pid=160017'
+    let url = '../guess/guess?pid=1517638759'
     wx.navigateTo({url})
   },
   showFriendActive() {

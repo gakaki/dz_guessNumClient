@@ -155,15 +155,18 @@ Page({
     let value = e.detail.value;
     if (value > LimitPackageSum) {
       this.setData({
-        simpleTip:'赏金上限50000元'
+        simpleTip: '赏金上限50000元',
+        inputValue: value
       })
     } else if (value.length &&value < 1){
       this.setData({
-        simpleTip: '赏金最少为1元'
+        simpleTip: '赏金最少为1元',
+        inputValue: value
       })
     } else {
       this.setData({
-        simpleTip: ''
+        simpleTip: '',
+        inputValue: value,
       })
     }
     
@@ -213,6 +216,7 @@ Page({
       })
       return ;
     }
+    console.log(v, 'v')
     if (v < 1) {
       this.setData({
         packageTip: "赏金至少1元",

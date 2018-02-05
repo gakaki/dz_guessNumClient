@@ -296,8 +296,8 @@ Page({
     //   useTicket: this.data.useTicket,
     //   title: this.data.title
     // }, (res)=>{
-      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
-      let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759'
+      let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
+      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759'
       wx.navigateTo({url})
     // });
   },

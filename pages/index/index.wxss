@@ -1,26 +1,25 @@
 /**index.wxss**/
 .title-wrap {
   position: relative;
-  margin: 0 auto;
+  margin: 10rpx auto 38rpx;
   text-align: center;
-  height: 134rpx;
-  width: 534rpx;
-  background: url('https://gengxin.odao.com/update/h5/wangcai/index/title-bg.png') center center no-repeat; 
-  background-size: 534rpx 134rpx;
+  width: 478rpx;
+  height: 78rpx;
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/title.png') no-repeat; 
+  background-size: 478rpx 78rpx;
 }
 .title {
   display: inline-block;
-  margin-top: 37rpx;
-  font: bold 36rpx/1 'Microsoft YaHei';
+  font: bold 36rpx/78rpx 'Microsoft YaHei';
   color: #986143;
 }
 .lengthLimit {
-  font: bold 30rpx/40rpx 'Microsoft YaHei';
+  font: bold 30rpx/78rpx 'Microsoft YaHei';
 }
 .arrow {
   position: absolute;
-  right: 50rpx;
-  top: 38rpx;
+  right: 20rpx;
+  top: 20rpx;
   width: 24rpx;
   height: 38rpx;
 }

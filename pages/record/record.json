@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "tip": "../../components/pop/pop"
+  }
+}

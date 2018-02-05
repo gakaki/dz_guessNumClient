@@ -252,8 +252,7 @@ Page({
         package: r.package,
         signType: r.signType,
         paySign: r.paySign,
-        success(res){
-          congsole.log(res,'pay')
+        success(){
           that.startGuess()
         },
         fail(res){
@@ -263,16 +262,16 @@ Page({
     })
   },
   startGuess(){
-    // let v = Number(this.data.inputValue);
-    // doFetch('guessnum.sendpack', {
-    //   money: v,
-    //   useTicket: this.data.useTicket,
-    //   title: this.data.title
-    // }, (res)=>{
+    let v = Number(this.data.inputValue);
+    doFetch('guessnum.sendpack', {
+      money: v,
+      useTicket: this.data.useTicket,
+      title: this.data.title
+    }, (res)=>{
       let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
       // let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759';
       wx.navigateTo({url})
-    // });
+    });
   },
   showRecordActive() {
     this.setData({
@@ -322,4 +321,3 @@ Page({
     }
   }
 })
-jghjghj

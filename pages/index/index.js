@@ -231,11 +231,11 @@ Page({
       return
     }
     
-    // if (this.data.useTicket) {
+    if (this.data.useTicket) {
       this.startGuess()
-    // } else {
-    //   this.toPay();
-    // }
+    } else {
+      this.toPay();
+    }
     
   },
   toPay(){
@@ -252,7 +252,8 @@ Page({
         package: r.package,
         signType: r.signType,
         paySign: r.paySign,
-        success(){
+        success(res){
+          congsole.log(res,'pay')
           that.startGuess()
         },
         fail(res){
@@ -268,8 +269,8 @@ Page({
     //   useTicket: this.data.useTicket,
     //   title: this.data.title
     // }, (res)=>{
-      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
-      let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759';
+      let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
+      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759';
       wx.navigateTo({url})
     // });
   },
@@ -321,3 +322,4 @@ Page({
     }
   }
 })
+jghjghj

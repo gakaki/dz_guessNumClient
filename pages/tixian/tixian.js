@@ -85,6 +85,12 @@ Page({
         hasPackageTip: true,
       })
       return
+    } else if (this.data.withdraw > LimitPackageSum) {
+      this.setData({
+        packageTip: "提现金额上限为50000",
+        hasPackageTip: true,
+      })
+      return
     }
 
     doFetch('user.minappwithdraw',{

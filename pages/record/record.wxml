@@ -23,16 +23,26 @@
       </view> 
     </view>
     <scroll-view  class='record-list' scroll-y='true' bindscrolltolower='srcollLower'>
-      <view class='one-list' bindtap='packageDetail' data-item='{{item}}' wx:if='{{send}}' wx:for='{{sendRecord}}' wx:key='{{index}}'>
-        <text class='one-title'>{{item.title}}</text>
-        <text class='one-sum'>{{item.money}}元</text>
-      </view> 
-      <view class='one-list' bindtap='receivePacDetail' data-item='{{item}}' wx:if='{{receive}}' wx:for='{{receiveRecord}}' wx:key='{{index}}'>
-        <view>
-          <image class='user-avatar' src='{{item.userInfo.avatarUrl}}'></image>
-          <text class='user-nickname'>{{item.userInfo.nickName}}</text>
+      <view wx:if='{{send}}'>
+        <view class='one-list' bindtap='packageDetail' data-item='{{item}}'  wx:for='{{sendRecord}}' wx:key='{{index}}'>
+          <text class='one-title'>{{item.title}}</text>
+          <text class='one-sum'>{{item.money}}元</text>
         </view>
-        <text class='one-sum'>{{item.guessInfo.userGetMoney}}元</text>
+        <view class='no-record-wrap'>
+          <no-record wx:if='{{!sendRecord.length}}'></no-record>
+        </view>
+      </view> 
+      <view wx:if='{{receive}}'>
+        <view class='one-list' bindtap='receivePacDetail' data-item='{{item}}' wx:for='{{receiveRecord}}' wx:key='{{index}}'>
+           <view>
+            <image class='user-avatar' src='{{item.userInfo.avatarUrl}}'></image>
+            <text class='user-nickname'>{{item.userInfo.nickName}}</text>
+          </view>
+          <text class='one-sum'>{{item.guessInfo.userGetMoney}}元</text> 
+        </view>
+        <view class='no-record-wrap'>
+          <no-record wx:if='{{!receiveRecord.length}}'></no-record>
+        </view>
       </view> 
     </scroll-view>
   </view>

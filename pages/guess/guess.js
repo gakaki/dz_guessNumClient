@@ -60,7 +60,6 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-      console.log(app.globalData.userInfo)
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -82,7 +81,6 @@ Page({
         }
       })
     }
-    console.log(app.globalData.userInfo)
 
   },
   onShow() {
@@ -122,7 +120,6 @@ Page({
       })
     }
     if (res.data.code != 0) {
-      console.log('错误码', res.data.code);
       return;
     }
     if (res.data.data.originator.uid == getUid()) {
@@ -141,7 +138,6 @@ Page({
       tipCon: '您目前没有加速卡，每日首次分享可获得加速卡',
       showTip: true
     })
-    console.log(this.data.baoInfo.originator.items[3] > 0, '66666')
     if (this.data.baoInfo.originator.items[3] > 0) {
       this.setData({
         tipCon: '是否花费一张加速卡清除等待\n每日首次分享小程序可获得一张加速卡',
@@ -175,7 +171,6 @@ Page({
     
   },
   send: function (e) {
-    console.log(typeof (this.data.num))
     if (this.data.num.length < 4) {
       let str = configs.Message.Get()
       this.setData({
@@ -189,7 +184,6 @@ Page({
         guessNum: this.data.num,
         pid: this.data.pid
       }, (res) => {
-        console.log(res.data.data)
         if (res.data.code == 0) {
           this.setData({
             num: '',
@@ -352,7 +346,6 @@ Page({
       this.setData({
         actItem: arr
       })
-      console.log(this.data.actItem)
     }
 
 
@@ -361,7 +354,6 @@ Page({
     if (!this.data.num) return
     let idx = this.data.num.split('')
     idx = parseInt(idx[idx.length - 1])
-    console.log(idx)
     this.setData({
       num: this.data.num.slice(0, this.data.num.length - 1),
       // delnum: this.data.num.slice(this.data.num.length - 1, this.data.num.length)
@@ -398,7 +390,6 @@ Page({
         newArr.push(arr[i]);
       }
     }
-    console.log(arr.length > newArr.length)
     return arr.length > newArr.length ? false : true
   },
   /**

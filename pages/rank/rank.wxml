@@ -61,8 +61,8 @@
           <view class="record response">
             <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}" wx:for-item="guess">{{guess.userAnswerWord}}</text>
           </view>
-          <view class="record response">
-            <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}">---------------------------------</text>
+          <view class="record response xuxian">
+            <text class='record-info hidden'  wx:for="{{item.guessRecords}}" wx:key="{{index}}">--------------------------------------------------</text>
           </view>
           <view class="record response">
             <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}" wx:for-item="guess">{{guess.userMark}}</text>

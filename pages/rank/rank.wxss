@@ -199,10 +199,20 @@
 }
 .guess-record{
   width: 620rpx;
-  margin-left: 75rpx;
+  margin-left: 80rpx;
   display: flex;
   justify-content: space-between;
 }
 .response{
   margin-top: 0;
+}
+.xuxian{
+  max-width: 415rpx;
+  overflow: hidden;
+}
+.hidden{
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  max-height: 38rpx; 
 }

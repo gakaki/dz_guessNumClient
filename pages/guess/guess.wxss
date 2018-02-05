@@ -51,6 +51,7 @@
   flex-grow: 2
 }
 .nickname {
+  align-self: flex-start;
   display: inline-block;
   /* margin: 19rpx 0 15rpx; */
   font-size: 30rpx;
@@ -58,6 +59,7 @@
 }
 
 .package-num {
+  align-self: flex-start;
   position: relative;
   color: #fff;
   width: 180rpx;
@@ -190,6 +192,7 @@
 }
 
 .game-explain {
+  width: 100%;
   padding-top: 40rpx;
   flex-direction: column;
   height: 213rpx;
@@ -202,6 +205,7 @@
   margin: 0 0 22rpx 46rpx;
   color: #e48d48;
   font-size: 26rpx;
+  align-self: flex-start;
   line-height: 1;
 }
 
@@ -345,7 +349,9 @@
   right: 0;
   top: 10rpx;
 }
-
+.fe {
+  align-self: flex-end
+}
 .kb {
   width: 100%;
   height: 0rpx;

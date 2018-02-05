@@ -66,12 +66,12 @@
             <text>{{item.commit}}</text>
           </view>
         </view>
-        <view class='get-gold'>
-          <view>
+        <view class='get-gold fcsb'>
+          <view class="fe">
             <text>获得</text>
             <text>{{item.userGetMoney}}元</text>
           </view>
-          <view>
+          <view class="fe">
             <text class='show-chengji'>{{item.userMark}}</text>
           </view>
         </view>

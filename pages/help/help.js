@@ -3,59 +3,7 @@ import { configs } from '../../utils/configs.js'
 Page({
   data: {
     isactive: 'server',
-    curIdx: -1,
-    questions: [
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      },
-      {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      }, {
-        title: 'aaaaa',
-        solve: 'aaaaa'
-      }, {
-        title: 'bbbb',
-        solve: 'bbbaa'
-      }
-    ]
+    curIdx: -1
   },
   onLoad: function () {
     wx.setNavigationBarTitle({

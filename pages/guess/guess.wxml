@@ -9,12 +9,12 @@
          <text class='nickname'>{{baoInfo.originator.nickName}}</text> 
         <view class='package-num'>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-          <text class='num'>{{(baoInfo && baoInfo.packInfo.money > 0)?baoInfo.packInfo.money:0}}元</text>
+          <text class='num'>{{(baoInfo && baoInfo.packInfo.money > 0)?(baoInfo.packInfo.money)/100:0}}元</text>
         </view>
       </view>
       <view class='rest'>
         <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-        <text class="rest-text">剩余金额{{(baoInfo && baoInfo.packInfo.money > 0)?baoInfo.packInfo.remain:0}}元</text>
+        <text class="rest-text">剩余金额{{(baoInfo && baoInfo.packInfo.money > 0)?(baoInfo.packInfo.remain)/100:0}}元</text>
       </view>
     </view>
     <view class='input-tip-wrap'>
@@ -67,7 +67,7 @@
         <view class='get-gold fcsb'>
           <view class="fe">
             <text>获得</text>
-            <text>{{item.userGetMoney}}元</text>
+            <text>{{(item.userGetMoney)/100}}元</text>
           </view>
           <view class="fe">
             <text class='show-chengji'>{{item.userMark}}</text>

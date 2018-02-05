@@ -28,7 +28,8 @@ Page({
     titleList:[],
     showTitleList:false,
     simpleTip:'',
-    IP:''
+    IP:'',
+    removeMask: true
   },
   onLoad(){
     // let that = this;
@@ -190,12 +191,18 @@ Page({
     return str
     
   },
+  hiddenMask(){
+    this.setData({
+      removeMask: true
+    })
+  },
   inputNum(e){
     this.setData({
       defineNum:true,
       activeIndex: -1,
       useTicket: false,
-      inputValue: this.data.inputV
+      inputValue: this.data.inputV,
+      removeMask:false
     })
   },
   useSelfTicket(){
@@ -282,8 +289,6 @@ Page({
       title: this.data.title
     }, (res)=>{
       let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
-      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759'
-
       wx.navigateTo({url})
     });
   },
@@ -322,6 +327,7 @@ Page({
       // 来自页面内转发按钮
       console.log(res.target)
     }
+    console.log(app.globalData.shareUrl)
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',

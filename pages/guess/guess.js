@@ -6,7 +6,6 @@ import { doFetch, getUid, listen, unlisten } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js'
 let that;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -176,7 +175,7 @@ Page({
   },
   send: function (e) {
     if (this.data.num.length < 4) {
-      let str = configs.Message.Get()
+     // let str = configs.Message.Get()
       this.setData({
         showTip: true,
         singleBtn: true,

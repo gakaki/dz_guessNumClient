@@ -1,6 +1,7 @@
 let app = getApp();
 import { configs } from '../../utils/configs.js'
 let that;
+
 Page({
   data: {
     isactive: 'server',
@@ -8,6 +9,7 @@ Page({
     packageTip: '',
     hasPackageTip: false,
     questions: []
+
   },
   onLoad: function () {
     that = this;

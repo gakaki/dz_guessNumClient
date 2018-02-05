@@ -33,8 +33,7 @@ Page({
     receiveRecord:[],
     packageTip:'竞猜PK已过期',
     hasPackageTip:false,
-    nowPid:'',
-    haha:300
+    nowPid:''
   },
   /**
    * 生命周期函数--监听页面加载

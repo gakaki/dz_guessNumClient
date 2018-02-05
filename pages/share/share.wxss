@@ -76,19 +76,18 @@
   height: 90rpx;
 }
 .try {
-  margin-top: 207rpx;
+  margin-top: 197rpx;
   font: bold 26rpx/146rpx 'Microsoft YaHei';
 }
 
 .canvas {
-  position: fixed;
+  /* position: fixed;
   left: 0;
-  top: 0; 
+  top: 0;  */
   width: 100vw;
   height: 100vh;
+  border: 5px solid #000;
   z-index: -1; 
-  background: #b21e4a url('https://gengxin.odao.com/update/h5/wangcai/share/share-img.png') no-repeat;
-  background-size: 750rpx 1206rpx;
 }
 .canvas-index {
    z-index: 2; 

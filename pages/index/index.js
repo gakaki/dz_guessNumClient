@@ -22,13 +22,22 @@ Page({
     content:"你未授权获取个人信息，无法发起红包",
     packageTip:"赏金至少1元",
     hasPackageTip:false,
-    inputValue:'0',
+    inputValue:'',
     titleList:[],
     showTitleList:false,
     simpleTip:'',
-    inputMask:false
+    IP:''
   },
   onLoad(){
+    // let that = this;
+    // wx.request({
+    //   url: 'http://ip-api.com/json',
+    //   success: function (e) {
+    //     that.setData({
+    //       IP: e.data.query
+    //     })
+    //   }
+    // })
     doFetch('user.getiteminfo', {
       itemId: configs.Item.CASHCOUPON
     }, (res) => {
@@ -122,7 +131,6 @@ Page({
           defineNum: false,
           inputValue: '1.68',
           useTicket: false,
-          
         })
         break;
       case 1:
@@ -144,16 +152,21 @@ Page({
     }
   },
   inputNumValue(e){
-    this.setData({
-      inputMask: true
-    })  
-    if (e.detail.value > LimitPackageSum) {
+    let value = e.detail.value;
+    if (value > LimitPackageSum) {
       this.setData({
-        simpleTip:'提现金额上限50000元'
+        simpleTip: '赏金上限50000元',
+        inputValue: value
+      })
+    } else if (value.length &&value < 1){
+      this.setData({
+        simpleTip: '赏金最少为1元',
+        inputValue: value
       })
     } else {
       this.setData({
-        simpleTip: ''
+        simpleTip: '',
+        inputValue: value,
       })
     }
     
@@ -168,7 +181,7 @@ Page({
     return str
     
   },
-  inputNum(){
+  inputNum(e){
     this.setData({
       defineNum:true,
       activeIndex: -1,
@@ -193,7 +206,74 @@ Page({
       pkBtnActive: false
     })
   },
-  showRecordActive(){
+  readyGuess(e){
+    let v = this.data.inputValue;
+    if (app.preventMoreTap(e)) { return; }
+    if (!app.globalData.hasUserInfo) {
+      this.setData({
+        showAuthTip: true,
+        content: "你未授权获取个人信息，无法发起红包"
+      })
+      return ;
+    }
+    console.log(v, 'v')
+    if (v < 1) {
+      this.setData({
+        packageTip: "赏金至少1元",
+        hasPackageTip: true,
+      })
+      return;
+    } else if(v > LimitPackageSum) {
+      this.setData({
+        packageTip: "赏金上限50000元",
+        hasPackageTip: true,
+      })
+      return
+    }
+    
+    if (this.data.useTicket) {
+      this.startGuess()
+    } else {
+      this.toPay();
+    }
+    
+  },
+  toPay(){
+    let v = Number(this.data.inputValue);
+    let that = this;
+    doFetch('user.minapppay',{
+      payCount:v
+      // IP:this.data.IP
+    },(res)=>{
+      let r = res.data.data.payload;
+      wx.requestPayment({
+        timeStamp: r.timeStamp,
+        nonceStr: r.nonceStr,
+        package: r.package,
+        signType: r.signType,
+        paySign: r.paySign,
+        success(){
+          that.startGuess()
+        },
+        fail(res){
+          console.log(res)
+        }
+      })
+    })
+  },
+  startGuess(){
+    let v = Number(this.data.inputValue);
+    doFetch('guessnum.sendpack', {
+      money: v,
+      useTicket: this.data.useTicket,
+      title: this.data.title
+    }, (res)=>{
+      let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
+      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759';
+      wx.navigateTo({url})
+    });
+  },
+  showRecordActive() {
     this.setData({
       recordUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/record-active.png'
     })
@@ -223,69 +303,6 @@ Page({
       helpUrl: 'https://gengxin.odao.com/update/h5/wangcai/index/question.png'
     })
   },
-  changeValue(e) {
-    this.setData({
-      inputValue: e.detail.value,
-      inputMask: false
-    })
-  },
-  readyGuess(e){
-    let v = this.data.inputValue;
-    if (app.preventMoreTap(e)) { return; }
-    if (!app.globalData.hasUserInfo) {
-      this.setData({
-        showAuthTip: true,
-        content: "你未授权获取个人信息，无法发起红包"
-      })
-      return ;
-    }
-    if(v < 1) {
-      this.setData({
-        packageTip: "赏金至少1元",
-        hasPackageTip: true,
-      })
-      return;
-    }
-    if (this.data.useTicket) {
-      this.startGuess()
-    } else {
-      this.toPay();
-    }
-    
-  },
-  toPay(){
-    let v = Number(this.data.inputValue);
-    doFetch('user.minapppay',{
-      payCount:v
-    },(res)=>{
-      let r = res.data.data.payload;
-      console.log(r)
-      wx.requestPayment({
-        timeStamp: r.timeStamp,
-        nonceStr: r.nonceStr,
-        package: r.package,
-        signType: r.signType,
-        paySign: r.paySign,
-        success(){
-          this.startGuess()
-        },
-        fail(res){
-          console.log(res)
-        }
-      })
-    })
-  },
-  startGuess(){
-    let v = Number(this.data.inputValue);
-    doFetch('guessnum.sendpack', {
-      money: v,
-      useTicket: this.data.useTicket,
-      title: this.data.title
-    }, (res)=>{
-      let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
-      wx.navigateTo({url})
-    });
-  },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       // 来自页面内转发按钮
@@ -294,7 +311,7 @@ Page({
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',
-      imageUrl:'../../assets/common/share.png',
+      imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         // 转发成功
       },

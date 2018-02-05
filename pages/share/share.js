@@ -1,6 +1,7 @@
 // pages/share/share.js
 
 let app = getApp();
+import { canvas } from '../../utils/util.js';
 
 Page({
 
@@ -16,7 +17,8 @@ Page({
     friendCUrl:'https://gengxin.odao.com/update/h5/wangcai/share/friendC-share.png',
     shareImg:"",
     title:"",
-    pid:""
+    pid:"",
+    shareImg:''
   },
 
   /**
@@ -69,8 +71,9 @@ Page({
    */
   onShareAppMessage(res) {
     return {
-      title: '红包',
+      title: '大家一起来拼智力领福利',
       path: '/page/guess/guess?pid=' + this.data.pid,
+      imageUrl: this.data.shareImg,
       success: function (res) {
         // 转发成功
         wx.showShareMenu({
@@ -84,7 +87,8 @@ Page({
     }
   },
   totry(){
-    let url = '../guess/guess?pid=' + this.data.pid;
+    let url = '../guess/guess?pid=' + this.data.pid; 
+    // let url = '../guess/guess?pid=1517638759'
     wx.navigateTo({url})
   },
   showFriendActive() {

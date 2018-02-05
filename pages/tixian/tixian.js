@@ -2,6 +2,7 @@
 let app = getApp();
 import { doFetch,fixedNum } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js';
+let LimitPackageSum = 50000;
 
 Page({
 
@@ -9,36 +10,54 @@ Page({
    * 页面的初始数据
    */
   data: {
-    remainder: '',
+    remainder: '0',
     withdraw: '',
     withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png',
     showTip:false,
-    showPop:false
+    showPop:false,
+    simpleTip:'',
+    packageTip: "",
+    hasPackageTip: false,
   },
 
   /**
    * 获取input输入的信息
    */
   getMoney: function(e) {
+
+    let value = e.detail.value;
     this.setData({
-      withdraw: e.detail.value
+      withdraw: value
     })
-    if(e.detail.value>50000){
+    if (value > LimitPackageSum) {
       this.setData({
-        showTip:true,
+        simpleTip: '提现金额上限为50000'
       })
-    }
-    else{
+    } else if (value.length && value < 2) {
       this.setData({
-        showTip: false
+        simpleTip: '提现金额最少2元'
       })
+    } else {
+      this.setData({
+        simpleTip: ''
+      })
+    } 
+    
+    let str;
+    let v = e.detail.value.split(".")
+    if (v[1] != undefined) {
+      v[1] = v[1].substring(0, 2)
+      str = v[0] + '.' + v[1]
+    } else {
+      str = v[0]
     }
+    return str
   },
 
   allRemain: function() {
-    if (this.data.remainder>50000){
+    if (this.data.remainder > LimitPackageSum){
       this.setData({
-        withdraw: 50000
+        withdraw: LimitPackageSum
       })
     }
     else{
@@ -52,7 +71,28 @@ Page({
    * 确认提现
    */
   confirmWithdraw: function(e) {
+    console.log(this.data)
     if (app.preventMoreTap(e)) { return; }
+    if (this.data.withdraw > this.data.remainder) {
+      this.setData({
+        packageTip: "提现金额超出余额",
+        hasPackageTip: true,
+      })
+      return
+    } else if (this.data.withdraw < 2 ) {
+      this.setData({
+        packageTip: "提现金额至少为2元",
+        hasPackageTip: true,
+      })
+      return
+    } else if (this.data.withdraw > LimitPackageSum) {
+      this.setData({
+        packageTip: "提现金额上限为50000",
+        hasPackageTip: true,
+      })
+      return
+    }
+
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
@@ -82,10 +122,10 @@ Page({
   /**
    * 页面跳转
    */
-  toQuestion: function() {
+  toQuestion: function(e) {
     if (app.preventMoreTap(e)) { return; }
     wx.navigateTo({
-      url: '../help/help',
+      url: '../../pages/help/help',
     })
   },
 
@@ -153,7 +193,7 @@ Page({
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',
-      imageUrl: '../../assets/common/share.png',
+      imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         // 转发成功
       },

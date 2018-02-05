@@ -19,8 +19,8 @@ Page({
     withUrl:'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
     anotherUrl:'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
     serverUrl:'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
-    receivePackages:[],
-    sendPackages:[]
+    receivePackages: { sum: 0, num: 0},
+    sendPackages: { sum: 0, num: 0}
   },
   /**
    * 生命周期函数--监听页面加载
@@ -154,7 +154,7 @@ Page({
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',
-      imageUrl: '../../assets/common/share.png',
+      imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         // 转发成功
       },

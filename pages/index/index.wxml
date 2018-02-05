@@ -1,12 +1,11 @@
 <!--index.wxml-->
   <view class="container"> 
-   <view class='title-wrap'>
-    <text class="title {{title.length>11?'lengthLimit':''}}" bindtap='changeTitle'>{{title}}</text>
-     <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
+   <view class='title-wrap' bindtap='changeTitle'>
+    <text class="title {{title.length>11?'lengthLimit':''}}">{{title}}</text>
+    <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
   </view>
   <view class='money-select {{hasTicket ? "gold-ticket" : ""}}'>
     <view class='gold-select flex-space'>
-      <view class='mask' wx:if='{{inputMask}}'></view>
       <view class="one-select {{index == activeIndex ? 'one-select-active' : ''}}" wx:for='{{moneySelect}}' bindtap='selectMoney' data-index='{{index}}' wx:key='{{index}}'>
         <view class='money-content'>
           <text class='content {{index == activeIndex ? "content-active" : ""}}'>{{item}}</text>
@@ -17,7 +16,7 @@
     <view class='select {{hasTicket ? "select-ticket" : ""}}' bindtap='inputNum'>
       <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
       <text class='type-content'>赏金 ( 元 )</text>
-      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindinput='inputNumValue' bindblur='changeValue'></input>
+      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindinput='inputNumValue'></input>
       <text class='oneSimpleTip' wx:if="{{simpleTip.length}}">{{simpleTip}}</text>
     </view>
     <view class='ticket' wx:if='{{hasTicket}}' bindtap='useSelfTicket'>
@@ -51,7 +50,7 @@
       <view class='intro-content'>
         <view class='content-wrap'>
           <text class='list'>1</text>
-          <text class='list-content'>.发起竞猜至好友、微信群、朋友圈中，好友进入旺猜进行竞猜。猜中口令领取奖励。</text>
+          <text class='list-content'>.发起竞猜至好友、微信群中，好友进入旺猜进行竞猜。猜中口令领取奖励。</text>
         </view>
          <view class='content-wrap'>
           <text class='list'>2</text>
@@ -79,4 +78,4 @@
   <view class='cancle' bindtap='cancle'>取 消</view>
 </view> 
 <tip content="{{content}}" show='{{showAuthTip}}' isAuth="true" cancleBtn="取消" sureBtn="授权"></tip>   
-<tip content="{{packageTip}}" show='{{hasPackageTip}}'></tip>
+<tip content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></tip>

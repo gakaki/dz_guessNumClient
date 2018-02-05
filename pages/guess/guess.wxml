@@ -15,7 +15,7 @@
       </view>
       <view class='rest'>
         <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-        <text class="rest-text">红包剩余金额{{baoInfo?baoInfo.packInfo.restMoney:0}}元</text>
+        <text class="rest-text">剩余金额{{baoInfo?baoInfo.packInfo.restMoney:0}}元</text>
       </view>
     </view>
     <view class='input-tip-wrap'>
@@ -27,8 +27,8 @@
 
       <view class='time-wrap flex'>
         <!-- <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text> -->
-        <text class='time-content' wx:if='{{timeCd}}'>下轮竞猜等待180秒</text>
-        <text class="use-jiasu" wx:if='{{timeCd}}' bindtap='showPop'>使用加速卡</text>
+        <text class='time-content' wx:if='{{timeCd>0}}'>下轮竞猜等待{{timeCd}}秒</text>
+        <text class="use-jiasu" wx:if='{{timeCd>0}}' bindtap='showPop'>使用加速卡</text>
       </view>
     </view>
 

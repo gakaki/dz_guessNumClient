@@ -63,7 +63,6 @@ function userLogin(suc, err) {
       app.globalData.hasUserInfo = false;
     }
   })
-
 }
 
 function getUid() {
@@ -83,22 +82,22 @@ const showErr = msg => {
 
 
 class LsnNode {
-  constructor(action, model, cb, ctx) {
+  constructor(action, cb, ctx) {
     this.action = action;
-    this.model = model;
     this.cb = cb;
     this.ctx = ctx;
-    this.id = cb.name + "_" + ctx.name;
+    this.id = cb.name + "_" + (ctx.name || ctx.route);
   }
 }
+
 
 const _listeners = new Map();
 let _listenHdl;
 /**
  * 使用定时请求的方式拉取数据
  * @param action string类型，路由动作，如guessnum.getlist
- * @param model 请求的数据模型实例，该实例会在调用cb时作为参数传回
- * @param cb 回调函数，不能是箭头函数 ，参数为model，可以在cb里面对model实例里的数值进行修改，以便下次请求时使用model里的新数据
+ * @param model 请求的数据模型实例，listen期间会一直使用此model实例作为发起请求的数据，所以如果需要中途修改，就将此model变量保存下来，在适当的时候修改它里面的值
+ * @param cb 回调函数，不能是箭头函数 ，参数为action请求返回的数据，可以在cb里面对model实例里的数值进行修改，以便下次请求时使用model里的新数据
  * @param ctx 回调函数上下文
 */
 const listen = (action, model, cb, ctx) => {
@@ -108,14 +107,15 @@ const listen = (action, model, cb, ctx) => {
   }
   else {
     actionMp = new Map();
+    actionMp.model = model;
     actionMp.status = 'IDLE'
-    _listeners.set(action, mp);
+    _listeners.set(action, actionMp);
   }
 
   //add to sub map
-  let node = new LsnNode(action, model, cb, ctx);
+  let node = new LsnNode(action, cb, ctx);
   actionMp.set(node.id, node);
-
+  console.log('listen',action)
   //start loop
   loopListen();
 }
@@ -130,6 +130,7 @@ const unlisten = (action, cb, ctx) => {
     console.error('unlisten 时 action参数必须要传')
     return;
   }
+  console.log('call unlisten>>',action);
   if (!cb && !ctx) {
     //如果不传cb和ctx，则删除所有对该action的监听
     _listeners.delete(action);
@@ -140,11 +141,15 @@ const unlisten = (action, cb, ctx) => {
       if (node.cb == cb && node.ctx == ctx) {
         lsnrs.delete(node.id);
       }
-    })
+    });
+
+    if (!lsnrs.size) {
+      _listeners.delete(action);
+    }
   }
 
   //如果没了，就移除定时器
-  if (!_listeners.size() && _listenHdl) {
+  if (!_listeners.size && _listenHdl) {
     clearInterval(_listenHdl);
     _listenHdl = undefined;
   }
@@ -153,6 +158,7 @@ const unlisten = (action, cb, ctx) => {
 const LS_IDLE = 'IDLE';
 const LS_BUSY = 'BUSY';
 const LS_SUC = 'SUC';
+
 function loopListen() {
   if (_listenHdl) {
     return;
@@ -163,16 +169,17 @@ function loopListen() {
       switch(lsnr.status) {
         case LS_IDLE:
           lsnr.status = LS_BUSY
-          doFetch(action, model, () => {
+          doFetch(action, lsnr.model, (res) => {
             lsnr.status = LS_SUC;
+            lsnr.backRes = res;
           })
         break;
         case LS_SUC:
-          let model;
+          lsnr.status = LS_BUSY;
           lsnr.forEach(node => {
-            node.cb.call(node.ctx, node.model);
-            model = node.model;
+            node.cb.call(node.ctx,lsnr.backRes);
           });
+          lsnr.backRes = null;
           lsnr.status = LS_IDLE;
           break;
         case LS_BUSY:

@@ -3,10 +3,10 @@
   <view class='main-pop'>
     <view class='content'>
       <text class='{{content.length < 10 ? "long-text":"text"}}'>{{content}}</text>
-    <view class="rocket-box flex" wx:if="{{hasJiasuka}}">
+    <view class="rocket-box flex" wx:if="{{hasJiasuka > 0}}">
     <image class="r-icon" src='https://gengxin.odao.com/update/h5/wangcai/guess/rocket.png'></image>
     <text class="r-str">加速卡</text>
-    <text class='r-str'>50</text>
+    <text class='r-str'>{{hasJiasuka}}</text>
     </view>
     </view>
     <view class='btn-wrap flex'>

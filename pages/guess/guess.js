@@ -2,7 +2,7 @@
 // pages/statistics/statistics.js
 
 let app = getApp();
-import { doFetch, getUid } from '../../utils/rest.js';
+import { doFetch, getUid, listen, unlisten } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js'
 Page({
 
@@ -10,15 +10,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    timer: null,
     singleBtn: false,
     cancleStr: '确定',
     hasJiasuka: true,
     tipCon: '',
     showTip: false,
     popInfo: { result: '', money: '', comment: '' },           //弹窗信息    
-    timeCd: true,   //答题cd
+    timeCd: 0,   //答题cd
     isOwner: false,
-    pid: 0,     //红包pid
+    pid: 10,     //红包pid
+    recordMod:null,//请求红包记录的model
     baoInfo: {},  //红包信息
     // num: '输入0-9不重复4位数',
     actItem: [false, false, false, false, false, false, false, false, false, false],
@@ -35,38 +37,7 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     inputNum: '',
     warning: false,
-    getInfo: [{
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "你哥说七步成诗不然揍你，你赢了",
-      gold: 13
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
-    },
-    {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
-    }, {
-      avatar: 11,
-      nickname: "昵称一共八个文字",
-      num: 5793,
-      content: "智商的文字",
-      gold: 13
-    }]
+    
   },
 
   onReady: function () {
@@ -79,7 +50,8 @@ Page({
   onLoad: function (options) {
     console.log(options)
     this.setData({
-      pid: options.pid
+      pid: options.pid,
+      recordMod: {pid: options.pid || 10}
     })
     console.log(this.data.pid)
     if (app.globalData.userInfo) {
@@ -110,30 +82,58 @@ Page({
       })
     }
     console.log(app.globalData.userInfo)
-    doFetch('guessnum.getpackrecords', {
-      pid: this.data.pid
-    }, (res) => {
-      if (res.data.dataoriginator == getUid()) {
-        this.setData({
-          baoInfo: res.data.data,
-          isOwner: true
-        })
-      } else {
-        this.setData({
-          baoInfo: res.data.data
-        })
-        if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
-          this.setData({
-            timeCd: true
-          })
-        } else {
 
-        }
-      }
+  },
+  onShow() {
+    listen('guessnum.getpackrecords', this.data.recordMod, this.updateRecords, this);
+  },
+  onHide() {
+    clearInterval(this.data.timer)
+    this.setData({
+      timeCd: 0
+    })
+    unlisten('guessnum.getpackrecords', this.updateRecords, this);
+  },
+  onUnload(){
+    clearInterval(this.data.timer)
+    this.setData({
+      timeCd: 0
+    })
+    unlisten('guessnum.getpackrecords', this.updateRecords, this);
+  },
+  updateRecords(res) {
+    let sts = res.data.data.packInfo.status
+    if (sts == -131 || sts == -132) {
+      clearInterval(this.data.timer)
+      unlisten('guessnum.getpackrecords', this.updateRecords, this);
+      this.setData({
+        timeCd: 0
+      })
+      wx.redirectTo({
+        url: '../rank/rank?pid=' + this.data.pid,
+      })
+    }
+    if (res.data.code != 0) {
+      console.log('错误码', res.data.code);
+      return;
+    }
+    if (res.data.dataoriginator == getUid()) {
+      this.setData({
+        baoInfo: res.data.data,
+        isOwner: true
+      })
+    } else {
+      this.setData({
+        baoInfo: res.data.data
+      })
+      // if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
+      //   this.setData({
+      //     timeCd: true
+      //   })
+      // } else {
 
-
-    });
-
+      // }
+    }
   },
   showPop: function () {
     this.setData({
@@ -171,10 +171,30 @@ Page({
         console.log(res.data.data)
         if (res.data.data.mark != null) {
           this.setData({
-            timeCd: true
+            timeCd: 180,
+            timer: setInterval(() => {
+              let time = this.data.timeCd
+              this.setData({
+                timeCd: time - 1
+              })
+            }, 1000)
           })
+          
           this.guess.setData({
             isShow: true,
+          })
+        }
+        console.log(res.code)
+        if(res.code == -133) {
+          this.setData({
+           // timeCd: res.data.data.restTime,  //格式未知
+            timeCd: 180,
+            timer: setInterval(() => {
+              let time = this.data.timeCd
+              this.setData({
+                timeCd: time - 1
+              })
+            }, 180)
           })
         }
       })
@@ -341,6 +361,7 @@ Page({
     }
 
   },
+  
   /**
    * 组件内触发的事件
    */

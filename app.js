@@ -14,7 +14,7 @@ App({
     })
   //  this.getUserInfo();
    start((res)=>{
-     console.log(res.info.items)
+    //  console.log(res.info.items)
     //  let v = res.info.items[configs.Item.CASHCOUPON];
     //  if (v) {
     //    this.globalData.cashcoupon = v

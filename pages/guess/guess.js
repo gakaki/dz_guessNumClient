@@ -172,7 +172,7 @@ Page({
   },
   send: function (e) {
     if (this.data.num.length < 4) {
-      let str = configs.Message.Get()
+     // let str = configs.Message.Get()
       this.setData({
         showTip: true,
         singleBtn: true,

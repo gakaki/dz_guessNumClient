@@ -123,7 +123,13 @@ Page({
       let info = this.data.getInfo.filter(v => {
         return v.userInfo.uid == getUid()
       })
-      this.data.shareTitle = "我领取到了" + info[0].moneyGot + "元福利，快来看看我的战绩";
+      //如果自己抢到了钱
+      if(info.length){
+        this.data.shareTitle = "我领取到了" + info[0].moneyGot + "元福利，快来看看我的战绩";
+      }
+      else{
+        this.data.shareTitle = "有人在这里领到" + this.data.getInfo[0].moneyGot + "元福利，快来围观啊";
+      }
     })
   },
 

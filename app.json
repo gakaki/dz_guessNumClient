@@ -3,15 +3,13 @@
     "pages/index/index",
     "pages/record/record",
     "pages/guess/guess",
-
     "pages/share/share",
     "pages/tixian/tixian",
-   
     "pages/rank/rank",
-    
     "pages/help/help",
     "components/pop/pop",
-    "components/keyboard/keyboard"
+    "components/keyboard/keyboard",
+    "components/no-record/no-record"
   ],
   "window": {
     "backgroundTextStyle": "light",

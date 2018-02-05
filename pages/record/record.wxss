@@ -94,6 +94,10 @@
   height: 104rpx;
   border-bottom: 2rpx solid #d88b88;
 }
+.no-record-wrap {
+  margin-top: 100rpx;
+}
+
 .one-title {
   display: inline-block;
   text-indent: 95rpx;

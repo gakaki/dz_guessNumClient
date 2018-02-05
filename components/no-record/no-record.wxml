@@ -1,0 +1,5 @@
+<!--components/no-record/no-record.wxml-->
+<view class='wrap' wx:if='{{!receiveRecord.length}}'>
+  <image class='no-record' src='https://gengxin.odao.com/update/h5/wangcai/record/no-record.png'></image>
+  <text class='no-record-content'>暂无记录~</text>
+</view> 

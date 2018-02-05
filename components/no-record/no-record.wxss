@@ -1,0 +1,15 @@
+/* components/no-record/no-record.wxss */
+.wrap  {
+  display: flex;
+  flex-direction: column;
+  height:  239rpx;
+  align-items: center;
+}
+.no-record {
+  width: 176rpx;
+  height: 149rpx;
+}
+.no-record-content {
+  font: bold 32rpx/90rpx  'Microsoft YaHei';
+  color: #b21f2e;
+}

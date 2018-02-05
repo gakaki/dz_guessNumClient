@@ -4,6 +4,7 @@
 let app = getApp();
 import { doFetch, getUid, listen, unlisten } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js'
+let that;
 Page({
 
   /**
@@ -36,7 +37,9 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     inputNum: '',
-    warning: false
+    warning: false,
+    packageTip: '',
+    hasPackageTip: false,
 
   },
   onReady: function (options) {
@@ -48,6 +51,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
     this.setData({
       //pid: options.pid,
       pid: options.pid || 1517798281,
@@ -401,7 +405,14 @@ Page({
       path: '/pages/guess/guess?pid=' + this.data.pid,
       imageUrl: '../../assets/common/share.png',
       success: function (res) {
-        // 转发成功
+        doFetch('guessnum.getacceleration', {}, (res) => {
+          if (res.code == 0) {
+            that.setData({
+              packageTip: "恭喜获得加速卡",
+              hasPackageTip: true,
+            })
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

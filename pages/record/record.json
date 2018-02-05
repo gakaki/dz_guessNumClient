@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "tip": "../../components/pop/pop",
+    "pop": "../../components/pop/pop",
     "no-record": "../../components/no-record/no-record"
   }
 }

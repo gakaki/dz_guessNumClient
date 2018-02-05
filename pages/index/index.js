@@ -4,6 +4,7 @@ const app = getApp()
 import { doFetch } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js';
 const LimitPackageSum = 50000;
+let that;
 
 Page({
   data: {
@@ -32,7 +33,7 @@ Page({
     removeMask: true
   },
   onLoad(res){
-    // let that = this;
+    that = this;
     // wx.request({
     //   url: 'http://ip-api.com/json',
     //   success: function (e) {
@@ -261,7 +262,7 @@ Page({
   },
   toPay(){
     let v = Number(this.data.inputValue);
-    let that = this;
+    let _this = this;
     doFetch('user.minapppay',{
       payCount:v
       // IP:this.data.IP
@@ -274,7 +275,7 @@ Page({
         signType: r.signType,
         paySign: r.paySign,
         success(){
-          that.startGuess()
+          _this.startGuess()
         },
         fail(res){
           wx.showToast({
@@ -327,17 +328,20 @@ Page({
     })
   },
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
-    console.log(app.globalData.shareUrl)
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
-        // 转发成功
+        doFetch('guessnum.getacceleration',{},(res)=>{
+          console.log(res.data)
+          if(res.data.code == 0) {
+            that.setData({
+              packageTip: "恭喜获得加速卡",
+              hasPackageTip: true,
+            })
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

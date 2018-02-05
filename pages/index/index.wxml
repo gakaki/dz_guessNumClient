@@ -78,5 +78,5 @@
   <view class='oneTitle' wx:for='{{titleList}}' wx:key='{{index}}' bindtap='selectTitle' data-title='{{item}}'>{{item}}</view>
   <view class='cancle' bindtap='cancle'>取 消</view>
 </view> 
-<tip content="{{content}}" show='{{showAuthTip}}' isAuth="true" cancleBtn="取消" sureBtn="授权"></tip>   
-<tip content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></tip>
+<pop content="{{content}}" show='{{showAuthTip}}' isAuth="true" cancleBtn="取消" sureBtn="授权"></pop>   
+<pop content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></pop>

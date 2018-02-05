@@ -2,6 +2,7 @@
 import {configs} from '../../utils/configs.js';
 import { doFetch, getUid } from '../../utils/rest.js';
 let app = getApp();
+let that;
 
 Page({
 
@@ -20,6 +21,8 @@ Page({
     shareTitle:"我领取到了s%元福利，快来看看我的战绩",
     pid:'',
     isOwner: false,
+    packageTip: '',
+    hasPackageTip: false,
   },
 
   /**
@@ -95,6 +98,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
     if(options.pid){
       console.log(options.pid)
       this.data.pid = options.pid;
@@ -146,7 +150,14 @@ Page({
       path: '/pages/rank/rank?pid='+this.data.pid,
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/rank-share.png',
       success: function (res) {
-        // 转发成功
+        doFetch('guessnum.getacceleration', {}, (res) => {
+          if (res.code == 0) {
+            that.setData({
+              packageTip: "恭喜获得加速卡",
+              hasPackageTip: true,
+            })
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

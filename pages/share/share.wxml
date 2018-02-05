@@ -15,3 +15,4 @@
    <!-- <image class='to-friendC' bindtap='shareFriendC' bindtouchstart='shareFriendCActive'  bindtouchend='hideFriendCActive' src='{{friendCUrl}}'></image>  -->
   <text class='try' bindtap='totry'>我也试一试</text>
 </view>
+<pop content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></pop>

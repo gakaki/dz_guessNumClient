@@ -46,7 +46,9 @@
       <view class="person-info" wx:for="{{getInfo}}" wx:key="{{index}}">
         <text class="ranking {{index==0 ? 'ranking-first' : '' || index==1 ? 'ranking-second' : '' || index==2 ? 'ranking-third' : ''}}">{{index+1}}</text>
         <view class="person-touxiang flex {{index==0 ? 'first' : '' || index==1 ? 'second' : '' || index==2 ? 'third' : ''}}">
-             <image class="person-avatar {{index==0 ? 'first-avatar' : '' || index==1 ? 'second-avatar' : '' || index==2 ? 'third-avatar' : ''}}" src='{{item.userInfo.avatarUrl}}'></image>  
+            <view class="person-avatar {{index==0 ? 'first-avatar' : '' || index==1 ? 'second-avatar' : '' || index==2 ? 'third-avatar' : ''}}">
+              <image class="touxiang" src='{{item.userInfo.avatarUrl}}'></image>
+            </view>
         </view>
         <view class="record">
           <text class='record-info'>{{item.userInfo.nickName}}</text>

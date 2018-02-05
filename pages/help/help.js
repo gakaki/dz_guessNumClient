@@ -52,7 +52,7 @@ Page({
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',
-      imageUrl: '../../assets/common/share.png',
+      imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration', {}, (res) => {
           if (res.data.code == 0) {

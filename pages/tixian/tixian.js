@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    remainder: '0',
+    remainder: '0.00',
     withdraw: '',
     withdrawSrc: 'https://gengxin.odao.com/update/h5/wangcai/withdraw/withdraw.png',
     showTip:false,
@@ -33,9 +33,9 @@ Page({
     } else {
       value = v[0]
     }
-    //用户直接输入.时，前一位默认显示2
+    //用户直接输入.时，前一位默认显示0
     if(value == '.'){
-      value = '2.'
+      value = '0.'
     }
 
     this.setData({
@@ -72,8 +72,7 @@ Page({
     }
     else{
       this.setData({
-        packageTip: "余额不足",
-        hasPackageTip: true,
+        withdraw: '0.00'
       })
     }
     
@@ -158,6 +157,7 @@ Page({
       itemId: configs.Item.MONEY
     },(res)=>{
       if (res.data.data.stock){
+        console.log(res.data.data.stock)
         let money = fixedNum(res.data.data.stock/100)
         this.setData({
           remainder: money

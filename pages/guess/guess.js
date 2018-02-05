@@ -177,7 +177,7 @@ Page({
               this.setData({
                 timeCd: time - 1
               })
-            }, 180)
+            }, 1000)
           })
           
           this.guess.setData({

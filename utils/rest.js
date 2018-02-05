@@ -63,7 +63,6 @@ function userLogin(suc, err) {
       app.globalData.hasUserInfo = false;
     }
   })
-
 }
 
 function getUid() {

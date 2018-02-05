@@ -10,12 +10,12 @@
          <text class='nickname'>{{userInfo.nickName}}</text> 
         <view class='package-num'>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-          <text class='num'>{{baoInfo?baoInfo.packInfo.totalMoney:0}}元</text>
+          <text class='num'>{{baoInfo?baoInfo.packInfo.money:0}}元</text>
         </view>
       </view>
       <view class='rest'>
         <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
-        <text class="rest-text">剩余金额{{baoInfo?baoInfo.packInfo.restMoney:0}}元</text>
+        <text class="rest-text">剩余金额{{baoInfo?baoInfo.packInfo.remain:0}}元</text>
       </view>
     </view>
     <view class='input-tip-wrap'>
@@ -27,8 +27,8 @@
 
       <view class='time-wrap flex'>
         <!-- <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text> -->
-        <text class='time-content' wx:if='{{timeCd>0}}'>下轮竞猜等待{{timeCd}}秒</text>
-        <text class="use-jiasu" wx:if='{{timeCd>0}}' bindtap='showPop'>使用加速卡</text>
+        <text class='time-content' wx:if='{{timeCd>0 }}'>下轮竞猜等待{{timeCd}}秒</text>
+        <text class="use-jiasu" wx:if='{{timeCd>0 }}' bindtap='showPop'>使用加速卡</text>
       </view>
     </view>
 
@@ -78,28 +78,28 @@
       </view>
     </scroll-view>
   </view>
-  <view class="kb fcsb {{kbHeight}}">
-    <view class="flex kb-row row1">
+  <view class="kb fcsa {{kbHeight}}">
+    <view class="flex-space kb-row row1">
       <text class="bian {{actItem[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum' >1</text>
       <text class="mid {{(actItem[1])?'active': ''}}" data-num="2"  bindtap='clickNum' >2</text>
       <text class="bian {{actItem[2]?'active hu-rgt': ''}}" data-num="3"  bindtap='clickNum' >3</text>
     </view>
-    <view class="flex kb-row">
+    <view class="flex-space kb-row">
       <text class="bian {{actItem[3]?'active': ''}}" data-num="4"  bindtap='clickNum' >4</text>
       <text class="mid {{actItem[4]?'active': ''}}" data-num="5"  bindtap='clickNum' >5</text>
       <text class="bian {{actItem[5]?'active': ''}}" data-num="6"  bindtap='clickNum' >6</text>
     </view>
-    <view class="flex kb-row">
+    <view class="flex-space kb-row">
       <text class="bian {{actItem[6]?'active': ''}}" data-num="7"  bindtap='clickNum' >7</text>
       <text class="mid {{actItem[7]?'active': ''}}" data-num="8"  bindtap='clickNum' >8</text>
       <text class="bian {{actItem[8]?'active': ''}}" data-num="9"  bindtap='clickNum' >9</text>
     </view>
-    <view class="flex kb-row">
+    <view class="flex-space kb-row">
       <text class="bian"></text>
       <text class="mid {{actItem[9]?'active': ''}}" data-num="0"  bindtap='clickNum' >0</text>
       <text class="bian del" bindtap='deleteNum'></text>
     </view>
   </view>
   <correct id="guess" result="{{popInfo.result}}" comment="{{popInfo.comment}}" money="{{popInfo.money}}" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
-  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{hasJiasuka}}" doJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡"></pop> 
+  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{baoInfo.originator.items[3]}}" binddoJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡"></pop> 
 </view>

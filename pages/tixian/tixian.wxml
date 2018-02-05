@@ -12,6 +12,10 @@
     <view class="withdraw-money">
       <input id='num' class="num" type='digit' maxlength="8" focus="{{true}}" value='{{withdraw}}' bindinput='getMoney'></input>
     </view>
+    <view class="illustrate">
+      <text class="time">1-7个工作日到账</text>
+      <text class="charge">最少提现2元，平台收取2%服务费</text>
+    </view>
     <image class="withdraw-all" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/all-withdraw.png' bindtap='allRemain'></image>
     <image class="confirm" src='{{withdrawSrc}}' bindtouchstart='active' bindtouchend='cancel' bindtap='confirmWithdraw'></image>
   </view>
@@ -21,5 +25,5 @@
     <text class="text">常见问题</text>
   </view>
 </view>
-<pop content="提现成功，1-5个工作日到账。" show="{{showPop}}" singleBtn="{{true}}"></pop>
+<pop content="提现成功，1-7个工作日到账。" show="{{showPop}}" singleBtn="{{true}}"></pop>
 <pop content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></pop>

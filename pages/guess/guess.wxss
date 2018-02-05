@@ -118,6 +118,7 @@
   color: #b21f2e;
   font: bold 36rpx "Microsoft YaHei";
   display: flex;
+  letter-spacing: 4rpx;
   align-items: flex-start;
   margin-left: 40rpx;
   justify-content: center;
@@ -407,7 +408,7 @@ from {height: 844rpx;}
 }
 
 .bian, .mid {
-  width: 249rpx;
+  width: 248rpx;
   height: 199rpx;
   text-align: center;
   line-height: 199rpx;

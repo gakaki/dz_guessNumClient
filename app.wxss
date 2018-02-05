@@ -43,9 +43,15 @@
 .fcsb {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
 }
-
+.fcsa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
 .fcc  {
   display: flex;
   align-items: center;

@@ -70,7 +70,6 @@ Page({
       let temp = new configs.Question(o)
         tempArr.push(temp)
     })
-    console.log(tempArr)
      this.setData({
        questions: tempArr
      })

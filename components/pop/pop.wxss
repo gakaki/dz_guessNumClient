@@ -46,8 +46,6 @@
 
 .text {
    font: bold 32rpx/48rpx 'Microsoft YaHei';
-   text-align: left;
-   align-self: flex-start;
 }
 .long-text {
   font: bold 52rpx 'Microsoft YaHei';

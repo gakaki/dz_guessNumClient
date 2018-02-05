@@ -5,14 +5,15 @@
     <text class='{{content.length < 10 ? "long-text":"text"}}'>{{content}}</text>
     
       
-     <view class="rocket-box flex" wx:if="{{hasJiasuka > 0}}">
+     <view class="rocket-box flex" wx:if="{{hasJiasuka > 0 }}">
     <image class="r-icon" src='https://gengxin.odao.com/update/h5/wangcai/guess/rocket.png'></image>
     <text class="r-str">加速卡</text>
     <text class='r-str'>{{hasJiasuka}}</text>
     </view> 
     </view>
     <view class='btn-wrap flex'>
-      <text class='btn' bindtap='cancle'>{{cancleBtn}}</text>
+      <text hidden='{{!singleBtn}}' class='btn' bindtap='cancle'>{{cancleBtn}}</text>
+      <text hidden='{{singleBtn}}' class='btn' bindtap='cancle1'>{{cancleBtn}}</text>
       <text hidden='{{singleBtn}}' class='line'></text>
       <text hidden='{{singleBtn}}' class='btn' bindtap='sure'>{{sureBtn}}</text> 
     </view>

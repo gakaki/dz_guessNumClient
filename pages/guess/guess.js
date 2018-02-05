@@ -127,7 +127,7 @@ Page({
     console.log(this.data.baoInfo.originator.items[3] > 0,'66666')
     if (this.data.baoInfo.originator.items[3]>0) {
       this.setData({
-        tipCon: '是否花费一张加速卡清除等待，每日首次分享小程序可获得一张加速卡',
+        tipCon: '是否花费一张加速卡清除等待\n每日首次分享小程序可获得一张加速卡',
         cancleStr: '取消',
         singleBtn: false
       })
@@ -168,6 +168,7 @@ Page({
         })
         console.log(res.data.data)
         if (res.data.code == 0) {
+          clearInterval(this.data.timer)
           this.setData({
             timeCd: 180
           })
@@ -195,6 +196,7 @@ Page({
             this.setData({
               timeCd: timeNum  //格式未知
             })
+            clearInterval(this.data.timer)
             setTimeout(() => {
               this.setData({
                 timer: setInterval(() => {

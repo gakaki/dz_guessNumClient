@@ -36,10 +36,13 @@
   background: url('https://gengxin.odao.com/update/h5/wangcai/share/title-bg.png') no-repeat;
   background-size: 421rpx 103rpx;
 }
-.expalin-title {
+.explain-title {
   display: inline-block;
   padding: 27rpx 10rpx 0 0;
   font: bold 30rpx/1 'Microsoft YaHei';
+}
+.explain-title-long {
+  font: bold 26rpx/30rpx 'Microsoft YaHei';
 }
 .qr {
   display: inline-block;

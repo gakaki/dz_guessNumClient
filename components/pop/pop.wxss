@@ -30,6 +30,7 @@
 }
 
 .content {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,6 +73,10 @@
 }
 
 .rocket-box {
+  position: absolute;
+  bottom: 10rpx;
+  left: 50%;
+  transform: translateX(-80rpx);
   width: 160rpx;
   height: 40rpx;
   border-radius: 20rpx;
@@ -79,7 +84,7 @@
   font-size: 22rpx;
   font-weight: bold;
   color: #fff;
-  transform: translate(0, 100%);
+  /* transform: translate(0, 100%); */
 }
 
 .r-icon {

@@ -18,7 +18,7 @@ Page({
     popInfo: { result: '', money: '', comment: '' },           //弹窗信息    
     timeCd: 0,   //答题cd
     isOwner: false,
-    pid: 1517798003,     //红包pid
+    pid: 0,     //红包pid
     recordMod:null,//请求红包记录的model
     baoInfo: {},  //红包信息
     // num: '输入0-9不重复4位数',
@@ -50,10 +50,9 @@ Page({
     console.log(options)
     this.setData({
       //pid: options.pid,
-      pid: 1517798003,
+      pid: options.pid || 1517798003,
       recordMod: { pid: options.pid || 1517798003}
     })
-    console.log(this.data.pid)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

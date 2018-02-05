@@ -2,6 +2,9 @@
 .wrap{
   background-color: #fff9e3;
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
   display: flex;
   justify-content: center;
 }
@@ -25,7 +28,7 @@
 .withdraw-info{
   width: 746rpx;
   height: 772rpx;
-  background-image: url("https://gengxin.odao.com/update/h5/wangcai/withdraw/rest-money.png");
+  background-image: url("https://gengxin.odao.com/update/h5/wangcai/withdraw/rest-money1.png");
   background-size: cover;
   background-repeat: no-repeat;
   margin-top: 80rpx;
@@ -110,4 +113,15 @@
   top: 376rpx;
   left: 50%;
   transform: translate(-50%,0);
+}
+.illustrate{
+  font-size: 22rpx;
+  font-family: "微软雅黑";
+  font-weight: bold;
+  color: #e48d48;
+  text-align: center;
+  margin-top: 50rpx;
+}
+.time{
+  display: block;
 }

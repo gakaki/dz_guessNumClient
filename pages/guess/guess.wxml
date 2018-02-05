@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="wrap">
+<view class="wrap container-wrap">
   <view class="red-box" catchtap='hideKb'>
     <view class='header fsb'>
 

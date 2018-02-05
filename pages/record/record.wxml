@@ -1,5 +1,5 @@
 <!--pages/record/record.wxml-->
-  <view class="container">
+  <view class="container container-wrap">
     <view class='el-select'>
       <view class='flex select'>
         <text class='tab {{send}}' data-type='s' bindtap='switchTab'>我发出的</text>

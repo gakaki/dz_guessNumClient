@@ -71,7 +71,16 @@ function getUid() {
 
 //向下取整并保留两位小数；
 function fixedNum(num) {
-  return Math.floor(num * 100) / 100
+  //此处不用四舍五入为了防止钱会多出的情况
+  let str = Math.floor(num * 100) / 100;
+  let v = str.toString().split(".");
+  if (v[1] == undefined) {
+    str = v[0]+'.00'
+  }
+  else if(v[1].length == 1){
+    str = str+'0'
+  }
+  return str
 }
 
 const showErr = msg => {

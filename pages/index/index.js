@@ -156,26 +156,25 @@ Page({
   },
   inputNumValue(e){
     let value = e.detail.value;
+    this.setData({
+      inputValue: value,
+      inputV: value,
+      inputTxt: value,
+      removeMask: false
+    })
     if (value > LimitPackageSum) {
       this.setData({
         simpleTip: '赏金上限50000元',
-        inputValue: value,
-        inputV: value,
-        inputTxt:value
+        
+        
       })
     } else if (value.length &&value < 1){
       this.setData({
-        simpleTip: '赏金最少为1元',
-        inputValue: value,
-        inputV: value,
-        inputTxt: value
+        simpleTip: '赏金最少为1元'
       })
     } else {
       this.setData({
-        simpleTip: '',
-        inputValue: value,
-        inputV: value,
-        inputTxt: value
+        simpleTip: ''
       })
     }
     
@@ -200,8 +199,7 @@ Page({
       defineNum:true,
       activeIndex: -1,
       useTicket: false,
-      inputValue: this.data.inputV,
-      removeMask:false
+      inputValue: this.data.inputV
     })
   },
   useSelfTicket(){

@@ -1,4 +1,12 @@
 /**app.wxss**/
+.container-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
 .container {
   font-family: 'Microsoft YaHei';
   width: 100vw;
@@ -16,6 +24,12 @@
   align-items: center;
   width: 100%;
 } 
+.fs {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
 .flex-column  {
   display: flex;
   align-items: center;
@@ -37,7 +51,12 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
+.fcsa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
 .fcc  {
   display: flex;
   align-items: center;

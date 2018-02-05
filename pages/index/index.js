@@ -22,13 +22,17 @@ Page({
     content:"你未授权获取个人信息，无法发起红包",
     packageTip:"赏金至少1元",
     hasPackageTip:false,
-    inputValue:'',
+    inputValue:'',  //传入给后台的发起红包值
+    inputV: '',   //用户点击外框时，
+    inputTxt: '',  //用户输入的金额，用于输入框显示
     titleList:[],
     showTitleList:false,
     simpleTip:'',
-    IP:''
+    IP:'',
+    removeMask: true
   },
-  onLoad(){
+  onLoad(res){
+    console.log(res)
     // let that = this;
     // wx.request({
     //   url: 'http://ip-api.com/json',
@@ -124,29 +128,30 @@ Page({
     }
   },
   selectMoney(e){
+    this.setData({
+      simpleTip: '',
+      inputV: '',
+      inputTxt: '',
+      useTicket: false,
+      defineNum: false,
+    })
     switch (e.currentTarget.dataset.index) {
       case 0:
         this.setData({
           activeIndex: 0,
-          defineNum: false,
           inputValue: '1.68',
-          useTicket: false,
         })
         break;
       case 1:
         this.setData({
           activeIndex: 1,
-          defineNum: false,
-          inputValue: '6.6',
-          useTicket: false,
+          inputValue: '6.6'
         })
         break;
       case 2:
         this.setData({
           activeIndex: 2,
-          defineNum: false,
-          inputValue: '8.8',
-          useTicket: false,
+          inputValue: '8.8'
         })
         break;
     }
@@ -156,17 +161,23 @@ Page({
     if (value > LimitPackageSum) {
       this.setData({
         simpleTip: '赏金上限50000元',
-        inputValue: value
+        inputValue: value,
+        inputV: value,
+        inputTxt:value
       })
     } else if (value.length &&value < 1){
       this.setData({
         simpleTip: '赏金最少为1元',
-        inputValue: value
+        inputValue: value,
+        inputV: value,
+        inputTxt: value
       })
     } else {
       this.setData({
         simpleTip: '',
         inputValue: value,
+        inputV: value,
+        inputTxt: value
       })
     }
     
@@ -181,15 +192,25 @@ Page({
     return str
     
   },
+  hiddenMask(){
+    this.setData({
+      removeMask: true
+    })
+  },
   inputNum(e){
     this.setData({
       defineNum:true,
       activeIndex: -1,
       useTicket: false,
+      inputValue: this.data.inputV,
+      removeMask:false
     })
   },
   useSelfTicket(){
     this.setData({
+      simpleTip: '',
+      inputV: '',
+      inputTxt: '',
       defineNum: false,
       activeIndex: -1,
       inputValue: '1',
@@ -231,11 +252,11 @@ Page({
       return
     }
     
-    // if (this.data.useTicket) {
+    if (this.data.useTicket) {
       this.startGuess()
-    // } else {
-    //   this.toPay();
-    // }
+    } else {
+      this.toPay();
+    }
     
   },
   toPay(){
@@ -256,22 +277,24 @@ Page({
           that.startGuess()
         },
         fail(res){
-          console.log(res)
+          wx.showToast({
+            title:'支付失败',
+            icon: 'none'
+          })
         }
       })
     })
   },
   startGuess(){
-    // let v = Number(this.data.inputValue);
-    // doFetch('guessnum.sendpack', {
-    //   money: v,
-    //   useTicket: this.data.useTicket,
-    //   title: this.data.title
-    // }, (res)=>{
-      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
-      let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759';
+    let v = Number(this.data.inputValue);
+    doFetch('guessnum.sendpack', {
+      money: v,
+      useTicket: this.data.useTicket,
+      title: this.data.title
+    }, (res)=>{
+      let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
       wx.navigateTo({url})
-    // });
+    });
   },
   showRecordActive() {
     this.setData({
@@ -308,6 +331,7 @@ Page({
       // 来自页面内转发按钮
       console.log(res.target)
     }
+    console.log(app.globalData.shareUrl)
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',
@@ -321,3 +345,4 @@ Page({
     }
   }
 })
+

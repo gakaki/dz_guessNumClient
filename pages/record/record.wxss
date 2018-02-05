@@ -74,32 +74,13 @@
   left: 50rpx;
 }
 
-.list {
-  position: relative;
-}
-.btn-wrap {
-  padding-top: 10rpx;
-}
-.btn-img {
-  padding-bottom: 25rpx;
-  width: 212rpx;
-  height: 59rpx;
-}
-.btn {
-  position: absolute;
-  right: 25rpx;
-  top: 0;
-  width: 212rpx;
-  height: 59rpx;
-  opacity: 0;
-}
 .record-list {
   position: absolute;
   left: 0;
-  top: 690rpx;
+  top: 595rpx;
   bottom: 0;
   font: 28rpx/104rpx "Microsoft YaHei";
-  padding: 0 25rpx;
+  padding: 35 25rpx 0;
   box-sizing: border-box;
   color: #b21f2e;
   background: #fff9e3;

@@ -2,9 +2,18 @@
 import {start} from 'utils/rest.js';
 import {configs} from 'utils/configs.js'//test
 
+
 App({
   onLaunch: function (ops) {
-    console.log(configs.Item.Get(configs.Item.MONEY))
+    wx.onNetworkStatusChange(function (res) {
+      if(res.networkType == 'none') {
+        wx.showLoading({
+          title: '当前网络不可用'
+        })
+      } else {
+        wx.hideLoading()
+      }
+    })
     // 登录
     wx.login({
       success: res => {
@@ -70,7 +79,8 @@ App({
   globalData: {
     userInfo: null,
     hasUserInfo:true,
-    guessMoney:0
+    guessMoney:0,
+    shareUrl:''
   },
 
   globalLastTapTime: 0,

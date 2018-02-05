@@ -1,7 +1,7 @@
 // pages/record/record.js
 
 let app = getApp();
-import { doFetch } from '../../utils/rest.js';
+import { doFetch, fixedNum } from '../../utils/rest.js';
 const GUESSING = 168;
 
 Page({
@@ -19,8 +19,8 @@ Page({
     withUrl:'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
     anotherUrl:'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
     serverUrl:'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
-    receivePackages: { sum: 0, num: 0},
-    sendPackages: { sum: 0, num: 0}
+    receivePackages: { sum: '0.00', num: '0'},
+    sendPackages: { sum: '0.00', num: '0'}
   },
   /**
    * 生命周期函数--监听页面加载
@@ -65,21 +65,24 @@ Page({
     }
   },
   packageDetail(e){
-    let p = e.currentTarget.dataset.item;
-    if (p.status == GUESSING) {
-      wx.navigateTo({
-        url: '../../pages/guess/guess?pid=' + p.pid,
-      })
-    } else {
-      wx.navigateTo({
-        url: '../../pages/rank/rank?pid=' + p.pid,
-      })
-    }
+    let p = e.currentTarget.dataset.item
+    doFetch('guessnum.getpackrecords',{
+      pid: p.pid
+    },(res)=>{
+      if (p.status == GUESSING) {
+        wx.navigateTo({
+          url: '../../pages/guess/guess?pid=' + p.pid,
+        })
+      } else {
+        wx.navigateTo({
+          url: '../../pages/rank/rank?pid=' + p.pid,
+        })
+      }
+    })
+   
   },
   receivePacDetail(e){
-    console.log(e, 'eeeeeeeeeeeeee')
     let p = e.currentTarget.dataset.item.guessInfo.packInfo;
-    console.log(p.pid)
     if (p.status == GUESSING) {
       wx.navigateTo({
         url: '../../pages/guess/guess?pid=' + p.pid,
@@ -102,36 +105,6 @@ Page({
         receive: "active",
       })
     }
-  },
-  showWithActive(){
-    this.setData({
-      withUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw-active.png',
-    })
-  },
-  hideWithActive(){
-    this.setData({
-      withUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
-    })
-  },
-  showAnotherActive() {
-    this.setData({
-      anotherUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another-active.png',
-    })
-  },
-  hideAnotherActive() {
-    this.setData({
-      anotherUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
-    })
-  },
-  showServerActive() {
-    this.setData({
-      serverUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/service-active.png',
-    })
-  },
-  hideServerActive() {
-    this.setData({
-      serverUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
-    })
   },
   toSendPackage() {
     wx.navigateTo({

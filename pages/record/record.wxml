@@ -1,5 +1,5 @@
 <!--pages/record/record.wxml-->
-  <view class="container">
+  <view class="container container-wrap">
     <view class='el-select'>
       <view class='flex select'>
         <text class='tab {{send}}' data-type='s' bindtap='switchTab'>我发出的</text>
@@ -20,17 +20,6 @@
               <text class='money-content money-content-right num' wx:if='{{receive}}'>{{receivePackages.num}}</text>
             </view>
          </view>
-      </view> 
-      <view class='list'>
-        <view class='flex-space btn-wrap'>
-          <image class='btn-img' bindtap='toWithDraw' bindtouchstart='showWithActive' bindtouchend='hideWithActive' src='{{withUrl}}'></image>
-          <image class='btn-img' bindtap='toSendPackage' bindtouchstart='showAnotherActive' bindtouchend='hideAnotherActive'
-          src='{{anotherUrl}}'></image>
-          <image class='btn-img' src='{{serverUrl}}'></image>
-        </view>
-         <view class='btn'>
-          <button class='btn-img' bindtouchstart='showServerActive' bindtouchend='hideServerActive' open-type='contact'>联系客服</button>
-        </view> 
       </view> 
     </view>
     <scroll-view  class='record-list' scroll-y='true'>

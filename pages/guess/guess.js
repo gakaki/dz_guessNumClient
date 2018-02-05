@@ -13,13 +13,12 @@ Page({
     timer: null,
     singleBtn: false,
     cancleStr: '确定',
-    hasJiasuka: true,
     tipCon: '',
     showTip: false,
     popInfo: { result: '', money: '', comment: '' },           //弹窗信息    
     timeCd: 0,   //答题cd
     isOwner: false,
-    pid: 10,     //红包pid
+    pid: 0,     //红包pid
     recordMod:null,//请求红包记录的model
     baoInfo: {},  //红包信息
     // num: '输入0-9不重复4位数',
@@ -36,11 +35,10 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     inputNum: '',
-    warning: false,
+    warning: false
     
   },
-
-  onReady: function () {
+  onReady: function (options) {
     this.guess = this.selectComponent('#guess');
     this.pop = this.selectComponent('#pop');
   },
@@ -48,12 +46,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.setData({
-      pid: options.pid,
-      recordMod: {pid: options.pid || 10}
+      //pid: options.pid,
+      pid: options.pid || 1517798281,
+      recordMod: {
+        pid: options.pid || 1517798281}
     })
-    console.log(this.data.pid)
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -104,20 +102,13 @@ Page({
   updateRecords(res) {
     let sts = res.data.data.packInfo.status
     if (sts == -131 || sts == -132) {
-      clearInterval(this.data.timer)
-      unlisten('guessnum.getpackrecords', this.updateRecords, this);
-      this.setData({
-        timeCd: 0
-      })
-      wx.redirectTo({
-        url: '../rank/rank?pid=' + this.data.pid,
-      })
+      this.toRank()
     }
     if (res.data.code != 0) {
       console.log('错误码', res.data.code);
       return;
     }
-    if (res.data.dataoriginator == getUid()) {
+    if (res.data.data.originator.uid == getUid()) {
       this.setData({
         baoInfo: res.data.data,
         isOwner: true
@@ -126,13 +117,6 @@ Page({
       this.setData({
         baoInfo: res.data.data
       })
-      // if (this.data.baoInfo.records.find(o => o.userInfo.uid == getUid())) {
-      //   this.setData({
-      //     timeCd: true
-      //   })
-      // } else {
-
-      // }
     }
   },
   showPop: function () {
@@ -140,12 +124,12 @@ Page({
       tipCon: '您目前没有加速卡，每日首次分享可获得加速卡',
       showTip: true
     })
-    if (this.data.hasJiasuka == true) {
+    console.log(this.data.baoInfo.originator.items[3] > 0,'66666')
+    if (this.data.baoInfo.originator.items[3]>0) {
       this.setData({
-        tipCon: '距下轮竞猜还有180s，是否花费一张加速卡清除等待，每日首次分享小程序可获得一张加速卡',
+        tipCon: '是否花费一张加速卡清除等待\n每日首次分享小程序可获得一张加速卡',
         cancleStr: '取消',
-        singleBtn: false,
-        hasJiasuka: true
+        singleBtn: false
       })
     }
     
@@ -153,6 +137,20 @@ Page({
   doClear: function () {
     doFetch('guessnum.clearcd', {
       pid: this.data.pid
+    },()=>{
+      this.setData({
+        timeCd: 0
+      })
+    })
+  },
+  toRank() {
+    clearInterval(this.data.timer)
+    unlisten('guessnum.getpackrecords', this.updateRecords, this);
+    this.setData({
+      timeCd: 0
+    })
+    wx.redirectTo({
+      url: '../rank/rank?pid=' + this.data.pid,
     })
   },
   send: function (e) {
@@ -169,33 +167,50 @@ Page({
           popInfo: { result: res.data.data.mark, money: res.data.data.moneyGeted, comment: res.data.data.commit }
         })
         console.log(res.data.data)
-        if (res.data.data.mark != null) {
+        if (res.data.code == 0) {
+          clearInterval(this.data.timer)
           this.setData({
-            timeCd: 180,
-            timer: setInterval(() => {
-              let time = this.data.timeCd
-              this.setData({
-                timeCd: time - 1
-              })
-            }, 1000)
+            timeCd: 180
           })
+           setTimeout(() => {
+            this.setData({
+              timer: setInterval(() => {
+                let time = this.data.timeCd
+                this.setData({
+                  timeCd: time - 1
+                })
+              }, 1000)
+            })
+          }, 500)
           
           this.guess.setData({
             isShow: true,
           })
         }
-        console.log(res.code)
-        if(res.code == -133) {
-          this.setData({
-           // timeCd: res.data.data.restTime,  //格式未知
-            timeCd: 180,
-            timer: setInterval(() => {
-              let time = this.data.timeCd
+        if(res.data.code == -133) {
+          this.showPop()
+          if(this.data.timeCd == 0) {
+            clearInterval(this.data.timer)
+            let timeNum = parseInt(res.data.data.restTime.split(' ')[0].split(':')[1]) * 60 + parseInt(res.data.data.restTime.split(' ')[0].split(':')[2])
+             
+            this.setData({
+              timeCd: timeNum  //格式未知
+            })
+            clearInterval(this.data.timer)
+            setTimeout(() => {
               this.setData({
-                timeCd: time - 1
+                timer: setInterval(() => {
+                  let time = this.data.timeCd
+                  this.setData({
+                    timeCd: time - 1
+                  })
+                }, 1000)
               })
-            }, 180)
-          })
+            }, 500)
+          }  
+        }
+        if (res.data.code == -131 || res.data.code == -132) {
+          this.toRank()
         }
       })
     }
@@ -350,7 +365,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '大家一起来拼智力领福利',
-      path: '/pages/guess/guess',
+      path: '/pages/guess/guess?pid=' + this.data.pid,
       imageUrl: '../../assets/common/share.png',
       success: function (res) {
         // 转发成功

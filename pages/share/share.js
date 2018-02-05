@@ -15,10 +15,8 @@ Page({
     canvasIndex:false,
     friendUrl:'https://gengxin.odao.com/update/h5/wangcai/share/transmit.png',
     friendCUrl:'https://gengxin.odao.com/update/h5/wangcai/share/friendC-share.png',
-    shareImg:"",
     title:"",
     pid:"",
-    shareImg:''
   },
 
   /**
@@ -34,7 +32,6 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-      console.log(this.data.userInfo)
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -72,8 +69,7 @@ Page({
   onShareAppMessage(res) {
     return {
       title: '大家一起来拼智力领福利',
-      path: '/page/guess/guess?pid=' + this.data.pid,
-      imageUrl: this.data.shareImg,
+      path: '/pages/guess/guess?pid=' + this.data.pid,
       success: function (res) {
         // 转发成功
         wx.showShareMenu({
@@ -87,8 +83,7 @@ Page({
     }
   },
   totry(){
-    // let url = '../guess/guess?pid=' + this.data.pid; 
-    let url = '../guess/guess?pid=1517638759'
+    let url = '../guess/guess?pid=' + this.data.pid; 
     wx.navigateTo({url})
   },
   showFriendActive() {

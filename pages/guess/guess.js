@@ -50,8 +50,9 @@ Page({
     console.log(options)
     this.setData({
       //pid: options.pid,
-      pid: options.pid || 1517798003,
-      recordMod: { pid: options.pid || 1517798003}
+      pid: options.pid || 1517798281,
+      recordMod: {
+        pid: options.pid || 1517798281}
     })
     if (app.globalData.userInfo) {
       this.setData({

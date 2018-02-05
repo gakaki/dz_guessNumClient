@@ -80,25 +80,25 @@
     </scroll-view>
   </view>
   <view class="kb fcsa {{kbHeight}}">
-    <view class="flex-space kb-row row1">
-      <text class="bian {{actItem[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum' >1</text>
+    <view class="fsb kb-row row1">
+      <text class="bian ml {{actItem[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum' >1</text>
       <text class="mid {{(actItem[1])?'active': ''}}" data-num="2"  bindtap='clickNum' >2</text>
-      <text class="bian {{actItem[2]?'active hu-rgt': ''}}" data-num="3"  bindtap='clickNum' >3</text>
+      <text class="bian mr {{actItem[2]?'active hu-rgt': ''}}" data-num="3"  bindtap='clickNum' >3</text>
     </view>
-    <view class="flex-space kb-row">
-      <text class="bian {{actItem[3]?'active': ''}}" data-num="4"  bindtap='clickNum' >4</text>
+    <view class="fsb kb-row">
+      <text class="bian ml {{actItem[3]?'active': ''}}" data-num="4"  bindtap='clickNum' >4</text>
       <text class="mid {{actItem[4]?'active': ''}}" data-num="5"  bindtap='clickNum' >5</text>
-      <text class="bian {{actItem[5]?'active': ''}}" data-num="6"  bindtap='clickNum' >6</text>
+      <text class="bian mr {{actItem[5]?'active': ''}}" data-num="6"  bindtap='clickNum' >6</text>
     </view>
-    <view class="flex-space kb-row">
-      <text class="bian {{actItem[6]?'active': ''}}" data-num="7"  bindtap='clickNum' >7</text>
+    <view class="fsb kb-row">
+      <text class="bian ml {{actItem[6]?'active': ''}}" data-num="7"  bindtap='clickNum' >7</text>
       <text class="mid {{actItem[7]?'active': ''}}" data-num="8"  bindtap='clickNum' >8</text>
-      <text class="bian {{actItem[8]?'active': ''}}" data-num="9"  bindtap='clickNum' >9</text>
+      <text class="bian mr {{actItem[8]?'active': ''}}" data-num="9"  bindtap='clickNum' >9</text>
     </view>
-    <view class="flex-space kb-row">
-      <text class="bian"></text>
+    <view class="fsb kb-row">
+      <text class="bian ml"></text>
       <text class="mid {{actItem[9]?'active': ''}}" data-num="0"  bindtap='clickNum' >0</text>
-      <text class="bian del" bindtap='deleteNum'></text>
+      <text class="bian del mr" bindtap='deleteNum'></text>
     </view>
   </view>
   <correct id="guess" result="{{popInfo.result}}" comment="{{popInfo.comment}}" money="{{(popInfo.money)/100}}" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>

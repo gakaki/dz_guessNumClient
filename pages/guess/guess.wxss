@@ -84,6 +84,9 @@
   line-height: 52rpx;
   margin: 0 12rpx
 }
+.no-record-wrap {
+  margin-top: 88rpx;
+}
 
 .rest {
   align-self: flex-end;

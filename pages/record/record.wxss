@@ -95,7 +95,7 @@
   border-bottom: 2rpx solid #d88b88;
 }
 .no-record-wrap {
-  margin-top: 100rpx;
+  padding-top: 100rpx;
 }
 
 .one-title {

@@ -53,12 +53,20 @@
         <view class="record">
           <text class='record-info'>{{item.userInfo.nickName}}</text>
           <text class='record-info'>{{item.maxRecord.commit}}</text>
-          <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}" wx:for-item="guess">{{guess.userAnswerWord}}</text>
         </view>
         <view class="record rank-result">
           <text class='record-info'>领取{{item.moneyGot}}元</text>
-          <text class='record-info opacity'>占位</text>
-          <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}" wx:for-item="guess">{{guess.userMark}}</text>
+        </view>
+        <view class="guess-record">
+          <view class="record response">
+            <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}" wx:for-item="guess">{{guess.userAnswerWord}}</text>
+          </view>
+          <view class="record response">
+            <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}">---------------------------------</text>
+          </view>
+          <view class="record response">
+            <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}" wx:for-item="guess">{{guess.userMark}}</text>
+          </view>
         </view>
       </view>
     </scroll-view>

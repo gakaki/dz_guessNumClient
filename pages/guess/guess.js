@@ -53,9 +53,9 @@ Page({
     that = this;
     this.setData({
       //pid: options.pid,
-      pid: options.pid || 1517798281,
+      pid: options.pid,
       recordMod: {
-        pid: options.pid || 1517798281
+        pid: options.pid
       }
     })
     if (app.globalData.userInfo) {

@@ -58,14 +58,16 @@
           <text class='record-info'>领取{{item.moneyGot}}元</text>
         </view>
         <view class="guess-record">
-          <view class="record response">
-            <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}" wx:for-item="guess">{{guess.userAnswerWord}}</text>
-          </view>
-          <view class="record response">
-            <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}">---------------------------------</text>
-          </view>
-          <view class="record response">
-            <text class='record-info' wx:for="{{item.guessRecords}}" wx:key="{{index}}" wx:for-item="guess">{{guess.userMark}}</text>
+          <view class="line" wx:for="{{item.guessRecords}}" wx:key="{{index}}">
+            <view class="record response">
+              <text class='record-info'>{{item.userAnswerWord}}</text>
+            </view>
+            <view class="record response xuxian">
+              <text class='record-info hidden'>---------------------------------------------------------------------------------</text>
+            </view>
+            <view class="record response">
+              <text class='record-info'>{{item.userMark}}</text>
+            </view>
           </view>
         </view>
       </view>

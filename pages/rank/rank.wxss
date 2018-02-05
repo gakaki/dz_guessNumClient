@@ -159,11 +159,9 @@
   background-image: url("https://gengxin.odao.com/update/h5/wangcai/rank/cuprum.png");
 }
 .record{
-  min-height: 61rpx;
   margin-top: 45rpx;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20rpx;
 }
 .record-info{
   font-family: "微软雅黑";
@@ -199,10 +197,25 @@
 }
 .guess-record{
   width: 620rpx;
-  margin-left: 75rpx;
+  margin-left: 80rpx;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 20rpx;
 }
 .response{
   margin-top: 0;
+}
+.xuxian{
+  max-width: 415rpx;
+  overflow: hidden;
+}
+.hidden{
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  max-height: 34rpx; 
+}
+.line{
+  display: flex;
+  justify-content: space-between;
 }

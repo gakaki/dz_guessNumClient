@@ -1,4 +1,7 @@
-let app =getApp();
+let app = getApp();
+import { doFetch, start } from '../../utils/rest.js';
+import { configs } from '../../utils/configs.js';
+
 Component({
   properties: {
     // 这里定义了content属性，属性值可以在组件使用时指定
@@ -56,6 +59,22 @@ Component({
       if (this.properties.isAuth) {
         wx.openSetting({
           success: (res) => {
+            doFetch('user.getiteminfo', {
+              itemId: configs.Item.CASHCOUPON
+            }, (res) => {
+                start(res=>{
+                  let v = res.info.items[configs.Item.CASHCOUPON];
+                  if (v) {
+                    let page = getCurrentPages()[0];
+                    console.log(page)
+                    if (page) {
+                      page.setData({
+                        hasTicket: true
+                      })
+                    }
+                  }
+                })
+            });
             wx.getUserInfo({
               success: info => {
                 app.globalData.userInfo = info.userInfo;

@@ -8,7 +8,7 @@ const LimitPackageSum = 50000;
 Page({
   data: {
     showAuthTip:false,
-    title:'一起来拼智力领红包',
+    title:'',
     moneySelect:['1.68','6.6','8.8'],
     hasTicket: false,
     useTicket:false,
@@ -32,7 +32,6 @@ Page({
     removeMask: true
   },
   onLoad(res){
-    console.log(res)
     // let that = this;
     // wx.request({
     //   url: 'http://ip-api.com/json',
@@ -42,6 +41,7 @@ Page({
     //     })
     //   }
     // })
+    
     doFetch('user.getiteminfo', {
       itemId: configs.Item.CASHCOUPON
     }, (res) => {
@@ -56,7 +56,8 @@ Page({
         return item[1]
     })
     this.setData({
-      titleList:list
+      titleList:list,
+      title:list[0]
     })
   },
   selectTitle(e){
@@ -74,9 +75,6 @@ Page({
     this.setData({
       showTitleList: false
     })
-  },
-  getActive(src,dest){
-    return src == dest ? 'active' : '';
   },
   introPlay() {
     this.setData({

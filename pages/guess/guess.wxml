@@ -100,6 +100,6 @@
     </view>
   </view>
   <correct id="guess" result="{{popInfo.result}}" comment="{{popInfo.comment}}" money="{{popInfo.money}}" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
-  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{baoInfo.originator.items[3]}}" binddoJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡" bindcancel='toRank'></pop> 
+  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{!singleBtn?baoInfo.originator.items[3]:0}}" binddoJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡" bindcancel='toRank'></pop> 
   <!-- <pop id="pop1" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" bindcancel='toRank' ></pop> -->
 </view>

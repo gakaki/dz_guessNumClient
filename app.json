@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/record/record",
     "pages/guess/guess",
 
     "pages/share/share",
@@ -8,7 +9,6 @@
    
     "pages/rank/rank",
     
-    "pages/record/record",
     "pages/help/help",
     "components/pop/pop",
     "components/keyboard/keyboard"

@@ -11,28 +11,28 @@
          <view class='money-wrap'>
             <view class='num-left flex-column'>
               <image class='money-img' src='https://gengxin.odao.com/update/h5/wangcai/record/money.png'></image>
-              <text class='money-content num' wx:if='{{send}}'>{{sendPackages.sum}}元</text>
-              <text class='money-content num' wx:if='{{receive}}'>{{receivePackages.sum}}元</text>
+              <text class='money-content' wx:if='{{send}}'>{{sendPackages.sum}}</text>
+              <text class='money-content' wx:if='{{receive}}'>{{receivePackages.sum}}</text>
             </view>
             <view class='num-right flex-column'> 
               <image class='money-img' src='https://gengxin.odao.com/update/h5/wangcai/record/num.png'></image>
-              <text class='money-content money-content-right num' wx:if='{{send}}'>{{sendPackages.num}}</text>
-              <text class='money-content money-content-right num' wx:if='{{receive}}'>{{receivePackages.num}}</text>
+              <text class='money-content money-content-right' wx:if='{{send}}'>{{sendPackages.num}}</text>
+              <text class='money-content money-content-right' wx:if='{{receive}}'>{{receivePackages.num}}</text>
             </view>
          </view>
       </view> 
     </view>
-    <scroll-view  class='record-list' scroll-y='true'>
-      <view class='one-list' bindtap='packageDetail' data-item='{{item}}' wx:if='{{send}}' wx:for='{{sendPackages.record}}' wx:key='{{index}}'>
+    <scroll-view  class='record-list' scroll-y='true' bindscrolltolower='srcollLower'>
+      <view class='one-list' bindtap='packageDetail' data-item='{{item}}' wx:if='{{send}}' wx:for='{{sendRecord}}' wx:key='{{index}}'>
         <text class='one-title'>{{item.title}}</text>
-        <text class='one-sum'>{{item.money}}</text>
+        <text class='one-sum'>{{item.money}}元</text>
       </view> 
-      <view class='one-list' bindtap='receivePacDetail' data-item='{{item}}' wx:if='{{receive}}' wx:for='{{receivePackages.record}}' wx:key='{{index}}'>
+      <view class='one-list' bindtap='receivePacDetail' data-item='{{item}}' wx:if='{{receive}}' wx:for='{{receiveRecord}}' wx:key='{{index}}'>
         <view>
           <image class='user-avatar' src='{{item.userInfo.avatarUrl}}'></image>
           <text class='user-nickname'>{{item.userInfo.nickName}}</text>
         </view>
-        <text class='one-sum'>{{item.guessInfo.userGetMoney}}</text>
+        <text class='one-sum'>{{item.guessInfo.userGetMoney}}元</text>
       </view> 
     </scroll-view>
   </view>

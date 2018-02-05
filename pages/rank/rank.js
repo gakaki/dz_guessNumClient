@@ -122,6 +122,7 @@ Page({
       let info = this.data.getInfo.filter(v => {
         return v.userInfo.uid == getUid()
       })
+      console.log(data.rank)
       //根据自己抢没抢到钱来决定分享的内容
       if(info.length){
         this.data.shareTitle = "我领取到了" + info[0].moneyGot + "元福利，快来看看我的战绩";

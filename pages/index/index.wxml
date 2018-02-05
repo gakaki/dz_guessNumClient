@@ -1,6 +1,7 @@
 <!--index.wxml-->
-  <view class="container container-wrap"> 
-   <view class='title-wrap' bindtap='changeTitle'>
+<view class="container container-wrap"> 
+  <view class='mask' hidden='{{removeMask}}' bindtouchstart='hiddenMask'></view>
+  <view class='title-wrap' bindtap='changeTitle'>
     <text class="title {{title.length>11?'lengthLimit':''}}">{{title}}</text>
     <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
   </view>

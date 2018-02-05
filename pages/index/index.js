@@ -28,7 +28,8 @@ Page({
     titleList:[],
     showTitleList:false,
     simpleTip:'',
-    IP:''
+    IP:'',
+    removeMask: true
   },
   onLoad(){
     // let that = this;
@@ -190,12 +191,18 @@ Page({
     return str
     
   },
+  hiddenMask(){
+    this.setData({
+      removeMask: true
+    })
+  },
   inputNum(e){
     this.setData({
       defineNum:true,
       activeIndex: -1,
       useTicket: false,
-      inputValue: this.data.inputV
+      inputValue: this.data.inputV,
+      removeMask:false
     })
   },
   useSelfTicket(){

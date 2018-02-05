@@ -282,7 +282,6 @@ Page({
       title: this.data.title
     }, (res)=>{
       let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.data.pid;
-      // let url = '../../pages/share/share?title=' + this.data.title + '&pid=1517638759';
       wx.navigateTo({url})
     });
   },
@@ -321,6 +320,7 @@ Page({
       // 来自页面内转发按钮
       console.log(res.target)
     }
+    console.log(app.globalData.shareUrl)
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',

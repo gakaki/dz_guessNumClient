@@ -2,6 +2,7 @@
 import {start} from 'utils/rest.js';
 import {configs} from 'utils/configs.js'//test
 
+
 App({
   onLaunch: function (ops) {
     wx.onNetworkStatusChange(function (res) {
@@ -78,7 +79,8 @@ App({
   globalData: {
     userInfo: null,
     hasUserInfo:true,
-    guessMoney:0
+    guessMoney:0,
+    shareUrl:''
   },
 
   globalLastTapTime: 0,

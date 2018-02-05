@@ -15,7 +15,6 @@ Page({
     canvasIndex:false,
     friendUrl:'https://gengxin.odao.com/update/h5/wangcai/share/transmit.png',
     friendCUrl:'https://gengxin.odao.com/update/h5/wangcai/share/friendC-share.png',
-    shareImg:"",
     title:"",
     pid:"",
   },
@@ -71,7 +70,6 @@ Page({
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/guess/guess?pid=' + this.data.pid,
-      imageUrl: this.data.shareImg,
       success: function (res) {
         // 转发成功
         wx.showShareMenu({
@@ -86,7 +84,6 @@ Page({
   },
   totry(){
     let url = '../guess/guess?pid=' + this.data.pid; 
-    // let url = '../guess/guess?pid=1517638759'
     wx.navigateTo({url})
   },
   showFriendActive() {

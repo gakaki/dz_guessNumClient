@@ -370,12 +370,16 @@
   font-size: 72rpx;
   font-weight: bold;
   color: rgba(178, 31, 46, 0.8);
-  
   /* -webkit-transition: bottom 3s linear;
   transition: bottom 3s linear; */
   
 }
-
+.ml {
+  margin-left: 1rpx;
+}
+.mr {
+  margin-right: 1rpx;
+}
 @keyframes toBot
 {
 	from {height: 0rpx;}
@@ -399,13 +403,13 @@ from {height: 844rpx;}
 	to {height:0;}
 }
 .kb-hgt {
-  animation:toBot .5s linear;
-	-webkit-animation:toBot .5s linear;
+  animation:toBot .1s linear;
+	-webkit-animation:toBot .1s linear;
   height: 844rpx;
 }
 .kb-hide {
-  animation:toHide .5s linear;
-	-webkit-animation:toHide .5s linear;
+  animation:toHide .1s linear;
+	-webkit-animation:toHide .1s linear;
   height: 0;
 }
 .kb-row {

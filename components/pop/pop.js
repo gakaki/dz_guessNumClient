@@ -67,7 +67,6 @@ Component({
                   let v = res.info.items[configs.Item.CASHCOUPON];
                   if (v) {
                     let page = getCurrentPages()[0];
-                    console.log(page)
                     if (page) {
                       page.setData({
                         hasTicket: true

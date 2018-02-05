@@ -124,7 +124,6 @@ const listen = (action, model, cb, ctx) => {
   //add to sub map
   let node = new LsnNode(action, cb, ctx);
   actionMp.set(node.id, node);
-  console.log('listen',action)
   //start loop
   loopListen();
 }
@@ -139,7 +138,6 @@ const unlisten = (action, cb, ctx) => {
     console.error('unlisten 时 action参数必须要传')
     return;
   }
-  console.log('call unlisten>>',action);
   if (!cb && !ctx) {
     //如果不传cb和ctx，则删除所有对该action的监听
     _listeners.delete(action);
@@ -203,16 +201,9 @@ function loopListen() {
 //启动（会默认走一遍登录流程）
 const start = suc => {
   wx.checkSession({
-
-
-    // success: () => {
-    //   console.log('sessionOk')
-    //   userLogin(suc, showErr);
-    // },
     success: () => {
       wx.login({
         success: res => {
-          console.log('call auth')
           sdkAuth(res.code, suc)
         },
         fail: showErr
@@ -220,13 +211,6 @@ const start = suc => {
     }
   })
 }
-
-//业务类请求
-// const guessnum = (data, suc, err) => {
-//   doFetch('guessnum.guess', data, suc, err);
-// }
-
-
 
 module.exports = {
   start,

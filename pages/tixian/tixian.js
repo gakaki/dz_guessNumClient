@@ -107,11 +107,20 @@ Page({
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
-      console.log(res,'提现')
-      this.setData({
-        withdraw:'',
-        showPop:true
-      })
+      if(res.data.code == -136){
+        this.setData({
+          packageTip: "提现失败，请联系客服",
+          hasPackageTip: true,
+          withdraw: '',
+        })
+      }
+      else{
+        this.setData({
+          packageTip: "提现成功，1-7个工作日到账。",
+          hasPackageTip: true,
+          withdraw: '',
+        })
+      }
       doFetch('user.getiteminfo', {
         itemId: configs.Item.MONEY
       }, (res) => {

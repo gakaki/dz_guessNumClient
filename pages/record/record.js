@@ -5,6 +5,7 @@ import { doFetch, fixedNum } from '../../utils/rest.js';
 const GUESSING = 168;
 const OVEREXPIRE = -131;
 const PKOver = -132;
+const COUNTOVER = -129;
 const UNEXIST = -130;
 let sendPage = 1;
 let receivePage = 1;
@@ -81,8 +82,13 @@ Page({
       })
       if (sendPackages.record.length >= dataLength) {
         sendPage++;
-      } else if (receivePackages.record.length >= dataLength) {
+      } else {
+        sendEnd = true
+      } 
+      if (receivePackages.record.length >= dataLength) {
         receivePage++;
+      } else {
+        receiveEnd = true
       }
     });
 
@@ -146,6 +152,7 @@ Page({
           break;
         case OVEREXPIRE:
         case PKOver:
+        case  COUNTOVER:
           this.setData({
             packageTip: '竞猜PK已过期',
             hasPackageTip: true
@@ -199,10 +206,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',

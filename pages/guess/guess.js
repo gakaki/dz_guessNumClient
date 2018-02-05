@@ -102,7 +102,7 @@ Page({
     unlisten('guessnum.getpackrecords', this.updateRecords, this);
   },
   updateRecords(res) {
-    let sts = res.data.data.packInfo.status
+    //let sts = res.data.data.packInfo.status
     if (res.data.code == -131) {
       let str = configs.Message.Get(1).words
       this.setData({

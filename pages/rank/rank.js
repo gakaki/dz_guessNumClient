@@ -96,7 +96,6 @@ Page({
    */
   onLoad: function (options) {
     if(options.pid){
-      console.log(options.pid)
       this.data.pid = options.pid;
     }
     
@@ -112,6 +111,11 @@ Page({
           isOwner: true
         })
       }
+      //返回的数据中得到的money为分，需转换为元
+      for(let i=0;i<data.rank.length;i++){
+        data.rank.moneyGot = data.rank.moneyGot/100;
+      }
+
       this.setData({
         userInfo: data.packInfo.userInfo,
         password: data.answer,
@@ -122,7 +126,6 @@ Page({
       let info = this.data.getInfo.filter(v => {
         return v.userInfo.uid == getUid()
       })
-      console.log(data.rank)
       //根据自己抢没抢到钱来决定分享的内容
       if(info.length){
         this.data.shareTitle = "我领取到了" + info[0].moneyGot + "元福利，快来看看我的战绩";

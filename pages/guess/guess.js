@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isOver: false,
     timer: null,
     singleBtn: false,
     cancleStr: '确定',
@@ -116,7 +117,8 @@ Page({
       this.setData({
         showTip: true,
         tipCon: str,
-        singleBtn: true
+        singleBtn: true,
+        isOver: true
       })
     }
     if (res.data.code != 0) {
@@ -160,18 +162,28 @@ Page({
     })
   },
   toRank() {
-
-    clearInterval(this.data.timer)
-    unlisten('guessnum.getpackrecords', this.updateRecords, this);
-    this.setData({
-      timeCd: 0
-    })
-    wx.redirectTo({
-      url: '../rank/rank?pid=' + this.data.pid,
-    })
+    if (this.data.isOver) {
+      clearInterval(this.data.timer)
+      unlisten('guessnum.getpackrecords', this.updateRecords, this);
+      this.setData({
+        timeCd: 0
+      })
+      wx.redirectTo({
+        url: '../rank/rank?pid=' + this.data.pid,
+      })
+    }
+    
   },
   send: function (e) {
     console.log(typeof (this.data.num))
+    if (this.data.num.length < 4) {
+      let str = configs.Message.Get()
+      this.setData({
+        showTip: true,
+        singleBtn: true,
+        tipCon: '请输入0-9不重复的4位数'
+      })
+    }
     if (this.data.num.length >= 4) {
       doFetch('guessnum.guesspack', {
         guessNum: this.data.num,
@@ -238,7 +250,8 @@ Page({
           this.setData({
             showTip: true,
             tipCon: str,
-            singleBtn: true
+            singleBtn: true,
+            isOver: true
           })
         }
       })

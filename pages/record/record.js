@@ -33,7 +33,8 @@ Page({
     receiveRecord:[],
     packageTip:'竞猜PK已过期',
     hasPackageTip:false,
-    nowPid:''
+    nowPid:'',
+    haha:300
   },
   /**
    * 生命周期函数--监听页面加载
@@ -209,7 +210,7 @@ Page({
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration', {}, (res) => {
-          if (res.code == 0) {
+          if (res.data.code == 0) {
             that.setData({
               packageTip: "恭喜获得加速卡",
               hasPackageTip: true,

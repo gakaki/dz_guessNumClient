@@ -83,7 +83,6 @@ Page({
    * 确认提现
    */
   confirmWithdraw: function(e) {
-    console.log(this.data)
     if (app.preventMoreTap(e)) { return; }
     if (this.data.withdraw > this.data.remainder) {
       this.setData({
@@ -159,7 +158,6 @@ Page({
       itemId: configs.Item.MONEY
     },(res)=>{
       if (res.data.data.stock){
-        console.log(res.data.data.stock)
         let money = fixedNum(res.data.data.stock/100)
         this.setData({
           remainder: money
@@ -177,7 +175,7 @@ Page({
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration', {}, (res) => {
-          if (res.code == 0) {
+          if (res.data.code == 0) {
             that.setData({
               packageTip: "恭喜获得加速卡",
               hasPackageTip: true,

@@ -9,7 +9,6 @@ Page({
     packageTip: '',
     hasPackageTip: false,
     questions: []
-
   },
   onLoad: function () {
     that = this;

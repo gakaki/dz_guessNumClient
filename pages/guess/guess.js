@@ -6,7 +6,6 @@ import { doFetch, getUid, listen, unlisten } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js'
 let that;
 Page({
-
   /**
    * 页面的初始数据
    */

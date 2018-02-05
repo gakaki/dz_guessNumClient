@@ -112,7 +112,16 @@ Page({
         withdraw:'',
         showPop:true
       })
-      console.log(res)
+      doFetch('user.getiteminfo', {
+        itemId: configs.Item.MONEY
+      }, (res) => {
+        if (res.data.data.stock) {
+          let money = fixedNum(res.data.data.stock / 100)
+          this.setData({
+            remainder: money
+          })
+        }
+      })
     })
   },
 

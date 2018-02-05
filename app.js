@@ -4,6 +4,15 @@ import {configs} from 'utils/configs.js'//test
 
 App({
   onLaunch: function (ops) {
+    wx.onNetworkStatusChange(function (res) {
+      if(res.networkType == 'none') {
+        wx.showLoading({
+          title: '当前网络不可用'
+        })
+      } else {
+        wx.hideLoading()
+      }
+    })
     // 登录
     wx.login({
       success: res => {

@@ -19,8 +19,8 @@ Page({
     withUrl:'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
     anotherUrl:'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
     serverUrl:'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
-    receivePackages: { sum: 0, num: 0},
-    sendPackages: { sum: 0, num: 0}
+    receivePackages: { sum: 0.00, num: 0},
+    sendPackages: { sum: 0.00, num: 0}
   },
   /**
    * 生命周期函数--监听页面加载
@@ -102,36 +102,6 @@ Page({
         receive: "active",
       })
     }
-  },
-  showWithActive(){
-    this.setData({
-      withUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw-active.png',
-    })
-  },
-  hideWithActive(){
-    this.setData({
-      withUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
-    })
-  },
-  showAnotherActive() {
-    this.setData({
-      anotherUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another-active.png',
-    })
-  },
-  hideAnotherActive() {
-    this.setData({
-      anotherUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
-    })
-  },
-  showServerActive() {
-    this.setData({
-      serverUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/service-active.png',
-    })
-  },
-  hideServerActive() {
-    this.setData({
-      serverUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
-    })
   },
   toSendPackage() {
     wx.navigateTo({

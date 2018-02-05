@@ -21,17 +21,6 @@
             </view>
          </view>
       </view> 
-      <view class='list'>
-        <view class='flex-space btn-wrap'>
-          <image class='btn-img' bindtap='toWithDraw' bindtouchstart='showWithActive' bindtouchend='hideWithActive' src='{{withUrl}}'></image>
-          <image class='btn-img' bindtap='toSendPackage' bindtouchstart='showAnotherActive' bindtouchend='hideAnotherActive'
-          src='{{anotherUrl}}'></image>
-          <image class='btn-img' src='{{serverUrl}}'></image>
-        </view>
-         <view class='btn'>
-          <button class='btn-img' bindtouchstart='showServerActive' bindtouchend='hideServerActive' open-type='contact'>联系客服</button>
-        </view> 
-      </view> 
     </view>
     <scroll-view  class='record-list' scroll-y='true'>
       <view class='one-list' bindtap='packageDetail' data-item='{{item}}' wx:if='{{send}}' wx:for='{{sendPackages.record}}' wx:key='{{index}}'>

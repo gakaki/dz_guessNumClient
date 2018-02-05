@@ -67,7 +67,7 @@
   top: 195rpx;
   width: 160rpx;
   text-align: center;
-  font: bold 44rpx/1 "Microsoft YaHei";
+  font: bold 36rpx/44rpx "Microsoft YaHei";
   color: #e17f00;
 }
 .money-content-right {

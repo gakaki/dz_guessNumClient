@@ -23,12 +23,16 @@ App({
     })
   //  this.getUserInfo();
    start((res)=>{
-    //  console.log(res.info.items)
-    //  let v = res.info.items[configs.Item.CASHCOUPON];
-    //  if (v) {
-    //    this.globalData.cashcoupon = v
-    //    console.log(v,'launch')
-    //  }
+     let v = res.info.items[configs.Item.CASHCOUPON];
+     if (v) {
+       let page = getCurrentPages()[0];
+       console.log(page)
+       if(page) {
+         page.setData({
+           hasTicket: true
+         })
+       }
+     }
   
     //   console.log(res)
     //   console.log(configs.Item.Get(configs.Item.MONEY))
@@ -79,8 +83,7 @@ App({
   globalData: {
     userInfo: null,
     hasUserInfo:true,
-    guessMoney:0,
-    shareUrl:''
+    guessMoney:0
   },
 
   globalLastTapTime: 0,

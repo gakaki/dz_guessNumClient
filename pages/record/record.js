@@ -3,6 +3,11 @@
 let app = getApp();
 import { doFetch, fixedNum } from '../../utils/rest.js';
 const GUESSING = 168;
+let index = {s:1,r:1}; //发送和接收起始index值
+let sendPage = 1;
+let receivePage = 1;
+let dataLength = 20;
+let sendEnd,receiveEnd;
 
 Page({
 
@@ -20,7 +25,9 @@ Page({
     anotherUrl:'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
     serverUrl:'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
     receivePackages: { sum: '0.00', num: '0'},
-    sendPackages: { sum: '0.00', num: '0'}
+    sendPackages: { sum: '0.00', num: '0'},
+    sendRecord:[],
+    receiveRecord:[]
   },
   /**
    * 生命周期函数--监听页面加载
@@ -29,14 +36,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '我的记录'
     })
-
-    doFetch('guessnum.getuserpackrecords', {}, res => {
-      this.setData({
-        receivePackages: res.data.data.receivePackages,
-        sendPackages: res.data.data.sendPackages,
-      })
-    });
-
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -63,6 +62,67 @@ Page({
         }
       })
     }
+
+    doFetch('guessnum.getuserpackrecords', {}, res => {
+      let sendPackages = res.data.data.sendPackages;
+      let receivePackages = res.data.data.receivePackages;
+      console.log(sendPackages, receivePackages)
+      this.setData({
+        receivePackages: receivePackages,
+        sendPackages: sendPackages,
+        sendRecord: sendPackages.record,
+        receiveRecord: receivePackages.record,
+      })
+      if (sendPackages.record.length >= dataLength) {
+        sendPage++;
+      } else if (receivePackages.record.length >= dataLength) {
+        receivePage++;
+      }
+    });
+
+  },
+  srcollLower(){
+    let isSend = this.data.send? true:false;
+    if (isSend) {
+      if (sendEnd) { return; }
+      doFetch('guessnum.getuserpackrecords', {
+        sendPage,
+        sendLimit:dataLength,
+        receivePage,
+        receiveLimit: dataLength
+      }, res => {
+        let record = res.data.data.sendPackages.record;
+        if (record.length >= dataLength) {
+          sendPage++;
+        } else {
+          sendEnd = true
+        }
+        let totalRecord = this.data.sendRecord.concat(record)
+        this.setData({
+          sendRecord: totalRecord,
+        })
+      });
+    } else {
+      if(receiveEnd) {return ;}
+      doFetch('guessnum.getuserpackrecords', {
+        sendPage,
+        sendLimit: dataLength,
+        receivePage,
+        receiveLimit: dataLength
+      }, res => {
+        let record = res.data.data.receivePackages.record;
+        if (record.length >= dataLength) {
+          receivePage++;
+        } else {
+          receiveEnd = true
+        }
+        let totalRecord = this.data.receiveRecord.concat(record)
+        this.setData({
+          receiveRecord: totalRecord,
+        })
+      });
+    }
+   
   },
   packageDetail(e){
     let p = e.currentTarget.dataset.item

@@ -46,4 +46,4 @@
       </view> 
     </scroll-view>
   </view>
-  <tip content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true' bindsure='userSure'></tip>
+  <pop content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true' bindsure='userSure'></pop>

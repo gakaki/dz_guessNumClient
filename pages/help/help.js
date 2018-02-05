@@ -1,9 +1,12 @@
 let app = getApp();
 import { configs } from '../../utils/configs.js'
+let that;
 Page({
   data: {
     isactive: 'server',
     curIdx: -1,
+    packageTip: '',
+    hasPackageTip: false,
     questions: [
       {
         title: 'aaaaa',
@@ -58,6 +61,7 @@ Page({
     ]
   },
   onLoad: function () {
+    that = this;
     wx.setNavigationBarTitle({
       title: '旺猜—常见问题'
     })
@@ -101,7 +105,14 @@ Page({
       path: '/pages/index/index',
       imageUrl: '../../assets/common/share.png',
       success: function (res) {
-        // 转发成功
+        doFetch('guessnum.getacceleration', {}, (res) => {
+          if (res.code == 0) {
+            that.setData({
+              packageTip: "恭喜获得加速卡",
+              hasPackageTip: true,
+            })
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

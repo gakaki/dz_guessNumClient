@@ -2,7 +2,7 @@
 
 let app = getApp();
 import { canvas } from '../../utils/util.js';
-
+let that;
 Page({
 
   /**
@@ -17,12 +17,15 @@ Page({
     friendCUrl:'https://gengxin.odao.com/update/h5/wangcai/share/friendC-share.png',
     title:"",
     pid:"",
+    packageTip: "",
+    hasPackageTip: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (res) {
+    that = this;
     this.setData({
       title:res.title,
       pid:res.pid
@@ -71,11 +74,14 @@ Page({
       title: '大家一起来拼智力领福利',
       path: '/pages/guess/guess?pid=' + this.data.pid,
       success: function (res) {
-        // 转发成功
-        wx.showShareMenu({
-          // 要求小程序返回分享目标信息
-          withShareTicket: true
-        });
+        doFetch('guessnum.getacceleration', {}, (res) => {
+          if (res.code == 0) {
+            that.setData({
+              packageTip: "恭喜获得加速卡",
+              hasPackageTip: true,
+            })
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

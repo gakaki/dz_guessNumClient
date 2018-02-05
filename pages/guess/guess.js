@@ -35,11 +35,10 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     inputNum: '',
-    warning: false,
+    warning: false
     
   },
-
-  onReady: function () {
+  onReady: function (options) {
     this.guess = this.selectComponent('#guess');
     this.pop = this.selectComponent('#pop');
   },
@@ -47,7 +46,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
     this.setData({
       //pid: options.pid,
       pid: options.pid || 1517798281,
@@ -110,7 +108,7 @@ Page({
       console.log('错误码', res.data.code);
       return;
     }
-    if (res.data.dataoriginator == getUid()) {
+    if (res.data.data.originator.uid == getUid()) {
       this.setData({
         baoInfo: res.data.data,
         isOwner: true
@@ -367,7 +365,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: '大家一起来拼智力领福利',
-      path: '/pages/guess/guess',
+      path: '/pages/guess/guess?pid=' + this.data.pid,
       imageUrl: '../../assets/common/share.png',
       success: function (res) {
         // 转发成功

@@ -31,7 +31,8 @@ Page({
     IP:'',
     removeMask: true
   },
-  onLoad(){
+  onLoad(res){
+    console.log(res)
     // let that = this;
     // wx.request({
     //   url: 'http://ip-api.com/json',

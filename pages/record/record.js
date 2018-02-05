@@ -1,7 +1,7 @@
 // pages/record/record.js
 
 let app = getApp();
-import { doFetch } from '../../utils/rest.js';
+import { doFetch, fixedNum } from '../../utils/rest.js';
 const GUESSING = 168;
 
 Page({
@@ -19,8 +19,8 @@ Page({
     withUrl:'https://gengxin.odao.com/update/h5/wangcai/common/withdraw.png',
     anotherUrl:'https://gengxin.odao.com/update/h5/wangcai/common/send-another.png',
     serverUrl:'https://gengxin.odao.com/update/h5/wangcai/common/service.png',
-    receivePackages: { sum: 0.00, num: 0},
-    sendPackages: { sum: 0.00, num: 0}
+    receivePackages: { sum: '0.00', num: '0'},
+    sendPackages: { sum: '0.00', num: '0'}
   },
   /**
    * 生命周期函数--监听页面加载

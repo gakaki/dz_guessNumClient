@@ -41,6 +41,7 @@ Component({
   methods: {
     // 这里是一个自定义方法    
     cancle(e) {
+      this.triggerEvent("sure")
       this.triggerEvent("cancel")
       this.setData({
         show: false

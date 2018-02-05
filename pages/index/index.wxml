@@ -1,5 +1,5 @@
 <!--index.wxml-->
-  <view class="container"> 
+  <view class="container container-wrap"> 
    <view class='title-wrap' bindtap='changeTitle'>
     <text class="title {{title.length>11?'lengthLimit':''}}">{{title}}</text>
     <image class='arrow' src='https://gengxin.odao.com/update/h5/wangcai/index/arrow.png'></image> 
@@ -16,7 +16,7 @@
     <view class='select {{hasTicket ? "select-ticket" : ""}}' bindtap='inputNum'>
       <text class='type-select {{defineNum ? "type-selected" : ""}}'></text>
       <text class='type-content'>赏金 ( 元 )</text>
-      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindinput='inputNumValue'></input>
+      <input class='input-money' type='digit' placeholder="填写金额" placeholder-style="color:#986143" bindinput='inputNumValue' value="{{inputTxt}}"></input>
       <text class='oneSimpleTip' wx:if="{{simpleTip.length}}">{{simpleTip}}</text>
     </view>
     <view class='ticket' wx:if='{{hasTicket}}' bindtap='useSelfTicket'>

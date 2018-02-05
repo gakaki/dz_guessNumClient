@@ -22,7 +22,9 @@ Page({
     content:"你未授权获取个人信息，无法发起红包",
     packageTip:"赏金至少1元",
     hasPackageTip:false,
-    inputValue:'',
+    inputValue:'',  //传入给后台的发起红包值
+    inputV: '',   //用户点击外框时，
+    inputTxt: '',  //用户输入的金额，用于输入框显示
     titleList:[],
     showTitleList:false,
     simpleTip:'',
@@ -124,29 +126,30 @@ Page({
     }
   },
   selectMoney(e){
+    this.setData({
+      simpleTip: '',
+      inputV: '',
+      inputTxt: '',
+      useTicket: false,
+      defineNum: false,
+    })
     switch (e.currentTarget.dataset.index) {
       case 0:
         this.setData({
           activeIndex: 0,
-          defineNum: false,
           inputValue: '1.68',
-          useTicket: false,
         })
         break;
       case 1:
         this.setData({
           activeIndex: 1,
-          defineNum: false,
-          inputValue: '6.6',
-          useTicket: false,
+          inputValue: '6.6'
         })
         break;
       case 2:
         this.setData({
           activeIndex: 2,
-          defineNum: false,
-          inputValue: '8.8',
-          useTicket: false,
+          inputValue: '8.8'
         })
         break;
     }
@@ -156,17 +159,23 @@ Page({
     if (value > LimitPackageSum) {
       this.setData({
         simpleTip: '赏金上限50000元',
-        inputValue: value
+        inputValue: value,
+        inputV: value,
+        inputTxt:value
       })
     } else if (value.length &&value < 1){
       this.setData({
         simpleTip: '赏金最少为1元',
-        inputValue: value
+        inputValue: value,
+        inputV: value,
+        inputTxt: value
       })
     } else {
       this.setData({
         simpleTip: '',
         inputValue: value,
+        inputV: value,
+        inputTxt: value
       })
     }
     
@@ -186,10 +195,14 @@ Page({
       defineNum:true,
       activeIndex: -1,
       useTicket: false,
+      inputValue: this.data.inputV
     })
   },
   useSelfTicket(){
     this.setData({
+      simpleTip: '',
+      inputV: '',
+      inputTxt: '',
       defineNum: false,
       activeIndex: -1,
       inputValue: '1',

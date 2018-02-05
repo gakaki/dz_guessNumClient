@@ -3,6 +3,7 @@ let app = getApp();
 import { doFetch,fixedNum } from '../../utils/rest.js';
 import { configs } from '../../utils/configs.js';
 let LimitPackageSum = 50000;
+let that;
 
 Page({
 
@@ -152,6 +153,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
     doFetch('user.getiteminfo',{
       itemId: configs.Item.MONEY
     },(res)=>{
@@ -163,7 +165,6 @@ Page({
       }
     })
   },
-
   /**
    * 用户点击右上角分享
    */
@@ -173,7 +174,14 @@ Page({
       path: '/pages/index/index',
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
-        // 转发成功
+        doFetch('guessnum.getacceleration', {}, (res) => {
+          if (res.code == 0) {
+            that.setData({
+              packageTip: "恭喜获得加速卡",
+              hasPackageTip: true,
+            })
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

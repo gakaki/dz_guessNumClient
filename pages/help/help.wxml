@@ -21,3 +21,4 @@
   <image class="dress-left" src='https://gengxin.odao.com/update/h5/wangcai/help/dress-left.png'></image>
   </view>
 </view>
+<pop content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></pop>

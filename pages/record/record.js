@@ -10,6 +10,7 @@ let sendPage = 1;
 let receivePage = 1;
 let dataLength = 20;
 let sendEnd,receiveEnd;
+let that;
 
 Page({
 
@@ -38,6 +39,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
     wx.setNavigationBarTitle({
       title: '我的记录'
     })
@@ -206,7 +208,14 @@ Page({
       path: '/pages/index/index',
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
-        // 转发成功
+        doFetch('guessnum.getacceleration', {}, (res) => {
+          if (res.code == 0) {
+            that.setData({
+              packageTip: "恭喜获得加速卡",
+              hasPackageTip: true,
+            })
+          }
+        })
       },
       fail: function (res) {
         // 转发失败

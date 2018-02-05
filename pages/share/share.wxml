@@ -1,5 +1,5 @@
 <!--pages/share/share.wxml-->
-<view class='wrap .flex-self-column'>
+<view class='wrap .flex-self-column container-wrap'>
   <view class='avatar-wrap'>
     <image class='avatar' src='{{userInfo.avatarUrl}}'></image>
   </view>

@@ -1,5 +1,5 @@
 <!--pages/tixian/tixian.wxml-->
-<view class="wrap">
+<view class="wrap container-wrap">
   <button class="opcity" open-type='contact'>客服</button>
   <image class="service" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/service.png'></image>
   <view class="withdraw-info">

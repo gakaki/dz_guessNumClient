@@ -115,15 +115,16 @@ Page({
           isOwner: true
         })
       }
+      console.log(data)
       //返回的数据中得到的money为分，需转换为元
       for(let i=0;i<data.rank.length;i++){
-        data.rank.moneyGot = data.rank.moneyGot/100;
+        data.rank[i].moneyGot = data.rank[i].moneyGot/100;
       }
 
       this.setData({
         userInfo: data.packInfo.userInfo,
         password: data.answer,
-        pidMoney: data.packInfo.money,
+        pidMoney: data.packInfo.money/100,
         getInfo: data.rank,
       })
       //获取分享人的数据更新到分享的title中

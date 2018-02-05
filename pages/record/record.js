@@ -3,7 +3,9 @@
 let app = getApp();
 import { doFetch, fixedNum } from '../../utils/rest.js';
 const GUESSING = 168;
-let index = {s:1,r:1}; //发送和接收起始index值
+const OVEREXPIRE = -131;
+const PKOver = -132;
+const UNEXIST = -130;
 let sendPage = 1;
 let receivePage = 1;
 let dataLength = 20;
@@ -27,7 +29,10 @@ Page({
     receivePackages: { sum: '0.00', num: '0'},
     sendPackages: { sum: '0.00', num: '0'},
     sendRecord:[],
-    receiveRecord:[]
+    receiveRecord:[],
+    packageTip:'竞猜PK已过期',
+    hasPackageTip:false,
+    nowPid:''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -66,7 +71,6 @@ Page({
     doFetch('guessnum.getuserpackrecords', {}, res => {
       let sendPackages = res.data.data.sendPackages;
       let receivePackages = res.data.data.receivePackages;
-      console.log(sendPackages, receivePackages)
       this.setData({
         receivePackages: receivePackages,
         sendPackages: sendPackages,
@@ -126,20 +130,33 @@ Page({
   },
   packageDetail(e){
     let p = e.currentTarget.dataset.item
+    this.setData({
+      nowPid:p.pid
+    })
     doFetch('guessnum.getpackrecords',{
       pid: p.pid
     },(res)=>{
-      if (p.status == GUESSING) {
-        wx.navigateTo({
-          url: '../../pages/guess/guess?pid=' + p.pid,
-        })
-      } else {
-        wx.navigateTo({
-          url: '../../pages/rank/rank?pid=' + p.pid,
-        })
+      switch(p.status){
+        case GUESSING:
+          wx.navigateTo({
+            url: '../../pages/guess/guess?pid=' + p.pid,
+          })
+          break;
+        case OVEREXPIRE:
+        case PKOver:
+          this.setData({
+            packageTip: '竞猜PK已过期',
+            hasPackageTip: true
+          })
+          break;
       }
     })
    
+  },
+  userSure(){
+    wx.navigateTo({
+      url: '../../pages/rank/rank?pid=' + this.data.nowPid,
+    })
   },
   receivePacDetail(e){
     let p = e.currentTarget.dataset.item.guessInfo.packInfo;

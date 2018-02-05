@@ -8,8 +8,8 @@
   width: 100vw;
   height: 100vh;
   color: #fff;
-  background: #b21e4a url('https://gengxin.odao.com/update/h5/wangcai/share/share.png') 0 -128rpx no-repeat;
-  background-size: 750rpx 1334rpx;
+  background: #b21e4a url('https://gengxin.odao.com/update/h5/wangcai/share/share.jpg') no-repeat;
+  background-size: 750rpx 1206rpx;
 }
 .avatar-wrap {
   width: 201rpx;

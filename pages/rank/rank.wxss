@@ -112,6 +112,7 @@
   min-height: 156rpx;
   display: flex;
   border-bottom: 1rpx solid #b21f2e;
+  flex-wrap: wrap;
 }
 .ranking{
   font-family: "微软雅黑";
@@ -159,10 +160,10 @@
 }
 .record{
   min-height: 61rpx;
-  margin-top: 34rpx;
+  margin-top: 45rpx;
   display: flex;
   flex-direction: column;
-  margin-bottom: 21rpx;
+  margin-bottom: 20rpx;
 }
 .record-info{
   font-family: "微软雅黑";
@@ -171,7 +172,7 @@
 }
 .rank-result{
   position: absolute;
-  right: 0rpx;
+  right: 21rpx;
   text-align: right;
 }
 .ranking-first{
@@ -190,11 +191,28 @@
   right: 20rpx;
   opacity: 0;
 }
-.opacity{
-  opacity: 0;
-}
 .touxiang{
   width: 100%;
   height: 100%;
   border-radius: 50%;
+
+}
+.guess-record{
+  width: 620rpx;
+  margin-left: 80rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.response{
+  margin-top: 0;
+}
+.xuxian{
+  max-width: 415rpx;
+  overflow: hidden;
+}
+.hidden{
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  max-height: 38rpx; 
 }

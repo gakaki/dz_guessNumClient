@@ -37,9 +37,9 @@
   </view>
   <view class="bg-box">
     <view class='game-explain flex' bindtap='showPop'>
-      <text class='detail'>猜中口令获取现金红包，口令为0-9不重复4位数</text>
-      <text class='detail'>A表示位置正确的数字个数</text>
-      <text class='detail'>B表示数字正确而位置不对数字个数</text>
+      <text class='detail'>猜中口令获得福利，口令为0-9不重复的4位数。</text>
+      <text class='detail'>A前面的数字表示数字对位置对的数字个数。</text>
+      <text class='detail'>B前面的数字代表数字对位置不对的数字个数。</text>
     </view>
     <view class="tab flex-space">
       <text class="{{doTixian}}" bindtouchstart='tixianStart' bindtouchend='tixianEnd' bindtap='tixian'></text>

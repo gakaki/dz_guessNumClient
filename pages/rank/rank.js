@@ -115,7 +115,6 @@ Page({
           isOwner: true
         })
       }
-      console.log('rank='+data)
       //返回的数据中得到的money为分，需转换为元
       for(let i=0;i<data.rank.length;i++){
         data.rank[i].moneyGot = data.rank[i].moneyGot/100;
@@ -145,10 +144,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
     return {
       title: this.data.shareTitle,
       path: '/pages/rank/rank?pid='+this.data.pid,

@@ -238,7 +238,6 @@ Page({
       })
       return ;
     }
-    console.log(v, 'v')
     if (v < 1) {
       this.setData({
         packageTip: "赏金至少1元",
@@ -334,7 +333,6 @@ Page({
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration',{},(res)=>{
-          console.log(res.data)
           if(res.data.code == 0) {
             that.setData({
               packageTip: "恭喜获得加速卡",

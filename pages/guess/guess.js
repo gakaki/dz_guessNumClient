@@ -103,9 +103,7 @@ Page({
     unlisten('guessnum.getpackrecords', this.updateRecords, this);
   },
   updateRecords(res) {
-    //let sts = res.data.data.packInfo.status
     let status = res.data.data.packInfo.status;
-    console.log(res, 'listencode')
     if (status == -131) {
       let str = configs.Message.Get(1).words
       this.setData({
@@ -195,7 +193,6 @@ Page({
         guessNum: this.data.num,
         pid: this.data.pid
       }, (res) => {
-        console.log(res.data.code,'code')
         if (res.data.code == 0) {
           this.setData({
             num: '',

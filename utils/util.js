@@ -5,7 +5,6 @@ function canvas(){
   let src = 'https://gengxin.odao.com/update/h5/wangcai/common/share3.png';
   const ctx = wx.createCanvasContext('myCanvas')
   ctx.drawImage(src, 0, 0, 420, 336)
-  // ctx.drawImage(this.data.userInfo.avatarUrl, 297, 0, 154, 154)
   ctx.draw(false, () => {
     wx.canvasToTempFilePath({
       x: 0,
@@ -16,11 +15,9 @@ function canvas(){
       destHeight: 336,
       canvasId: 'myCanvas',
       success(res) {
-        console.log(res,'suc')
         shareUrl = res.tempFilePath;
       },
       fail(res) {
-        console.log(res,'fail')
       }
     })
   })  

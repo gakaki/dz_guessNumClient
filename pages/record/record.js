@@ -82,13 +82,11 @@ Page({
       })
       if (sendPackages.record.length >= dataLength) {
         sendPage++;
-        console.log('sendPageONLOAD')
       } else {
         sendEnd = true
       } 
       if (receivePackages.record.length >= dataLength) {
         receivePage++;
-        console.log('receivePageONLOAD')
       } else {
         receiveEnd = true
       }
@@ -108,8 +106,6 @@ Page({
         let record = res.data.data.sendPackages.record;
         if (record.length >= dataLength) {
           sendPage++;
-
-          console.log('sendPage++;')
         } else {
           sendEnd = true
         }
@@ -129,7 +125,6 @@ Page({
         let record = res.data.data.receivePackages.record;
         if (record.length >= dataLength) {
           receivePage++;
-          console.log('receivePage++;')
         } else {
           receiveEnd = true
         }
@@ -211,10 +206,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
-    if (res.from === 'button') {
-      // 来自页面内转发按钮
-      console.log(res.target)
-    }
     return {
       title: '大家一起来拼智力领福利',
       path: '/pages/index/index',

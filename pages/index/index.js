@@ -156,6 +156,10 @@ Page({
   },
   inputNumValue(e){
     let value = e.detail.value;
+    //用户直接输入.时，前一位默认显示0
+    if (value == '.') {
+      value = '0.'
+    }
     this.setData({
       inputValue: value,
       inputV: value,

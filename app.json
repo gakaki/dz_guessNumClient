@@ -1,10 +1,6 @@
 {
   "pages": [
-<<<<<<< HEAD
-    "pages/index/index",
-=======
     "pages/index/index",  
->>>>>>> 0a9558768d16fa321e15307f59fae710c9565bd6
     "pages/guess/guess",
     "pages/record/record",
     "pages/share/share",

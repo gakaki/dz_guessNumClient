@@ -115,7 +115,7 @@ Page({
           isOwner: true
         })
       }
-      console.log(data)
+      console.log('rank='+data)
       //返回的数据中得到的money为分，需转换为元
       for(let i=0;i<data.rank.length;i++){
         data.rank[i].moneyGot = data.rank[i].moneyGot/100;

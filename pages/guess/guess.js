@@ -19,7 +19,7 @@ Page({
     timeCd: 0,   //答题cd
     isOwner: false,
     pid: 0,     //红包pid
-    recordMod:null,//请求红包记录的model
+    recordMod: null,//请求红包记录的model
     baoInfo: {},  //红包信息
     // num: '输入0-9不重复4位数',
     actItem: [false, false, false, false, false, false, false, false, false, false],
@@ -36,11 +36,12 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     inputNum: '',
     warning: false
-    
+
   },
   onReady: function (options) {
     this.guess = this.selectComponent('#guess');
-    this.pop = this.selectComponent('#pop');
+    // this.pop = this.selectComponent('#pop');
+    // this.pop1 = this.selectComponent('#pop1');
   },
   /**
    * 生命周期函数--监听页面加载
@@ -50,7 +51,8 @@ Page({
       //pid: options.pid,
       pid: options.pid || 1517798281,
       recordMod: {
-        pid: options.pid || 1517798281}
+        pid: options.pid || 1517798281
+      }
     })
     if (app.globalData.userInfo) {
       this.setData({
@@ -92,7 +94,7 @@ Page({
     })
     unlisten('guessnum.getpackrecords', this.updateRecords, this);
   },
-  onUnload(){
+  onUnload() {
     clearInterval(this.data.timer)
     this.setData({
       timeCd: 0
@@ -101,8 +103,21 @@ Page({
   },
   updateRecords(res) {
     let sts = res.data.data.packInfo.status
-    if (sts == -131 || sts == -132) {
-      this.toRank()
+    if (res.data.code == -131) {
+      let str = configs.Message.Get(1).words
+      this.setData({
+        showTip: true,
+        tipCon: str,
+        singleBtn: true
+      })
+    }
+    if (res.data.code == -132) {
+      let str = configs.Message.Get(4).words
+      this.setData({
+        showTip: true,
+        tipCon: str,
+        singleBtn: true
+      })
     }
     if (res.data.code != 0) {
       console.log('错误码', res.data.code);
@@ -124,26 +139,28 @@ Page({
       tipCon: '您目前没有加速卡，每日首次分享可获得加速卡',
       showTip: true
     })
-    console.log(this.data.baoInfo.originator.items[3] > 0,'66666')
-    if (this.data.baoInfo.originator.items[3]>0) {
+    console.log(this.data.baoInfo.originator.items[3] > 0, '66666')
+    if (this.data.baoInfo.originator.items[3] > 0) {
       this.setData({
         tipCon: '是否花费一张加速卡清除等待\n每日首次分享小程序可获得一张加速卡',
         cancleStr: '取消',
         singleBtn: false
       })
     }
-    
+
   },
   doClear: function () {
     doFetch('guessnum.clearcd', {
       pid: this.data.pid
-    },()=>{
+    }, () => {
       this.setData({
         timeCd: 0
       })
+      this.send()
     })
   },
   toRank() {
+
     clearInterval(this.data.timer)
     unlisten('guessnum.getpackrecords', this.updateRecords, this);
     this.setData({
@@ -160,19 +177,18 @@ Page({
         guessNum: this.data.num,
         pid: this.data.pid
       }, (res) => {
-
-        this.setData({
-          num: '',
-          actItem: [false, false, false, false, false, false, false, false, false, false],
-          popInfo: { result: res.data.data.mark, money: res.data.data.moneyGeted, comment: res.data.data.commit }
-        })
         console.log(res.data.data)
         if (res.data.code == 0) {
+          this.setData({
+            num: '',
+            actItem: [false, false, false, false, false, false, false, false, false, false],
+            popInfo: { result: res.data.data.mark, money: res.data.data.moneyGeted, comment: res.data.data.commit }
+          })
           clearInterval(this.data.timer)
           this.setData({
             timeCd: 180
           })
-           setTimeout(() => {
+          setTimeout(() => {
             this.setData({
               timer: setInterval(() => {
                 let time = this.data.timeCd
@@ -182,17 +198,17 @@ Page({
               }, 1000)
             })
           }, 500)
-          
+
           this.guess.setData({
             isShow: true,
           })
         }
-        if(res.data.code == -133) {
+        if (res.data.code == -133) {
           this.showPop()
-          if(this.data.timeCd == 0) {
+          if (this.data.timeCd == 0) {
             clearInterval(this.data.timer)
             let timeNum = parseInt(res.data.data.restTime.split(' ')[0].split(':')[1]) * 60 + parseInt(res.data.data.restTime.split(' ')[0].split(':')[2])
-             
+
             this.setData({
               timeCd: timeNum  //格式未知
             })
@@ -207,10 +223,23 @@ Page({
                 }, 1000)
               })
             }, 500)
-          }  
+          }
         }
-        if (res.data.code == -131 || res.data.code == -132) {
-          this.toRank()
+        if (res.data.code == -131) {
+          let str = configs.Message.Get(1).words
+          this.setData({
+            showTip: true,
+            tipCon: str,
+            singleBtn: true
+          })
+        }
+        if (res.data.code == -132) {
+          let str = configs.Message.Get(4).words
+          this.setData({
+            showTip: true,
+            tipCon: str,
+            singleBtn: true
+          })
         }
       })
     }
@@ -287,7 +316,7 @@ Page({
 
   },
   hideKb: function () {
-    if(!this.data.isHide) {
+    if (!this.data.isHide) {
       this.setData({
         isHide: true,
         kbHeight: 'kb-hide'
@@ -376,7 +405,7 @@ Page({
     }
 
   },
-  
+
   /**
    * 组件内触发的事件
    */

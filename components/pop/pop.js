@@ -38,6 +38,12 @@ Component({
   methods: {
     // 这里是一个自定义方法    
     cancle(e) {
+      this.triggerEvent("cancel")
+      this.setData({
+        show: false
+      })
+    },
+    cancle1(e) {  
       this.setData({
         show: false
       })

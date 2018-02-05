@@ -12,7 +12,8 @@
     </view> 
     </view>
     <view class='btn-wrap flex'>
-      <text class='btn' bindtap='cancle'>{{cancleBtn}}</text>
+      <text hidden='{{!singleBtn}}' class='btn' bindtap='cancle'>{{cancleBtn}}</text>
+      <text hidden='{{singleBtn}}' class='btn' bindtap='cancle1'>{{cancleBtn}}</text>
       <text hidden='{{singleBtn}}' class='line'></text>
       <text hidden='{{singleBtn}}' class='btn' bindtap='sure'>{{sureBtn}}</text> 
     </view>

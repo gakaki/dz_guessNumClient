@@ -5,6 +5,7 @@ import { doFetch, fixedNum } from '../../utils/rest.js';
 const GUESSING = 168;
 const OVEREXPIRE = -131;
 const PKOver = -132;
+const COUNTOVER = -129;
 const UNEXIST = -130;
 let sendPage = 1;
 let receivePage = 1;
@@ -81,8 +82,15 @@ Page({
       })
       if (sendPackages.record.length >= dataLength) {
         sendPage++;
-      } else if (receivePackages.record.length >= dataLength) {
+        console.log('sendPageONLOAD')
+      } else {
+        sendEnd = true
+      } 
+      if (receivePackages.record.length >= dataLength) {
         receivePage++;
+        console.log('receivePageONLOAD')
+      } else {
+        receiveEnd = true
       }
     });
 
@@ -100,6 +108,8 @@ Page({
         let record = res.data.data.sendPackages.record;
         if (record.length >= dataLength) {
           sendPage++;
+
+          console.log('sendPage++;')
         } else {
           sendEnd = true
         }
@@ -119,6 +129,7 @@ Page({
         let record = res.data.data.receivePackages.record;
         if (record.length >= dataLength) {
           receivePage++;
+          console.log('receivePage++;')
         } else {
           receiveEnd = true
         }
@@ -146,6 +157,7 @@ Page({
           break;
         case OVEREXPIRE:
         case PKOver:
+        case  COUNTOVER:
           this.setData({
             packageTip: '竞猜PK已过期',
             hasPackageTip: true

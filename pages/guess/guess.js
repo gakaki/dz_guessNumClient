@@ -84,7 +84,6 @@ Page({
         }
       })
     }
-
   },
   onShow() {
     listen('guessnum.getpackrecords', this.data.recordMod, this.updateRecords, this);
@@ -104,9 +103,10 @@ Page({
     unlisten('guessnum.getpackrecords', this.updateRecords, this);
   },
   updateRecords(res) {
-    console.log(res.data.code,'listencode')
     //let sts = res.data.data.packInfo.status
-    if (res.data.code == -131) {
+    let status = res.data.data.packInfo.status;
+    console.log(res, 'listencode')
+    if (status == -131) {
       let str = configs.Message.Get(1).words
       this.setData({
         showTip: true,
@@ -114,7 +114,7 @@ Page({
         singleBtn: true
       })
     }
-    if (res.data.code == -132) {
+    if (status == -132) {
       unlisten('guessnum.getpackrecords', this.updateRecords, this);
       let str = configs.Message.Get(4).words
       this.setData({
@@ -124,8 +124,15 @@ Page({
         isOver: true
       })
     }
-    if (res.data.code != 0) {
-      return;
+    if (status == -129) {
+      unlisten('guessnum.getpackrecords', this.updateRecords, this);
+      let str = configs.Message.Get(5).words
+      this.setData({
+        showTip: true,
+        tipCon: str,
+        singleBtn: true,
+        isOver: true
+      })
     }
     if (res.data.data.originator.uid == getUid()) {
       this.setData({

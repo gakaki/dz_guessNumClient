@@ -24,11 +24,24 @@ Page({
    * 获取input输入的信息
    */
   getMoney: function(e) {
-
     let value = e.detail.value;
+    //保留两位小数
+    let v = e.detail.value.split(".")
+    if (v[1] != undefined) {
+      v[1] = v[1].substring(0, 2)
+      value = v[0] + '.' + v[1]
+    } else {
+      value = v[0]
+    }
+    //用户直接输入.时，前一位默认显示2
+    if(value == '.'){
+      value = '2.'
+    }
+
     this.setData({
       withdraw: value
     })
+    
     if (value > LimitPackageSum) {
       this.setData({
         simpleTip: '提现金额上限为50000'
@@ -42,29 +55,28 @@ Page({
         simpleTip: ''
       })
     } 
-    
-    let str;
-    let v = e.detail.value.split(".")
-    if (v[1] != undefined) {
-      v[1] = v[1].substring(0, 2)
-      str = v[0] + '.' + v[1]
-    } else {
-      str = v[0]
-    }
-    return str
   },
 
   allRemain: function() {
-    if (this.data.remainder > LimitPackageSum){
-      this.setData({
-        withdraw: LimitPackageSum
-      })
+    if (this.data.remainder>0){
+      if (this.data.remainder > LimitPackageSum) {
+        this.setData({
+          withdraw: LimitPackageSum
+        })
+      }
+      else {
+        this.setData({
+          withdraw: this.data.remainder
+        })
+      }
     }
     else{
       this.setData({
-        withdraw: this.data.remainder
+        packageTip: "余额不足",
+        hasPackageTip: true,
       })
     }
+    
   },
 
   /**
@@ -136,11 +148,12 @@ Page({
     doFetch('user.getiteminfo',{
       itemId: configs.Item.MONEY
     },(res)=>{
-      let money = fixedNum(res.data.data.stock)
-      
-      this.setData({
-        remainder: money
-      })
+      if (res.data.data.stock){
+        let money = fixedNum(res.data.data.stock/100)
+        this.setData({
+          remainder: money
+        })
+      }
     })
   },
 

@@ -114,6 +114,7 @@ Page({
       })
     }
     if (res.data.code == -132) {
+      unlisten('guessnum.getpackrecords', this.updateRecords, this);
       let str = configs.Message.Get(4).words
       this.setData({
         showTip: true,
@@ -163,7 +164,6 @@ Page({
   toRank() {
     if (this.data.isOver) {
       clearInterval(this.data.timer)
-      unlisten('guessnum.getpackrecords', this.updateRecords, this);
       this.setData({
         timeCd: 0
       })
@@ -187,6 +187,7 @@ Page({
         guessNum: this.data.num,
         pid: this.data.pid
       }, (res) => {
+        console.log(res.data.code,'code')
         if (res.data.code == 0) {
           this.setData({
             num: '',
@@ -243,6 +244,7 @@ Page({
           })
         }
         if (res.data.code == -132) {
+          unlisten('guessnum.getpackrecords', this.updateRecords, this);
           let str = configs.Message.Get(4).words
           this.setData({
             showTip: true,

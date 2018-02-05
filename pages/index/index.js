@@ -277,7 +277,10 @@ Page({
           that.startGuess()
         },
         fail(res){
-          console.log(res)
+          wx.showToast({
+            title:'支付失败',
+            icon: 'none'
+          })
         }
       })
     })

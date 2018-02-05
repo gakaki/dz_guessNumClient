@@ -107,6 +107,7 @@ Page({
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
+      console.log(res,'提现')
       this.setData({
         withdraw:'',
         showPop:true

@@ -118,12 +118,12 @@ Page({
         pidMoney: data.packInfo.money,
         getInfo: data.rank,
       })
-
       //获取分享人的数据更新到分享的title中
       let info = this.data.getInfo.filter(v => {
         return v.userInfo.uid == getUid()
       })
-      //如果自己抢到了钱
+      console.log(data.rank)
+      //根据自己抢没抢到钱来决定分享的内容
       if(info.length){
         this.data.shareTitle = "我领取到了" + info[0].moneyGot + "元福利，快来看看我的战绩";
       }

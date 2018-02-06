@@ -1,11 +1,13 @@
 /**index.wxss**/
+
 .title-wrap {
   position: relative;
-  margin: 10rpx auto 38rpx;
+  margin: 0 auto;
+  padding: 15rpx 0 31rpx;
   text-align: center;
   width: 478rpx;
   height: 78rpx;
-  background: url('https://gengxin.odao.com/update/h5/wangcai/index/title.png') no-repeat; 
+  background: url('https://gengxin.odao.com/update/h5/wangcai/index/title.png') 0 15rpx no-repeat; 
   background-size: 478rpx 78rpx;
 }
 .title {
@@ -19,7 +21,7 @@
 .arrow {
   position: absolute;
   right: 20rpx;
-  top: 20rpx;
+  top: 35rpx;
   width: 24rpx;
   height: 38rpx;
 }
@@ -166,10 +168,12 @@
 }
  
 .footer {
-  position: fixed;
+  /* position: fixed;
   bottom: 26rpx;
-  left: 0;
-  width: 100vw;
+  left: 0; */
+  /* width: 100vw; */
+  margin-top: 38rpx;
+  padding-bottom: 26rpx;
 } 
 .img {
   width: 100rpx;

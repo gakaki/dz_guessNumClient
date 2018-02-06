@@ -1,16 +1,17 @@
 /**app.wxss**/
 .container-wrap {
-  position: fixed;
+  /* position: fixed;
   left: 0;
   top: 0;
   bottom: 0;
   right: 0;
-  z-index: 1;
+  z-index: 1; */
 }
 .container {
   font-family: 'Microsoft YaHei';
-  width: 100vw;
-  height: 100vh;
+  /* width: 100vw;
+  height: 100vh; */
+   min-height: 100vh; 
   color: #fff;
   line-height: 1;
   background: #b21f2e url("https://gengxin.odao.com/update/h5/wangcai/common/bg.png") left bottom no-repeat; 

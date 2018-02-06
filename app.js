@@ -14,7 +14,7 @@ App({
         wx.hideLoading()
       }
     })
-   start((res)=>{
+    start((res) => {
      let v = res.info.items[configs.Item.CASHCOUPON];
      if (v) {
        let page = getCurrentPages()[0];
@@ -36,7 +36,7 @@ App({
   preventMoreTap: function (e) {
     var globaTime = this.globalLastTapTime;
     var time = e.timeStamp;
-    if (Math.abs(time - globaTime) < 500 && globaTime != 0) {
+    if (Math.abs(time - globaTime) < 1000 && globaTime != 0) {
       this.globalLastTapTime = time;
       return true;
     } else {

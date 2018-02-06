@@ -20,7 +20,9 @@ function doFetch(action, data, suc, err) {
   wx.request({
     url: srv,
     data: data,
-    success: suc,
+    success: function (res) {
+      suc(res.data)
+    },
     fail: err
   })
 }
@@ -29,7 +31,6 @@ function sdkAuth(code, suc) {
   doFetch("user.auth", {
     payload: { code }
   }, res => {
-    res = res.data;
     uid = res.data.uid;
     userLogin(suc, showErr);
   })
@@ -46,11 +47,12 @@ function userLogin(suc, err) {
       }
 
       doFetch('user.login', { info: info.userInfo }, res => {
-        if (res.data.code != CODE_SUC) {
+        console.log(res)
+        if (res.code != CODE_SUC) {
           err(res.code);
         }
         else {
-          res = res.data.data;
+          res = res.data;
           wx.setStorageSync('_sid', res.sid);
           sid = res.sid;
           suc(res)

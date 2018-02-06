@@ -72,8 +72,8 @@ Page({
     }
 
     doFetch('guessnum.getuserpackrecords', {}, res => {
-      let sendPackages = res.data.data.sendPackages;
-      let receivePackages = res.data.data.receivePackages;
+      let sendPackages = res.data.sendPackages;
+      let receivePackages = res.data.receivePackages;
       this.setData({
         receivePackages: receivePackages,
         sendPackages: sendPackages,
@@ -103,7 +103,7 @@ Page({
         receivePage,
         receiveLimit: dataLength
       }, res => {
-        let record = res.data.data.sendPackages.record;
+        let record = res.data.sendPackages.record;
         if (record.length >= dataLength) {
           sendPage++;
         } else {
@@ -122,7 +122,7 @@ Page({
         receivePage,
         receiveLimit: dataLength
       }, res => {
-        let record = res.data.data.receivePackages.record;
+        let record = res.data.receivePackages.record;
         if (record.length >= dataLength) {
           receivePage++;
         } else {
@@ -212,7 +212,7 @@ Page({
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration', {}, (res) => {
-          if (res.data.code == 0) {
+          if (res.code == 0) {
             that.setData({
               packageTip: "恭喜获得加速卡",
               hasPackageTip: true,

@@ -75,7 +75,7 @@ Page({
       path: '/pages/guess/guess?pid=' + this.data.pid,
       success: function (res) {
         doFetch('guessnum.getacceleration', {}, (res) => {
-          if (res.data.code == 0) {
+          if (res.code == 0) {
             that.setData({
               packageTip: "恭喜获得加速卡",
               hasPackageTip: true,

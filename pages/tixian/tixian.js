@@ -107,7 +107,7 @@ Page({
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
-      if(res.data.code == -136){
+      if(res.code == -136){
         this.setData({
           packageTip: "提现失败，请联系客服",
           hasPackageTip: true,
@@ -121,13 +121,20 @@ Page({
           withdraw: '',
         })
       }
+      console.log(this.data.remainder,'余额')
       doFetch('user.getiteminfo', {
         itemId: configs.Item.MONEY
       }, (res) => {
-        if (res.data.data.stock) {
-          let money = fixedNum(res.data.data.stock / 100)
+        if (res.data.stock) {
+          let money = fixedNum(res.data.stock / 100)
+          console.log(money,'money')
           this.setData({
             remainder: money
+          })
+        }
+        else{
+          this.setData({
+            remainder: '0.00'
           })
         }
       })
@@ -167,8 +174,8 @@ Page({
     doFetch('user.getiteminfo',{
       itemId: configs.Item.MONEY
     },(res)=>{
-      if (res.data.data.stock){
-        let money = fixedNum(res.data.data.stock/100)
+      if (res.data.stock){
+        let money = fixedNum(res.data.stock/100)
         this.setData({
           remainder: money
         })
@@ -185,7 +192,7 @@ Page({
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration', {}, (res) => {
-          if (res.data.code == 0) {
+          if (res.code == 0) {
             that.setData({
               packageTip: "恭喜获得加速卡",
               hasPackageTip: true,

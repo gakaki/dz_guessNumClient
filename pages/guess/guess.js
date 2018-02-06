@@ -103,7 +103,7 @@ Page({
     unlisten('guessnum.getpackrecords', this.updateRecords, this);
   },
   updateRecords(res) {
-    let status = res.data.data.packInfo.status;
+    let status = res.data.packInfo.status;
     if (status == -131) {
       let str = configs.Message.Get(1).words
       this.setData({
@@ -135,14 +135,14 @@ Page({
         isOver: true
       })
     }
-    if (res.data.data.originator.uid == getUid()) {
+    if (res.data.originator.uid == getUid()) {
       this.setData({
-        baoInfo: res.data.data,
+        baoInfo: res.data,
         isOwner: true
       })
     } else {
       this.setData({
-        baoInfo: res.data.data
+        baoInfo: res.data
       })
     }
   },
@@ -201,11 +201,11 @@ Page({
         guessNum: this.data.num,
         pid: this.data.pid
       }, (res) => {
-        if (res.data.code == 0) {
+        if (res.code == 0) {
           this.setData({
             num: '',
             actItem: [false, false, false, false, false, false, false, false, false, false],
-            popInfo: { result: res.data.data.mark, money: res.data.data.moneyGeted, comment: res.data.data.commit }
+            popInfo: { result: res.data.mark, money: res.data.moneyGeted, comment: res.data.commit }
           })
           clearInterval(this.data.timer)
           this.setData({
@@ -226,11 +226,11 @@ Page({
             isShow: true,
           })
         }
-        if (res.data.code == -133) {
+        if (res.code == -133) {
           this.showPop()
           if (this.data.timeCd == 0) {
             clearInterval(this.data.timer)
-            let timeNum = parseInt(res.data.data.restTime.split(' ')[0].split(':')[1]) * 60 + parseInt(res.data.data.restTime.split(' ')[0].split(':')[2])
+            let timeNum = parseInt(res.data.restTime.split(' ')[0].split(':')[1]) * 60 + parseInt(res.data.restTime.split(' ')[0].split(':')[2])
 
             this.setData({
               timeCd: timeNum  //格式未知
@@ -248,7 +248,7 @@ Page({
             }, 500)
           }
         }
-        if (res.data.code == -131) {
+        if (res.code == -131) {
           let str = configs.Message.Get(1).words
           this.setData({
             showTip: true,
@@ -257,7 +257,7 @@ Page({
             cancleStr: '确定',
           })
         }
-        if (res.data.code == -132) {
+        if (res.code == -132) {
           unlisten('guessnum.getpackrecords', this.updateRecords, this);
           let str = configs.Message.Get(4).words
           this.setData({
@@ -422,7 +422,7 @@ Page({
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration', {}, (res) => {
-          if (res.data.code == 0) {
+          if (res.code == 0) {
             that.setData({
               packageTip: "恭喜获得加速卡",
               hasPackageTip: true,

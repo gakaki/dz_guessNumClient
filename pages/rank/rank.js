@@ -107,7 +107,7 @@ Page({
     doFetch('guessnum.getpackrankinglist',{
       pid: this.data.pid
     },(res)=>{
-      let data = res.data.data;
+      let data = res.data;
       //判断红包是不是自己的
       if (data.packInfo.userInfo.uid == getUid()){
         this.setData({
@@ -150,7 +150,7 @@ Page({
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/rank-share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration', {}, (res) => {
-          if (res.data.code == 0) {
+          if (res.code == 0) {
             that.setData({
               packageTip: "恭喜获得加速卡",
               hasPackageTip: true,

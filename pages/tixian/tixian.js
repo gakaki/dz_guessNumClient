@@ -121,13 +121,11 @@ Page({
           withdraw: '',
         })
       }
-      console.log(this.data.remainder,'余额')
       doFetch('user.getiteminfo', {
         itemId: configs.Item.MONEY
       }, (res) => {
         if (res.data.stock) {
           let money = fixedNum(res.data.stock / 100)
-          console.log(money,'money')
           this.setData({
             remainder: money
           })

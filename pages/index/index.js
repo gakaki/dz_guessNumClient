@@ -161,6 +161,9 @@ Page({
     if (value == '.') {
       value = '0.'
     }
+    if (isNaN(parseFloat(value))) {
+      value = '';
+    }
     this.setData({
       inputValue: value,
       inputV: value,

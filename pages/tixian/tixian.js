@@ -108,9 +108,15 @@ Page({
       return
     }
 
+    this.setData({
+      isSending: true,
+    })
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
+      this.setData({
+        isSending: false,
+      })
       if(res.code == -136){
         this.setData({
           packageTip: "提现失败，请联系客服",

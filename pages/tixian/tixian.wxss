@@ -75,6 +75,10 @@
   left: 50%;
   transform: translate(-50%,0);
 }
+.confirm-img {
+  width: 530rpx;
+  height: 152rpx;
+}
 .left-bg{
   width: 126rpx;
   height: 63rpx;

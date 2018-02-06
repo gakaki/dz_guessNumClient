@@ -23,6 +23,7 @@ Page({
     isOwner: false,
     packageTip: '',
     hasPackageTip: false,
+    isSending: false
   },
 
   /**

@@ -17,7 +17,10 @@
       <text class="charge">最少提现2元，平台收取2%服务费</text>
     </view>
     <image class="withdraw-all" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/all-withdraw.png' bindtap='allRemain'></image>
-    <image class="confirm" src='{{withdrawSrc}}' bindtouchstart='active' bindtouchend='cancel' bindtap='confirmWithdraw'></image>
+    <view  class="confirm">
+      <image class="confirm-img" src='{{withdrawSrc}}' bindtouchstart='active' bindtouchend='cancel' bindtap='confirmWithdraw'></image>
+      <view class='mask' wx:if='{{isSending}}'></view>
+    </view>
   </view>
   <image class="left-bg" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/left.png'></image>
   <image class="right-bg" src='https://gengxin.odao.com/update/h5/wangcai/withdraw/right.png'></image>

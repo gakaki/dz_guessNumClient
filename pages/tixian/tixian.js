@@ -39,6 +39,10 @@ Page({
       value = '0.'
     }
 
+    if(isNaN(parseFloat(value))){
+      value = '';
+    };
+
     this.setData({
       withdraw: value
     })

@@ -109,7 +109,8 @@ Page({
       this.setData({
         showTip: true,
         tipCon: str,
-        singleBtn: true
+        singleBtn: true,
+        cancleStr: '确定'
       })
     }
     if (status == -132) {
@@ -117,6 +118,7 @@ Page({
       let str = configs.Message.Get(4).words
       this.setData({
         showTip: true,
+        cancleStr: '确定',
         tipCon: str,
         singleBtn: true,
         isOver: true
@@ -127,6 +129,7 @@ Page({
       let str = configs.Message.Get(5).words
       this.setData({
         showTip: true,
+        cancleStr: '确定',
         tipCon: str,
         singleBtn: true,
         isOver: true
@@ -146,7 +149,8 @@ Page({
   showPop: function () {
     this.setData({
       tipCon: '您目前没有加速卡，每日首次分享可获得加速卡',
-      showTip: true
+      showTip: true,
+      cancleStr: '确定'
     })
     if (this.data.baoInfo.originator.items[3] > 0) {
       this.setData({
@@ -160,12 +164,14 @@ Page({
   doClear: function () {
     doFetch('guessnum.clearcd', {
       pid: this.data.pid
-    }, () => {
-      console.log(111111111)
+    }, (res) => {
+      
+      clearInterval(this.data.timer)
       this.setData({
         timeCd: 0
       })
-      this.send()
+      console.log(res.data)
+      //this.send()
     })
   },
   toRank() {
@@ -186,7 +192,8 @@ Page({
       this.setData({
         showTip: true,
         singleBtn: true,
-        tipCon: '请输入0-9不重复的4位数'
+        tipCon: '请输入0-9不重复的4位数',
+        cancleStr: '确定'
       })
     }
     if (this.data.num.length >= 4) {
@@ -246,7 +253,8 @@ Page({
           this.setData({
             showTip: true,
             tipCon: str,
-            singleBtn: true
+            singleBtn: true,
+            cancleStr: '确定',
           })
         }
         if (res.data.code == -132) {
@@ -254,6 +262,7 @@ Page({
           let str = configs.Message.Get(4).words
           this.setData({
             showTip: true,
+            cancleStr: '确定',
             tipCon: str,
             singleBtn: true,
             isOver: true

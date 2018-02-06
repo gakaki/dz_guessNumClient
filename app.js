@@ -14,7 +14,7 @@ App({
         wx.hideLoading()
       }
     })
-   start((res)=>{
+    start((res) => {
      let v = res.info.items[configs.Item.CASHCOUPON];
      if (v) {
        let page = getCurrentPages()[0];

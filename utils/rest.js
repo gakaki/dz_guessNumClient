@@ -47,7 +47,6 @@ function userLogin(suc, err) {
       }
 
       doFetch('user.login', { info: info.userInfo }, res => {
-        console.log(res)
         if (res.code != CODE_SUC) {
           err(res.code);
         }
@@ -204,11 +203,13 @@ function loopListen() {
 const start = suc => {
   wx.checkSession({
     success: () => {
+      userLogin(suc, showErr);
+    },
+    fail:res=>{
       wx.login({
         success: res => {
           sdkAuth(res.code, suc)
-        },
-        fail: showErr
+        }
       })
     }
   })

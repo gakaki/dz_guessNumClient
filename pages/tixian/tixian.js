@@ -114,6 +114,13 @@ Page({
           withdraw: '',
         })
       }
+      else if(res.code == -137){
+        this.setData({
+          packageTip: "每天最多提现3次",
+          hasPackageTip: true,
+          withdraw: '',
+        })
+      }
       else{
         this.setData({
           packageTip: "提现成功，1-7个工作日到账。",
@@ -121,13 +128,11 @@ Page({
           withdraw: '',
         })
       }
-      console.log(this.data.remainder,'余额')
       doFetch('user.getiteminfo', {
         itemId: configs.Item.MONEY
       }, (res) => {
         if (res.data.stock) {
           let money = fixedNum(res.data.stock / 100)
-          console.log(money,'money')
           this.setData({
             remainder: money
           })

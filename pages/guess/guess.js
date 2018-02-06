@@ -110,7 +110,8 @@ Page({
         showTip: true,
         tipCon: str,
         singleBtn: true,
-        cancleStr: '确定'
+        cancleStr: '确定',
+        isOver: true
       })
     }
     if (status == -132) {
@@ -152,7 +153,7 @@ Page({
       itemId: configs.Item.ACCELERATION
     }, (res) => {
       if (res.data.stock) {
-        let jsk = res.data.stock
+        let jsk = (res.data.stock >= 0) ? res.data.stock: 0
         this.setData({
           remainder: jsk
         })
@@ -276,6 +277,7 @@ Page({
             tipCon: str,
             singleBtn: true,
             cancleStr: '确定',
+            isOver: true
           })
         }
         if (res.code == -132) {

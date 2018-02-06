@@ -107,7 +107,8 @@ Page({
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
-      if(res.data.code == -136){
+      console.log(res.code)
+      if(res.code == -136){
         this.setData({
           packageTip: "提现失败，请联系客服",
           hasPackageTip: true,

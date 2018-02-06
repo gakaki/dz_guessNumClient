@@ -30,7 +30,9 @@ Page({
     showTitleList:false,
     simpleTip:'',
     IP:'',
-    removeMask: true
+    removeMask: true,
+    orderId:null,
+    isSending: false
   },
   onLoad(res){
     that = this;
@@ -169,9 +171,7 @@ Page({
     })
     if (value > LimitPackageSum) {
       this.setData({
-        simpleTip: '赏金上限50000元',
-        
-        
+        simpleTip: '赏金上限50000元'
       })
     } else if (value.length &&value < 1){
       this.setData({
@@ -238,6 +238,9 @@ Page({
       })
       return ;
     }
+    this.setData({
+      isSending: true,
+    })
     if (v < 1) {
       this.setData({
         packageTip: "赏金至少1元",
@@ -251,7 +254,6 @@ Page({
       })
       return
     }
-    
     if (this.data.useTicket) {
       this.startGuess()
     } else {
@@ -265,8 +267,10 @@ Page({
     doFetch('user.minapppay',{
       payCount:v
       // IP:this.data.IP
-    },(res)=>{
-      console.log(res.data.payload)
+    }, (res) => {
+      this.setData({
+        orderId: res.data.payload.orderId
+      })
       let r = res.data.payload;
       wx.requestPayment({
         timeStamp: r.timeStamp,
@@ -276,11 +280,17 @@ Page({
         paySign: r.paySign,
         success(){
           _this.startGuess()
+          _this.setData({
+            isSending: false,
+          })
         },
         fail(res){
           wx.showToast({
             title:'支付失败',
             icon: 'none'
+          })
+          _this.setData({
+            isSending: false,
           })
         }
       })
@@ -288,14 +298,33 @@ Page({
   },
   startGuess(){
     let v = Number(this.data.inputValue);
-    doFetch('guessnum.sendpack', {
-      money: v,
-      useTicket: this.data.useTicket,
-      title: this.data.title
-    }, (res)=>{
-      let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.pid;
-      wx.navigateTo({url})
-    });
+    if (this.data.useTicket) {
+      doFetch('guessnum.sendpack', {
+        money: v,
+        useTicket: this.data.useTicket,
+        title: this.data.title
+      }, (res) => {
+        let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.pid;
+        wx.navigateTo({ url })
+        this.setData({
+          orderId: null
+        })
+      });
+    } else {
+      doFetch('guessnum.sendpack', {
+        money: v,
+        useTicket: this.data.useTicket,
+        title: this.data.title,
+        orderId: this.data.orderId
+      }, (res) => {
+        let url = '../../pages/share/share?title=' + this.data.title + '&pid=' + res.data.pid;
+        wx.navigateTo({ url })
+        this.setData({
+          orderId: null
+        })
+      });
+    }
+   
   },
   showRecordActive() {
     this.setData({

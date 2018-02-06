@@ -30,7 +30,9 @@
     <view class='noticket' wx:else=''></view>
     <view class='flex-column'>
       <view class='rest-explain'></view>
-      <view class='play {{pkBtnActive? "play-active" : ""}}' bindtap='readyGuess' bindtouchstart='showGuessActive' bindtouchend='hideGuessActive'></view>
+      <view class='play {{pkBtnActive? "play-active" : ""}}' bindtap='readyGuess' bindtouchstart='showGuessActive' bindtouchend='hideGuessActive'>
+        <view class='mask' wx:if='{{isSending}}'></view>
+      </view>
       <view class='how-play'>
         <text class='play-intro' bindtap='introPlay'>玩法介绍</text>
         <text class='line'>|</text>

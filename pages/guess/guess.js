@@ -161,6 +161,7 @@ Page({
     doFetch('guessnum.clearcd', {
       pid: this.data.pid
     }, () => {
+      console.log(111111111)
       this.setData({
         timeCd: 0
       })

@@ -107,7 +107,6 @@ Page({
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
-      console.log(res.code)
       if(res.code == -136){
         this.setData({
           packageTip: "提现失败，请联系客服",
@@ -122,13 +121,20 @@ Page({
           withdraw: '',
         })
       }
+      console.log(this.data.remainder,'余额')
       doFetch('user.getiteminfo', {
         itemId: configs.Item.MONEY
       }, (res) => {
         if (res.data.stock) {
           let money = fixedNum(res.data.stock / 100)
+          console.log(money,'money')
           this.setData({
             remainder: money
+          })
+        }
+        else{
+          this.setData({
+            remainder: '0.00'
           })
         }
       })

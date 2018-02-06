@@ -171,7 +171,7 @@ Page({
         timeCd: 0
       })
       console.log(res.data)
-      //this.send()
+      if (this.data.num.length >= 4) this.send()
     })
   },
   toRank() {

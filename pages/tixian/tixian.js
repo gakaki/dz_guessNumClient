@@ -107,9 +107,16 @@ Page({
     doFetch('user.minappwithdraw',{
       money: this.data.withdraw
     },(res)=>{
-      if(res.data.code == -136){
+      if(res.code == -136){
         this.setData({
           packageTip: "提现失败，请联系客服",
+          hasPackageTip: true,
+          withdraw: '',
+        })
+      }
+      else if(res.code == -137){
+        this.setData({
+          packageTip: "每天最多提现3次",
           hasPackageTip: true,
           withdraw: '',
         })
@@ -128,6 +135,11 @@ Page({
           let money = fixedNum(res.data.stock / 100)
           this.setData({
             remainder: money
+          })
+        }
+        else{
+          this.setData({
+            remainder: '0.00'
           })
         }
       })

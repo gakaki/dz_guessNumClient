@@ -39,7 +39,7 @@ Page({
     warning: false,
     packageTip: '',
     hasPackageTip: false,
-
+    remainder: 0
   },
   onReady: function (options) {
     this.guess = this.selectComponent('#guess');
@@ -109,7 +109,9 @@ Page({
       this.setData({
         showTip: true,
         tipCon: str,
-        singleBtn: true
+        singleBtn: true,
+        cancleStr: '确定',
+        isOver: true
       })
     }
     if (status == -132) {
@@ -117,6 +119,7 @@ Page({
       let str = configs.Message.Get(4).words
       this.setData({
         showTip: true,
+        cancleStr: '确定',
         tipCon: str,
         singleBtn: true,
         isOver: true
@@ -127,6 +130,7 @@ Page({
       let str = configs.Message.Get(5).words
       this.setData({
         showTip: true,
+        cancleStr: '确定',
         tipCon: str,
         singleBtn: true,
         isOver: true
@@ -144,27 +148,52 @@ Page({
     }
   },
   showPop: function () {
-    this.setData({
-      tipCon: '您目前没有加速卡，每日首次分享可获得加速卡',
-      showTip: true
+
+    doFetch('user.getiteminfo', {
+      itemId: configs.Item.ACCELERATION
+    }, (res) => {
+      if (res.data.stock) {
+        let jsk = (res.data.stock >= 0) ? res.data.stock: 0
+        this.setData({
+          remainder: jsk
+        })
+      }
+      else {
+        this.setData({
+          remainder: '0'
+        })
+      }
+      if (this.data.remainder > 0) {
+        this.setData({
+          showTip: true,
+          tipCon: '是否花费一张加速卡清除等待\n每日首次分享小程序可获得一张加速卡',
+          cancleStr: '取消',
+          singleBtn: false
+        })
+      }else {
+        this.setData({
+          tipCon: '您目前没有加速卡，每日首次分享可获得加速卡',
+          showTip: true,
+          cancleStr: '确定',
+          singleBtn: true
+        })
+      }
+
     })
-    if (this.data.baoInfo.originator.items[3] > 0) {
-      this.setData({
-        tipCon: '是否花费一张加速卡清除等待\n每日首次分享小程序可获得一张加速卡',
-        cancleStr: '取消',
-        singleBtn: false
-      })
-    }
+
+    
 
   },
   doClear: function () {
     doFetch('guessnum.clearcd', {
       pid: this.data.pid
     }, () => {
+      
+      clearInterval(this.data.timer)
       this.setData({
         timeCd: 0
       })
-      this.send()
+      if (this.data.num.length >= 4) this.send()
     })
   },
   toRank() {
@@ -185,7 +214,8 @@ Page({
       this.setData({
         showTip: true,
         singleBtn: true,
-        tipCon: '请输入0-9不重复的4位数'
+        tipCon: '请输入0-9不重复的4位数',
+        cancleStr: '确定'
       })
     }
     if (this.data.num.length >= 4) {
@@ -245,7 +275,9 @@ Page({
           this.setData({
             showTip: true,
             tipCon: str,
-            singleBtn: true
+            singleBtn: true,
+            cancleStr: '确定',
+            isOver: true
           })
         }
         if (res.code == -132) {
@@ -253,6 +285,7 @@ Page({
           let str = configs.Message.Get(4).words
           this.setData({
             showTip: true,
+            cancleStr: '确定',
             tipCon: str,
             singleBtn: true,
             isOver: true

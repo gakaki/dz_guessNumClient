@@ -24,7 +24,6 @@
     </view>
     <view class='time'>
       <view class='time-wrap flex'>
-        <!-- <text class='time-content' wx:if='{{warning}}'>请输入0-9不重复4位数</text> -->
         <text class='time-content' wx:if='{{timeCd>0 }}'>下轮竞猜等待{{timeCd}}秒</text>
         <text class="use-jiasu" wx:if='{{timeCd>0 }}' bindtap='showPop'>使用加速卡</text>
       </view>
@@ -102,7 +101,7 @@
     </view>
   </view>
   <correct id="guess" result="{{popInfo.result}}" comment="{{popInfo.comment}}" money="{{(popInfo.money)/100}}" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
-  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{!singleBtn?baoInfo.originator.items[3]:0}}" binddoJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡" bindcancel='toRank'></pop> 
+  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{remainder}}" binddoJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡" bindcancel='toRank'></pop> 
 
   
 </view>

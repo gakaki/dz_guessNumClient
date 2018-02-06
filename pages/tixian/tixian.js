@@ -114,6 +114,13 @@ Page({
           withdraw: '',
         })
       }
+      else if(res.code == -137){
+        this.setData({
+          packageTip: "每天最多提现3次",
+          hasPackageTip: true,
+          withdraw: '',
+        })
+      }
       else{
         this.setData({
           packageTip: "提现成功，1-7个工作日到账。",

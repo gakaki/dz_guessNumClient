@@ -33,6 +33,7 @@ function sdkAuth(code, suc) {
     payload: { code }
   }, res => {
     uid = res.data.uid;
+    wx.setStorageSync('uid', uid);
     userLogin(suc, showErr);
   })
 }
@@ -68,7 +69,11 @@ function userLogin(suc, err) {
 }
 
 function getUid() {
-  return uid
+  if(uid) {
+    return uid
+  } else {
+    return wx.getStorageSync('uid');
+  }
 }
 
 //向下取整并保留两位小数；

@@ -268,7 +268,8 @@ Page({
     let v = Number(this.data.inputValue);
     let _this = this;
     doFetch('user.minapppay',{
-      payCount:v
+      payCount:v,
+      title: this.data.title
       // IP:this.data.IP
     }, (res) => {
       this.setData({
@@ -281,13 +282,13 @@ Page({
         package: r.package,
         signType: r.signType,
         paySign: r.paySign,
-        success(){
+        success() {
           _this.startGuess()
           _this.setData({
             isSending: false,
           })
         },
-        fail(res){
+        fail(res) {
           wx.showToast({
             title:'支付失败',
             icon: 'none'

@@ -72,23 +72,25 @@ Page({
     }
 
     doFetch('guessnum.getuserpackrecords', {}, res => {
-      let sendPackages = res.data.sendPackages;
-      let receivePackages = res.data.receivePackages;
-      this.setData({
-        receivePackages: receivePackages,
-        sendPackages: sendPackages,
-        sendRecord: sendPackages.record,
-        receiveRecord: receivePackages.record,
-      })
-      if (sendPackages.record.length >= dataLength) {
-        sendPage++;
-      } else {
-        sendEnd = true
-      } 
-      if (receivePackages.record.length >= dataLength) {
-        receivePage++;
-      } else {
-        receiveEnd = true
+      if(res.code==0) {
+        let sendPackages = res.data.sendPackages;
+        let receivePackages = res.data.receivePackages;
+        this.setData({
+          receivePackages: receivePackages,
+          sendPackages: sendPackages,
+          sendRecord: sendPackages.record,
+          receiveRecord: receivePackages.record,
+        })
+        if (sendPackages.record.length >= dataLength) {
+          sendPage++;
+        } else {
+          sendEnd = true
+        }
+        if (receivePackages.record.length >= dataLength) {
+          receivePage++;
+        } else {
+          receiveEnd = true
+        }
       }
     });
 

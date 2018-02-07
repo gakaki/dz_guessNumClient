@@ -159,13 +159,22 @@ Page({
   },
   inputNumValue(e){
     let value = e.detail.value;
-    //用户直接输入.时，前一位默认显示0
+    //用户直接输入.时，前一位默认显示0}
+    let v = e.detail.value.split(".")
+    if (v[1] != undefined) {
+      v[1] = v[1].substring(0, 2)
+      value = v[0] + '.' + v[1]
+    } else {
+      value = v[0]
+    }
+
     if (value == '.') {
       value = '0.'
     }
     if (isNaN(parseFloat(value))) {
       value = '';
-    }
+    } 
+
     this.setData({
       inputValue: value,
       inputV: value,
@@ -185,16 +194,6 @@ Page({
         simpleTip: ''
       })
     }
-    
-    let str;
-    let v = e.detail.value.split(".")
-    if(v[1] != undefined) {
-      v[1] = v[1].substring(0,2)
-      str = v[0] + '.' + v[1]
-    } else {
-      str = v[0]
-    }
-    return str
     
   },
   hiddenMask(){
@@ -302,6 +301,7 @@ Page({
   },
   startGuess(){
     let v = Number(this.data.inputValue);
+    console.log(v,'v')
     if (this.data.useTicket) {
       doFetch('guessnum.sendpack', {
         money: v,

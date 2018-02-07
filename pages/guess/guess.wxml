@@ -7,7 +7,7 @@
       </view>
       <view class="userInfo fcsb">
         <text class='nickname'>{{baoInfo.originator.nickName}}</text>
-        <view class='package-num'>
+        <view class='package-num '>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
           <text class='num'>{{(baoInfo && baoInfo.packInfo.money > 0)?(baoInfo.packInfo.money)/100:0}}元</text>
         </view>

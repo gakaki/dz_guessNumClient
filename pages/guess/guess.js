@@ -10,6 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    canSend: true,
     len: 0,   //答题记录的长度
     toView: 0,
     isOver: false,
@@ -226,20 +227,31 @@ Page({
     
   },
   send: function (e) {
+
+    if (this.data.canSend) {
+      this.setData({
+        canSend: false
+      })
+    }else return
     if (this.data.num.length < 4) {
      // let str = configs.Message.Get()
       this.setData({
         showTip: true,
         singleBtn: true,
         tipCon: '请输入0-9不重复的4位数',
-        cancleStr: '确定'
+        cancleStr: '确定',
+        canSend: true
       })
     }
     if (this.data.num.length >= 4) {
+
       doFetch('guessnum.guesspack', {
         guessNum: this.data.num,
         pid: this.data.pid
       }, (res) => {
+        this.setData({
+          canSend: true
+        })
         if (res.code == 0) {
           this.setData({
             num: '',

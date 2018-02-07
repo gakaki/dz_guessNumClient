@@ -11,5 +11,5 @@
 }
 .no-record-content {
   font: bold 32rpx/90rpx  'Microsoft YaHei';
-  color: #b21f2e;
+  color: rgba(178, 31, 46, 0.6);
 }

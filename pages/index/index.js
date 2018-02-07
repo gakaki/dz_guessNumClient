@@ -367,9 +367,10 @@ Page({
       imageUrl: 'https://gengxin.odao.com/update/h5/wangcai/common/share.png',
       success: function (res) {
         doFetch('guessnum.getacceleration',{},(res)=>{
+          console.log(res)
           if(res.code == 0) {
             that.setData({
-              packageTip: "恭喜获得加速卡",
+              packageTip: "恭喜获得1张加速卡",
               hasPackageTip: true,
             })
           }

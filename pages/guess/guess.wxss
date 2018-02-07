@@ -1,6 +1,7 @@
 .wrap {
   height: 100%;
   overflow: hidden;
+  background-color: #b21f2e;
 }
 
 .red-box {
@@ -55,33 +56,30 @@
   font-size: 30rpx;
   color: #fff;
 }
-
 .package-num {
-  align-self: flex-start;
   position: relative;
   color: #fff;
-  width: auto;
-  height: 50rpx;
-  background-color: #8b1320;
-  border-radius: 30rpx;
+  width: 250rpx;
+  height: 52rpx;
+  background: rgba(81, 0, 11, 0.2);
+  border-radius: 26rpx;
 }
-
 .package {
-  margin-top: 5rpx;
+  margin-top: 8rpx;
+  margin-left: 20rpx;
   width: 27rpx;
   height: 41rpx;
-  margin-left: 18rpx;
+  vertical-align: top;
 }
-
 .num {
   display: inline-block;
-  /* width: 130rpx; */
+  width: 185rpx;
   text-align: center;
   font-size: 32rpx;
   vertical-align: top;
-  line-height: 52rpx;
-  margin: 0 12rpx
+  line-height: 52rpx; 
 }
+
 .no-record-wrap {
   margin-top: 88rpx;
 }
@@ -307,7 +305,7 @@
 
 .record-list {
   position: absolute;
-  top: 796rpx;
+   top: 450rpx; 
   left: 0;
   bottom: 0;
   right: 0;
@@ -367,12 +365,12 @@
   font-weight: bold;
   color: rgba(178, 31, 46, 0.8);  
 }
-.ml {
+ .ml {
   margin-left: 1rpx;
 }
 .mr {
   margin-right: 1rpx;
-}
+} 
 @keyframes toBot
 {
 	from {height: 0rpx;}
@@ -423,7 +421,7 @@ from {height: 844rpx;}
 }
 
 .mid {
-  width: 248rpx;
+  width: 247rpx;
 }
 
 .del {

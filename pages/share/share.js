@@ -25,6 +25,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (res) {
+    console.log(res,'shareeeeeeLoad')
     that = this;
     this.setData({
       title:res.title,
@@ -77,7 +78,7 @@ Page({
         doFetch('guessnum.getacceleration', {}, (res) => {
           if (res.code == 0) {
             that.setData({
-              packageTip: "恭喜获得加速卡",
+              packageTip: "恭喜获得1张加速卡",
               hasPackageTip: true,
             })
           }
@@ -89,6 +90,7 @@ Page({
     }
   },
   totry(){
+    console.log(this.data.pid,'piddddddddddddddddd')
     let url = '../guess/guess?pid=' + this.data.pid; 
     wx.navigateTo({url})
   },

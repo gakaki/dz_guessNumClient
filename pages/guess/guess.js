@@ -10,6 +10,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    len: 0,   //答题记录的长度
+    toView: 0,
     isOver: false,
     timer: null,
     singleBtn: false,
@@ -41,10 +43,13 @@ Page({
     hasPackageTip: false,
     remainder: 0
   },
+  changeToview(val) {
+    this.setData({
+      toView: val
+    })
+  },
   onReady: function (options) {
     this.guess = this.selectComponent('#guess');
-    // this.pop = this.selectComponent('#pop');
-    // this.pop1 = this.selectComponent('#pop1');
   },
   /**
    * 生命周期函数--监听页面加载
@@ -104,6 +109,7 @@ Page({
   },
   updateRecords(res) {
     let status = res.data.packInfo.status;
+    
     if (status == -131) {
       let str = configs.Message.Get(1).words
       this.setData({
@@ -136,16 +142,26 @@ Page({
         isOver: true
       })
     }
-    if (res.data.originator.uid == getUid()) {
-      this.setData({
-        baoInfo: res.data,
-        isOwner: true
-      })
-    } else {
-      this.setData({
-        baoInfo: res.data
-      })
+    if(res.code == 0) {
+      
+      let needToBtm = this.data.len != res.data.records.length && res.data.records.length > 0;
+      
+      if (res.data.originator.uid == getUid()) {
+        this.setData({
+          baoInfo: res.data,
+          isOwner: true,
+          len: res.data.records.length
+        })
+      } else {
+        this.setData({
+          baoInfo: res.data,
+          len: res.data.records.length
+        })
+      }
+
+      needToBtm && this.changeToview(res.data.records.length - 1);
     }
+    
   },
   showPop: function () {
 

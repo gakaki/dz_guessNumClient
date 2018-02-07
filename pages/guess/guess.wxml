@@ -6,7 +6,7 @@
         <image class='avatar' src='{{baoInfo.originator.avatarUrl}}'></image>
       </view>
       <view class="userInfo fcsb">
-         <text class='nickname'>{{baoInfo.originator.nickName}}</text> 
+        <text class='nickname'>{{baoInfo.originator.nickName}}</text>
         <view class='package-num'>
           <image class='package' src='https://gengxin.odao.com/update/h5/wangcai/guess/package-icon.png'></image>
           <text class='num'>{{(baoInfo && baoInfo.packInfo.money > 0)?(baoInfo.packInfo.money)/100:0}}元</text>
@@ -34,27 +34,29 @@
     </view>
   </view>
   <view class="bg-box">
-    <view class='game-explain flex' >
-      <text class='detail'>猜中口令获得福利，口令为0-9不重复的4位数。</text>
-      <text class='detail'>A前面的数字表示数字对位置对的数字个数。</text>
-      <text class='detail'>B前面的数字代表数字对位置不对的数字个数。</text>
-    </view>
     <view class="tab flex-space">
       <text class="{{doTixian}}" bindtouchstart='tixianStart' bindtouchend='tixianEnd' bindtap='tixian'></text>
       <text class="{{doFa}}" hidden="{{isOwner}}" bindtouchstart='faStart' bindtouchend='faEnd' bindtap='fa'></text>
 
       <view class="zhuan-box">
-        <text class="{{doZhuan}}">
- </text>
+        <text class="{{doZhuan}}"></text>
         <button class="opa-btn" open-type="share" bindtouchstart='zhuanStart' bindtouchend='zhuanEnd' bindtap='zhuan'></button>
       </view>
     </view>
-    <view class="cut-line"></view>
-    <view class="flex">
-      <image class="record-icon" src='https://gengxin.odao.com/update/h5/wangcai/guess/record.png'></image>
-    </view>
-    <scroll-view class='record-list' scroll-y='true' scroll-with-animation='{{false}}'>
-      <view class='one-record' wx:for='{{baoInfo.records}}' wx:key='{{index}}'>
+
+    <scroll-view class='record-list' scroll-y='{{true}}'  scroll-with-animation='{{true}}' scroll-into-view="index{{toView}}">
+
+      <view class='game-explain flex'>
+        <text class='detail'>猜中口令获得福利，口令为0-9不重复的4位数。</text>
+        <text class='detail'>A前面的数字表示数字对位置对的数字个数。</text>
+        <text class='detail'>B前面的数字代表数字对位置不对的数字个数。</text>
+      </view>
+      <view class="cut-line"></view>
+      <view class="flex">
+        <image class="record-icon" src='https://gengxin.odao.com/update/h5/wangcai/guess/record.png'></image>
+      </view>
+
+      <view class='one-record' wx:for='{{baoInfo.records}}' wx:key='{{index}}' id="index{{index}}">
         <image class='get-avatar' src='{{item.userInfo.avatarUrl}}'></image>
         <view>
           <text class='get-user-name'>{{item.userInfo.nickName}}</text>
@@ -80,29 +82,29 @@
   </view>
   <view class="kb fcsa {{kbHeight}}">
     <view class="fsb kb-row row1">
-      <text class="bian ml {{actItem[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum' >1</text>
-      <text class="mid {{(actItem[1])?'active': ''}}" data-num="2"  bindtap='clickNum' >2</text>
-      <text class="bian mr {{actItem[2]?'active hu-rgt': ''}}" data-num="3"  bindtap='clickNum' >3</text>
+      <text class="bian ml {{actItem[0]?'active hu-left': ''}}" data-num="1" bindtap='clickNum'>1</text>
+      <text class="mid {{(actItem[1])?'active': ''}}" data-num="2" bindtap='clickNum'>2</text>
+      <text class="bian mr {{actItem[2]?'active hu-rgt': ''}}" data-num="3" bindtap='clickNum'>3</text>
     </view>
     <view class="fsb kb-row">
-      <text class="bian ml {{actItem[3]?'active': ''}}" data-num="4"  bindtap='clickNum' >4</text>
-      <text class="mid {{actItem[4]?'active': ''}}" data-num="5"  bindtap='clickNum' >5</text>
-      <text class="bian mr {{actItem[5]?'active': ''}}" data-num="6"  bindtap='clickNum' >6</text>
+      <text class="bian ml {{actItem[3]?'active': ''}}" data-num="4" bindtap='clickNum'>4</text>
+      <text class="mid {{actItem[4]?'active': ''}}" data-num="5" bindtap='clickNum'>5</text>
+      <text class="bian mr {{actItem[5]?'active': ''}}" data-num="6" bindtap='clickNum'>6</text>
     </view>
     <view class="fsb kb-row">
-      <text class="bian ml {{actItem[6]?'active': ''}}" data-num="7"  bindtap='clickNum' >7</text>
-      <text class="mid {{actItem[7]?'active': ''}}" data-num="8"  bindtap='clickNum' >8</text>
-      <text class="bian mr {{actItem[8]?'active': ''}}" data-num="9"  bindtap='clickNum' >9</text>
+      <text class="bian ml {{actItem[6]?'active': ''}}" data-num="7" bindtap='clickNum'>7</text>
+      <text class="mid {{actItem[7]?'active': ''}}" data-num="8" bindtap='clickNum'>8</text>
+      <text class="bian mr {{actItem[8]?'active': ''}}" data-num="9" bindtap='clickNum'>9</text>
     </view>
     <view class="fsb kb-row">
       <text class="bian ml"></text>
-      <text class="mid {{actItem[9]?'active': ''}}" data-num="0"  bindtap='clickNum' >0</text>
+      <text class="mid {{actItem[9]?'active': ''}}" data-num="0" bindtap='clickNum'>0</text>
       <text class="bian del mr" bindtap='deleteNum'></text>
     </view>
   </view>
   <correct id="guess" result="{{popInfo.result}}" comment="{{popInfo.comment}}" money="{{(popInfo.money)/100}}" bindhideEvent="_hide" bindactEvent="_active" bindcelEvent="_cancel"></correct>
-  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{remainder}}" binddoJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡" bindcancel='toRank'></pop> 
+  <pop id="pop" content="{{tipCon}}" show='{{showTip}}' singleBtn="{{singleBtn}}" hasJiasuka="{{remainder}}" binddoJiasu="doClear" cancleBtn="{{cancleStr}}" sureBtn="使用加速卡" bindcancel='toRank'></pop>
 
-  
+
 </view>
 <pop content="{{packageTip}}" show='{{hasPackageTip}}' singleBtn='true'></pop>

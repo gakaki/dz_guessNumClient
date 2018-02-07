@@ -1,6 +1,7 @@
 .wrap {
   height: 100%;
   overflow: hidden;
+  background-color: #b21f2e;
 }
 
 .red-box {
@@ -307,7 +308,7 @@
 
 .record-list {
   position: absolute;
-  top: 796rpx;
+   top: 450rpx; 
   left: 0;
   bottom: 0;
   right: 0;

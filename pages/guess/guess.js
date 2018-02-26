@@ -111,7 +111,7 @@ Page({
   },
   updateRecords(res) {
     let status = res.data.packInfo.status;
-    
+    console.log(status,'status')
     if (status == -131) {
       let str = configs.Message.Get(1).words
       this.setData({
